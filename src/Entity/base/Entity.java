@@ -1,4 +1,4 @@
-package Entity.base;
+package entity.base;
 
 import logic.Direction;
 import logic.GameController;
