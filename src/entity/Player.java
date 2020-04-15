@@ -1,6 +1,8 @@
 package entity;
 
+import entity.base.Entity;
 import logic.Direction;
+
 
 public class Player {
 	
