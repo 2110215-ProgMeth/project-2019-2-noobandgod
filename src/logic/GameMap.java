@@ -30,9 +30,6 @@ public class GameMap {
 				
 			}
 		}
-		
-		
-		
 	}
 
 	public int getWidth() {
@@ -51,6 +48,9 @@ public class GameMap {
 		this.height = height;
 	}
 	
-	
-	
+	public static void main(String[]args) {
+		System.out.println("Hello");
+	}
 }
+
+
