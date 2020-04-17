@@ -25,7 +25,6 @@ public class GameMap {
 			for(int j=0; j<column; j++) {
 				
 				//cellmap[i][j] = new Cell(); 
-				System.out.println(map[i][j]);
 				String coordinate = " @("+i+","+j+")";
 				
 				switch (map[i][j]) {
