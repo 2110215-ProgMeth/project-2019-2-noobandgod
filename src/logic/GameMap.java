@@ -28,6 +28,9 @@ public class GameMap {
 			for(int j=0; j<column; j++) {
 				cellmap[i][j] = new Cell(); 
 				
+				
+				
+				
 			}
 		}
 	}
@@ -48,8 +51,10 @@ public class GameMap {
 		this.height = height;
 	}
 	
+	
+	
 	public static void main(String[]args) {
-		System.out.println("Hello");
+		
 	}
 }
 
