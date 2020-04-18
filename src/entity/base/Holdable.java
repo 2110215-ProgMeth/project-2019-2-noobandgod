@@ -1,5 +1,7 @@
 package entity.base;
 
-public class Holdable {
+import entity.Player;
 
+public interface Holdable {
+	public abstract boolean holds(Player e);
 }

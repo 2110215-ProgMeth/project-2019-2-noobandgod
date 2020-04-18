@@ -1,5 +1,7 @@
 package entity.base;
 
-public class Consumable {
+import entity.Player;
 
+public interface Consumable {
+	public abstract boolean consumes(Player e);
 }

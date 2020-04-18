@@ -1,9 +1,9 @@
 package entity.base;
 
-public class Entity {
+public abstract class Entity {
 	private int x;
 	private int y;
-	
+	public abstract Entity getSymbol();
 	public int getX() {
 		return x;
 	}

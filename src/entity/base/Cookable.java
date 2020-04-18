@@ -1,5 +1,5 @@
 package entity.base;
 
-public class Cookable {
-
+public interface Cookable {
+	public abstract boolean cooks();
 }

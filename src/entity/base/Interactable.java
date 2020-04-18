@@ -1,5 +1,7 @@
 package entity.base;
 
-public class Interactable {
+import entity.Player;
 
+public interface Interactable {
+	public abstract boolean interacts(Player e);
 }

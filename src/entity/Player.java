@@ -4,10 +4,11 @@ import entity.base.Entity;
 import logic.Direction;
 
 
-public class Player {
+public class Player extends Entity{
 	
 	private boolean isHolding;
-	private Entity entityHeld;
+	private Ingredient ingredientHeld;
+	private Dish dishHeld;
 	private Direction faceDirection;
 	private int PlayerNumber;
 	
@@ -20,11 +21,6 @@ public class Player {
 	public void setHolding(boolean isHolding) {
 		this.isHolding = isHolding;
 	}
-
-	public void setEntityHeld(Entity entityHeld) {
-		this.entityHeld = entityHeld;
-	}
-
 	public void setFaceDirection(Direction faceDirection) {
 		this.faceDirection = faceDirection;
 	}
@@ -36,9 +32,21 @@ public class Player {
 	public boolean isHolding() {
 		return isHolding;
 	}
+	
+	public Ingredient getIngredientHeld() {
+		return ingredientHeld;
+	}
 
-	public Entity getEntityHeld() {
-		return entityHeld;
+	public void setIngredientHeld(Ingredient ingredientHeld) {
+		this.ingredientHeld = ingredientHeld;
+	}
+
+	public Dish getDishHeld() {
+		return dishHeld;
+	}
+
+	public void setDishHeld(Dish dishHeld) {
+		this.dishHeld = dishHeld;
 	}
 
 	public Direction getFaceDirection() {

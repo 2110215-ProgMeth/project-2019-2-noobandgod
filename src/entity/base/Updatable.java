@@ -1,5 +1,5 @@
 package entity.base;
 
-public class Updatable {
-
+public interface Updatable {
+	public abstract void update();
 }
