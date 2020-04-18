@@ -16,6 +16,7 @@ public class Cell {
 	public boolean setBlock(Entity e) {
 		if (isBlockEmpty) {
 			this.block = e;
+			this.isBlockEmpty = false;
 			return true;
 		}
 		return false;

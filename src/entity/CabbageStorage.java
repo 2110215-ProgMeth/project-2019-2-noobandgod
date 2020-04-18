@@ -1,6 +1,7 @@
 package entity;
 
 import entity.base.Entity;
+import logic.Sprites;
 
 public class CabbageStorage extends IngredientStorage{
 	private CabbageStorage CabbageStorage;
@@ -12,7 +13,7 @@ public class CabbageStorage extends IngredientStorage{
 			return true;
 		}return false;//throw exception like Ingredient
 	}
-	public Entity getSymbol() {
-		return this.CabbageStorage;
+	public char getSymbol() {
+		return Sprites.CabbageStorage;
 	}
 }

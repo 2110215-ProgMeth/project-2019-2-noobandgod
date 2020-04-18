@@ -13,7 +13,10 @@ public class Main{
 		
 		GameController.InitializeMap(gamemap);
 			
+		GameController.printMap();
 		
+		char a = GameController.getCurrentGameMap().getBlock(3, 9).getSymbol();
+		System.out.println(a);
 	}
 
 }
