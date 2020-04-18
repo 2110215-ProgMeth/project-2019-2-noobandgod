@@ -12,11 +12,7 @@ public class GameMap {
 	private int height;
 	private Cell[][] cellmap;
 
-	private ArrayList<Entity> allEntity;
-	
-	
 	public GameMap(String [][] map) {
-		allEntity = new ArrayList<Entity>();
 		int row = map.length;
 		int column = map[0].length;
 		setHeight(row);
@@ -75,9 +71,7 @@ public class GameMap {
 		}
 	}
 	
-	public boolean setBlock(Entity e,int x,int y) {
-		allEntity.add(e);
-		
+	public boolean setBlock(Entity e,int x,int y) {		
 		e.setX(x);
 		e.setY(y);
 		
@@ -110,14 +104,15 @@ public class GameMap {
 	
 	public Entity removeEntityOnBlock(int x,int y) {
 		if (cellmap[y][x].isOnTop()) {
-			Entity e = cellmap[y][x].
-			
-			
+			Cell cell = cellmap[y][x];
+			Entity e = cell.getEntityOnTop();
+			cell.setEntityOnTop(null);
+			cell.setOnTop(false);
+			return e;
 		} else {
-			
+			return null;
 		}
 	}
-	
 	
 	public int getWidth() {
 		return width;
