@@ -2,6 +2,7 @@ package entity;
 
 import entity.base.Entity;
 import entity.base.Interactable;
+import logic.Sprites;
 
 public class DishPicker extends Entity implements Interactable{
 	private DishPicker DishPicker;
@@ -14,7 +15,7 @@ public class DishPicker extends Entity implements Interactable{
 			return true;
 		}return false;
 	}
-	public Entity getSymbol() {
-		return DishPicker;
+	public char getSymbol() {
+		return Sprites.DishPicker;
 	}
 }
