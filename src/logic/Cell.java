@@ -52,7 +52,7 @@ public class Cell {
 	
 	public char getSymbol() {
 		if(isBlockEmpty) {
-			return 'X';
+			return 'O';
 		} else {
 			return block.getSymbol();
 		}

@@ -15,8 +15,7 @@ public class Main{
 			
 		GameController.printMap();
 		
-		char a = GameController.getCurrentGameMap().getBlock(3, 9).getSymbol();
-		System.out.println(a);
+		GameController.getCurrentGameMap();
 	}
 
 }

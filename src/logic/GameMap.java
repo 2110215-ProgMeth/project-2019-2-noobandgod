@@ -2,7 +2,9 @@ package logic;
 
 import java.util.ArrayList;
 
+import entity.CabbageStorage;
 import entity.Dish;
+import entity.FishStorage;
 import entity.Ingredient;
 import entity.TomatoStorage;
 import entity.base.Entity;
@@ -38,9 +40,11 @@ public class GameMap {
 					break;
 				case "C":
 					System.out.println("CabbageStorage"+coordinate);
+					setBlock(new CabbageStorage(), j, i);
 					break;
 				case "D":
 					System.out.println("FishStorage"+coordinate);
+					setBlock(new FishStorage(), j, i);
 					break;
 				case "E":
 					System.out.println("DishPicker"+coordinate);
@@ -74,15 +78,19 @@ public class GameMap {
 	}
 	
 	public void printMap() {
-		System.out.println("====================");
+		
+		System.out.println("   0 1 2 3 4 5 6 7 8 9 (X)");
+		System.out.println("(Y)-------------------");
+		
+		int rownumber = 0;
 		for(Cell[] row: cellmap) {
-			String rowstring = "";
+			String rowstring = rownumber+" |";
 			for(Cell c:row) {
 				rowstring += c.getSymbol()+" ";
 			}
 			System.out.println(rowstring);
+			rownumber += 1;
 		}
-		System.out.println("====================");
 	}
 		
 	public boolean setBlock(Entity e,int x,int y) {		
@@ -100,7 +108,7 @@ public class GameMap {
 				cell.setEntityOnTop(e);
 				return true;
 			} else if (e instanceof Ingredient) {
-				//check ว่า ingredient ผ่านกระบวนการ cook แล้วรึยัง ถ้าผ่านแล้ววางไม่ได้
+				//check ว่า ingredient ผ่านกระบวนการ cook แล้วรึยัง ถ้าผ่านแล้ววางไม่ได้**
 				cell.setEntityOnTop(e);
 				return true;
 			} else {
