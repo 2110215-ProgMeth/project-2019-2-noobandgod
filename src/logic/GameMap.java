@@ -101,6 +101,11 @@ public class GameMap {
 		return b;
 	}
 	
+	
+	public Entity getBlock(int x,int y) {
+		return cellmap[y][x].getBlock();
+	}
+	
 	public boolean placeEntityOnBlock(Entity e,int x,int y) {
 		Cell cell = cellmap[y][x];
 		if (!cell.isOnTop()) {
@@ -119,13 +124,10 @@ public class GameMap {
 		}
 		
 	}
-	
-	public Entity getBlock(int x,int y) {
-		return cellmap[x][y].getBlock();
-	}
+
 	
 	public Entity removeEntityOnBlock(int x,int y) {
-		if (cellmap[y][x].isOnTop()) {
+		if (cellmap[x][y].isOnTop()) {
 			Cell cell = cellmap[y][x];
 			Entity e = cell.getEntityOnTop();
 			cell.setEntityOnTop(null);
