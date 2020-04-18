@@ -36,5 +36,19 @@ public class Cell {
 	public void setOnTop(boolean isOnTop) {
 		this.isOnTop = isOnTop;
 	}
+
+	public void setEntityOnTop(Entity entityOnTop) {
+		this.entityOnTop = entityOnTop;
+	}
+
+	public Entity getBlock() {
+		return block;
+	}
+
+	public Entity getEntityOnTop() {
+		return entityOnTop;
+	}
+	
+	
 	
 }

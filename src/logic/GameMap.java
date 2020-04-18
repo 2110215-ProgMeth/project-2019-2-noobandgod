@@ -1,6 +1,9 @@
 package logic;
 
 import java.util.ArrayList;
+
+import entity.Dish;
+import entity.Ingredient;
 import entity.base.Entity;
 
 
@@ -24,11 +27,11 @@ public class GameMap {
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<column; j++) {
 				
-				//cellmap[i][j] = new Cell(); 
+				cellmap[i][j] = new Cell(); 
 				String coordinate = " @("+i+","+j+")";
 				
+				//setting blocks from excel 
 				switch (map[i][j]) {
-				
 				case "A":
 					System.out.println("Station"+coordinate);
 					break;
@@ -72,7 +75,7 @@ public class GameMap {
 		}
 	}
 	
-	public boolean addBlock(Entity e,int x,int y) {
+	public boolean setBlock(Entity e,int x,int y) {
 		allEntity.add(e);
 		
 		e.setX(x);
@@ -82,12 +85,38 @@ public class GameMap {
 		return b;
 	}
 	
-
+	public boolean placeEntityOnBlock(Entity e,int x,int y) {
+		Cell cell = cellmap[y][x];
+		if (!cell.isOnTop()) {
+			if(e instanceof Dish) {
+				cell.setEntityOnTop(e);
+				return true;
+			} else if (e instanceof Ingredient) {
+				//check ว่า ingredient ผ่านกระบวนการ cook แล้วรึยัง ถ้าผ่านแล้ววางไม่ได้
+				cell.setEntityOnTop(e);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		
+	}
 	
+	public Entity getBlock(int x,int y) {
+		return cellmap[y][x].getBlock();
+	}
 	
-	
-	
-	
+	public Entity removeEntityOnBlock(int x,int y) {
+		if (cellmap[y][x].isOnTop()) {
+			Entity e = cellmap[y][x].
+			
+			
+		} else {
+			
+		}
+	}
 	
 	
 	public int getWidth() {
