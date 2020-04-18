@@ -3,7 +3,7 @@ package entity.base;
 public abstract class Entity {
 	private int x;
 	private int y;
-	public abstract Entity getSymbol();
+	public abstract char getSymbol();
 	public int getX() {
 		return x;
 	}
