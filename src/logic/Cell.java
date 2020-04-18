@@ -49,6 +49,12 @@ public class Cell {
 		return entityOnTop;
 	}
 	
-	
+	public char getSymbol() {
+		if(isBlockEmpty) {
+			return 'X';
+		} else {
+			return block.getSymbol();
+		}
+	}
 	
 }

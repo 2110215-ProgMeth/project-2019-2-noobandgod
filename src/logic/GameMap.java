@@ -71,6 +71,16 @@ public class GameMap {
 		}
 	}
 	
+	public void printMap() {
+		for(Cell[] row: cellmap) {
+			String rowstring = "";
+			for(Cell c:row) {
+				rowstring += c.getSymbol()+" ";
+			}
+			System.out.println(rowstring);
+		}
+	}
+		
 	public boolean setBlock(Entity e,int x,int y) {		
 		e.setX(x);
 		e.setY(y);
@@ -111,6 +121,18 @@ public class GameMap {
 			return e;
 		} else {
 			return null;
+		}
+	}
+	
+	public boolean isMovePossible(int targetx, int targety) {
+		if (targetx < 0 || targetx > width || targety < 0 || targety > height) {
+			//out of bound -> return false
+			return false;
+		} else if (cellmap[targety][targetx].isBlockEmpty()) {
+			//if target block is empty (space) -> return true
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
