@@ -14,6 +14,8 @@ public class Player extends Entity{
 	
 	public Player(int playerNumber) {
 		setHolding(false);
+		setIngredientHeld(null);
+		setDishHeld(null);
 		setFaceDirection(Direction.NONE);
 		setPlayerNumber(playerNumber);
 	}
@@ -52,11 +54,13 @@ public class Player extends Entity{
 	public Direction getFaceDirection() {
 		return faceDirection;
 	}
-
+//	public getWhereInteract() {
+		
+//	}
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
-	public Entity getSymbol() {
-		return this.Player;
+	public char getSymbol() {
+		return Sprites.Player;
 	}
 }

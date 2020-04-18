@@ -1,9 +1,8 @@
 package entity;
 
 import entity.base.Entity;
-import entity.base.Holdable;
 
-public abstract class Ingredient extends Entity implements Holdable{
+public abstract class Ingredient extends Entity {
 	private int State;
 	public void setState(int state) {
 		this.State = state;
