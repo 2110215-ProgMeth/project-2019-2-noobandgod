@@ -71,7 +71,25 @@ public class GameMap {
 			}
 		}
 	}
+	
+	public boolean addBlock(Entity e,int x,int y) {
+		allEntity.add(e);
+		
+		e.setX(x);
+		e.setY(y);
+		
+		boolean b = cellmap[y][x].setBlock(e);
+		return b;
+	}
+	
 
+	
+	
+	
+	
+	
+	
+	
 	public int getWidth() {
 		return width;
 	}
@@ -88,15 +106,6 @@ public class GameMap {
 		this.height = height;
 	}
 	
-	public boolean addBlock(Entity e,int x,int y) {
-		allEntity.add(e);
-		
-		e.setX(x);
-		e.setY(y);
-		
-		boolean b = cellmap[y][x].setBlock(e);
-		return b;
-	}
 	
 }
 
