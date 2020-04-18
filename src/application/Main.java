@@ -12,10 +12,7 @@ public class Main{
 		String[][] gamemap = CSVParser.readCSV("Book1.csv");
 		
 		GameController.InitializeMap(gamemap);
-		
-		
-		
-		
+			
 		
 	}
 
