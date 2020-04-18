@@ -5,7 +5,7 @@ import logic.Direction;
 
 
 public class Player extends Entity{
-	
+	private Player Player;
 	private boolean isHolding;
 	private Ingredient ingredientHeld;
 	private Dish dishHeld;
@@ -55,5 +55,8 @@ public class Player extends Entity{
 
 	public int getPlayerNumber() {
 		return PlayerNumber;
+	}
+	public Entity getSymbol() {
+		return this.Player;
 	}
 }
