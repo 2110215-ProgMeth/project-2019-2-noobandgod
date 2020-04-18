@@ -16,6 +16,9 @@ public class Main{
 		GameController.printMap();
 		
 		GameController.getCurrentGameMap();
+		
+		
+		
 	}
 
 }
