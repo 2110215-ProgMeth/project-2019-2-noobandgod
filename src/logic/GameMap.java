@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.Dish;
 import entity.Ingredient;
+import entity.TomatoStorage;
 import entity.base.Entity;
 
 
@@ -33,6 +34,7 @@ public class GameMap {
 					break;
 				case "B":
 					System.out.println("TomatoStorage"+coordinate);
+					setBlock(new TomatoStorage(), j, i);
 					break;
 				case "C":
 					System.out.println("CabbageStorage"+coordinate);
@@ -72,6 +74,7 @@ public class GameMap {
 	}
 	
 	public void printMap() {
+		System.out.println("====================");
 		for(Cell[] row: cellmap) {
 			String rowstring = "";
 			for(Cell c:row) {
@@ -79,6 +82,7 @@ public class GameMap {
 			}
 			System.out.println(rowstring);
 		}
+		System.out.println("====================");
 	}
 		
 	public boolean setBlock(Entity e,int x,int y) {		
@@ -109,7 +113,7 @@ public class GameMap {
 	}
 	
 	public Entity getBlock(int x,int y) {
-		return cellmap[y][x].getBlock();
+		return cellmap[x][y].getBlock();
 	}
 	
 	public Entity removeEntityOnBlock(int x,int y) {
