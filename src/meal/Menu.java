@@ -40,15 +40,19 @@ public abstract class Menu {
 						checklist[i] = true;
 						break;
 					}
-				System.out.println("Ingredients not match");
-				return false;
 				}
 			}
+		
+		for (int i=0; i<checklist.length; i++) {
+			if (checklist[i] != true) {
+				return false;
+			}	
+		}
+		System.out.println("Ingrdrients Matched");
+		return true;	
 			
-			return true;
 		}
 	}
-	
 
 	public int getTimeleft() {
 		return timeleft;
@@ -66,6 +70,10 @@ public abstract class Menu {
 		this.name = name;
 	}
 	
+	public ArrayList<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
 	@Override
 	public String toString() {
 		String a;
