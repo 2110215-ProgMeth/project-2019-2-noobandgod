@@ -19,7 +19,7 @@ public class Dish extends Entity implements Holdable{
 			//dont forget that I haven't written about the station where the ingredeintn lost
 		}return false;
 	}
-	public boolean gathers(Player e) {
+	public boolean gathers(Player e) { // when the station has a dish and people carry an ingredient
 		if (e.isHolding()) {
 			if ((!e.getIngredientHeld().equals(null)) && e.getIngredientHeld().getState() >= 1) {
 				if (!this.onDishExists.contains(e.getIngredientHeld())){
@@ -27,10 +27,21 @@ public class Dish extends Entity implements Holdable{
 					e.setIngredientHeld(null);
 					e.setHolding(false);
 					return true;
-			}//throw an exception a lot in this method
-		}	//dont forget that I haven't written about the station where the ingredient lost
-		}	return false;
-	
+				}//throw an exception a lot in this method
+			}
+		}return false;
+	}
+	public void adds(Ingredient e) {
+		if (e instanceof Fish) {
+			Fish fish = (Fish) e;
+			this.onDishExists.add(fish);
+		}else if (e instanceof Cabbage) {
+			Cabbage cabbage = (Cabbage) e;
+			this.onDishExists.add(cabbage);
+		}else if (e instanceof Tomato) {
+			Tomato tomato = (Tomato) e;
+			this.onDishExists.add(tomato);
+		}
 	}
 	public ArrayList<Ingredient> getOnDishExists() {
 		return this.onDishExists;

@@ -9,7 +9,7 @@ public class TomatoStorage extends IngredientStorage{
 			e.setIngredientHeld(tomato);
 			e.setHolding(true);
 			return true;
-		}return false;
+		}return false;//throw an exception
 	}
 	public char getSymbol() {
 		return Sprites.TomatoStorage;
