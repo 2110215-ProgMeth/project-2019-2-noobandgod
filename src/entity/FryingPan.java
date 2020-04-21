@@ -9,26 +9,40 @@ public class FryingPan extends Equipment{
 	}
 	public boolean places(Player e) {
 		if (interacts(e)) {
-			if (!e.getIngredientHeld().equals(null))
-				setOnFryingPanExists(e.getIngredientHeld());
-				e.setHolding(false);
-				e.setIngredientHeld(null);
-				return true;
-		}return false;
+			if (!e.getIngredientHeld().equals(null) && getOnFryingPanExists().equals(null)) {
+				if (e.getIngredientHeld() instanceof Fish )	{
+					setOnFryingPanExists(e.getIngredientHeld());
+					e.setHolding(false);
+					e.setIngredientHeld(null);
+					return true;
+				}
+			}else if (!e.getIngredientHeld().equals(null) && (!getOnFryingPanExists().equals(null))){
+				return false;
+				//throw an exception.. carry ingredient and ingredient on equipment		
+			}
+		}return false;//throw an exception that that you have nothing to place
 	}
 	public boolean cooks() {
 		if (!getOnFryingPanExists().equals(null)) {
-			getOnFryingPanExists().setState(2);
-			return true;
-		}return false;
+				getOnFryingPanExists().setState(2);
+				return true;
+		}return false;//throw an exception that nothing to be cooked
 	}
 	public boolean holds(Player e) {
 		if (!interacts(e)){
-			e.setIngredientHeld(getOnFryingPanExists());
-			e.setHolding(true);
-			setOnFryingPanExists(null);
-			return true;
-		}return false;
+			if (!getOnFryingPanExists().equals(null)){
+				e.setIngredientHeld(getOnFryingPanExists());
+				e.setHolding(true);
+				setOnFryingPanExists(null);
+				return true;
+			}else {
+				return false;
+				//throw an exception that there is no ingredient to pick
+			}
+		}else {
+			return false;
+			//throw an exception
+		}
 	}
 	public Ingredient getOnFryingPanExists() {
 		return OnFryingPanExists;

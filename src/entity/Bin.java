@@ -12,9 +12,10 @@ public class Bin extends Entity implements Consumable,Interactable{
 	public boolean consumes(Player e) {
 		if (interacts(e)) {
 			e.setIngredientHeld(null);
+			e.setDishHeld(null);
 			e.setHolding(false);
 			return true;
-		}return false;//throw an exception;
+		}return false;//throw an exception; nothing to be consumed
 	}
 	public char getSymbol() {
 		return Sprites.Bin;

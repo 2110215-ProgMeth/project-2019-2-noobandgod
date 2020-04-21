@@ -8,5 +8,4 @@ import entity.base.Placeable;
 
 public abstract class Equipment extends Entity implements Interactable,Holdable,Cookable,Placeable{
 	//maybe we will add the interface updatable
-	
 }

@@ -9,26 +9,41 @@ public class CuttingBoard extends Equipment{
 	}
 	public boolean places(Player e) {
 		if (interacts(e)) {
-			if (!e.getIngredientHeld().equals(null))
+			if ((!e.getIngredientHeld().equals(null)) && (getOnCuttingBoardExists().equals(null))) {
 				setOnCuttingBoardExists(e.getIngredientHeld());
 				e.setHolding(false);
 				e.setIngredientHeld(null);
 				return true;
-		}return false;
+			}else if ((!getOnCuttingBoardExists().equals(null)) && (!(e.getDishHeld().equals(null)))) {
+				
+				//throw an exception.. ingredient on cuttingboard and i carry ingredient or dish
+			}else if (!e.getDishHeld().equals(null)) {
+				return false;
+				//throw an exception .. dish can't be placed on the cuttingboard
+			}
+		}return false;//throw an exception that that you have nothing to place
 	}
 	public boolean cooks() {
 		if (!getOnCuttingBoardExists().equals(null)) {
 			getOnCuttingBoardExists().setState(1);
 			return true;
-		}return false;
+		}return false;//throw an exception that there is nothing to be cooked
 	}
 	public boolean holds(Player e) {
 		if (!interacts(e)){
-			e.setIngredientHeld(getOnCuttingBoardExists());
-			e.setHolding(true);
-			setOnCuttingBoardExists(null);
-			return true;
-		}return false;
+			if (!getOnCuttingBoardExists().equals(null)){
+				e.setIngredientHeld(getOnCuttingBoardExists());
+				e.setHolding(true);
+				setOnCuttingBoardExists(null);
+				return true;
+			}else{
+				return false;
+				//throw an exception that there is no ingredient to pick
+			}
+		}else {
+			return false;
+			//throw an exception
+		}
 	}
 	public Ingredient getOnCuttingBoardExists() {
 		return OnCuttingBoardExists;

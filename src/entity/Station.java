@@ -69,25 +69,15 @@ public class Station extends Entity implements Holdable,Placeable{
 					}else {
 						//ingredient on station and dish on hand
 						Ingredient ingredient = (Ingredient) getOnStationExists();
-						if (getOnStationExists() instanceof Fish) {
-							Fish fish = (Fish) getOnStationExists();
-							e.setDishHeld(e.getDishHeld().getOnDishExists().adds(fish));
-							return true;
-						}else if (getOnStationExists() instanceof Cabbage) {
-							Cabbage cabbage = (Cabbage) getOnStationExists();
-							e.setIngredientHeld(cabbage);
-							return true;
-						}else if (getOnStationExists() instanceof Tomato) {
-							Tomato tomato = (Tomato) getOnStationExists();
-							e.setIngredientHeld(tomato);
-							return true;
+						e.setDishHeld(e.getDishHeld().adds(ingredient));
+						setOnStationExists(null);
+						return true;
+						//not finished
 						}
-						e.getDishHeld().adds(getOnStationExists());
 					}
 				}
 			}
 		}
-	}
 	public Entity getOnStationExists() {
 		return OnStationExists;
 	}
