@@ -49,7 +49,6 @@ public class TestSalad {
 		
 		//------------------------------------
 		
-		
 		dishforsalad2 = new Dish();
 		dishforsalad2.adds(tomatosliced);
 		dishforsalad2.adds(cabbagesliced);

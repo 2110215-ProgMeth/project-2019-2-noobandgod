@@ -19,35 +19,29 @@ public class Salad extends Menu{
 			this.name = "Simple Salad";
 			
 			//set price and max_score
+			
 			//set ingredients
-			
 			this.ingredients = new ArrayList<Ingredient>();
-			
 			Tomato tomato = new Tomato();
 			tomato.setState(1);
-			
 			Cabbage cabbage = new Cabbage();
 			cabbage.setState(1);
-			
 			this.ingredients.add(tomato); this.ingredients.add(cabbage);
 			
 		} else if (saladType == 1) {
 			setSaladType(saladType);
 			this.name = "Sashimi Salad";
+			
 			//set price and max_score
+			
 			//set ingredients
-			
 			this.ingredients = new ArrayList<Ingredient>();
-			
 			Tomato tomato = new Tomato();
 			tomato.setState(1);
-			
 			Cabbage cabbage = new Cabbage();
 			cabbage.setState(1);
-			
 			Fish fish = new Fish();
 			fish.setState(1);
-			
 			this.ingredients.add(tomato); this.ingredients.add(cabbage); this.ingredients.add(fish);
 			
 		} else {
