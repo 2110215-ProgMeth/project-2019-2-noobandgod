@@ -16,7 +16,7 @@ public class Dish extends Entity implements Holdable{
 			e.setDishHeld(this);
 			e.setHolding(true);
 			return true;
-			//dont forget that I haven't written about the station where the ingredeintn lost
+			//don't forget that I haven't written about the station where the ingredient lost
 		}return false;
 	}
 	public boolean gathers(Player e) { // when the station has a dish and people carry an ingredient

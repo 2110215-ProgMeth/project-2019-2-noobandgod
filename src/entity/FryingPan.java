@@ -19,12 +19,17 @@ public class FryingPan extends Equipment{
 			}else if (!e.getIngredientHeld().equals(null) && (!getOnFryingPanExists().equals(null))){
 				return false;
 				//throw an exception.. carry ingredient and ingredient on equipment		
+			}else if ((!e.getDishHeld().equals(null)) && (!getOnFryingPanExists().equals(null))) {
+				e.setDishHeld(e.getDishHeld().adds(getOnFryingPanExists()));
+				setOnFryingPanExists(null);
+				return true;
 			}
 		}return false;//throw an exception that that you have nothing to place
 	}
+	
 	public boolean cooks() {
 		if (!getOnFryingPanExists().equals(null)) {
-				getOnFryingPanExists().setState(2);
+				setOnFryingPanExists(getOnFryingPanExists().setState(2));
 				return true;
 		}return false;//throw an exception that nothing to be cooked
 	}
@@ -40,7 +45,11 @@ public class FryingPan extends Equipment{
 				//throw an exception that there is no ingredient to pick
 			}
 		}else {
-			return false;
+			if ((!e.getDishHeld().equals(null)) && (!getOnFryingPanExists().equals(null))) {
+				e.setDishHeld(e.getDishHeld().adds(getOnFryingPanExists()));
+				setOnFryingPanExists(null);
+				return true;
+			}return false;
 			//throw an exception
 		}
 	}

@@ -15,11 +15,12 @@ public class CuttingBoard extends Equipment{
 				e.setIngredientHeld(null);
 				return true;
 			}else if ((!getOnCuttingBoardExists().equals(null)) && (!(e.getDishHeld().equals(null)))) {
-				
+				e.setDishHeld(e.getDishHeld().adds(getOnCuttingBoardExists()));
+				setOnCuttingBoardExists(null);
+				return true;
 				//throw an exception.. ingredient on cuttingboard and i carry ingredient or dish
-			}else if (!e.getDishHeld().equals(null)) {
+			}else if (!e.getIngredientHeld().equals(null) && (!getOnCuttingBoardExists().equals(null))) {
 				return false;
-				//throw an exception .. dish can't be placed on the cuttingboard
 			}
 		}return false;//throw an exception that that you have nothing to place
 	}
