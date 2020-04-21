@@ -8,6 +8,7 @@ import entity.Fish;
 import entity.FishStorage;
 import entity.Ingredient;
 import entity.Tomato;
+import sun.tools.tree.ThisExpression;
 
 public class Salad extends Menu{
 	protected int saladType;
@@ -41,8 +42,10 @@ public class Salad extends Menu{
 			
 			Tomato tomato = new Tomato();
 			tomato.setState(1);
+			
 			Cabbage cabbage = new Cabbage();
 			cabbage.setState(1);
+			
 			Fish fish = new Fish();
 			fish.setState(1);
 			
@@ -52,18 +55,6 @@ public class Salad extends Menu{
 			System.out.println("saladType ERROR!!");
 		}
 		
-	}
-
-	@Override
-	public boolean isAllIngredients(Dish d) {
-		ArrayList<Ingredient> ondish = d.getOnDishExists();
-		
-		
-		
-		
-		
-		
-		return false;
 	}
 
 	public int getSaladType() {

@@ -16,7 +16,39 @@ public abstract class Menu {
 		setTimeleft(timeleft);
 	}
 	
-	public abstract boolean isAllIngredients(Dish d);
+	public boolean isAllIngredients(Dish d) {
+		ArrayList<Ingredient> ondish = d.getOnDishExists();
+		
+		int numberingredients = this.ingredients.size();
+		
+		boolean[] checklist = new boolean[numberingredients];
+		for (int i=0; i<checklist.length; i++) {
+			checklist[i] = false;
+		}
+		
+		if(ondish.size() > numberingredients) {
+			System.out.println("Too many ingredients on the dish!");
+			return false;
+		} else if (ondish.size() < numberingredients) {
+			System.out.println("Not enough ingredients");
+			return false;
+		} else {
+			
+			for (int i=0; i<numberingredients; i++) {
+				for(int j=0; j<numberingredients; j++) {
+					if (ondish.get(j).equals(this.ingredients.get(i))) {
+						checklist[i] = true;
+						break;
+					}
+				System.out.println("Ingredients not match");
+				return false;
+				}
+			}
+			
+			return true;
+		}
+	}
+	
 
 	public int getTimeleft() {
 		return timeleft;
