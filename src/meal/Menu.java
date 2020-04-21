@@ -73,6 +73,22 @@ public abstract class Menu {
 	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getMax_score() {
+		return max_score;
+	}
+
+	public void setMax_score(int max_score) {
+		this.max_score = max_score;
+	}
 
 	@Override
 	public String toString() {
