@@ -22,11 +22,9 @@ public class Salad extends Menu{
 			
 			//set ingredients
 			this.ingredients = new ArrayList<Ingredient>();
-			Tomato tomato = new Tomato();
-			tomato.setState(1);
-			Cabbage cabbage = new Cabbage();
-			cabbage.setState(1);
-			this.ingredients.add(tomato); this.ingredients.add(cabbage);
+			Tomato tomatosliced = new Tomato(); tomatosliced.setState(1);
+			Cabbage cabbagesliced = new Cabbage(); cabbagesliced.setState(1);
+			this.ingredients.add(tomatosliced); this.ingredients.add(cabbagesliced);
 			
 		} else if (saladType == 1) {
 			setSaladType(saladType);
@@ -36,13 +34,10 @@ public class Salad extends Menu{
 			
 			//set ingredients
 			this.ingredients = new ArrayList<Ingredient>();
-			Tomato tomato = new Tomato();
-			tomato.setState(1);
-			Cabbage cabbage = new Cabbage();
-			cabbage.setState(1);
-			Fish fish = new Fish();
-			fish.setState(1);
-			this.ingredients.add(tomato); this.ingredients.add(cabbage); this.ingredients.add(fish);
+			Tomato tomatosliced = new Tomato(); tomatosliced.setState(1);
+			Cabbage cabbagesliced = new Cabbage(); cabbagesliced.setState(1);
+			Fish fishsliced = new Fish(); fishsliced.setState(1);
+			this.ingredients.add(tomatosliced); this.ingredients.add(cabbagesliced); this.ingredients.add(fishsliced);
 			
 		} else {
 			System.out.println("saladType ERROR!!");
