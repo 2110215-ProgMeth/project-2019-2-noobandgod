@@ -21,6 +21,7 @@ public class TestSalad {
 	Tomato tomatosliced;
 	Cabbage cabbagesliced;
 	Fish fishsliced;
+	Fish fishfried;
 	
 	@Before
 	public void setUp() {
@@ -32,6 +33,9 @@ public class TestSalad {
 		
 		fishsliced = new Fish();
 		fishsliced.setState(1);
+		
+		fishfried = new Fish();
+		fishfried.setState(2);
 		//-------------------------------------
 		
 		simplesalad1 = new Salad(30, 0);
@@ -67,14 +71,36 @@ public class TestSalad {
 	}
 	
 	@Test
+	public void testConstructorSashimiSalad() {
+		assertEquals("Sashimi Salad", sashimisalad1.getName());
+		assertEquals(1, sashimisalad1.getSaladType());
+		assertEquals(22, sashimisalad1.getTimeleft());
+		assertEquals(true, sashimisalad1.getIngredients().contains(tomatosliced));
+		assertEquals(true, sashimisalad1.getIngredients().contains(cabbagesliced));
+		assertEquals(true, sashimisalad1.getIngredients().contains(fishsliced));
+		assertEquals(false, sashimisalad1.getIngredients().contains(new Tomato()));
+		assertEquals(false, sashimisalad1.getIngredients().contains(fishfried));
+	}
+	
+	@Test
 	public void testisAllIngredientsSimpleSaladTrue() {
 		assertEquals(true, simplesalad1.isAllIngredients(dishforsalad1));
 		
 	}
 	
+	@Test
 	public void testisAllIngredientsSimpleSaladFalse() {
 		assertEquals(false, simplesalad1.isAllIngredients(dishforsalad2));
 	}
 	
+	@Test
+	public void testisAllIngredientsSashimiSaladTrue() {
+		assertEquals(true, sashimisalad1.isAllIngredients(dishforsalad2));
+	}
+	
+	@Test
+	public void testisAllIngredientSashimiSaladFalse() {
+		assertEquals(false, sashimisalad1.isAllIngredients(dishforsalad1));
+	}
 	
 }
