@@ -44,8 +44,14 @@ public abstract class Menu {
 				return false;
 				}
 			}
+		
+		for (int i=0; i<checklist.length; i++) {
+			if (checklist[i] != true) {
+				return false;
+			}	
+		}	
+		return true;	
 			
-			return true;
 		}
 	}
 	
