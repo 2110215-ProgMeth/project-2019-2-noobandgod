@@ -2,6 +2,7 @@ package meal;
 
 import java.util.ArrayList;
 
+import entity.Dish;
 import entity.Ingredient;
 
 public abstract class Menu {
@@ -15,7 +16,7 @@ public abstract class Menu {
 		setTimeleft(timeleft);
 	}
 	
-	public abstract boolean isAllIngredients();
+	public abstract boolean isAllIngredients(Dish d);
 
 	public int getTimeleft() {
 		return timeleft;

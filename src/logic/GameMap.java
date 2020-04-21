@@ -2,10 +2,16 @@ package logic;
 
 import java.util.ArrayList;
 
+import entity.Bin;
 import entity.CabbageStorage;
+import entity.CuttingBoard;
 import entity.Dish;
+import entity.DishPicker;
 import entity.FishStorage;
+import entity.FoodCounter;
+import entity.FryingPan;
 import entity.Ingredient;
+import entity.Obstacle;
 import entity.TomatoStorage;
 import entity.base.Entity;
 
@@ -48,21 +54,27 @@ public class GameMap {
 					break;
 				case "E":
 					System.out.println("DishPicker"+coordinate);
+					setBlock(new DishPicker(), j, i);
 					break;
 				case "F":
 					System.out.println("Bin"+coordinate);
+					setBlock(new Bin(), j, i);
 					break;
 				case "G":
 					System.out.println("Obstacle"+coordinate);
+					setBlock(new Obstacle(), j, i);
 					break;
 				case "H":
 					System.out.println("FoodCounter"+coordinate);
+					setBlock(new FoodCounter(), j, i);
 					break;
 				case "I":
 					System.out.println("CuttingBoard"+coordinate);
+					setBlock(new CuttingBoard(), j, i);
 					break;
 				case "J":
 					System.out.println("FryingPan"+coordinate);
+					setBlock(new FryingPan(), j, i);
 					break;
 				case "O":
 					System.out.println("SPACE"+coordinate);
