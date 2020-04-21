@@ -8,7 +8,6 @@ import entity.Fish;
 import entity.FishStorage;
 import entity.Ingredient;
 import entity.Tomato;
-import sun.tools.tree.ThisExpression;
 
 public class Salad extends Menu{
 	protected int saladType;
