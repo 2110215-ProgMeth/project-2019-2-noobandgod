@@ -24,14 +24,11 @@ public class OrderManager {
 		}
 	}
 	
-	public Menu removeOrder(int index) {
+	public Menu removeOrder(int index) throws RemoveOrderFailedException{
 		if (index > orders.size()-1) {
-			System.out.println("Number you inserted exceed orders size");
-			return null; //may be throw some exception here
+			throw new RemoveOrderFailedException("Number you inserted exceed orders size");
 		} else if (index < 0) {
-			System.out.println("Number cannot be negative");
-			return null;
-			
+			throw new RemoveOrderFailedException("Number cannot be negative");		
 		} else {
 			Menu removedMenu = orders.get(index);
 			orders.remove(index);
@@ -50,7 +47,12 @@ public class OrderManager {
 		}
 		
 		for (int i=0; i<intarray.size(); i++) {
-			removeOrder(intarray.get(i));
+			try {
+				removeOrder(intarray.get(i));
+			} catch (RemoveOrderFailedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -69,7 +71,14 @@ public class OrderManager {
 		}
 		
 		if(anymatch) {
-			Menu menuremoved = removeOrder(indexmatch);
+			Menu menuremoved;
+			try {
+				menuremoved = removeOrder(indexmatch);
+			} catch (RemoveOrderFailedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
 			GameController.addCoinCount(menuremoved.price);
 			GameController.addScoreCount(menuremoved.getMax_score());
 			p.setDishHeld(null);
