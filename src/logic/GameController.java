@@ -1,11 +1,14 @@
 package logic;
 
+import meal.OrderManager;
+
 public class GameController {
 	private static GameMap gameMap;
 	private static int coin_count;
 	private static int score_count;
 	private static boolean is_timeup;
 	public static int MAX_ORDER;
+	private static OrderManager orderManager;
 	
 	public static void InitializeMap(String[][] map) {
 		System.out.println("Initializing Map...");
