@@ -1,5 +1,6 @@
 package logic;
 
+import entity.Player;
 import meal.OrderManager;
 
 public class GameController {
@@ -21,6 +22,10 @@ public class GameController {
 		System.out.println("Successfully Initializing Map!");
 	}
 	
+	public static void movePlayer(Direction dir,Player p) {
+		p.move(dir);
+	}
+	
 	public static void printMap( ) {
 		gameMap.printMap();
 	}
@@ -29,6 +34,10 @@ public class GameController {
 		return gameMap;
 	}
 	
+	public static OrderManager getOrderManager() {
+		return orderManager;
+	}
+
 	public static void addCoinCount(int coin) {
 		coin_count += coin;
 	}
