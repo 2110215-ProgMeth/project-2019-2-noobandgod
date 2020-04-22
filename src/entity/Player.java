@@ -2,6 +2,8 @@ package entity;
 
 import entity.base.Entity;
 import logic.Direction;
+import logic.GameController;
+import sun.awt.www.content.audio.x_aiff;
 
 
 public class Player extends Entity{
@@ -19,9 +21,43 @@ public class Player extends Entity{
 		setPlayerNumber(playerNumber);
 	}
 	
+	public boolean move(Direction dir) {
+		setFaceDirection(dir);
+		
+		int targetx = this.getX();
+		int targety = this.getY();
+		
+		switch(dir) {
+		case LEFT:
+			targetx -= 1;
+			break;
+		case UP:
+			targety -= 1;
+			break;
+		case RIGHT:
+			targetx += 1;
+			break;
+		case DOWN:
+			targety += 1;
+			break;
+		default:
+			break;
+		}
+		
+		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
+			setX(targetx); setY(targety);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	
 	public void setHolding(boolean isHolding) {
 		this.isHolding = isHolding;
 	}
+	
 	public void setFaceDirection(Direction faceDirection) {
 		this.faceDirection = faceDirection;
 	}
