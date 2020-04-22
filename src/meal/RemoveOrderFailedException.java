@@ -5,7 +5,6 @@ public class RemoveOrderFailedException extends Exception{
 	
 	public RemoveOrderFailedException(String message) {
 		setMessage(message);
-		System.out.println(message);
 	}
 
 	public void setMessage(String message) {

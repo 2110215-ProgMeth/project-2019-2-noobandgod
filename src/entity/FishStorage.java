@@ -1,15 +1,16 @@
 package entity;
 
+import logic.InteractFailedException;
 import logic.Sprites;
 
 public class FishStorage extends IngredientStorage{
-	public boolean interacts(Player e) {
+	public boolean interacts(Player e)throws InteractFailedException {
 		if(!e.isHolding()) {
 			Fish fish = new Fish();
 			e.setIngredientHeld(fish);
 			e.setHolding(true);
 			return true;
-		}return false;//throw exception like Ingredient
+		}throw new InteractFailedException("Please place donw the carried item before picking up new fish");//throw exception like Ingredient
 	}
 	public char getSymbol() {
 		return Sprites.FishStorage;

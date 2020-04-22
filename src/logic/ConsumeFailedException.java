@@ -1,9 +1,9 @@
 package logic;
 
-public class HoldFailedException extends Exception{
+public class ConsumeFailedException extends Exception{
 public String message;
 	
-	public HoldFailedException(String message) {
+	public ConsumeFailedException(String message) {
 		setMessage(message);
 	}
 
