@@ -35,7 +35,8 @@ public class Station extends Entity implements Holdable,Placeable{
 					}
 				}
 			}
-		}return false;//throw an exception
+		}return false;
+				//throw an exception
 	}
 	public boolean places(Player e) {
 		if (e.isHolding()) {
@@ -69,14 +70,14 @@ public class Station extends Entity implements Holdable,Placeable{
 					}else {
 						//ingredient on station and dish on hand
 						Ingredient ingredient = (Ingredient) getOnStationExists();
-						e.setDishHeld(e.getDishHeld().adds(ingredient));
+						e.getDishHeld().adds(ingredient);
 						setOnStationExists(null);
 						return true;
 						//not finished
 						}
 					}
 				}
-			}
+			}return false;
 		}
 	public Entity getOnStationExists() {
 		return OnStationExists;
