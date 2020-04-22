@@ -3,6 +3,7 @@ package meal;
 import java.util.ArrayList;
 
 import entity.Dish;
+import entity.Player;
 import logic.GameController;
 
 public class OrderManager {
@@ -53,14 +54,14 @@ public class OrderManager {
 		}
 	}
 	
-	public boolean sendOrder(Dish d) {
+	public boolean sendOrder(Player p) {
 		boolean anymatch = false;
 		int indexmatch = -1;
 		
 		for (int i=0 ; i<orders.size(); i++) {
 			Menu menu = orders.get(i);
 			
-			if (menu.isAllIngredients(d)) {
+			if (menu.isAllIngredients(p.getDishHeld())) {
 				indexmatch = i;
 				anymatch = true;
 				break;	
@@ -71,7 +72,7 @@ public class OrderManager {
 			Menu menuremoved = removeOrder(indexmatch);
 			GameController.addCoinCount(menuremoved.price);
 			GameController.addScoreCount(menuremoved.getMax_score());
-			//remove dish
+			p.setDishHeld(null);
 			return true;
 		} else {
 			GameController.addScoreCount(-10);
