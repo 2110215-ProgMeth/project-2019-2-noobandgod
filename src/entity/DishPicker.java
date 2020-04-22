@@ -5,8 +5,7 @@ import entity.base.Interactable;
 import logic.Sprites;
 
 public class DishPicker extends Entity implements Interactable{
-	private DishPicker DishPicker;
-	public boolean interacts(Player e) {
+	public boolean interacts(Player e) throws new{
 		//dont forget to throw an exception
 		if (!e.isHolding()) {
 			Dish dish = new Dish();
