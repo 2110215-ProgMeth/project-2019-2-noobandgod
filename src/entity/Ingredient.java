@@ -4,8 +4,8 @@ import entity.base.Entity;
 
 public abstract class Ingredient extends Entity {
 	private int State;
-	private int price;
-	public int getPrice() {
+	private static int price;
+	public static int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
