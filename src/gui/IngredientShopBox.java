@@ -17,24 +17,25 @@ public class IngredientShopBox extends VBox{
 		this.setPadding(new Insets(8));
 		
 		Label nameLabel = new Label(ingredientName);
-		nameLabel.setAlignment(Pos.CENTER);
 		
 		IngredientItem ingredientItem = new IngredientItem(ingredientName);
-		
 		//Pane ingredientPic = new Pane();
 		//ingredientPic.setPrefHeight(64);
 		//ingredientPic.setPrefWidth(64);
 		
 		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
-		priceLabel.setAlignment(Pos.CENTER);
 		
+		AmountBox amountBox = new AmountBox();
 
-		this.getChildren().addAll(nameLabel,priceLabel);
+		this.getChildren().addAll(nameLabel,priceLabel,amountBox);
 		this.setAlignment(Pos.CENTER);
 		
+		
+		
+		
 		String cssLayout = "-fx-border-color: red;\n" +
-                "-fx-border-insets: 5;\n" +
-                "-fx-border-width: 3;\n" +
+                "-fx-border-insets: 2;\n" +
+                "-fx-border-width: 1;\n" +
                 "-fx-border-style: dashed;\n";
 		this.setStyle(cssLayout);
 	}

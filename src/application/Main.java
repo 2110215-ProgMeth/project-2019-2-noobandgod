@@ -15,6 +15,7 @@ public class Main extends Application {
 		
 		Scene scene = new Scene(tomatoBox,200,200);
 		
+		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
