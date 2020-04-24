@@ -1,19 +1,19 @@
 package application;
 
-import java.util.Scanner;
-
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import logic.GameController;
-import logic.GameMap;
 
-public class Main extends Application{
+public class Main extends Application {
 
 	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void start(Stage primaryStage) {
 		
 	}
 
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
