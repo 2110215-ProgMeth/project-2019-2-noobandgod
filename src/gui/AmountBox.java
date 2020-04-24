@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import logic.GameController;
 
 public class AmountBox extends HBox {
 	private int amount;
@@ -54,6 +55,7 @@ public class AmountBox extends HBox {
 		this.amount += n;
 		String amountString = Integer.toString(this.amount);
 		this.amountBuy.setText(amountString+"   ");
+		GameController.getShopPane().calculateTotalPrice();
 	}
 
 	public int getAmount() {
