@@ -15,30 +15,52 @@ import javafx.scene.text.Font;
 //for creating text in menu bar
 public class Menu extends VBox{
 	private Label title;
+	private Button playButton;
+	private Button tutorialButton;
+	private Button quitButton;
 
 //	public Rectangle playButton = new Rectangle(Game.WIDTH/2+120,150,100,50);
 //	public Rectangle tutorialButton = new Rectangle(Game.WIDTH/2+120,150,100,50);
 //	public Rectangle quitButtin = new Rectangle(Game.WIDTH/2+120,150,100,50);
 	
 	public Menu() {
-		super(15);
-		this.setPrefWidth(100);
+		super(100);
+		this.setPrefWidth(700);
 		this.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		this.setAlignment(Pos.CENTER);
 		this.setFillWidth(true);
 		
 		title = new Label();
-		title.setFont(new Font(20));
+		title.setFont(new Font(50));
 		title.textProperty().setValue("Umm!! Aroi");
 		
-		Label label = new Label("Please select a seed or removal tool");
-		label.setFont(new Font(14));
 		
-		harvestButton = new Button("Harvest");
-		harvestButton.setPrefWidth(150);
-		harvestButton.setOnAction( e -> {
-			SimulationManager.harvestHandler();
+		playButton = new Button("Play");
+		playButton.setPrefWidth(150);
+		playButton.setPrefHeight(75);
+		playButton.setFont(new Font(20));
+		playButton.setOnAction( e -> {
+			SimulationManager.playHandler();
+		
+		});
+		tutorialButton = new Button("Tutorial");
+		tutorialButton.setPrefWidth(150);
+		tutorialButton.setPrefHeight(75);
+		tutorialButton.setFont(new Font(20));
+		tutorialButton.setOnAction( e -> {
+			SimulationManager.tutorialHandler();
+		
+		});
+		quitButton = new Button("Play");
+		quitButton.setPrefWidth(150);
+		quitButton.setPrefHeight(75);
+		quitButton.setFont(new Font(20));
+		quitButton.setOnAction( e -> {
+			SimulationManager.quitHandler();
+		
+		});
+		this.getChildren().addAll(title,playButton,tutorialButton,quitButton);
 	}
 //		Graphics2D g2d = (Graphics2D) g;
 //		Font fnt0 = new Font("Um!! Aroi",50);
