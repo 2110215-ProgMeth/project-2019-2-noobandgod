@@ -1,5 +1,6 @@
 package application;
 
+import gui.IngredientShopBox;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,7 +11,12 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		IngredientShopBox tomatoBox = new IngredientShopBox("Tomato");
 		
+		Scene scene = new Scene(tomatoBox,200,200);
+		
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 	public static void main(String[] args) {

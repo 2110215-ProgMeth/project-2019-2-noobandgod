@@ -32,5 +32,10 @@ public class IngredientItem {
 	public String getUrl() {
 		return url;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+	
 	
 }
