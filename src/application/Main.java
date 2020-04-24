@@ -2,21 +2,16 @@ package application;
 
 import java.util.Scanner;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import logic.GameController;
 import logic.GameMap;
 
-public class Main{
+public class Main extends Application{
 
-	public static void main(String[] args) {
-		
-		String[][] gamemap = CSVParser.readCSV("Book1.csv");
-		
-		GameController.InitializeMap(gamemap);
-			
-		GameController.printMap();
-		
-		GameController.getCurrentGameMap();
-		
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
 		
 		
 	}

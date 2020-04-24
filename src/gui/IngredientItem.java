@@ -28,7 +28,9 @@ public class IngredientItem {
 	public void setIngredientName(String ingredientName) {
 		this.ingredientName = ingredientName;
 	}
-	
-	
+
+	public String getUrl() {
+		return url;
+	}
 	
 }
