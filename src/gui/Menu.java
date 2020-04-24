@@ -14,7 +14,7 @@ import javafx.scene.text.Font;
 
 //for creating text in menu bar
 public class Menu extends VBox{
-	private Label moneyLabel;
+	private Label title;
 
 //	public Rectangle playButton = new Rectangle(Game.WIDTH/2+120,150,100,50);
 //	public Rectangle tutorialButton = new Rectangle(Game.WIDTH/2+120,150,100,50);
@@ -28,9 +28,9 @@ public class Menu extends VBox{
 		this.setAlignment(Pos.CENTER);
 		this.setFillWidth(true);
 		
-		moneyLabel = new Label();
-		moneyLabel.setFont(new Font(20));
-		moneyLabel.textProperty().setValue("Money: " + SimulationManager.getMoney());
+		title = new Label();
+		title.setFont(new Font(20));
+		title.textProperty().setValue("Umm!! Aroi");
 		
 		Label label = new Label("Please select a seed or removal tool");
 		label.setFont(new Font(14));
