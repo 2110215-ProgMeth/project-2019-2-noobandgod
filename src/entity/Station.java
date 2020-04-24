@@ -3,15 +3,17 @@ package entity;
 import entity.base.Entity;
 import entity.base.Holdable;
 import entity.base.Placeable;
+import logic.HoldFailedException;
+import logic.PlaceFailedException;
 import logic.Sprites;
 
 public class Station extends Entity implements Holdable,Placeable{
 	private Entity OnStationExists = null;
-	public boolean holds(Player e) {
+	public boolean holds(Player e) throws HoldFailedException{
 		if (!e.isHolding()) {
 			if (getOnStationExists().equals(null)) {
 				//throw an exception
-				return false;
+				throw new HoldFailedException("You can't hold nothing");
 			}else {
 				if (getOnStationExists() instanceof Dish) {
 					Dish dish = (Dish) getOnStationExists();
@@ -35,10 +37,10 @@ public class Station extends Entity implements Holdable,Placeable{
 					}
 				}
 			}
-		}return false;
+		}throw new HoldFailedException("You can't hold because you are holding something");
 				//throw an exception
 	}
-	public boolean places(Player e) {
+	public boolean places(Player e) throws PlaceFailedException{
 		if (e.isHolding()) {
 			if (getOnStationExists().equals(null)) {
 				if (!e.getDishHeld().equals(null)) {
@@ -55,7 +57,7 @@ public class Station extends Entity implements Holdable,Placeable{
 			}else {
 				if (getOnStationExists() instanceof Dish) {
 					if (!e.getDishHeld().equals(null)) {
-						return false;
+						throw new PlaceFailedException("You can't place a carried dish on a dish");
 						//throw an exception.. dish and dish
 					}else {
 						//dish on station and ingredient on hand
@@ -65,7 +67,7 @@ public class Station extends Entity implements Holdable,Placeable{
 					}
 				}else if (getOnStationExists() instanceof Ingredient) {
 					if (!e.getIngredientHeld().equals(null)) {
-						return false;
+						throw new PlaceFailedException("You can't place a carried ingredient on station beacuse there is an ingredient on it");
 						//throw an exception.. ingredient and ingredient
 					}else {
 						//ingredient on station and dish on hand
@@ -77,7 +79,7 @@ public class Station extends Entity implements Holdable,Placeable{
 						}
 					}
 				}
-			}return false;
+			}throw new PlaceFailedException("There is nothing to be placed");
 		}
 	public Entity getOnStationExists() {
 		return OnStationExists;
