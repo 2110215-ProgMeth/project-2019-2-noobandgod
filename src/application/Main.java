@@ -1,6 +1,7 @@
 package application;
 
 import gui.IngredientShopBox;
+import gui.ShopPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,9 +12,11 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		IngredientShopBox tomatoBox = new IngredientShopBox("Tomato");
+		String[] ingredientName = new String[]{"Tomato","Cabbage"};
 		
-		Scene scene = new Scene(tomatoBox,200,200);
+		ShopPane shopPane = new ShopPane(ingredientName);
+		
+		Scene scene = new Scene(shopPane,256,600);
 		
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setScene(scene);

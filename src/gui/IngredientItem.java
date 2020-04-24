@@ -12,7 +12,7 @@ public class IngredientItem {
 	public IngredientItem(String ingredientName) {
 		switch(ingredientName) {
 		case "Tomato" :		url = "Tomato.png"; 	price = Tomato.getPrice();	break;
-		case "Cabbbage" : 	url = "Cabbage.png"; 	price = Cabbage.getPrice(); break;
+		case "Cabbage" : 	url = "Cabbage.png"; 	price = Cabbage.getPrice(); break;
 		case "Fish" : 		url = "Fish.png"; 		price = Fish.getPrice();	break;
 		default: 
 			System.out.println("ERROR: There is no ingredientName "+ingredientName+" in this game");

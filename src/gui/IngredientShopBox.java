@@ -6,9 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class IngredientShopBox extends VBox{
 	private Pane ingredientPic;
+	private AmountBox amountBox;
 	
 	public IngredientShopBox(String ingredientName) {
 		super();
@@ -17,17 +19,19 @@ public class IngredientShopBox extends VBox{
 		this.setPadding(new Insets(8));
 		
 		Label nameLabel = new Label(ingredientName);
+		nameLabel.setFont(new Font(16));
 		
 		IngredientItem ingredientItem = new IngredientItem(ingredientName);
-		//Pane ingredientPic = new Pane();
-		//ingredientPic.setPrefHeight(64);
-		//ingredientPic.setPrefWidth(64);
+		
+		Pane ingredientPic = new Pane();
+		ingredientPic.setPrefHeight(64);
+		ingredientPic.setPrefWidth(64);
 		
 		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
 		
-		AmountBox amountBox = new AmountBox();
+		this.amountBox = new AmountBox();
 
-		this.getChildren().addAll(nameLabel,priceLabel,amountBox);
+		this.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
 		this.setAlignment(Pos.CENTER);
 		
 		

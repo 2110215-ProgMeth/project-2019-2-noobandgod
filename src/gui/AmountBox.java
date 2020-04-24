@@ -4,6 +4,7 @@ package gui;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,14 +18,15 @@ public class AmountBox extends HBox {
 	public AmountBox() {
 		super();
 		this.setPrefHeight(32);
+		this.setPrefWidth(128);
 		
 		
-		Label amountLabel = new Label("  amount: ");
-		amountLabel.setFont(new Font(20));
+		Label amountLabel = new Label("  amount:   ");
+		amountLabel.setFont(new Font(16));
 		
 		this.amount = 0;
-		this.amountBuy = new Label("0");
-		amountBuy.setFont(new Font(20));
+		this.amountBuy = new Label("0   ");
+		amountBuy.setFont(new Font(16));
 		//---------------------------------------------------------------------
 		Button addButton = new Button("+");
 		addButton.setPrefWidth(16);
@@ -45,12 +47,12 @@ public class AmountBox extends HBox {
 		});
 		
 		this.getChildren().addAll(amountLabel,amountBuy,addButton,removeButton);	
-		
+		this.setAlignment(Pos.CENTER);
 	}
 	
 	public void addAmount(int n) {
 		this.amount += n;
 		String amountString = Integer.toString(this.amount);
-		this.amountBuy.setText(amountString);
+		this.amountBuy.setText(amountString+"   ");
 	}
 }
