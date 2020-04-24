@@ -1,6 +1,7 @@
 package logic;
 
 import entity.Player;
+import gui.ShopPane;
 import meal.OrderManager;
 
 public class GameController {
@@ -10,11 +11,14 @@ public class GameController {
 	private static boolean is_timeup;
 	public static int MAX_ORDER;
 	private static OrderManager orderManager;
+	private static ShopPane shopPane;
 	
 	public static void InitializeMap(String[][] map) {
 		System.out.println("Initializing Map...");
 		
 		gameMap = new GameMap(map);
+		shopPane = new ShopPane(new String[]{"Tomato","Cabbage","Fish"});
+		
 		setCoinCount(0);
 		setScoreCount(0);
 		setIsTimeUp(false);
@@ -30,6 +34,16 @@ public class GameController {
 		gameMap.printMap();
 	}
 	
+	
+	
+	
+	
+	
+	
+	public static ShopPane getShopPane() {
+		return shopPane;
+	}
+
 	public static GameMap getCurrentGameMap() {
 		return gameMap;
 	}

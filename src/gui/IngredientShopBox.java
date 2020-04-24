@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 public class IngredientShopBox extends VBox{
 	private Pane ingredientPic;
 	private AmountBox amountBox;
+	private IngredientItem ingredientItem;
 	
 	public IngredientShopBox(String ingredientName) {
 		super();
@@ -21,7 +22,7 @@ public class IngredientShopBox extends VBox{
 		Label nameLabel = new Label(ingredientName);
 		nameLabel.setFont(new Font(16));
 		
-		IngredientItem ingredientItem = new IngredientItem(ingredientName);
+		this.ingredientItem = new IngredientItem(ingredientName);
 		
 		Pane ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
@@ -37,11 +38,21 @@ public class IngredientShopBox extends VBox{
 		
 		
 		
-		String cssLayout = "-fx-border-color: red;\n" +
+		String cssLayout = "-fx-border-color: green;\n" +
                 "-fx-border-insets: 2;\n" +
                 "-fx-border-width: 1;\n" +
                 "-fx-border-style: dashed;\n";
 		this.setStyle(cssLayout);
 	}
+
+	public IngredientItem getIngredientItem() {
+		return ingredientItem;
+	}
+
+	public AmountBox getAmountBox() {
+		return amountBox;
+	}
+	
+	
 	
 }

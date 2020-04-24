@@ -45,7 +45,7 @@ public class AmountBox extends HBox {
 				addAmount(-1);
 			}
 		});
-		
+		//---------------------------------------------------------------------
 		this.getChildren().addAll(amountLabel,amountBuy,addButton,removeButton);	
 		this.setAlignment(Pos.CENTER);
 	}
@@ -55,4 +55,10 @@ public class AmountBox extends HBox {
 		String amountString = Integer.toString(this.amount);
 		this.amountBuy.setText(amountString+"   ");
 	}
+
+	public int getAmount() {
+		return amount;
+	}
+	
+	
 }

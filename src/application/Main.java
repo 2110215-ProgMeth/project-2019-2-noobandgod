@@ -7,16 +7,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import logic.GameController;
 
 public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		String[] ingredientName = new String[]{"Tomato","Cabbage"};
+		String[][] gamemap = CSVParser.readCSV("Book1.csv");
+		GameController.InitializeMap(gamemap);
 		
-		ShopPane shopPane = new ShopPane(ingredientName);
+		Scene scene = new Scene(GameController.getShopPane(),256,600);
 		
-		Scene scene = new Scene(shopPane,256,600);
+		
+		
+		
+		
+		
+		
 		
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setScene(scene);
