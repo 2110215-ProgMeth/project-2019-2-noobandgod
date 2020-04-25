@@ -3,11 +3,14 @@ package gui;
 import exception.InvalidIngredientNameException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import logic.GameController;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+
+
 
 public class IngredientStoragePane extends HBox{
 	private ObservableList<IngredientStorageBox> ingredientStorageBoxs = FXCollections.observableArrayList();
