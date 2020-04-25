@@ -9,27 +9,35 @@ import javafx.scene.text.Font;
 
 public class IngredientStorageBox extends HBox{
 	private Pane ingredientPic;
-	private AmountBox amountBox;
-	public IngredientStorageBox(String ingredientName) {
+	private int cabbageAmount =0;
+	private int tomatoAmount=0;
+	private int fishAmount=0;
+
+	public IngredientStorageBox(String ingredient) {
 		super();
-		this.setPrefHeight(128);
-		this.setPrefWidth(128);
-		this.setPadding(new Insets(8));
+		this.setPrefHeight(80);
+		this.setPrefWidth(80);
 		
-		Label nameLabel = new Label(ingredientName);
-		nameLabel.setFont(new Font(16));
 		
 	//	this.ingredientItem = new IngredientItem(ingredientName);
 		
 		Pane ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
 		ingredientPic.setPrefWidth(64);
+		int amount=0;
+		if (ingredient.equals("Fish")) {
+			amount = getFishAmount();
+		}else if (ingredient.equals("Tomato")) {
+			amount = getTomatoAmount();
+		}else if (ingredient.equals("Cabbage")) {
+			amount = getCabbageAmount();
+		}
+		Label amountLabel = new Label("X "+amount);
+		amountLabel.setFont(new Font(16));
 		
 //		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
 		
-		this.amountBox = new AmountBox();
-
-//		this.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
+	this.getChildren().addAll(ingredientPic,amountLabel);
 		this.setAlignment(Pos.CENTER);
 		
 		
@@ -41,13 +49,27 @@ public class IngredientStorageBox extends HBox{
                 "-fx-border-style: dashed;\n";
 		this.setStyle(cssLayout);
 	}
-	public AmountBox getAmountBox() {
-		return amountBox;
+	public int getTomatoAmount() {
+		return tomatoAmount;
+	}
+	public void setTomatoAmount(int tomatoAmount) {
+		this.tomatoAmount = tomatoAmount;
+	}
+	public int getCabbageAmount() {
+		return cabbageAmount;
+	}
+	public void setCabbageAmount(int cabbageAmount) {
+		this.cabbageAmount = cabbageAmount;
+	}
+	public int getFishAmount() {
+		return fishAmount;
+	}
+	public void setFishamount(int fishamount) {
+		this.fishAmount = fishamount;
 	}
 	
 	
 	
 }
 
-	
-}
+
