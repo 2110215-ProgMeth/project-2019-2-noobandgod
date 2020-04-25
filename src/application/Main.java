@@ -2,6 +2,7 @@ package application;
 
 import gui.DataPane;
 import gui.IngredientShopBox;
+import gui.IngredientStorageBox;
 import gui.ShopPane;
 import gui.SimulationManager;
 import javafx.application.Application;
@@ -30,6 +31,9 @@ public class Main extends Application {
 		Pane pane = new StackPane();
 		pane.setPrefHeight(600);
 		pane.setPrefWidth(500);
+		
+		
+
 		
 		pane.getChildren().addAll(SimulationManager.getDataPane());
 		
