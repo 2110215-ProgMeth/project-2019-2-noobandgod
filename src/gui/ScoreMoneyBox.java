@@ -15,7 +15,8 @@ public class ScoreMoneyBox extends VBox{
 		
 		VBox scoreBox = new VBox();
 			Label scoretext = new Label("Score");
-			this.scoreLabel = new Label("0");
+			this.scoreLabel = new Label();
+			updateScore();
 			
 			scoreBox.setAlignment(Pos.CENTER);
 			scoreBox.getChildren().addAll(scoretext,scoreLabel);
@@ -44,7 +45,10 @@ public class ScoreMoneyBox extends VBox{
 		this.moneyLabel.setText(Integer.toString(money));
 	}
 		
-	
+	public void updateScore() {
+		int score = GameController.getScore_count();
+		this.scoreLabel.setText(Integer.toString(score));
+	}
 	
 	
 }

@@ -11,6 +11,8 @@ public class GameController {
 	private static int score_count;
 	private static boolean is_timeup;
 	public static int MAX_ORDER;
+	public static int MAX_TIME;
+
 	private static OrderManager orderManager;
 	
 	public static void InitializeMap(String[][] map) {
@@ -19,7 +21,7 @@ public class GameController {
 		gameMap = new GameMap(map);
 		
 		setCoinCount(500);
-		setScoreCount(0);
+		setScoreCount(999);
 		setIsTimeUp(false);
 		
 		System.out.println("Successfully Initializing Map!");
@@ -65,6 +67,10 @@ public class GameController {
 
 	public static int getCoin_count() {
 		return coin_count;
+	}
+	
+	public static int getScore_count() {
+		return score_count;
 	}
 	
 	
