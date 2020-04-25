@@ -1,8 +1,8 @@
 package entity;
 
+import Exception.InteractFailedException;
 import entity.base.Entity;
 import entity.base.Interactable;
-import logic.InteractFailedException;
 import logic.Sprites;
 
 public class DishPicker extends Entity implements Interactable{

@@ -1,6 +1,6 @@
 package entity;
 
-import logic.InteractFailedException;
+import Exception.InteractFailedException;
 import logic.Sprites;
 
 public class TomatoStorage extends IngredientStorage{

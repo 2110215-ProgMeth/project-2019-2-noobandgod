@@ -1,9 +1,9 @@
-package logic;
+package Exception;
 
-public class ConsumeFailedException extends Exception{
+public class PlaceFailedException extends Exception{
 public String message;
 	
-	public ConsumeFailedException(String message) {
+	public PlaceFailedException(String message) {
 		setMessage(message);
 	}
 

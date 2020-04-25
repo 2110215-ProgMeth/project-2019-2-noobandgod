@@ -1,9 +1,9 @@
-package logic;
+package Exception;
 
-public class PlaceFailedException extends Exception{
+public class InteractFailedException  extends Exception{
 public String message;
 	
-	public PlaceFailedException(String message) {
+	public InteractFailedException(String message) {
 		setMessage(message);
 	}
 

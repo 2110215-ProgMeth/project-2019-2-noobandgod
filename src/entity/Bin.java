@@ -1,9 +1,9 @@
 package entity;
 
+import Exception.ConsumeFailedException;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
-import logic.ConsumeFailedException;
 import logic.Sprites;
 
 public class Bin extends Entity implements Consumable,Interactable{
