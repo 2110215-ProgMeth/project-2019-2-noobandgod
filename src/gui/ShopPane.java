@@ -47,17 +47,11 @@ public class ShopPane extends VBox {
 		buyButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				int money = GameController.getCoin_count();
-				System.out.println("Your money is: "+money);
-				System.out.println("Your have to pay: "+totalpay);
-				
-				if (money - totalpay >= 0) {
-					GameController.addCoinCount(-totalpay);
+				if (GameController.getCoin_count() - totalpay >= 0) {
 					
-					System.out.println("Your money is: "+GameController.getCoin_count());
-					//add ingredient to ingredient storage! 
-					
-					resetAmount();
+					GameController.addCoinCount(-totalpay); //pay money
+					addIngredientFromBuying();
+					resetShop();
 					
 				} else {
 					System.out.println("Your money is not enough");
@@ -83,7 +77,7 @@ public class ShopPane extends VBox {
 		totalpriceLabel.setText("Total price:  "+totalpay);
 	}
 	
-	public void resetAmount() {
+	public void resetShop() {
 		for (IngredientShopBox i: this.ingredientShopBoxs) {
 			i.getAmountBox().setAmount(0);	
 		}
@@ -91,7 +85,24 @@ public class ShopPane extends VBox {
 		totalpriceLabel.setText("Total price:  "+"0");
 	}
 	
-
+	public void addIngredientFromBuying() {
+		for (IngredientShopBox i: this.ingredientShopBoxs) {
+			switch (i.getIngredientName()) {
+			case "Tomato":
+				GameController.addTomato_AMOUNT(i.getAmountBox().getAmount());
+				break;
+			case "Cabbage":
+				GameController.addCabbage_AMOUNT(i.getAmountBox().getAmount());
+				break;
+			case "Fish":
+				GameController.addFish_AMOUNT(i.getAmountBox().getAmount());
+				break;
+			}
+		}	
+			
+		
+	}
+	
 	public void setTotalpay(int totalpay) {
 		this.totalpay = totalpay;
 	}

@@ -43,6 +43,11 @@ public class DataPane extends HBox{
 	public ScoreMoneyBox getScoreMoneyBox() {
 		return scoreMoneyBox;
 	}
+
+	public IngredientStoragePane getIngredientStoragePane() {
+		return ingredientStoragePane;
+	}
+	
 	
 	
 	

@@ -1,7 +1,10 @@
 package logic;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
 import entity.Player;
-import gui.ShopPane;
 import gui.SimulationManager;
 import meal.OrderManager;
 
@@ -13,7 +16,15 @@ public class GameController {
 	public static int MAX_ORDER;
 	public static int MAX_TIME;
 
+	public static int Cabbage_AMOUNT;
+	public static int Tomato_AMOUNT;
+	public static int Fish_AMOUNT;
+	
+	public static final String[] INGREDIENTS 
+		= new String[] {"Tomato","Cabbage","Fish"};
+	
 	private static OrderManager orderManager;
+	
 	
 	public static void InitializeMap(String[][] map) {
 		System.out.println("Initializing Map...");
@@ -22,11 +33,17 @@ public class GameController {
 		
 		setCoinCount(500);
 		setScoreCount(999);
+		InitializeIngredient();
 		setIsTimeUp(false);
 		
 		System.out.println("Successfully Initializing Map!");
 	}
 	
+	public static void InitializeIngredient() {
+		setTomato_AMOUNT(3);
+		setCabbage_AMOUNT(1);
+		setFish_AMOUNT(2);
+	}
 
 	public static void movePlayer(Direction dir,Player p) {
 		p.move(dir);
@@ -55,6 +72,7 @@ public class GameController {
 	
 	public static void addScoreCount(int score) {
 		score_count += score;
+		SimulationManager.getDataPane().getScoreMoneyBox().updateScore();
 	}
 	
 	public static void setScoreCount(int score) {
@@ -72,6 +90,47 @@ public class GameController {
 	public static int getScore_count() {
 		return score_count;
 	}
+
+	public static void addTomato_AMOUNT(int tomato_AMOUNT) {
+		Tomato_AMOUNT += tomato_AMOUNT;
+		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
+	}
+
+	public static void addCabbage_AMOUNT(int cabbage_AMOUNT) {
+		Cabbage_AMOUNT += cabbage_AMOUNT;
+		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
+	}
 	
+	public static void addFish_AMOUNT(int fish_AMOUNT) {
+		Fish_AMOUNT += fish_AMOUNT;
+		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
+	}
+	
+	public static int getTomato_AMOUNT() {
+		return Tomato_AMOUNT;
+	}
+
+	public static int getCabbage_AMOUNT() {
+		return Cabbage_AMOUNT;
+	}
+
+	public static int getFish_AMOUNT() {
+		return Fish_AMOUNT;
+	}
+	public static void setCabbage_AMOUNT(int cabbage_AMOUNT) {
+		Cabbage_AMOUNT = cabbage_AMOUNT;
+	}
+
+	public static void setTomato_AMOUNT(int tomato_AMOUNT) {
+		Tomato_AMOUNT = tomato_AMOUNT;
+	}
+
+	public static void setFish_AMOUNT(int fish_AMOUNT) {
+		Fish_AMOUNT = fish_AMOUNT;
+	}
+
+	public static boolean isThisIngredientNameValid(String ingredientName) {
+		return Arrays.asList(INGREDIENTS).contains(ingredientName);
+	}	
 	
 }

@@ -1,9 +1,9 @@
 package gui;
 
+import exception.InvalidIngredientNameException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -25,7 +25,11 @@ public class IngredientShopBox extends VBox{
 		Label nameLabel = new Label(ingredientName);
 		nameLabel.setFont(new Font(16));
 		
-		this.ingredientItem = new IngredientItem(ingredientName);
+		try {
+			this.ingredientItem = new IngredientItem(ingredientName);
+		} catch (InvalidIngredientNameException e) {
+			e.printStackTrace();
+		}
 		
 		Pane ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
@@ -59,6 +63,11 @@ public class IngredientShopBox extends VBox{
 	public void setIngredientName(String ingredientName) {
 		this.ingredientName = ingredientName;
 	}
+
+	public String getIngredientName() {
+		return ingredientName;
+	}
+	
 	
 	
 	

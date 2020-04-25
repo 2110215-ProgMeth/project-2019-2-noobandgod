@@ -1,11 +1,13 @@
 package gui;
 
+import logic.GameController;
+
 public class SimulationManager {
 	private static ShopPane shopPane;
 	private static DataPane dataPane;
 	
 	public static void initializeAllPane() {
-		shopPane = new ShopPane(new String[]{"Tomato","Cabbage","Fish"});
+		shopPane = new ShopPane(GameController.INGREDIENTS);
 		dataPane = new DataPane();
 		
 	}

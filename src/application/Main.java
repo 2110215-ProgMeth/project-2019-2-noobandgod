@@ -32,10 +32,12 @@ public class Main extends Application {
 		pane.setPrefHeight(600);
 		pane.setPrefWidth(500);
 		
-		
+		Pane pane1 = new StackPane();
+		pane1.setPrefWidth(500);
+		pane1.setPrefHeight(100);
 
 		
-		pane.getChildren().addAll(SimulationManager.getDataPane());
+		pane.getChildren().addAll(pane1,SimulationManager.getDataPane());
 		
 		
 		mainWindow.getChildren().addAll(pane,SimulationManager.getShopPane());

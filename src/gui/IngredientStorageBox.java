@@ -1,5 +1,7 @@
 package gui;
 
+
+import exception.InvalidIngredientNameException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -7,32 +9,38 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import logic.GameController;
 
 public class IngredientStorageBox extends VBox{
 	private Pane ingredientPic;
-	private int cabbageAmount =0;
-	private int tomatoAmount=0;
-	private int fishAmount=0;
+	private Label amountLabel;
+	private IngredientItem ingredientItem;
+	private String ingredientName;
 
-	public IngredientStorageBox(String ingredient) {
+	public IngredientStorageBox(String ingredientName) {
 		super();
 		this.setPrefHeight(80);
 		this.setPrefWidth(80);
 		
-		Pane ingredientPic = new Pane();
+		try {
+			setIngredientItem(new IngredientItem(ingredientName));
+		} catch (InvalidIngredientNameException e) {
+			e.printStackTrace();
+		}
+		
+		setIngredientName(ingredientName);
+		
+		
+		this.ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
 		ingredientPic.setPrefWidth(64);
 		
-		int amount=0;
-		if (ingredient.equals("Fish")) {
-			amount = getFishAmount();
-		}else if (ingredient.equals("Tomato")) {
-			amount = getTomatoAmount();
-		}else if (ingredient.equals("Cabbage")) {
-			amount = getCabbageAmount();
-		}
 		
-		Label amountLabel = new Label("X "+amount);
+		
+		int amount = 0;
+		
+		
+		this.amountLabel = new Label("X "+amount);
 		amountLabel.setFont(new Font(16));
 		
 		this.setAlignment(Pos.CENTER);
@@ -48,24 +56,32 @@ public class IngredientStorageBox extends VBox{
                 "-fx-border-style: dashed;\n";
 		this.setStyle(cssLayout);
 	}
-	public int getTomatoAmount() {
-		return tomatoAmount;
+
+	public IngredientItem getIngredientItem() {
+		return ingredientItem;
 	}
-	public void setTomatoAmount(int tomatoAmount) {
-		this.tomatoAmount = tomatoAmount;
+
+	public void setIngredientItem(IngredientItem ingredientItem) {
+		this.ingredientItem = ingredientItem;
 	}
-	public int getCabbageAmount() {
-		return cabbageAmount;
+
+	public String getIngredientName() {
+		return ingredientName;
 	}
-	public void setCabbageAmount(int cabbageAmount) {
-		this.cabbageAmount = cabbageAmount;
+
+	public void setIngredientName(String ingredientName) {
+		this.ingredientName = ingredientName;
 	}
-	public int getFishAmount() {
-		return fishAmount;
+
+	public Label getAmountLabel() {
+		return amountLabel;
 	}
-	public void setFishamount(int fishamount) {
-		this.fishAmount = fishamount;
+
+	public void setAmountLabel(Label amountLabel) {
+		this.amountLabel = amountLabel;
 	}
+	
+	
 	
 	
 	
