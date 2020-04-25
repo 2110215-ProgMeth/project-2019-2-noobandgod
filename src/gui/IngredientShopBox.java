@@ -12,9 +12,12 @@ public class IngredientShopBox extends VBox{
 	private Pane ingredientPic;
 	private AmountBox amountBox;
 	private IngredientItem ingredientItem;
+	private String ingredientName;
 	
 	public IngredientShopBox(String ingredientName) {
 		super();
+		setIngredientName(ingredientName);
+		
 		this.setPrefHeight(128);
 		this.setPrefWidth(128);
 		this.setPadding(new Insets(8));
@@ -51,6 +54,10 @@ public class IngredientShopBox extends VBox{
 
 	public AmountBox getAmountBox() {
 		return amountBox;
+	}
+
+	public void setIngredientName(String ingredientName) {
+		this.ingredientName = ingredientName;
 	}
 	
 	

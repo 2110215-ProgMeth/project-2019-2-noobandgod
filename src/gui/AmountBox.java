@@ -66,6 +66,12 @@ public class AmountBox extends HBox {
 	public int getAmount() {
 		return amount;
 	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+		this.amountBuy.setText("0   ");
+	}
+	
 	
 	
 }
