@@ -2,10 +2,10 @@ package meal;
 
 import java.util.ArrayList;
 
-import Exception.RemoveOrderFailedException;
 import entity.Dish;
 import entity.Player;
 import logic.GameController;
+import test.RemoveOrderFailedException;
 
 public class OrderManager {
 	private ArrayList<Menu> orders;

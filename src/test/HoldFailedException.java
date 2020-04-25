@@ -1,9 +1,9 @@
-package Exception;
+package test;
 
-public class SendFoodFailedException extends Exception{
+public class HoldFailedException extends Exception{
 public String message;
 	
-	public SendFoodFailedException(String message) {
+	public HoldFailedException(String message) {
 		setMessage(message);
 	}
 

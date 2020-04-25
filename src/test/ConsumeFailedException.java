@@ -1,4 +1,4 @@
-package Exception;
+package test;
 
 public class ConsumeFailedException extends Exception{
 public String message;

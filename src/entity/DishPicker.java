@@ -1,9 +1,9 @@
 package entity;
 
-import Exception.InteractFailedException;
 import entity.base.Entity;
 import entity.base.Interactable;
 import logic.Sprites;
+import test.InteractFailedException;
 
 public class DishPicker extends Entity implements Interactable{
 	public boolean interacts(Player e) throws InteractFailedException{

@@ -1,12 +1,12 @@
 package entity;
 
-import Exception.InteractFailedException;
-import Exception.SendFoodFailedException;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
 import logic.Sprites;
 import meal.OrderManager;
+import test.InteractFailedException;
+import test.SendFoodFailedException;
 
 public class FoodCounter extends Entity implements Interactable{
 

@@ -1,9 +1,9 @@
 package entity;
 
-import Exception.CookFailedException;
-import Exception.HoldFailedException;
-import Exception.PlaceFailedException;
 import logic.Sprites;
+import test.CookFailedException;
+import test.HoldFailedException;
+import test.PlaceFailedException;
 
 public class CuttingBoard extends Equipment{
 	private Ingredient OnCuttingBoardExists = null;

@@ -7,16 +7,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
 public class IngredientStoragePane extends HBox{
-	//private ObservableList<IngredientShopBox> ingredientShopBoxs = FXCollections.observableArrayList();
-	private Label totalpriceLabel;
+	private ObservableList<IngredientShopBox> ingredientShopBoxs = FXCollections.observableArrayList();
 	
 	public IngredientStoragePane(String[] ingredientName) {
 		this.setPrefHeight(100);
 		this.setPrefWidth(250);
 		this.setSpacing(16);
+		for (String ingredient : ingredientName) {
+			IngredientShopBox ingredientShopBox = new IngredientShopBox(ingredient);
+			this.ingredientShopBoxs.add(ingredientShopBox);
+			this.getChildren().add(ingredientShopBox);
+		}
+		}
 		
 	}
-}
+
 //		
 //		for (String ingredient : ingredientName) {
 //			IngredientShopBox ingredientShopBox = new IngredientShopBox(ingredient);

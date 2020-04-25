@@ -1,9 +1,9 @@
-package Exception;
+package test;
 
-public class InteractFailedException  extends Exception{
+public class PlaceFailedException extends Exception{
 public String message;
 	
-	public InteractFailedException(String message) {
+	public PlaceFailedException(String message) {
 		setMessage(message);
 	}
 

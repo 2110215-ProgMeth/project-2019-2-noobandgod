@@ -1,9 +1,9 @@
 package entity;
 
-import Exception.CookFailedException;
-import Exception.HoldFailedException;
-import Exception.PlaceFailedException;
 import logic.Sprites;
+import test.CookFailedException;
+import test.HoldFailedException;
+import test.PlaceFailedException;
 
 public class FryingPan extends Equipment{
 	private Ingredient OnFryingPanExists = null;
