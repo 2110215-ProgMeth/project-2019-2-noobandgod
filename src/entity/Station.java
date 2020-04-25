@@ -1,10 +1,10 @@
 package entity;
 
+import Exception.HoldFailedException;
+import Exception.PlaceFailedException;
 import entity.base.Entity;
 import entity.base.Holdable;
 import entity.base.Placeable;
-import logic.HoldFailedException;
-import logic.PlaceFailedException;
 import logic.Sprites;
 
 public class Station extends Entity implements Holdable,Placeable{

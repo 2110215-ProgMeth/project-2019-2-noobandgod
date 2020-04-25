@@ -1,4 +1,4 @@
-package meal;
+package Exception;
 
 public class RemoveOrderFailedException extends Exception{
 	public String message;

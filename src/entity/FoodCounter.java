@@ -1,10 +1,10 @@
 package entity;
 
+import Exception.InteractFailedException;
+import Exception.SendFoodFailedException;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
-import logic.InteractFailedException;
-import logic.SendFoodFailedException;
 import logic.Sprites;
 import meal.OrderManager;
 

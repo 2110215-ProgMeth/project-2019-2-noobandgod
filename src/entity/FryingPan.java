@@ -1,8 +1,8 @@
 package entity;
 
-import logic.CookFailedException;
-import logic.HoldFailedException;
-import logic.PlaceFailedException;
+import Exception.CookFailedException;
+import Exception.HoldFailedException;
+import Exception.PlaceFailedException;
 import logic.Sprites;
 
 public class FryingPan extends Equipment{
