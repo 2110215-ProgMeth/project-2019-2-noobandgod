@@ -41,7 +41,7 @@ public class Menu extends VBox{
 		playButton.setPrefHeight(75);
 		playButton.setFont(new Font(20));
 		playButton.setOnAction( e -> {
-			SimulationManager.playHandler();
+//			SimulationManager.playHandler();
 		
 		});
 		tutorialButton = new Button("Tutorial");
@@ -49,7 +49,7 @@ public class Menu extends VBox{
 		tutorialButton.setPrefHeight(75);
 		tutorialButton.setFont(new Font(20));
 		tutorialButton.setOnAction( e -> {
-			SimulationManager.tutorialHandler();
+	//		SimulationManager.tutorialHandler();
 		
 		});
 		quitButton = new Button("Play");
@@ -57,10 +57,10 @@ public class Menu extends VBox{
 		quitButton.setPrefHeight(75);
 		quitButton.setFont(new Font(20));
 		quitButton.setOnAction( e -> {
-			SimulationManager.quitHandler();
+//			SimulationManager.quitHandler();
 		
 		});
-		this.getChildren().addAll(title,playButton,tutorialButton,quitButton);
+//		this.getChildren().addAll(title,playButton,tutorialButton,quitButton);
 	}
 //		Graphics2D g2d = (Graphics2D) g;
 //		Font fnt0 = new Font("Um!! Aroi",50);
