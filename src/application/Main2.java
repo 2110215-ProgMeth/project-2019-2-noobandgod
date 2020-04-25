@@ -1,6 +1,6 @@
 package application;
 
-import gui.IngredientStorageBox;
+import gui.IngredientStoragePane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,8 +9,8 @@ public class Main2 extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		IngredientStorageBox storage = new IngredientStorageBox("Fish");
-		Scene scene = new Scene(storage);
+		IngredientStoragePane a = new IngredientStoragePane(new String[]{"Tomato","Cabbage","Fish"});
+		Scene scene = new Scene(a);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.show();

@@ -19,12 +19,10 @@ public class IngredientStorageBox extends VBox{
 		this.setPrefHeight(80);
 		this.setPrefWidth(80);
 		
-		
-	//	this.ingredientItem = new IngredientItem(ingredientName);
-		
 		Pane ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
 		ingredientPic.setPrefWidth(64);
+		
 		int amount=0;
 		if (ingredient.equals("Fish")) {
 			amount = getFishAmount();
@@ -33,10 +31,10 @@ public class IngredientStorageBox extends VBox{
 		}else if (ingredient.equals("Cabbage")) {
 			amount = getCabbageAmount();
 		}
+		
 		Label amountLabel = new Label("X "+amount);
 		amountLabel.setFont(new Font(16));
 		
-//		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
 		this.setAlignment(Pos.CENTER);
 		this.getChildren().addAll(ingredientPic,amountLabel);
 
