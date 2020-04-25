@@ -3,11 +3,12 @@ package gui;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class IngredientStorageBox extends HBox{
+public class IngredientStorageBox extends VBox{
 	private Pane ingredientPic;
 	private int cabbageAmount =0;
 	private int tomatoAmount=0;
@@ -36,9 +37,9 @@ public class IngredientStorageBox extends HBox{
 		amountLabel.setFont(new Font(16));
 		
 //		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
-		
-	this.getChildren().addAll(ingredientPic,amountLabel);
-		this.setAlignment(Pos.CENTER);
+		amountLabel.setAlignment(Pos.CENTER);
+		this.getChildren().addAll(ingredientPic,amountLabel);
+
 		
 		
 		
