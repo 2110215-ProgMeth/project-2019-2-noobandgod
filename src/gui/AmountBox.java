@@ -56,7 +56,7 @@ public class AmountBox extends HBox {
 			this.amount += n;
 			String amountString = Integer.toString(this.amount);
 			this.amountBuy.setText(amountString+"   ");
-			GameController.getShopPane().calculateTotalPrice();
+			SimulationManager.getShopPane().calculateTotalPrice();
 		} else {
 			System.out.println("amount can't be lower than zero!");
 		}

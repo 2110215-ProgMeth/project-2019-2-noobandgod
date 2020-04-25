@@ -8,6 +8,9 @@ public class ScoreMoneyBox extends VBox{
 	private Label moneyLabel;
 	
 	public ScoreMoneyBox() {
+		this.setPrefSize(96, 96);
+		
+		
 		VBox scoreBox = new VBox();
 			Label scoretext = new Label("Score");
 			this.scoreLabel = new Label("0");
