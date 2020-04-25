@@ -20,14 +20,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
 		
-		
-		String[] ingredients = new String[]{"Tomato","Cabbage","Fish"};
-		
 		GameController.InitializeMap(gamemap);
 		SimulationManager.initializeAllPane();
 		
-		
-		//GameController.InitializeShopPane(ingredients);
 		
 		HBox mainWindow = new HBox();
 		mainWindow.setPadding(new Insets(10));
@@ -36,8 +31,7 @@ public class Main extends Application {
 		pane.setPrefHeight(600);
 		pane.setPrefWidth(500);
 		
-		DataPane dataPane = new DataPane();
-		pane.getChildren().addAll(dataPane);
+		pane.getChildren().addAll(SimulationManager.getDataPane());
 		
 		
 		mainWindow.getChildren().addAll(pane,SimulationManager.getShopPane());
