@@ -19,7 +19,7 @@ public class GameController {
 		gameMap = new GameMap(map);
 		shopPane = new ShopPane(new String[]{"Tomato","Cabbage","Fish"});
 		
-		setCoinCount(0);
+		setCoinCount(2000);
 		setScoreCount(0);
 		setIsTimeUp(false);
 		
@@ -70,4 +70,10 @@ public class GameController {
 	public static void setIsTimeUp(boolean b) {
 		is_timeup = b;
 	}
+
+	public static int getCoin_count() {
+		return coin_count;
+	}
+	
+	
 }

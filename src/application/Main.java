@@ -18,9 +18,11 @@ public class Main extends Application {
 		
 		String[] ingredients = new String[]{"Tomato","Cabbage","Fish"};
 		
-		GameController.InitializeShopPane(ingredients);
+		GameController.InitializeMap(gamemap);
+		
+		//GameController.InitializeShopPane(ingredients);
 	
-		Scene scene = new Scene(GameController.getShopPane(),256,600);
+		Scene scene = new Scene(GameController.getShopPane());
 		
 		
 		
