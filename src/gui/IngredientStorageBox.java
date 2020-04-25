@@ -37,7 +37,7 @@ public class IngredientStorageBox extends VBox{
 		amountLabel.setFont(new Font(16));
 		
 //		Label priceLabel = new Label("Price per piece: "+ingredientItem.getPrice());
-		amountLabel.setAlignment(Pos.CENTER);
+		this.setAlignment(Pos.CENTER);
 		this.getChildren().addAll(ingredientPic,amountLabel);
 
 		
