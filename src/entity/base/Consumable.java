@@ -1,7 +1,7 @@
 package entity.base;
 
 import entity.Player;
-import test.ConsumeFailedException;
+import exception.ConsumeFailedException;
 
 public interface Consumable {
 	public abstract boolean consumes(Player e) throws ConsumeFailedException;

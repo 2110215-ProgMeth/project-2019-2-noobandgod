@@ -3,9 +3,9 @@ package entity;
 import entity.base.Entity;
 import entity.base.Holdable;
 import entity.base.Placeable;
+import exception.HoldFailedException;
+import exception.PlaceFailedException;
 import logic.Sprites;
-import test.HoldFailedException;
-import test.PlaceFailedException;
 
 public class Station extends Entity implements Holdable,Placeable{
 	private Entity OnStationExists = null;

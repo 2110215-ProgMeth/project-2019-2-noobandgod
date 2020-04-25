@@ -1,9 +1,9 @@
-package test;
+package exception;
 
-public class HoldFailedException extends Exception{
+public class PlaceFailedException extends Exception{
 public String message;
 	
-	public HoldFailedException(String message) {
+	public PlaceFailedException(String message) {
 		setMessage(message);
 	}
 

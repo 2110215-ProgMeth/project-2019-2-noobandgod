@@ -3,8 +3,8 @@ package entity;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.ConsumeFailedException;
 import logic.Sprites;
-import test.ConsumeFailedException;
 
 public class Bin extends Entity implements Consumable,Interactable{
 	public boolean interacts(Player e) {

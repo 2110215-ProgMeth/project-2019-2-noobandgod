@@ -1,4 +1,4 @@
-package test;
+package exception;
 
 public class InteractFailedException  extends Exception{
 public String message;

@@ -1,6 +1,6 @@
 package entity.base;
 
-import test.CookFailedException;
+import exception.CookFailedException;
 
 public interface Cookable {
 	public abstract boolean cooks() throws CookFailedException;

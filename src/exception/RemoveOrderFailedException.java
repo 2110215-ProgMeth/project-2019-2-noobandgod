@@ -1,4 +1,4 @@
-package test;
+package exception;
 
 public class RemoveOrderFailedException extends Exception{
 	public String message;

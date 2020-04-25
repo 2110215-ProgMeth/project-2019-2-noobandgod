@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import entity.Dish;
 import entity.Player;
+import exception.RemoveOrderFailedException;
 import logic.GameController;
-import test.RemoveOrderFailedException;
 
 public class OrderManager {
 	private ArrayList<Menu> orders;

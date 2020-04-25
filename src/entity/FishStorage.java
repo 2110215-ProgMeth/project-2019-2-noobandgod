@@ -1,7 +1,7 @@
 package entity;
 
+import exception.InteractFailedException;
 import logic.Sprites;
-import test.InteractFailedException;
 
 public class FishStorage extends IngredientStorage{
 	public boolean interacts(Player e)throws InteractFailedException {

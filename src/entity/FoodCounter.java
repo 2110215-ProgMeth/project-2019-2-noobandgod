@@ -3,10 +3,10 @@ package entity;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
+import exception.SendFoodFailedException;
 import logic.Sprites;
 import meal.OrderManager;
-import test.InteractFailedException;
-import test.SendFoodFailedException;
 
 public class FoodCounter extends Entity implements Interactable{
 
