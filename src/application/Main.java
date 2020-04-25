@@ -13,9 +13,13 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		String[][] gamemap = CSVParser.readCSV("Book1.csv");
-		GameController.InitializeMap(gamemap);
+		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
 		
+		
+		String[] ingredients = new String[]{"Tomato","Cabbage","Fish"};
+		
+		GameController.InitializeShopPane(ingredients);
+	
 		Scene scene = new Scene(GameController.getShopPane(),256,600);
 		
 		

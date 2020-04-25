@@ -26,6 +26,11 @@ public class GameController {
 		System.out.println("Successfully Initializing Map!");
 	}
 	
+	public static void InitializeShopPane(String[] ingredients) {
+		shopPane = new ShopPane(ingredients);
+	}
+	
+	
 	public static void movePlayer(Direction dir,Player p) {
 		p.move(dir);
 	}
@@ -33,12 +38,6 @@ public class GameController {
 	public static void printMap( ) {
 		gameMap.printMap();
 	}
-	
-	
-	
-	
-	
-	
 	
 	public static ShopPane getShopPane() {
 		return shopPane;
