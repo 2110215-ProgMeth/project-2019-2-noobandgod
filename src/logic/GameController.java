@@ -2,6 +2,7 @@ package logic;
 
 import entity.Player;
 import gui.ShopPane;
+import gui.SimulationManager;
 import meal.OrderManager;
 
 public class GameController {
@@ -11,26 +12,20 @@ public class GameController {
 	private static boolean is_timeup;
 	public static int MAX_ORDER;
 	private static OrderManager orderManager;
-	private static ShopPane shopPane;
 	
 	public static void InitializeMap(String[][] map) {
 		System.out.println("Initializing Map...");
 		
 		gameMap = new GameMap(map);
-		shopPane = new ShopPane(new String[]{"Tomato","Cabbage","Fish"});
 		
-		setCoinCount(2000);
+		setCoinCount(500);
 		setScoreCount(0);
 		setIsTimeUp(false);
 		
 		System.out.println("Successfully Initializing Map!");
 	}
 	
-	public static void InitializeShopPane(String[] ingredients) {
-		shopPane = new ShopPane(ingredients);
-	}
-	
-	
+
 	public static void movePlayer(Direction dir,Player p) {
 		p.move(dir);
 	}
@@ -39,10 +34,6 @@ public class GameController {
 		gameMap.printMap();
 	}
 	
-	public static ShopPane getShopPane() {
-		return shopPane;
-	}
-
 	public static GameMap getCurrentGameMap() {
 		return gameMap;
 	}
@@ -53,6 +44,7 @@ public class GameController {
 
 	public static void addCoinCount(int coin) {
 		coin_count += coin;
+		SimulationManager.getDataPane().getScoreMoneyBox().updateMoney();
 	}
 	
 	public static void setCoinCount(int coin) {
