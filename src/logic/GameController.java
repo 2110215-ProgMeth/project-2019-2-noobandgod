@@ -40,9 +40,9 @@ public class GameController {
 	}
 	
 	public static void InitializeIngredient() {
-		setTomato_AMOUNT(3);
-		setCabbage_AMOUNT(1);
-		setFish_AMOUNT(2);
+		setTomato_AMOUNT(0);
+		setCabbage_AMOUNT(0);
+		setFish_AMOUNT(0);
 	}
 
 	public static void movePlayer(Direction dir,Player p) {
