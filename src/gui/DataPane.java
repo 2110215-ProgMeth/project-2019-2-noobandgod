@@ -16,7 +16,7 @@ public class DataPane extends HBox{
 		super();
 		this.setPadding(new Insets(8));
 		this.setMaxHeight(100);
-		this.setMaxWidth(500);
+		this.setMaxWidth(640);
 		
 		VBox timerBox = new VBox();
 		timerBox.setAlignment(Pos.CENTER);

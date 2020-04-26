@@ -22,11 +22,11 @@ public class AmountBox extends HBox {
 		this.setPrefWidth(128);
 		
 		
-		Label amountLabel = new Label("  amount:   ");
+		Label amountLabel = new Label("  amount:  ");
 		amountLabel.setFont(new Font(16));
 		
 		this.amount = 0;
-		this.amountBuy = new Label("0   ");
+		this.amountBuy = new Label("0  ");
 		amountBuy.setFont(new Font(16));
 		//---------------------------------------------------------------------
 		Button addButton = new Button("+");
@@ -55,7 +55,7 @@ public class AmountBox extends HBox {
 		if ((this.amount + n) >= 0) {
 			this.amount += n;
 			String amountString = Integer.toString(this.amount);
-			this.amountBuy.setText(amountString+"   ");
+			this.amountBuy.setText(amountString+"  ");
 			SimulationManager.getShopPane().calculateTotalPrice();
 		} else {
 			System.out.println("amount can't be lower than zero!");
@@ -69,7 +69,7 @@ public class AmountBox extends HBox {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
-		this.amountBuy.setText("0   ");
+		this.amountBuy.setText("0  ");
 	}
 	
 	

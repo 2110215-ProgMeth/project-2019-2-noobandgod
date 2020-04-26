@@ -1,17 +1,23 @@
 package application;
 
+
 import gui.DataPane;
 import gui.IngredientShopBox;
 import gui.IngredientStorageBox;
 import gui.ShopPane;
 import gui.SimulationManager;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GameController;
 
@@ -25,22 +31,42 @@ public class Main extends Application {
 		SimulationManager.initializeAllPane();
 		
 		
-		HBox mainWindow = new HBox();
+		HBox mainWindow = new HBox(10);
 		mainWindow.setPadding(new Insets(10));
 		
-		Pane pane = new StackPane();
-		pane.setPrefHeight(600);
-		pane.setPrefWidth(500);
+	
 		
-		Pane pane1 = new StackPane();
-		pane1.setPrefWidth(500);
-		pane1.setPrefHeight(100);
-
+		VBox boxleft = new VBox(10);
 		
-		pane.getChildren().addAll(pane1,SimulationManager.getDataPane());
+		Canvas testCanvas = new Canvas(640,512);
+		GraphicsContext gc = testCanvas.getGraphicsContext2D();
+		gc.setFill(Color.BLUEVIOLET);
+		gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 		
 		
-		mainWindow.getChildren().addAll(pane,SimulationManager.getShopPane());
+		StackPane pane2 = new StackPane();
+		pane2.setMaxHeight(108); pane2.setMaxWidth(640);
+		Canvas testCanvas3 = new Canvas(640,108);
+		GraphicsContext gc3 = testCanvas3.getGraphicsContext2D();
+		gc3.setFill(Color.AQUAMARINE);
+		gc3.fillRect(0, 0, gc3.getCanvas().getWidth(), gc3.getCanvas().getHeight());
+		pane2.getChildren().add(testCanvas3);
+		
+		
+		
+		StackPane pane = new StackPane();
+		Canvas testCanvas2 = new Canvas(640,100);
+		GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
+		gc2.setFill(Color.YELLOW);
+		gc2.fillRect(0, 0, gc2.getCanvas().getWidth(), gc2.getCanvas().getHeight());
+		
+		pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
+		
+		
+		boxleft.getChildren().addAll(pane2,testCanvas,pane);
+		
+		
+		mainWindow.getChildren().addAll(boxleft,SimulationManager.getShopPane());
 		
 		
 		Scene scene = new Scene(mainWindow);
@@ -56,6 +82,8 @@ public class Main extends Application {
 		primaryStage.setTitle("Umm Aroiii");
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		
 	}
 
 	public static void main(String[] args) {
