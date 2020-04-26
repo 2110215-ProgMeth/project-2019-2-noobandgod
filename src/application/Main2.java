@@ -3,15 +3,20 @@ package application;
 import gui.IngredientStoragePane;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import screen.StartScreen;
 
 public class Main2 extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		IngredientStoragePane a = new IngredientStoragePane(new String[]{"Tomato","Cabbage","Fish"});
-		Scene scene = new Scene(a);
+		StartScreen start = new StartScreen();
+		Scene scene = new Scene(start);
+		scene.setFill(Color.RED);
+		
 		primaryStage.setScene(scene);
+		
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
