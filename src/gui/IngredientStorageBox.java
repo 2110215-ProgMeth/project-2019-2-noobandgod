@@ -30,17 +30,23 @@ public class IngredientStorageBox extends VBox{
 		
 		setIngredientName(ingredientName);
 		
-		
 		this.ingredientPic = new Pane();
 		ingredientPic.setPrefHeight(64);
 		ingredientPic.setPrefWidth(64);
 		
 		
-		
-		int amount = 0;
-		
-		
-		this.amountLabel = new Label("X "+amount);
+		this.amountLabel = new Label();
+		switch (ingredientName) {
+		case "Tomato":
+			amountLabel.setText(Integer.toString(GameController.getTomato_AMOUNT()));
+			break;
+		case "Cabbage":
+			amountLabel.setText(Integer.toString(GameController.getCabbage_AMOUNT()));
+			break;
+		case "Fish":
+			amountLabel.setText(Integer.toString(GameController.getFish_AMOUNT()));
+			break;
+		}
 		amountLabel.setFont(new Font(16));
 		
 		this.setAlignment(Pos.CENTER);
@@ -80,11 +86,6 @@ public class IngredientStorageBox extends VBox{
 	public void setAmountLabel(Label amountLabel) {
 		this.amountLabel = amountLabel;
 	}
-	
-	
-	
-	
-	
 }
 
 

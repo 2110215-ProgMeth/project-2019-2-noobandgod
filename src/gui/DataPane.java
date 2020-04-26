@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import logic.GameController;
 
 public class DataPane extends HBox{
 	private IngredientStoragePane ingredientStoragePane;
@@ -31,7 +32,8 @@ public class DataPane extends HBox{
 		
 		VBox box = new VBox();
 		Label storageLabel = new Label("Your Storage");
-		this.ingredientStoragePane = new IngredientStoragePane(new String[]{"Tomato","Cabbage","Fish"});
+		
+		this.ingredientStoragePane = new IngredientStoragePane(GameController.INGREDIENTS);
 		
 		box.getChildren().addAll(storageLabel,ingredientStoragePane);
 		
