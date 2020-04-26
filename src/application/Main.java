@@ -26,11 +26,6 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
-		
-		GameController.InitializeMap(gamemap);
-		SimulationManager.initializeAllPane();
-		
 		GameScreen gameScreen = new GameScreen(primaryStage);
 		
 		primaryStage.setResizable(false); //Unable to resize!
