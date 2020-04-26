@@ -22,7 +22,7 @@ public class ShopPane extends VBox {
 	private int totalpay;
 	
 	public ShopPane(String[] ingredientName) {
-		this.setPrefHeight(600);
+		this.setPrefHeight(512);
 		this.setPrefWidth(190);
 		this.setSpacing(16);
 		
