@@ -6,38 +6,38 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import screen.StartScreen;
 
 public class Main2 extends Application {
-
+	private static String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
+	private static Image background = new Image(image_path);		
+	
 	@Override
 	public void start(Stage primaryStage) {
-		StartScreen start = new StartScreen();
 		
 		StackPane root = new StackPane();
-		Scene scene1 = new Scene(root);
-		primaryStage.setScene(scene1);
-		primaryStage.setTitle("Umm!! Aroiii");
-
+		StartScreen start = new StartScreen();
 		Canvas canvas = new Canvas(900, 800);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		root.getChildren().addAll(canvas,start);
-
 		drawPicture(gc);
+		root.getChildren().addAll(canvas,start);
 		
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.show();
 	}
 
 	private void drawPicture(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		Image image = new Image("file:res/e545209d8362ca017d39fb1807735bb0.png");		
-		//ImageView imageView = new ImageView(image);
-		gc.drawImage(image, 0, 0,900,800);
+		// TODO Auto-generated method stub		
+		gc.drawImage(background, 0, 0,900,800);
 		
 	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
