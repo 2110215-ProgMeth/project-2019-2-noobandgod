@@ -95,8 +95,8 @@ public class GameMap {
 	
 	public void printMap() {
 		
-		System.out.println("   0 1 2 3 4 5 6 7 8 9 (X)");
-		System.out.println("(Y)-------------------");
+		System.out.println("   0 1 2 3 4 5 6 7 8 9 10 (X)");
+		System.out.println("(Y)----------------------");
 		
 		int rownumber = 0;
 		for(Cell[] row: cellmap) {
