@@ -65,7 +65,7 @@ public class Cell {
 			resultString = "This block is SPACE";
 		}
 		else {
-			resultString = "\nThis block is:" + block.getClass().toString();
+			resultString = "This block is: " + block.getClass().toString();
 			if(isOnTop) {
 				resultString += "\nThis block also contains:" + entityOnTop.getClass().toString();
 			} else {

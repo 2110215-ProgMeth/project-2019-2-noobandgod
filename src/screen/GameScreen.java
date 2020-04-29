@@ -1,5 +1,8 @@
 package screen;
 
+
+import java.util.spi.LocaleServiceProvider;
+
 import application.CSVParser;
 import gui.SimulationManager;
 import javafx.geometry.Insets;
@@ -7,15 +10,24 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import logic.Cell;
 import logic.GameController;
 
 public class GameScreen {
 	private Stage primaryStage;
+	
+	private int draw_origin_x;
+	private int draw_origin_y; 
+	private int pixel;
+	
+	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
+	private static Image floortest = new Image(image_path);
 	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -24,6 +36,10 @@ public class GameScreen {
 		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
 		GameController.InitializeMap(gamemap);
 		SimulationManager.initializeAllPane();
+		
+		draw_origin_x = 32;
+		draw_origin_y = 32;
+		pixel = 64;
 		//---------------------------------------------------
 		
 		
@@ -41,8 +57,10 @@ public class GameScreen {
 		
 		Canvas gameCanvas = new Canvas(768,512);
 		GraphicsContext gamegc = gameCanvas.getGraphicsContext2D();
-		gamegc.setFill(Color.BLUEVIOLET);
+		gamegc.setFill(Color.GRAY);
 		gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
+		
+		drawGameBoard(gamegc);
 		
 	
 		StackPane pane = new StackPane();
@@ -76,8 +94,25 @@ public class GameScreen {
 	}
 	
 	public void drawGameBoard(GraphicsContext gc) {
+		Cell[][] cellmap = GameController.getCurrentGameMap().getCellmap();
+		int width = GameController.getCurrentGameMap().getWidth();
+		int height = GameController.getCurrentGameMap().getHeight();
 		
+		System.out.println(width);
 		
+		for (int i=0; i < height; i++) {
+			for (int j=0; j < width; j++) {
+				System.out.println("i: "+i+" j: "+j);
+				if(cellmap[i][j].isBlockEmpty()) {
+					gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+				} else {
+					//get the sprite of each cell and draw picture
+					System.out.println("This cell is not SPACE");
+					
+				}
+			}
+		}
 		
 	}
+	
 }

@@ -13,6 +13,7 @@ import entity.FoodCounter;
 import entity.FryingPan;
 import entity.Ingredient;
 import entity.Obstacle;
+import entity.Station;
 import entity.TomatoStorage;
 import entity.base.Entity;
 
@@ -40,6 +41,7 @@ public class GameMap {
 				switch (map[i][j]) {
 				case "A":
 					System.out.println("Station"+coordinate);
+					setBlock(new Station(), j, i);
 					break;
 				case "B":
 					System.out.println("TomatoStorage"+coordinate);
