@@ -33,13 +33,14 @@ public class StartScreen extends VBox{
 		this.setPrefWidth(700);
 		this.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, 
 					CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		this.setAlignment(Pos.CENTER);
+		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setFillWidth(true);
-		this.setSpacing(30);
-			
+		this.setSpacing(50);
+		
+		
 		title = new Label();
 		title.setFont(new Font(50));
-		title.textProperty().setValue("Umm!! Aroi");
+		title.textProperty().setValue("Umm!! Aroiii");
 			
 			
 		playButton = new Button("Play");
@@ -50,7 +51,6 @@ public class StartScreen extends VBox{
 		playButton.setOnAction( e -> {
 //				SimulationManager.playHandler();
 			System.out.print("Something went wrong");
-			System.exit(1);
 		});
 		tutorialButton = new Button("Tutorial");
 		tutorialButton.setPrefWidth(100);
