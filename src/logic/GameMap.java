@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
+import application.CSVParser;
 import entity.Bin;
 import entity.CabbageStorage;
 import entity.CuttingBoard;
@@ -78,6 +79,7 @@ public class GameMap {
 					break;
 				case "O":
 					System.out.println("SPACE"+coordinate);
+					cellmap[i][j] = new Cell();
 					break;
 				
 				default:
@@ -101,6 +103,19 @@ public class GameMap {
 				rowstring += c.getSymbol()+" ";
 			}
 			System.out.println(rowstring);
+			rownumber += 1;
+		}
+	}
+	
+	public void printEachCell() {
+		int rownumber = 0;
+		for(Cell[] row: cellmap) {
+			int colunumber = 0;
+			for(Cell c:row) {
+				System.out.println("("+rownumber+","+colunumber+")");
+				System.out.println(c.toString());
+				colunumber++;
+			}
 			rownumber += 1;
 		}
 	}
@@ -176,6 +191,18 @@ public class GameMap {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+	
+	public Cell[][] getCellmap() {
+		return cellmap;
+	}
+
+	public static void main (String[]args) {
+		String[][] gamemap = CSVParser.readCSV("Book1.csv");
+		GameController.InitializeMap(gamemap);
+		
+		GameController.getCurrentGameMap().printMap();
+		GameController.getCurrentGameMap().printEachCell();
 	}
 	
 	

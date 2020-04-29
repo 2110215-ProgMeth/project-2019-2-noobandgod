@@ -74,4 +74,10 @@ public class GameScreen {
 		this.primaryStage.setScene(scene);
 		
 	}
+	
+	public void drawGameBoard(GraphicsContext gc) {
+		
+		
+		
+	}
 }
