@@ -25,10 +25,9 @@ public class StartScreen extends VBox{
 		private Button playButton;
 		private Button tutorialButton;
 		private Button quitButton;
-		private Stage stage;
-
+		private static boolean isStartPressed;
 	public StartScreen() {
-
+		setPressed(false);
 		this.setPrefHeight(500);
 		this.setPrefWidth(700);
 		this.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, 
@@ -52,7 +51,8 @@ public class StartScreen extends VBox{
 		playButton.setOnAction( e -> {
 //				SimulationManager.playHandler();
 			System.out.print("Something went wrong");
-			GameScreen gameScreen = new GameScreen(stage);
+			setStartPressed(true);
+			System.out.print(isGameStart());
 		});
 		tutorialButton = new Button("Tutorial");
 		tutorialButton.setPrefWidth(300);
@@ -74,5 +74,12 @@ public class StartScreen extends VBox{
 		});
 		
 		this.getChildren().addAll(title,playButton,tutorialButton,quitButton);
+		}
+		public static void setStartPressed(boolean isStartPressed) {
+		StartScreen.isStartPressed = isStartPressed;
+	}
+		public static boolean isGameStart() {
+			return isStartPressed;
+			
 		}
 }

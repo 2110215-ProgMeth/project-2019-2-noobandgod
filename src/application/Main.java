@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -21,20 +22,24 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GameController;
 import screen.GameScreen;
+import screen.StartScreen;
 
 public class Main extends Application {
-
+	private static String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
+	private static Image background = new Image(image_path);		
+	
 	@Override
 	public void start(Stage primaryStage) {
 		GameScreen gameScreen = new GameScreen(primaryStage);
 		GameController.getCurrentGameMap().printMap();
-		
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setTitle("Umm Aroiii!!");
 		primaryStage.show();
-		
-		
-	}
+		}
+
+	
+
+
 
 	public static void main(String[] args) {
 		launch(args);
