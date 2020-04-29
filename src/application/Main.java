@@ -27,9 +27,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		GameScreen gameScreen = new GameScreen(primaryStage);
+		GameController.getCurrentGameMap().printMap();
 		
 		primaryStage.setResizable(false); //Unable to resize!
-		primaryStage.setTitle("Umm Aroiii");
+		primaryStage.setTitle("Umm Aroiii!!");
 		primaryStage.show();
 		
 		

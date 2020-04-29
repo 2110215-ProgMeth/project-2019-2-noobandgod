@@ -58,4 +58,22 @@ public class Cell {
 		}
 	}
 	
+	
+	public String toString() {
+		String resultString;
+		if(isBlockEmpty) {
+			resultString = "This block is SPACE";
+		}
+		else {
+			resultString = "\nThis block is:" + block.getClass().toString();
+			if(isOnTop) {
+				resultString += "\nThis block also contains:" + entityOnTop.getClass().toString();
+			} else {
+				resultString += "\nThis block doesn't contain anything on it";
+			}
+		}
+		return resultString;
+	}
+
+	
 }
