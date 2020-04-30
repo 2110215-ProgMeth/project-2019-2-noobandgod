@@ -32,6 +32,9 @@ public class GameScreen {
 	private static String image_path2 = ClassLoader.getSystemResource("picture/stationtest.png").toString();
 	private static Image stationtest = new Image(image_path2);
 	
+	private static String image_path3 = ClassLoader.getSystemResource("picture/stationtest2.png").toString();
+	private static Image stationtest3 = new Image(image_path3);
+	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		//---------------------------------------------------
@@ -112,7 +115,12 @@ public class GameScreen {
 					//get the sprite of each cell and draw picture
 					switch (cellmap[i][j].getBlock().getSymbol()) {
 					case 'A': 
-						gc.drawImage(stationtest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+						if (cellmap[i][j].getBlock().isAnyBlockDownward()) {
+							gc.drawImage(stationtest3,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+						} else {
+							gc.drawImage(stationtest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+						}
+						
 						break;
 					}
 					

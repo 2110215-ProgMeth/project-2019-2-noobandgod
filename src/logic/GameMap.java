@@ -28,7 +28,6 @@ public class GameMap {
 		setHeight(row);
 		setWidth(column);
 		
-		
 		cellmap = new Cell[row][column];
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<column; j++) {
@@ -91,6 +90,8 @@ public class GameMap {
 					
 			}
 		}
+		
+		updateIsAnyBlockDownward();
 	}
 	
 	public void printMap() {
@@ -154,7 +155,6 @@ public class GameMap {
 		
 	}
 
-	
 	public Entity removeEntityOnBlock(int x,int y) {
 		if (cellmap[x][y].isOnTop()) {
 			Cell cell = cellmap[y][x];
@@ -176,6 +176,18 @@ public class GameMap {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	public void updateIsAnyBlockDownward() {
+		for (int i = 0; i < height-1 ; i++) {
+			for (int j = 0; j < width; j++) {
+				if (!cellmap[i+1][j].isBlockEmpty() && !cellmap[i][j].isBlockEmpty()) {
+					//if tihs block is not empty and below block is also not empty
+					//so this block (isanyblockdownward = true) )(used for rendering image)
+					cellmap[i][j].getBlock().setAnyBlockDownward(true);
+				}
+			}
 		}
 	}
 	

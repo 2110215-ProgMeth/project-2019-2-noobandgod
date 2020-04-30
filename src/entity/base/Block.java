@@ -1,7 +1,7 @@
 package entity.base;
 
 public abstract class Block extends Entity{
-	private boolean isAnyBlockDownward;
+	private boolean isAnyBlockDownward = false;
 	
 	public abstract char getSymbol();
 
@@ -12,5 +12,7 @@ public abstract class Block extends Entity{
 	public void setAnyBlockDownward(boolean isAnyBlockDownward) {
 		this.isAnyBlockDownward = isAnyBlockDownward;
 	}
+	
+	
 	
 }

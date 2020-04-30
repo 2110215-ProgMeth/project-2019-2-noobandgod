@@ -10,6 +10,7 @@ public class Cell {
 	private boolean isOnTop;
 	
 	public Cell() {
+		this.block = null;
 		setOnTop(false);
 		setBlockEmpty(true);
 	}
@@ -67,12 +68,14 @@ public class Cell {
 		}
 		else {
 			resultString = "This block is: " + block.getClass().toString();
+			resultString += "\nIs there any block below: " + block.isAnyBlockDownward();
 			if(isOnTop) {
 				resultString += "\nThis block also contains:" + entityOnTop.getClass().toString();
 			} else {
 				resultString += "\nThis block doesn't contain anything on it";
 			}
 		}
+		resultString += "\n________________________";
 		return resultString;
 	}
 
