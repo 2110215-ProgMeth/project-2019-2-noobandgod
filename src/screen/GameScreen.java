@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -66,8 +67,9 @@ public class GameScreen {
 		gamegc.setFill(Color.GRAY);
 		gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
-		drawGameBoard(gamegc);
-		
+		//drawGameBoard(gamegc);
+		//drawGameBoard2(gamegc);
+		drawGameBackground(gamegc);
 	
 		StackPane pane = new StackPane();
 		Canvas testCanvas2 = new Canvas(768,100);
@@ -94,10 +96,36 @@ public class GameScreen {
 		root.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(root);
+		
+		addListener(scene, gamegc);
+		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setScene(scene);
 		
 	}
+	
+	private void addListener(Scene s, GraphicsContext gc) {
+		s.setOnKeyPressed((event) -> {
+			KeyCode keyCode = event.getCode();
+			System.out.println(keyCode);	
+		});
+	}
+	
+	
+	
+	
+	public void drawGameBackground(GraphicsContext gc) {
+		int width = GameController.getCurrentGameMap().getWidth();
+		int height = GameController.getCurrentGameMap().getHeight();
+		
+		for (int i=0; i < height; i++) {
+			for (int j=0; j < width; j++) {
+				gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+			}
+		}
+	}
+	
+	
 	
 	public void drawGameBoard(GraphicsContext gc) {
 		Cell[][] cellmap = GameController.getCurrentGameMap().getCellmap();
@@ -114,7 +142,7 @@ public class GameScreen {
 				} else {
 					//get the sprite of each cell and draw picture
 					switch (cellmap[i][j].getBlock().getSymbol()) {
-					case 'A': 
+					case 'A': //station
 						if (cellmap[i][j].getBlock().isAnyBlockDownward()) {
 							gc.drawImage(stationtest3,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
 						} else {
@@ -131,6 +159,28 @@ public class GameScreen {
 			}
 		}
 		
+	}
+	//for testing (don't delete)
+	public void drawGameBoard2(GraphicsContext gc) {
+		Cell[][] cellmap = GameController.getCurrentGameMap().getCellmap();
+		int width = GameController.getCurrentGameMap().getWidth();
+		int height = GameController.getCurrentGameMap().getHeight();
+		
+		System.out.println(width);
+		
+		for (int i=0; i < height; i++) {
+			for (int j=0; j < width; j++) {
+				System.out.println("i: "+i+" j: "+j);
+				if(cellmap[i][j].isBlockEmpty()) {
+					gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+				} else {
+					//get the sprite of each cell and draw picture
+					cellmap[i][j].getBlock().setImage();
+					Image image = cellmap[i][j].getBlock().getImage();
+					gc.drawImage(image,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+					}
+				}
+			}
 	}
 	
 }

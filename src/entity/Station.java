@@ -6,15 +6,14 @@ import entity.base.Holdable;
 import entity.base.Placeable;
 import exception.HoldFailedException;
 import exception.PlaceFailedException;
+import javafx.scene.image.Image;
 import logic.Sprites;
 
 public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
-	private int stationType; //0 or 1;
 	
 	public Station(int stationtype) {
 		setOnStationExists(null);
-		setStationType(stationtype);
 	}
 	
 	public boolean holds(Player e) throws HoldFailedException{
@@ -89,6 +88,16 @@ public class Station extends Block implements Holdable,Placeable{
 				}
 			}throw new PlaceFailedException("There is nothing to be placed");
 		}
+	
+	@Override
+	public void setImage() {
+		if(isAnyBlockDownward()) {
+			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());		
+		} else {
+			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest.png").toString());
+		}
+	}
+	
 	public Entity getOnStationExists() {
 		return OnStationExists;
 	}
@@ -99,13 +108,5 @@ public class Station extends Block implements Holdable,Placeable{
 		return Sprites.Station;
 	}
 
-	public int getStationType() {
-		return stationType;
-	}
-
-	public void setStationType(int stationType) {
-		this.stationType = stationType;
-	}
-	
 	
 }

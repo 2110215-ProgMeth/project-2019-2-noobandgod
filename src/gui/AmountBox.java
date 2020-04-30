@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import logic.GameController;
@@ -31,6 +32,7 @@ public class AmountBox extends HBox {
 		//---------------------------------------------------------------------
 		Button addButton = new Button("+");
 		addButton.setPrefWidth(16);
+		
 		addButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {

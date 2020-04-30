@@ -16,9 +16,7 @@ public class Fish extends Ingredient{
 //		}	//dont forget that I haven't written about the station where the ingredient lost
 //		return false;//I should throw an exception that we can't hold because we are holding
 //	}
-	public char getSymbol() {
-		return Sprites.Fish;
-	}
+	
 	public static int getPrice() {
 		return price;
 	}
