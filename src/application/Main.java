@@ -25,9 +25,6 @@ import screen.GameScreen;
 import screen.StartScreen;
 
 public class Main extends Application {
-	private static String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
-	private static Image background = new Image(image_path);		
-	
 	@Override
 	public void start(Stage primaryStage) {
 		GameScreen gameScreen = new GameScreen(primaryStage);

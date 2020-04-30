@@ -2,10 +2,14 @@ package screen;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,6 +31,7 @@ public class StartScreen{
 		canvas = new Canvas(900, 800);
 		gc = canvas.getGraphicsContext2D();
 		menu = new Buttons();
+		MousePressed();
 		setupButton();
 		draw(gc);
 		setBackground();
@@ -64,6 +69,12 @@ public class StartScreen{
 		});
 			menu.setupExitButton();
 	}
-
-
+	public void MousePressed() {
+		menu.setOnMouseMoved(e ->{
+	
+//			public void handle(ActionEvent event) {
+			menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+			menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+		});
+	}
 }

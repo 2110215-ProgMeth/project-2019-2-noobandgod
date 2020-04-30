@@ -6,7 +6,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Buttons extends VBox{
@@ -24,7 +28,7 @@ public class Buttons extends VBox{
 		playButton = new Button("Play");
 		playButton.setPrefSize(300,50);
 		playButton.setFont(new Font(20));
-		quitButton = new Button("Exit");		
+		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 50);
 		quitButton.setFont(new Font(20));
 		playButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
