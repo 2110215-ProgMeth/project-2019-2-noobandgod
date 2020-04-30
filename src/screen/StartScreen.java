@@ -65,6 +65,7 @@ public class StartScreen{
 		public void handle(ActionEvent event) {
 			GameScreen gameScreen = new GameScreen(primaryStage);
 			GameController.getCurrentGameMap().printMap();
+			
 			}
 		});
 			menu.setupExitButton();
