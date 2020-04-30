@@ -35,10 +35,11 @@ public class Main extends Application {
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setTitle("Umm Aroiii!!");
 		primaryStage.show();
+
 		}
 
 	
-
+		
 
 
 	public static void main(String[] args) {
