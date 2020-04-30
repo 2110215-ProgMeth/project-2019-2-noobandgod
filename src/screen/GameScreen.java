@@ -29,6 +29,9 @@ public class GameScreen {
 	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
 	private static Image floortest = new Image(image_path);
 	
+	private static String image_path2 = ClassLoader.getSystemResource("picture/stationtest.png").toString();
+	private static Image stationtest = new Image(image_path2);
+	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		//---------------------------------------------------
@@ -107,7 +110,14 @@ public class GameScreen {
 					gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
 				} else {
 					//get the sprite of each cell and draw picture
-					System.out.println("This cell is not SPACE");
+					switch (cellmap[i][j].getBlock().getSymbol()) {
+					case 'A': 
+						gc.drawImage(stationtest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+						break;
+					}
+					
+	
+					System.out.println("This cell is not SPACE/STATION");
 					
 				}
 			}

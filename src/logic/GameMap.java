@@ -1,7 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
-
 import application.CSVParser;
 import entity.Bin;
 import entity.CabbageStorage;
@@ -15,6 +13,7 @@ import entity.Ingredient;
 import entity.Obstacle;
 import entity.Station;
 import entity.TomatoStorage;
+import entity.base.Block;
 import entity.base.Entity;
 
 
@@ -41,8 +40,9 @@ public class GameMap {
 				switch (map[i][j]) {
 				case "A":
 					System.out.println("Station"+coordinate);
-					setBlock(new Station(), j, i);
+					setBlock(new Station(0), j, i);
 					break;
+					
 				case "B":
 					System.out.println("TomatoStorage"+coordinate);
 					setBlock(new TomatoStorage(), j, i);
@@ -81,7 +81,7 @@ public class GameMap {
 					break;
 				case "O":
 					System.out.println("SPACE"+coordinate);
-					cellmap[i][j] = new Cell();
+					
 					break;
 				
 				default:
@@ -95,8 +95,8 @@ public class GameMap {
 	
 	public void printMap() {
 		
-		System.out.println("   0 1 2 3 4 5 6 7 8 9 (X)");
-		System.out.println("(Y)-------------------");
+		System.out.println("   0 1 2 3 4 5 6 7 8 9 10 (X)");
+		System.out.println("(Y)----------------------");
 		
 		int rownumber = 0;
 		for(Cell[] row: cellmap) {
@@ -122,12 +122,12 @@ public class GameMap {
 		}
 	}
 		
-	public boolean setBlock(Entity e,int x,int y) {		
-		e.setX(x);
-		e.setY(y);
+	public boolean setBlock(Block b,int x,int y) {		
+		b.setX(x);
+		b.setY(y);
 		
-		boolean b = cellmap[y][x].setBlock(e);
-		return b;
+		boolean bool = cellmap[y][x].setBlock(b);
+		return bool;
 	}
 	
 	

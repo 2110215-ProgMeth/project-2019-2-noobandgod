@@ -1,5 +1,6 @@
 package entity;
 
+import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Holdable;
 import entity.base.Placeable;
@@ -7,8 +8,15 @@ import exception.HoldFailedException;
 import exception.PlaceFailedException;
 import logic.Sprites;
 
-public class Station extends Entity implements Holdable,Placeable{
+public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
+	private int stationType; //0 or 1;
+	
+	public Station(int stationtype) {
+		setOnStationExists(null);
+		setStationType(stationtype);
+	}
+	
 	public boolean holds(Player e) throws HoldFailedException{
 		if (!e.isHolding()) {
 			if (getOnStationExists().equals(null)) {
@@ -90,4 +98,14 @@ public class Station extends Entity implements Holdable,Placeable{
 	public char getSymbol() {
 		return Sprites.Station;
 	}
+
+	public int getStationType() {
+		return stationType;
+	}
+
+	public void setStationType(int stationType) {
+		this.stationType = stationType;
+	}
+	
+	
 }

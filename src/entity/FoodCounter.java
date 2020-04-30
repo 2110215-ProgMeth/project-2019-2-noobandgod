@@ -1,5 +1,6 @@
 package entity;
 
+import entity.base.Block;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
@@ -8,7 +9,7 @@ import exception.SendFoodFailedException;
 import logic.Sprites;
 import meal.OrderManager;
 
-public class FoodCounter extends Entity implements Interactable{
+public class FoodCounter extends Block implements Interactable{
 
 	@Override
 	public boolean interacts(Player e) throws SendFoodFailedException,InteractFailedException{
