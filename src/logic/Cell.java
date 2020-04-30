@@ -1,9 +1,10 @@
 package logic;
 
+import entity.base.Block;
 import entity.base.Entity;
 
 public class Cell {
-	private Entity block;
+	private Block block;
 	private Entity entityOnTop;
 	private boolean isBlockEmpty;
 	private boolean isOnTop;
@@ -13,9 +14,9 @@ public class Cell {
 		setBlockEmpty(true);
 	}
 	
-	public boolean setBlock(Entity e) {
+	public boolean setBlock(Block b) {
 		if (isBlockEmpty) {
-			this.block = e;
+			this.block = b;
 			this.isBlockEmpty = false;
 			return true;
 		}
@@ -42,7 +43,7 @@ public class Cell {
 		this.entityOnTop = entityOnTop;
 	}
 
-	public Entity getBlock() {
+	public Block getBlock() {
 		return block;
 	}
 

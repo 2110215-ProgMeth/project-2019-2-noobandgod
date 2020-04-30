@@ -1,5 +1,6 @@
 package entity;
 
+import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Holdable;
 import entity.base.Placeable;
@@ -7,7 +8,7 @@ import exception.HoldFailedException;
 import exception.PlaceFailedException;
 import logic.Sprites;
 
-public class Station extends Entity implements Holdable,Placeable{
+public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
 	private int stationType; //0 or 1;
 	

@@ -1,12 +1,13 @@
 package entity;
 
+import entity.base.Block;
 import entity.base.Consumable;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.ConsumeFailedException;
 import logic.Sprites;
 
-public class Bin extends Entity implements Consumable,Interactable{
+public class Bin extends Block implements Consumable,Interactable{
 	public boolean interacts(Player e) {
 		return e.isHolding();
 	}

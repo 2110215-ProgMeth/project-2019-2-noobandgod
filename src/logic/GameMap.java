@@ -13,6 +13,7 @@ import entity.Ingredient;
 import entity.Obstacle;
 import entity.Station;
 import entity.TomatoStorage;
+import entity.base.Block;
 import entity.base.Entity;
 
 
@@ -121,12 +122,12 @@ public class GameMap {
 		}
 	}
 		
-	public boolean setBlock(Entity e,int x,int y) {		
-		e.setX(x);
-		e.setY(y);
+	public boolean setBlock(Block b,int x,int y) {		
+		b.setX(x);
+		b.setY(y);
 		
-		boolean b = cellmap[y][x].setBlock(e);
-		return b;
+		boolean bool = cellmap[y][x].setBlock(b);
+		return bool;
 	}
 	
 	

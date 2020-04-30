@@ -16,9 +16,8 @@ public class Cabbage extends Ingredient{
 //			//dont forget that I haven't written about the station where the ingredeintn lost
 //		}return false;//I should throw an exception that we can't hold because we are holding
 //	}
-	public char getSymbol() {
-		return Sprites.Cabbage;
-	}
+	
+
 	public static int getPrice() {
 		return price;
 	}

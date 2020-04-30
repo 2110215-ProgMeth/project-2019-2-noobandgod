@@ -1,11 +1,12 @@
 package entity;
 
+import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.InteractFailedException;
 import logic.Sprites;
 
-public class DishPicker extends Entity implements Interactable{
+public class DishPicker extends Block implements Interactable{
 	public boolean interacts(Player e) throws InteractFailedException{
 		//dont forget to throw an exception
 		if (!e.isHolding()) {
