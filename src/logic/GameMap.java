@@ -1,7 +1,5 @@
 package logic;
 
-import java.util.ArrayList;
-
 import application.CSVParser;
 import entity.Bin;
 import entity.CabbageStorage;
@@ -41,8 +39,9 @@ public class GameMap {
 				switch (map[i][j]) {
 				case "A":
 					System.out.println("Station"+coordinate);
-					setBlock(new Station(), j, i);
+					setBlock(new Station(0), j, i);
 					break;
+					
 				case "B":
 					System.out.println("TomatoStorage"+coordinate);
 					setBlock(new TomatoStorage(), j, i);
@@ -81,7 +80,7 @@ public class GameMap {
 					break;
 				case "O":
 					System.out.println("SPACE"+coordinate);
-					cellmap[i][j] = new Cell();
+					
 					break;
 				
 				default:

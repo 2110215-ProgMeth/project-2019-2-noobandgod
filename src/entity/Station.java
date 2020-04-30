@@ -9,6 +9,13 @@ import logic.Sprites;
 
 public class Station extends Entity implements Holdable,Placeable{
 	private Entity OnStationExists = null;
+	private int stationType; //0 or 1;
+	
+	public Station(int stationtype) {
+		setOnStationExists(null);
+		setStationType(stationtype);
+	}
+	
 	public boolean holds(Player e) throws HoldFailedException{
 		if (!e.isHolding()) {
 			if (getOnStationExists().equals(null)) {
@@ -90,4 +97,14 @@ public class Station extends Entity implements Holdable,Placeable{
 	public char getSymbol() {
 		return Sprites.Station;
 	}
+
+	public int getStationType() {
+		return stationType;
+	}
+
+	public void setStationType(int stationType) {
+		this.stationType = stationType;
+	}
+	
+	
 }
