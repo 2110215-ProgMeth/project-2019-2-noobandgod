@@ -1,9 +1,11 @@
 package entity;
 
 import entity.base.Entity;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import logic.Direction;
 import logic.GameController;
-import sun.awt.www.content.audio.x_aiff;
+import screen.GameScreen;
 
 
 public class Player extends Entity{
@@ -12,8 +14,14 @@ public class Player extends Entity{
 	private Dish dishHeld;
 	private Direction faceDirection;
 	private int PlayerNumber;
+	protected boolean visible;
 	
-	public Player(int playerNumber) {
+	private static Image testplayer1 = new Image(ClassLoader.getSystemResource("picture/testplayer1.png").toString());
+	
+	public Player(int playerNumber,int x,int y) {
+		setX(x);
+		setY(y);
+		visible = true;
 		setHolding(false);
 		setIngredientHeld(null);
 		setDishHeld(null);
@@ -46,6 +54,7 @@ public class Player extends Entity{
 		
 		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
 			setX(targetx); setY(targety);
+			System.out.println("Player "+getPlayerNumber()+" has moved to ("+getX()+","+getY()+")!");
 			return true;
 		} else {
 			return false;
@@ -92,10 +101,29 @@ public class Player extends Entity{
 //	public getWhereInteract() {
 		
 //	}
+	
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
-	public char getSymbol() {
-		return Sprites.Player;
+
+	@Override
+	public int getZ() {
+		return 103;
 	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = (GameScreen.draw_origin_y)+this.getY()*pixel;
+		
+		gc.drawImage(testplayer1, x, y);
+		
+	}
+
+	@Override
+	public boolean isVisible() {
+		return visible;
+	}
+	
 }

@@ -13,12 +13,14 @@ import screen.GameScreen;
 
 public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
+	protected boolean visible;
 	
-	private static String image_path1 = ClassLoader.getSystemResource("picture/stationtest.png").toString();
-	//private static Image image1 = new Image(image_path1);
+	private static Image stationtest1 = new Image(ClassLoader.getSystemResource("picture/station.png").toString());
+	private static Image stationtest2 = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());
 	
 	public Station() {
 		setOnStationExists(null);
+		visible = true;
 	}
 	
 	public boolean holds(Player e) throws HoldFailedException{
@@ -122,13 +124,19 @@ public class Station extends Block implements Holdable,Placeable{
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getY()*pixel;
-		int y = GameScreen.draw_origin_y+this.getX()*pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
-		System.out.println("printing image at: ("+this.getY()+","+this.getX()+")");
-		gc.drawImage(this.image, x, y);
-		
-		
+		if(isAnyBlockDownward) {
+			gc.drawImage(stationtest2, x, y);
+		} else {
+			gc.drawImage(stationtest1, x, y);
+		}
+	}
+
+	@Override
+	public boolean isVisible() {
+		return visible;
 	}
 
 	

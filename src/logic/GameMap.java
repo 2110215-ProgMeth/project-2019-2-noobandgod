@@ -170,10 +170,14 @@ public class GameMap {
 	}
 	
 	public boolean isMovePossible(int targetx, int targety) {
+		System.out.println("target x: "+targetx+" ,target y: "+targety);
+		
 		if (targetx < 0 || targetx > width || targety < 0 || targety > height) {
 			//out of bound -> return false
 			return false;
-		} else if (cellmap[targety][targetx].isBlockEmpty()) {
+		} 
+		
+		if (cellmap[targety][targetx].isBlockEmpty()) {
 			//if target block is empty (space) -> return true
 			return true;
 		} else {
@@ -226,15 +230,6 @@ public class GameMap {
 	public Cell[][] getCellmap() {
 		return cellmap;
 	}
-
-	public static void main (String[]args) {
-		String[][] gamemap = CSVParser.readCSV("Book1.csv");
-		GameController.InitializeMap(gamemap);
-		
-		GameController.getCurrentGameMap().printMap();
-		GameController.getCurrentGameMap().printEachCell();
-	}
-	
 	
 }
 

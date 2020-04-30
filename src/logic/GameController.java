@@ -2,17 +2,21 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-
 import entity.Player;
 import gui.SimulationManager;
 import meal.OrderManager;
+import sharedObject.RenderableHolder;
 
 public class GameController {
+	private static ArrayList<Player> players;
+	
 	private static GameMap gameMap;
+	
 	private static int coin_count;
 	private static int score_count;
+	
 	private static boolean is_timeup;
+	
 	public static int MAX_ORDER;
 	public static int MAX_TIME;
 
@@ -34,6 +38,9 @@ public class GameController {
 		setCoinCount(500);
 		setScoreCount(999);
 		InitializeIngredient();
+		
+		InitializePlayer(1);
+		
 		setIsTimeUp(false);
 		
 		System.out.println("Successfully Initializing Map!");
@@ -43,6 +50,18 @@ public class GameController {
 		setTomato_AMOUNT(1);
 		setCabbage_AMOUNT(0);
 		setFish_AMOUNT(0);
+	}
+	
+	public static void InitializePlayer(int numberOfPlayers) {
+		if (numberOfPlayers == 1) {
+			players = new ArrayList<Player>();
+			Player player0 = new Player(0,1,1);
+			
+			players.add(player0);
+			RenderableHolder.getInstance().add(player0);
+		}
+		
+		
 	}
 
 	public static void movePlayer(Direction dir,Player p) {
@@ -128,9 +147,15 @@ public class GameController {
 	public static void setFish_AMOUNT(int fish_AMOUNT) {
 		Fish_AMOUNT = fish_AMOUNT;
 	}
+	
+	public static Player getPlayers(int numberPlayer) {
+		return players.get(numberPlayer);
+	}
 
 	public static boolean isThisIngredientNameValid(String ingredientName) {
 		return Arrays.asList(INGREDIENTS).contains(ingredientName);
-	}	
+	}
+	
+	
 	
 }

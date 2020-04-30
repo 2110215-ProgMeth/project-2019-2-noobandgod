@@ -1,24 +1,24 @@
 package screen;
 
-
 import application.CSVParser;
 import gui.SimulationManager;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import logic.Cell;
 import logic.GameController;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
+import logic.Direction;
 
 public class GameScreen {
 	private Stage primaryStage;
@@ -31,12 +31,6 @@ public class GameScreen {
 	
 	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
 	private static Image floortest = new Image(image_path);
-	
-	private static String image_path2 = ClassLoader.getSystemResource("picture/stationtest.png").toString();
-	private static Image stationtest = new Image(image_path2);
-	
-	private static String image_path3 = ClassLoader.getSystemResource("picture/stationtest2.png").toString();
-	private static Image stationtest3 = new Image(image_path3);
 	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -71,7 +65,7 @@ public class GameScreen {
 		
 		//drawGameBoard(gamegc);
 		//drawGameBoard2(gamegc);
-		InitializeGameGraphic(gamegc);
+		InitializeGameGraphic();
 		
 		//RenderableHolder.show();
 		
@@ -105,6 +99,15 @@ public class GameScreen {
 		
 		addListener(scene, gamegc);
 		
+		AnimationTimer animationTimer = new AnimationTimer() {
+			public void handle(long arg0) {
+				RenderableHolder.getInstance().update();
+				InitializeGameGraphic();
+				
+			}
+		};animationTimer.start();
+		
+		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setScene(scene);
 		
@@ -112,81 +115,42 @@ public class GameScreen {
 	}
 	
 	private void addListener(Scene s, GraphicsContext gc) {
-		s.setOnKeyPressed((event) -> {
-			KeyCode keyCode = event.getCode();
-			System.out.println(keyCode);	
+		s.setOnKeyPressed((KeyEvent e) -> {
+			String code = e.getCode().toString();
+			System.out.println(code);
+			
+			switch (code) {
+			case "D":
+				GameController.movePlayer(Direction.RIGHT,GameController.getPlayers(0));
+				break;
+			case "A":
+				GameController.movePlayer(Direction.LEFT, GameController.getPlayers(0));
+				break;
+			case "S":
+				GameController.movePlayer(Direction.DOWN, GameController.getPlayers(0));
+				break;
+			case "W":
+				GameController.movePlayer(Direction.UP, GameController.getPlayers(0));
+				break;
+			}
 		});
 	}
 	
-	public void InitializeGameGraphic(GraphicsContext gc) {
+	public void InitializeGameGraphic() {
 		int width = GameController.getCurrentGameMap().getWidth();
 		int height = GameController.getCurrentGameMap().getHeight();
 		
 		for (int i=0; i < height; i++) {
 			for (int j=0; j < width; j++) {
-				gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+				gamegc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
 			}
 		}
 		
-		//for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
-			//entity.draw(gamegc);
-		//}
-		
-	}
-	
-	
-	
-	public void drawGameBoard(GraphicsContext gc) {
-		Cell[][] cellmap = GameController.getCurrentGameMap().getCellmap();
-		int width = GameController.getCurrentGameMap().getWidth();
-		int height = GameController.getCurrentGameMap().getHeight();
-		
-		System.out.println(width);
-		
-		for (int i=0; i < height; i++) {
-			for (int j=0; j < width; j++) {
-				System.out.println("i: "+i+" j: "+j);
-				if(cellmap[i][j].isBlockEmpty()) {
-					gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
-				} else {
-					//get the sprite of each cell and draw picture
-					switch (cellmap[i][j].getBlock().getSymbol()) {
-					case 'A': //station
-						if (cellmap[i][j].getBlock().isAnyBlockDownward()) {
-							gc.drawImage(stationtest3,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
-						} else {
-							gc.drawImage(stationtest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
-						}
-						
-						break;
-					}
-					
-				}
-			}
+		for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
+			entity.draw(gamegc);
 		}
 		
 	}
-	//for testing (don't delete)
-	public void drawGameBoard2(GraphicsContext gc) {
-		Cell[][] cellmap = GameController.getCurrentGameMap().getCellmap();
-		int width = GameController.getCurrentGameMap().getWidth();
-		int height = GameController.getCurrentGameMap().getHeight();
-		
-		System.out.println(width);
-		
-		for (int i=0; i < height; i++) {
-			for (int j=0; j < width; j++) {
-				System.out.println("i: "+i+" j: "+j);
-				if(cellmap[i][j].isBlockEmpty()) {
-					gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
-				} else {
-					//get the sprite of each cell and draw picture
-					cellmap[i][j].getBlock().setImage();
-					Image image = cellmap[i][j].getBlock().getImage();
-					gc.drawImage(image,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
-					}
-				}
-			}
-	}
+	
 	
 }
