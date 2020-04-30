@@ -27,10 +27,8 @@ public class Buttons extends VBox{
 		quitButton = new Button("Exit");		
 		quitButton.setPrefSize(300, 50);
 		quitButton.setFont(new Font(20));
-//		startButton.setFont(mainFont);
-//		exitButton.setFont(mainFont);
-//		playButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
-//		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
+		playButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
+		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
 		getChildren().addAll(playButton, quitButton);
 	}
 	public void setupExitButton() {
