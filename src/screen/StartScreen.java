@@ -18,27 +18,27 @@ import logic.Buttons;
 import logic.GameController;
 import screen.GameScreen;
 public class StartScreen{
-		private static String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
-		private static Image background = new Image(image_path);		
+		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
+		private Image background = new Image(image_path);		
 		private Stage primaryStage;
 		private Canvas canvas;
 		private GraphicsContext gc;
-
-		public Buttons menu;
+		public static StackPane root;
+		public static StackPane getRoot() {
+			return root;
+		}
+		private Buttons menu;
 		
 	public StartScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		canvas = new Canvas(900, 800);
 		gc = canvas.getGraphicsContext2D();
 		menu = new Buttons();
-		MousePressed();
 		setupButton();
-		draw(gc);
-		setBackground();
 
 	}
 	public void draw(GraphicsContext gc) {
-		StackPane root = new StackPane();
+		root = new StackPane();
 		root.setPrefSize(900, 800);
 		root.getChildren().addAll(canvas,menu);
 		
@@ -47,6 +47,7 @@ public class StartScreen{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
+		MousePressed();
 
 
 	}
@@ -56,6 +57,7 @@ public class StartScreen{
 		gc.setLineWidth(5);
 		gc.setFont(new Font(50));
 		gc.fillText("Umm!! Aroiii", 450, 230);
+		draw(gc);
 		}
 	public void setupButton() {
 
@@ -63,12 +65,14 @@ public class StartScreen{
 				
 		@Override
 		public void handle(ActionEvent event) {
-			GameScreen gameScreen = new GameScreen(primaryStage);
-			GameController.getCurrentGameMap().printMap();
-			
+//			GameScreen gameScreen = new GameScreen(primaryStage);
+//			GameController.getCurrentGameMap().printMap();
+			root.getChildren().removeAll(menu);
+			EndScreen endscreen = new EndScreen(primaryStage,gc);
 			}
 		});
 			menu.setupExitButton();
+		setBackground();
 	}
 	public void MousePressed() {
 		menu.setOnMouseMoved(e ->{

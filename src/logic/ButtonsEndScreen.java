@@ -6,34 +6,29 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
-public class Buttons extends VBox{
-	//private static final Font mainFont = Font.loadFont(ClassLoader.getSystemResourceAsStream("supermarket.ttf"), 24);
-	public Button playButton;
+public class ButtonsEndScreen extends HBox{
+	public Button restartButton;
 	public Button quitButton;
 	
-	public Buttons() {
+	public ButtonsEndScreen() {
 		setSpacing(100);
 		setPrefWidth(700);
 		setPrefHeight(150);
-		setAlignment(Pos.CENTER_RIGHT);
-
+		setAlignment(Pos.BOTTOM_CENTER);
+		setPadding(new Insets(100));
 		
-		playButton = new Button("Play");
-		playButton.setPrefSize(300,75);
-		playButton.setFont(new Font(20));
+		restartButton = new Button("Restart");
+		restartButton.setPrefSize(300,75);
+		restartButton.setFont(new Font(20));
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);
 		quitButton.setFont(new Font(20));
-		playButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
+		restartButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
 		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
-		getChildren().addAll(playButton, quitButton);
+		getChildren().addAll(restartButton, quitButton);
 	}
 	public void setupExitButton() {
 		quitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -46,5 +41,7 @@ public class Buttons extends VBox{
 	}
 
 }
+
+
 
 
