@@ -19,17 +19,17 @@ public class Buttons extends VBox{
 	public Button quitButton;
 	
 	public Buttons() {
-		setSpacing(40);
-		setPrefWidth(800);
-		setPrefHeight(100);
+		setSpacing(100);
+		setPrefWidth(700);
+		setPrefHeight(150);
 		setAlignment(Pos.CENTER_RIGHT);
-		setPadding(new Insets(30));
+
 		
 		playButton = new Button("Play");
-		playButton.setPrefSize(300,50);
+		playButton.setPrefSize(300,75);
 		playButton.setFont(new Font(20));
 		quitButton = new Button("Quit");		
-		quitButton.setPrefSize(300, 50);
+		quitButton.setPrefSize(300, 75);
 		quitButton.setFont(new Font(20));
 		playButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
 		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
