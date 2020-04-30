@@ -18,13 +18,16 @@ import logic.Buttons;
 import logic.GameController;
 import screen.GameScreen;
 public class StartScreen{
-		private static String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
-		private static Image background = new Image(image_path);		
+		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
+		private Image background = new Image(image_path);		
 		private Stage primaryStage;
 		private Canvas canvas;
 		private GraphicsContext gc;
-		private StackPane root;
-		public Buttons menu;
+		public static StackPane root;
+		public static StackPane getRoot() {
+			return root;
+		}
+		private Buttons menu;
 		
 	public StartScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -65,7 +68,7 @@ public class StartScreen{
 //			GameScreen gameScreen = new GameScreen(primaryStage);
 //			GameController.getCurrentGameMap().printMap();
 			root.getChildren().removeAll(menu);
-			EndScreen.draw(gc);
+			EndScreen endscreen = new EndScreen(primaryStage,gc);
 			}
 		});
 			menu.setupExitButton();
