@@ -187,6 +187,7 @@ public class GameMap {
 					//so this block (isanyblockdownward = true) )(used for rendering image)
 					cellmap[i][j].getBlock().setAnyBlockDownward(true);
 				}
+				
 			}
 		}
 	}

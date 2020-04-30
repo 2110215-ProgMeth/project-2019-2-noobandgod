@@ -1,7 +1,10 @@
 package entity.base;
 
+import javafx.scene.image.Image;
+
 public abstract class Block extends Entity{
-	private boolean isAnyBlockDownward = false;
+	protected boolean isAnyBlockDownward = false;
+	protected Image image;
 	
 	public abstract char getSymbol();
 
@@ -12,6 +15,13 @@ public abstract class Block extends Entity{
 	public void setAnyBlockDownward(boolean isAnyBlockDownward) {
 		this.isAnyBlockDownward = isAnyBlockDownward;
 	}
+
+	public Image getImage() {
+		return image;
+	}
+	
+	public abstract void setImage();
+
 	
 	
 	
