@@ -1,8 +1,6 @@
 package screen;
 
 
-import java.util.spi.LocaleServiceProvider;
-
 import application.CSVParser;
 import gui.SimulationManager;
 import javafx.geometry.Insets;
@@ -19,13 +17,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.Cell;
 import logic.GameController;
+import sharedObject.IRenderable;
+import sharedObject.RenderableHolder;
 
 public class GameScreen {
 	private Stage primaryStage;
+	private Canvas gameCanvas;
+	private GraphicsContext gamegc;
 	
-	private int draw_origin_x;
-	private int draw_origin_y; 
-	private int pixel;
+	public static int draw_origin_x;
+	public static int draw_origin_y; 
+	public static int pixel;
 	
 	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
 	private static Image floortest = new Image(image_path);
@@ -62,14 +64,18 @@ public class GameScreen {
 		ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
 		
 		
-		Canvas gameCanvas = new Canvas(768,512);
-		GraphicsContext gamegc = gameCanvas.getGraphicsContext2D();
+		this.gameCanvas = new Canvas(768,512);
+		this.gamegc = gameCanvas.getGraphicsContext2D();
 		gamegc.setFill(Color.GRAY);
 		gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//drawGameBoard(gamegc);
 		//drawGameBoard2(gamegc);
-		drawGameBackground(gamegc);
+		InitializeGameGraphic(gamegc);
+		
+		//RenderableHolder.show();
+		
+		
 	
 		StackPane pane = new StackPane();
 		Canvas testCanvas2 = new Canvas(768,100);
@@ -102,6 +108,7 @@ public class GameScreen {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setScene(scene);
 		
+		
 	}
 	
 	private void addListener(Scene s, GraphicsContext gc) {
@@ -111,10 +118,7 @@ public class GameScreen {
 		});
 	}
 	
-	
-	
-	
-	public void drawGameBackground(GraphicsContext gc) {
+	public void InitializeGameGraphic(GraphicsContext gc) {
 		int width = GameController.getCurrentGameMap().getWidth();
 		int height = GameController.getCurrentGameMap().getHeight();
 		
@@ -123,6 +127,11 @@ public class GameScreen {
 				gc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
 			}
 		}
+		
+		//for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
+			//entity.draw(gamegc);
+		//}
+		
 	}
 	
 	
@@ -151,9 +160,6 @@ public class GameScreen {
 						
 						break;
 					}
-					
-	
-					System.out.println("This cell is not SPACE/STATION");
 					
 				}
 			}

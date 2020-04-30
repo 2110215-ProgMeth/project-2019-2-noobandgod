@@ -6,13 +6,18 @@ import entity.base.Holdable;
 import entity.base.Placeable;
 import exception.HoldFailedException;
 import exception.PlaceFailedException;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Sprites;
+import screen.GameScreen;
 
 public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
 	
-	public Station(int stationtype) {
+	private static String image_path1 = ClassLoader.getSystemResource("picture/stationtest.png").toString();
+	//private static Image image1 = new Image(image_path1);
+	
+	public Station() {
 		setOnStationExists(null);
 	}
 	
@@ -89,14 +94,8 @@ public class Station extends Block implements Holdable,Placeable{
 			}throw new PlaceFailedException("There is nothing to be placed");
 		}
 	
-	@Override
-	public void setImage() {
-		if(isAnyBlockDownward()) {
-			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());		
-		} else {
-			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest.png").toString());
-		}
-	}
+	
+	
 	
 	public Entity getOnStationExists() {
 		return OnStationExists;
@@ -106,6 +105,30 @@ public class Station extends Block implements Holdable,Placeable{
 	}
 	public char getSymbol() {
 		return Sprites.Station;
+	}
+	
+	public String toString() {
+		String result = "STATION";
+		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nisAnyBlockDownward: "+isAnyBlockDownward;
+		return result;
+	}
+
+	@Override
+	public int getZ() {
+		return 100;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getY()*pixel;
+		int y = GameScreen.draw_origin_y+this.getX()*pixel;
+		
+		System.out.println("printing image at: ("+this.getY()+","+this.getX()+")");
+		gc.drawImage(this.image, x, y);
+		
+		
 	}
 
 	

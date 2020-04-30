@@ -15,6 +15,7 @@ import entity.Station;
 import entity.TomatoStorage;
 import entity.base.Block;
 import entity.base.Entity;
+import sharedObject.RenderableHolder;
 
 
 public class GameMap {
@@ -33,13 +34,13 @@ public class GameMap {
 			for(int j=0; j<column; j++) {
 				
 				cellmap[i][j] = new Cell(); 
-				String coordinate = " @("+i+","+j+")";
+				String coordinate = " @("+j+","+i+")";
 				
 				//setting blocks from excel 
 				switch (map[i][j]) {
 				case "A":
 					System.out.println("Station"+coordinate);
-					setBlock(new Station(0), j, i);
+					setBlock(new Station(), j, i);
 					break;
 					
 				case "B":
@@ -80,7 +81,6 @@ public class GameMap {
 					break;
 				case "O":
 					System.out.println("SPACE"+coordinate);
-					
 					break;
 				
 				default:
@@ -92,6 +92,8 @@ public class GameMap {
 		}
 		
 		updateIsAnyBlockDownward();
+		addAllBlocktoRenderableHolder();
+		
 	}
 	
 	public void printMap() {
@@ -115,7 +117,7 @@ public class GameMap {
 		for(Cell[] row: cellmap) {
 			int colunumber = 0;
 			for(Cell c:row) {
-				System.out.println("("+rownumber+","+colunumber+")");
+				System.out.println("("+colunumber+","+rownumber+")");
 				System.out.println(c.toString());
 				colunumber++;
 			}
@@ -186,8 +188,21 @@ public class GameMap {
 					//if tihs block is not empty and below block is also not empty
 					//so this block (isanyblockdownward = true) )(used for rendering image)
 					cellmap[i][j].getBlock().setAnyBlockDownward(true);
+					//cellmap[i][j].getBlock().setImage();
+					
+				} else if (!cellmap[i][j].isBlockEmpty()) {
+					cellmap[i][j].getBlock().setAnyBlockDownward(false);
 				}
-				
+			}
+		}
+	}
+	
+	public void addAllBlocktoRenderableHolder() {
+		for(Cell[] row: cellmap) {
+			for(Cell c:row) {
+				if (!c.isBlockEmpty()) {
+					RenderableHolder.getInstance().add(c.getBlock());
+				}
 			}
 		}
 	}
