@@ -71,6 +71,11 @@ public class Player extends Entity implements Updatable{
 		
 		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
 			setX(targetx); setY(targety);
+			
+			if(isHolding) {
+				getEntityHeld().setX(targetx); getEntityHeld().setY(targety);
+			}
+			
 			System.out.println("Player "+getPlayerNumber()+" has moved to ("+getX()+","+getY()+")!");
 			return true;
 		} else {
@@ -78,13 +83,34 @@ public class Player extends Entity implements Updatable{
 		}
 	}
 	
-//	public getWhereInteract() {
+	public Integer[] getWhereInteract() {
+		Direction dir = getFaceDirection();
 		
-//	}
+		int targetx = this.getX();
+		int targety = this.getY();
+		
+		switch(dir) {
+		case LEFT:
+			targetx -= 1;
+			break;
+		case UP:
+			targety -= 1;
+			break;
+		case RIGHT:
+			targetx += 1;
+			break;
+		case DOWN:
+			targety += 1;
+			break;
+		default:
+			break;
+		}
+		return new Integer[] {targetx,targety};
+	}
 	
 	@Override
 	public int getZ() {
-		return getY()+1;
+		return getY()*3+1;
 	}
 
 	@Override
@@ -93,7 +119,7 @@ public class Player extends Entity implements Updatable{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-20)+this.getY()*pixel;
 		
-		System.out.println("Drawing Player at ("+getX()+","+getY()+")");
+		//System.out.println("Drawing Player at ("+getX()+","+getY()+")");
 		
 		if(!isStill) {
 			switch (faceDirection) {
@@ -136,7 +162,7 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public boolean isVisible() {
-		return visible;
+		return true;
 	}
 
 	@Override
@@ -152,23 +178,17 @@ public class Player extends Entity implements Updatable{
 			setLastwalkDirection(Direction.UP);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
 			this.move(Direction.DOWN);
 			setLastwalkDirection(Direction.DOWN);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
 			this.move(Direction.LEFT);
 			setLastwalkDirection(Direction.LEFT);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
 			this.move(Direction.RIGHT);
 			setLastwalkDirection(Direction.RIGHT);
 			setTimeStandStill(0);
@@ -178,9 +198,23 @@ public class Player extends Entity implements Updatable{
 		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S)) 
 				&& !InputUtility.getKeypressed().contains((KeyCode.A)) &&  !InputUtility.getKeypressed().contains((KeyCode.D))) {
 			addTimeStandStill();
-			}
-			
 		}
+		
+		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+			Integer[] targetcoordinate = getWhereInteract();
+			int targetx = targetcoordinate[0];
+			int targety = targetcoordinate[1];
+			
+			if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety)) {
+				System.out.println("Interact completed!");
+			} else {
+				System.out.println("Interact failed!");
+			}
+		}
+		
+		
+	}
+		
 		
 	
 	public void setHolding(boolean isHolding) {

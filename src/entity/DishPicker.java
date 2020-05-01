@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class DishPicker extends Block implements Interactable{
 	private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
@@ -16,11 +17,19 @@ public class DishPicker extends Block implements Interactable{
 		//dont forget to throw an exception
 		if (!e.isHolding()) {
 			Dish dish = new Dish();
+			
+			dish.setX(e.getX()); dish.setY(e.getY());
+			
+			RenderableHolder.getInstance().add(dish);
+			
 			e.setEntityHeld(dish);
 			e.setHolding(true);
 			return true;
-		}throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+		} else {
+			throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+		}
 	}
+	
 	public char getSymbol() {
 		return Sprites.DishPicker;
 	}
