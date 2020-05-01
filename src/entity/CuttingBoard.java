@@ -7,7 +7,7 @@ import exception.InteractFailedException;
 
 import logic.Sprites;
 
-public class CuttingBoard extends Equipment{
+public class CuttingBoard extends Equipment implements Interactable{
 	private Ingredient OnCuttingBoardExists = null;
 	public boolean interacts(Player e) {
 		if (!e.isHolding()) {

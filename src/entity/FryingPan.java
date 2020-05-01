@@ -1,12 +1,11 @@
 package entity;
 
 import entity.base.Entity;
+import entity.base.Interactable;
 import exception.CookFailedException;
-import exception.HoldFailedException;
-import exception.PlaceFailedException;
 import logic.Sprites;
 
-public class FryingPan extends Equipment{
+public class FryingPan extends Equipment implements Interactable{
 	private Ingredient OnFryingPanExists = null;
 	public boolean interacts(Player e) {
 		if (!e.isHolding()) {

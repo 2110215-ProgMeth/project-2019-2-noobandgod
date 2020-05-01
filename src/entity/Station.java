@@ -2,17 +2,14 @@ package entity;
 
 import entity.base.Block;
 import entity.base.Entity;
-import entity.base.Holdable;
-import entity.base.Placeable;
-import exception.HoldFailedException;
-import exception.PlaceFailedException;
+import entity.base.Interactable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
 
-public class Station extends Block implements Holdable,Placeable{
+public class Station extends Block implements Interactable{
 	private Entity OnStationExists = null;
 	protected boolean visible;
 	
@@ -24,7 +21,36 @@ public class Station extends Block implements Holdable,Placeable{
 		visible = true;
 	}
 	public boolean interacts(Player e) {
-		
+		if (!e.isHolding()) {
+			if (!getOnStationExists().equals(null)) {
+				setOnStationExists(null);
+				e.setEntityHeld(getOnStationExists());
+				e.setHolding(true);
+				return true;
+			}		
+		}else {
+			if (e.getEntityHeld() instanceof Dish) {
+				Dish dish = (Dish) e.getEntityHeld();
+				if (!getOnStationExists().equals(null)) {
+					dish.adds(getOnStationExists());
+					setOnStationExists(null);
+					return true;
+			    }else if (getOnStationExists().equals(null)) {
+			    	setOnStationExists(e.getEntityHeld());
+			    	e.setHolding(false);
+			    	e.setEntityHeld(null);
+			}else {
+				if (getOnStationExists().equals(null)) {
+					setOnStationExists(e.getEntityHeld());
+					e.setEntityHeld(null);
+					e.setHolding(false);
+					return true;
+				}else if (getOnStationExists() instanceof Dish) {
+					
+				}
+			}
+		}return false;	
+	}
 	}
 
 	public Entity getOnStationExists() {
@@ -46,7 +72,7 @@ public class Station extends Block implements Holdable,Placeable{
 
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return getY();
 	}
 
 	@Override
@@ -55,7 +81,7 @@ public class Station extends Block implements Holdable,Placeable{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 		
-		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
+		System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
 		if(!isAnyBlockDownward) {
 			gc.drawImage(station1, x, y);
