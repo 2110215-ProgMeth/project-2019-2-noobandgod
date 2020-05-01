@@ -2,6 +2,7 @@ package screen;
 
 import application.CSVParser;
 import gui.SimulationManager;
+import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -102,7 +103,7 @@ public class GameScreen {
 				
 				RenderableHolder.getInstance().update();
 				paintGameScreenComponent();
-				
+				InputUtility.removeKeyPressed();
 				
 			}
 		};animationTimer.start();
@@ -116,27 +117,11 @@ public class GameScreen {
 	
 	private void addListener(Scene s, GraphicsContext gc) {
 		s.setOnKeyPressed((KeyEvent e) -> {
-			String code = e.getCode().toString();
-			System.out.println(code);
-			
-			switch (code) {
-			case "D":
-				GameController.movePlayer(Direction.RIGHT,GameController.getPlayers(0));
-				break;
-			case "A":
-				GameController.movePlayer(Direction.LEFT, GameController.getPlayers(0));
-				break;
-			case "S":
-				GameController.movePlayer(Direction.DOWN, GameController.getPlayers(0));
-				break;
-			case "W":
-				GameController.movePlayer(Direction.UP, GameController.getPlayers(0));
-				break;
-			}
+			InputUtility.setKeyPressed(e.getCode(), true);
 		});
 		
 		s.setOnKeyReleased((KeyEvent e) -> {
-			//GameController.getPlayers(0).setFaceDirection(Direction.NONE);
+			InputUtility.setKeyPressed(e.getCode(), false);
 		});
 	}
 	

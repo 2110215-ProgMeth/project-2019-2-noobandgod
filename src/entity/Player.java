@@ -2,8 +2,10 @@ package entity;
 
 import entity.base.Entity;
 import entity.base.Updatable;
+import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import logic.Direction;
 import logic.GameController;
 import screen.GameScreen;
@@ -109,9 +111,21 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public void update() {
-		//setFaceDirection(Direction.NONE);
+		if (InputUtility.getKeypressed().contains(KeyCode.W) && this.getPlayerNumber() == 0) {
+			this.move(Direction.UP);
+		}
 		
+		if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
+			this.move(Direction.DOWN);
+		}
 		
+		if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
+			this.move(Direction.LEFT);
+		}
+		
+		if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
+			this.move(Direction.RIGHT);
+		}
 	}
 	
 	public void setHolding(boolean isHolding) {
