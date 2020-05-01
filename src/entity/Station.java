@@ -2,8 +2,6 @@ package entity;
 
 import entity.base.Block;
 import entity.base.Entity;
-import entity.base.Holdable;
-import entity.base.Placeable;
 import exception.HoldFailedException;
 import exception.PlaceFailedException;
 import javafx.scene.canvas.GraphicsContext;
@@ -12,7 +10,7 @@ import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
 
-public class Station extends Block implements Holdable,Placeable{
+public class Station extends Block {
 	private Entity OnStationExists = null;
 	protected boolean visible;
 	
