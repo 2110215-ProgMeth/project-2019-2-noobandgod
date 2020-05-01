@@ -16,7 +16,7 @@ public class DishPicker extends Block implements Interactable{
 		//dont forget to throw an exception
 		if (!e.isHolding()) {
 			Dish dish = new Dish();
-			e.setDishHeld(dish);
+			e.setEntityHeld(dish);
 			e.setHolding(true);
 			return true;
 		}throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
