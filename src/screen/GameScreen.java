@@ -60,17 +60,12 @@ public class GameScreen {
 		
 		this.gameCanvas = new Canvas(768,512);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
-		gamegc.setFill(Color.GRAY);
-		gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
-		
-		//drawGameBoard(gamegc);
-		//drawGameBoard2(gamegc);
-		InitializeGameGraphic();
+		//initialize grey background
+		//gamegc.setFill(Color.GRAY);
+		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//RenderableHolder.show();
 		
-		
-	
 		StackPane pane = new StackPane();
 		Canvas testCanvas2 = new Canvas(768,100);
 		GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
@@ -101,8 +96,13 @@ public class GameScreen {
 		
 		AnimationTimer animationTimer = new AnimationTimer() {
 			public void handle(long arg0) {
+				//fulfill background
+				gamegc.setFill(Color.GRAY);
+				gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
+				
 				RenderableHolder.getInstance().update();
-				InitializeGameGraphic();
+				paintGameScreenComponent();
+				
 				
 			}
 		};animationTimer.start();
@@ -134,12 +134,17 @@ public class GameScreen {
 				break;
 			}
 		});
+		
+		s.setOnKeyReleased((KeyEvent e) -> {
+			//GameController.getPlayers(0).setFaceDirection(Direction.NONE);
+		});
 	}
 	
-	public void InitializeGameGraphic() {
+	public void paintGameScreenComponent() {
 		int width = GameController.getCurrentGameMap().getWidth();
 		int height = GameController.getCurrentGameMap().getHeight();
 		
+		//floor
 		for (int i=0; i < height; i++) {
 			for (int j=0; j < width; j++) {
 				gamegc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);

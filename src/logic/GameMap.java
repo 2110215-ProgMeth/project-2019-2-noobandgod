@@ -172,7 +172,7 @@ public class GameMap {
 	public boolean isMovePossible(int targetx, int targety) {
 		System.out.println("target x: "+targetx+" ,target y: "+targety);
 		
-		if (targetx < 0 || targetx > width || targety < 0 || targety > height) {
+		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
 			//out of bound -> return false
 			return false;
 		} 

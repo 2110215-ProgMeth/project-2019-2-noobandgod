@@ -1,6 +1,7 @@
 package entity;
 
 import entity.base.Entity;
+import entity.base.Updatable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Direction;
@@ -8,7 +9,7 @@ import logic.GameController;
 import screen.GameScreen;
 
 
-public class Player extends Entity{
+public class Player extends Entity implements Updatable{
 	private boolean isHolding;
 	private Ingredient ingredientHeld;
 	private Dish dishHeld;
@@ -16,7 +17,11 @@ public class Player extends Entity{
 	private int PlayerNumber;
 	protected boolean visible;
 	
-	private static Image testplayer1 = new Image(ClassLoader.getSystemResource("picture/testplayer1.png").toString());
+	private static Image player_faceleft = new Image(ClassLoader.getSystemResource("picture/testplayer2.png").toString());
+	private static Image player_faceright = new Image(ClassLoader.getSystemResource("picture/testplayer3.png").toString());
+	private static Image player_faceup = new Image(ClassLoader.getSystemResource("picture/testplayer4.png").toString());
+	private static Image player_facedown = new Image(ClassLoader.getSystemResource("picture/testplayer5.png").toString());
+	private static Image player_still_down = new Image(ClassLoader.getSystemResource("picture/player_still_down.png").toString());
 	
 	public Player(int playerNumber,int x,int y) {
 		setX(x);
@@ -61,7 +66,53 @@ public class Player extends Entity{
 		}
 	}
 	
+//	public getWhereInteract() {
+		
+//	}
 	
+	@Override
+	public int getZ() {
+		return 103;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = (GameScreen.draw_origin_y-16)+this.getY()*pixel;
+		
+		switch (faceDirection) {
+		case LEFT: 
+			gc.drawImage(player_faceleft, x, y);
+			break;
+		case RIGHT:
+			gc.drawImage(player_faceright, x, y);
+			break;
+		case UP:
+			gc.drawImage(player_faceup, x, y);
+			break;
+		case DOWN:
+			gc.drawImage(player_facedown, x, y);
+			break;
+		default:
+			gc.drawImage(player_still_down, x, y);
+			break;
+		}
+		
+		
+	}
+
+	@Override
+	public boolean isVisible() {
+		return visible;
+	}
+
+	@Override
+	public void update() {
+		//setFaceDirection(Direction.NONE);
+		
+		
+	}
 	
 	public void setHolding(boolean isHolding) {
 		this.isHolding = isHolding;
@@ -98,32 +149,8 @@ public class Player extends Entity{
 	public Direction getFaceDirection() {
 		return faceDirection;
 	}
-//	public getWhereInteract() {
-		
-//	}
 	
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
-
-	@Override
-	public int getZ() {
-		return 103;
-	}
-
-	@Override
-	public void draw(GraphicsContext gc) {
-		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y)+this.getY()*pixel;
-		
-		gc.drawImage(testplayer1, x, y);
-		
-	}
-
-	@Override
-	public boolean isVisible() {
-		return visible;
-	}
-	
 }

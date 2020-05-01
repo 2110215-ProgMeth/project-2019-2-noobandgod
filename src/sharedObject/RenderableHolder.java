@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import entity.base.Updatable;
+
 public class RenderableHolder {
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
@@ -31,6 +33,10 @@ public class RenderableHolder {
 		for (int i = entities.size() - 1; i >= 0; i--) {
 			if (!entities.get(i).isVisible())
 				entities.remove(i);
+				//continue;
+			if (entities.get(i) instanceof Updatable) {
+				((Updatable) entities.get(i)).update();
+			}
 		}
 	}
 	
