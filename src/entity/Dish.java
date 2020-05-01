@@ -21,13 +21,16 @@ public class Dish extends Entity {//implements Holdable{
 //	}
 	public boolean gathers(Player e) { // when the station has a dish and people carry an ingredient
 		if (e.isHolding()) {
-			if ((!e.getIngredientHeld().equals(null)) && e.getIngredientHeld().getState() >= 1) {
-				if (!this.onDishExists.contains(e.getIngredientHeld())){
-					this.onDishExists.add(e.getIngredientHeld());
-					e.setIngredientHeld(null);
-					e.setHolding(false);
-					return true;
-				}//throw an exception a lot in this method
+			if (e.getEntityHeld() instanceof Ingredient ) {
+				Ingredient ingredient = (Ingredient) e.getEntityHeld();
+				if (ingredient.getState() >= 1) {
+					if (!this.onDishExists.contains(ingredient)){
+						this.onDishExists.add(ingredient);
+						e.setEntityHeld(null);
+						e.setHolding(false);
+						return true;
+					}//throw an exception a lot in this method
+				}
 			}
 		}return false;
 	}
@@ -45,8 +48,5 @@ public class Dish extends Entity {//implements Holdable{
 	}
 	public ArrayList<Ingredient> getOnDishExists() {
 		return this.onDishExists;
-	}
-	public char getSymbol() {
-		return Sprites.Dish;
 	}
 }

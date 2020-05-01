@@ -7,7 +7,7 @@ public class CabbageStorage extends IngredientStorage {
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			Cabbage cabbage = new Cabbage();
-			e.setIngredientHeld(cabbage);
+			e.setEntityHeld(cabbage);
 			e.setHolding(true);
 			return true;
 		}else{

@@ -13,8 +13,7 @@ public class Bin extends Block implements Consumable,Interactable{
 	}
 	public boolean consumes(Player e) throws ConsumeFailedException{
 		if (interacts(e)) {
-			e.setIngredientHeld(null);
-			e.setDishHeld(null);
+			e.setEntityHeld(null);
 			e.setHolding(false);
 			return true;
 		}else{

@@ -12,7 +12,6 @@ import javafx.scene.text.Font;
 public class ButtonsEndScreen extends HBox{
 	public Button restartButton;
 	public Button quitButton;
-	
 	public ButtonsEndScreen() {
 		setSpacing(100);
 		setPrefWidth(700);
@@ -22,12 +21,12 @@ public class ButtonsEndScreen extends HBox{
 		
 		restartButton = new Button("Restart");
 		restartButton.setPrefSize(300,75);
-		restartButton.setFont(new Font(20));
+		restartButton.setFont(new Font(30));
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);
-		quitButton.setFont(new Font(20));
-		restartButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
-		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: #ffffff;");
+		quitButton.setFont(new Font(30));
+		restartButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: black;");
+		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: black;");
 		getChildren().addAll(restartButton, quitButton);
 	}
 	public void setupExitButton() {

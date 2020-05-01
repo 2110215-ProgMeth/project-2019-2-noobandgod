@@ -13,9 +13,7 @@ import screen.GameScreen;
 
 public class Player extends Entity implements Updatable{
 	private boolean isHolding;
-	private Ingredient ingredientHeld;
-	private Dish dishHeld;
-	
+	private Entity entityHeld;
 	private int PlayerNumber;
 	protected boolean visible;
 	
@@ -39,10 +37,8 @@ public class Player extends Entity implements Updatable{
 	public Player(int playerNumber,int x,int y) {
 		setX(x);
 		setY(y);
-		visible = true;
 		setHolding(false);
-		setIngredientHeld(null);
-		setDishHeld(null);
+		setEntityHeld(null);
 		setFaceDirection(Direction.NONE);
 		setLastwalkDirection(Direction.NONE);
 		setPlayerNumber(playerNumber);
@@ -202,21 +198,12 @@ public class Player extends Entity implements Updatable{
 	public boolean isHolding() {
 		return isHolding;
 	}
-	
-	public Ingredient getIngredientHeld() {
-		return ingredientHeld;
+	public Entity getEntityHeld() {
+		return entityHeld;
 	}
 
-	public void setIngredientHeld(Ingredient ingredientHeld) {
-		this.ingredientHeld = ingredientHeld;
-	}
-
-	public Dish getDishHeld() {
-		return dishHeld;
-	}
-
-	public void setDishHeld(Dish dishHeld) {
-		this.dishHeld = dishHeld;
+	public void setEntityHeld(Entity entityHeld) {
+		this.entityHeld = entityHeld;
 	}
 
 	public Direction getFaceDirection() {
