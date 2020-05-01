@@ -29,8 +29,12 @@ public class Player extends Entity implements Updatable{
 	private static Image player_faceright = new Image(ClassLoader.getSystemResource("picture/testplayer3.png").toString());
 	private static Image player_faceup = new Image(ClassLoader.getSystemResource("picture/testplayer4.png").toString());
 	private static Image player_facedown = new Image(ClassLoader.getSystemResource("picture/testplayer5.png").toString());
-	private static Image player_still_down = new Image(ClassLoader.getSystemResource("picture/player_still_down.png").toString());
+	
 	private static Image player_still_left = new Image(ClassLoader.getSystemResource("picture/player_still_left.png").toString());
+	private static Image player_still_right = new Image(ClassLoader.getSystemResource("picture/player_still_right.png").toString());
+	private static Image player_still_up = new Image(ClassLoader.getSystemResource("picture/player_still_up.png").toString());
+	private static Image player_still_down = new Image(ClassLoader.getSystemResource("picture/player_still_down.png").toString());
+	
 	
 	public Player(int playerNumber,int x,int y) {
 		setX(x);
@@ -84,14 +88,16 @@ public class Player extends Entity implements Updatable{
 	
 	@Override
 	public int getZ() {
-		return 103;
+		return getY()+1;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-16)+this.getY()*pixel;
+		int y = (GameScreen.draw_origin_y-20)+this.getY()*pixel;
+		
+		System.out.println("Drawing Player at ("+getX()+","+getY()+")");
 		
 		if(!isStill) {
 			switch (faceDirection) {
@@ -116,16 +122,21 @@ public class Player extends Entity implements Updatable{
 			case LEFT:
 				gc.drawImage(player_still_left, x, y);
 				break;
+			case RIGHT:
+				gc.drawImage(player_still_right, x, y);
+				break;
+			case UP:
+				gc.drawImage(player_still_up, x, y);
+				break;
 			case DOWN:
 				gc.drawImage(player_still_down, x, y);
 				break;
 			default:
-				gc.drawImage(player_still_left, x, y);
+				gc.drawImage(player_still_down, x, y);
 			}
 			}	
 		}
 		
-	
 
 	@Override
 	public boolean isVisible() {
@@ -134,7 +145,7 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public void update() {
-		if(getTimeStandStill() > 16) {
+		if(getTimeStandStill() > 13) {
 			setStill(true);
 		} else {
 			setStill(false);
