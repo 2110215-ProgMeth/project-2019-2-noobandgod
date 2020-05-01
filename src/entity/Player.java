@@ -1,7 +1,5 @@
 package entity;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-
 import entity.base.Entity;
 import entity.base.Updatable;
 import input.InputUtility;
@@ -73,7 +71,10 @@ public class Player extends Entity implements Updatable{
 		
 		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
 			setX(targetx); setY(targety);
-			getEntityHeld().setX(targetx); getEntityHeld().setY(targety);
+			
+			if(isHolding) {
+				getEntityHeld().setX(targetx); getEntityHeld().setY(targety);
+			}
 			
 			System.out.println("Player "+getPlayerNumber()+" has moved to ("+getX()+","+getY()+")!");
 			return true;
@@ -82,9 +83,30 @@ public class Player extends Entity implements Updatable{
 		}
 	}
 	
-//	public getWhereInteract() {
+	public Integer[] getWhereInteract() {
+		Direction dir = getFaceDirection();
 		
-//	}
+		int targetx = this.getX();
+		int targety = this.getY();
+		
+		switch(dir) {
+		case LEFT:
+			targetx -= 1;
+			break;
+		case UP:
+			targety -= 1;
+			break;
+		case RIGHT:
+			targetx += 1;
+			break;
+		case DOWN:
+			targety += 1;
+			break;
+		default:
+			break;
+		}
+		return new Integer[] {targetx,targety};
+	}
 	
 	@Override
 	public int getZ() {
@@ -97,7 +119,7 @@ public class Player extends Entity implements Updatable{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-20)+this.getY()*pixel;
 		
-		System.out.println("Drawing Player at ("+getX()+","+getY()+")");
+		//System.out.println("Drawing Player at ("+getX()+","+getY()+")");
 		
 		if(!isStill) {
 			switch (faceDirection) {
@@ -176,16 +198,22 @@ public class Player extends Entity implements Updatable{
 		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S)) 
 				&& !InputUtility.getKeypressed().contains((KeyCode.A)) &&  !InputUtility.getKeypressed().contains((KeyCode.D))) {
 			addTimeStandStill();
-			}
+		}
 		
 		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+			Integer[] targetcoordinate = getWhereInteract();
+			int targetx = targetcoordinate[0];
+			int targety = targetcoordinate[1];
 			
-			
-			
+			if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety)) {
+				System.out.println("Interact completed!");
+			} else {
+				System.out.println("Interact failed!");
+			}
 		}
 		
-		}
-	
+		
+	}
 		
 		
 	

@@ -11,11 +11,14 @@ import entity.FoodCounter;
 import entity.FryingPan;
 import entity.Ingredient;
 import entity.Obstacle;
+import entity.Player;
 import entity.Station;
 import entity.TomatoStorage;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
+import exception.SendFoodFailedException;
 import sharedObject.RenderableHolder;
 
 
@@ -194,6 +197,7 @@ public class GameMap {
 		
 		if (cellmap[targety][targetx].isBlockEmpty()) {
 			//if no block -> no interact
+			System.out.println("There is no block you wished to interact");
 			return false;
 		}
 		
@@ -204,6 +208,24 @@ public class GameMap {
 		}
 	}
 	
+	public boolean interactWithBlockTarget(Player p,int targetx, int targety) {
+		if(isInteractPossible(targetx, targety)) {
+			Block target = cellmap[targety][targetx].getBlock();
+			Interactable t = (Interactable) target;
+			try {
+				if(t.interacts(p)) {
+					return true;
+				} else
+					return false;
+			} catch (InteractFailedException | SendFoodFailedException e) {
+				e.printStackTrace();
+				return false;
+			} 
+		}
+		else {
+			return false;
+			}
+		}
 	
 	public void updateIsAnyBlockDownward() {
 		for (int i = 0; i < height-1 ; i++) {

@@ -128,7 +128,7 @@ public class Station extends Block implements Holdable,Placeable{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 		
-		System.out.println("Drawing Station at ("+getX()+","+getY()+")");
+		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
 		if(!isAnyBlockDownward) {
 			gc.drawImage(station1, x, y);
