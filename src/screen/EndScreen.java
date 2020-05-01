@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import logic.Buttons;
 import logic.ButtonsEndScreen;
 import logic.GameController;
 
