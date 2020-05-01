@@ -1,6 +1,8 @@
 package entity.base;
 
-public abstract class Entity {
+import sharedObject.IRenderable;
+
+public abstract class Entity implements IRenderable {
 	private int x;
 	private int y;
 

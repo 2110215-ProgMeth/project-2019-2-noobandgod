@@ -6,14 +6,21 @@ import entity.base.Holdable;
 import entity.base.Placeable;
 import exception.HoldFailedException;
 import exception.PlaceFailedException;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Sprites;
+import screen.GameScreen;
 
 public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
+	protected boolean visible;
 	
-	public Station(int stationtype) {
+	private static Image stationtest1 = new Image(ClassLoader.getSystemResource("picture/station.png").toString());
+	private static Image stationtest2 = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());
+	
+	public Station() {
 		setOnStationExists(null);
+		visible = true;
 	}
 	
 	public boolean holds(Player e) throws HoldFailedException{
@@ -89,14 +96,8 @@ public class Station extends Block implements Holdable,Placeable{
 			}throw new PlaceFailedException("There is nothing to be placed");
 		}
 	
-	@Override
-	public void setImage() {
-		if(isAnyBlockDownward()) {
-			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());		
-		} else {
-			this.image = new Image(ClassLoader.getSystemResource("picture/stationtest.png").toString());
-		}
-	}
+	
+	
 	
 	public Entity getOnStationExists() {
 		return OnStationExists;
@@ -106,6 +107,36 @@ public class Station extends Block implements Holdable,Placeable{
 	}
 	public char getSymbol() {
 		return Sprites.Station;
+	}
+	
+	public String toString() {
+		String result = "STATION";
+		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nisAnyBlockDownward: "+isAnyBlockDownward;
+		return result;
+	}
+
+	@Override
+	public int getZ() {
+		return 100;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		
+		if(isAnyBlockDownward) {
+			gc.drawImage(stationtest2, x, y);
+		} else {
+			gc.drawImage(stationtest1, x, y);
+		}
+	}
+
+	@Override
+	public boolean isVisible() {
+		return visible;
 	}
 
 	
