@@ -40,7 +40,7 @@ public class EndScreen{
 	
 	public void draw(GraphicsContext gc) {	
 			
-			GameController.setScoreCount(99);
+			GameController.setScoreCount(299);
 			gc.setFill(Color.RED);
 			gc.setStroke(Color.BLUE);
 			gc.setLineWidth(2);
