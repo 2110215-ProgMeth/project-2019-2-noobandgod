@@ -14,7 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import logic.Buttons;
+import logic.ButtonStartScreen;
 import logic.GameController;
 import screen.GameScreen;
 public class StartScreen{
@@ -27,13 +27,13 @@ public class StartScreen{
 		public static StackPane getRoot() {
 			return root;
 		}
-		private Buttons menu;
+		private ButtonStartScreen menu;
 		
 	public StartScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		canvas = new Canvas(900, 800);
 		gc = canvas.getGraphicsContext2D();
-		menu = new Buttons();
+		menu = new ButtonStartScreen();
 		setupButton();
 
 	}
@@ -53,14 +53,17 @@ public class StartScreen{
 	}
 	public void setBackground() {
 		gc.drawImage(background, 0, 0,900,800);
-		gc.setFill(Color.BLUE);
+		gc.setFill(Color.BLACK);
 		gc.setLineWidth(5);
 		gc.setFont(new Font(50));
-		gc.fillText("Umm!! Aroiii", 450, 230);
+//		gc.strokeRect(600, 275, 300, 75);
+//		gc.strokeRect(600, 450, 300, 75);
+		//gc.rotate(340);
+		gc.fillText("Umm!! Aroiii",530,225);
 		draw(gc);
 		}
 	public void setupButton() {
-
+		
 		menu.playButton.setOnAction(new EventHandler<ActionEvent>() {
 				
 		@Override

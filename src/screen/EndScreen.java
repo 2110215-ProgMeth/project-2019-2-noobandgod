@@ -13,23 +13,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import logic.Buttons;
 import logic.ButtonsEndScreen;
 import logic.GameController;
 
 public class EndScreen{
 	private Stage primaryStage;
-	private static String image_path = ClassLoader.getSystemResource("picture/bad.jpg").toString();
-	private static Image gameOver = new Image(image_path);
+	private static Image gameOver = new Image(ClassLoader.getSystemResource("picture/bad.jpg").toString());
 	
-	private static String image_path2 = ClassLoader.getSystemResource("picture/good.jpg").toString();
-	private static Image good = new Image(image_path2);
+	private static Image good = new Image(ClassLoader.getSystemResource("picture/good.jpg").toString());
 	
-	private static String image_path3= ClassLoader.getSystemResource("picture/VeryGood.jpg").toString();
-	private static Image veryGood = new Image(image_path3);
+	private static Image veryGood = new Image(ClassLoader.getSystemResource("picture/VeryGood.jpg").toString());
 	
-	private static String image_path4 = ClassLoader.getSystemResource("picture/Excellent.jpg").toString();
-	private static Image  excellent = new Image(image_path4);
+	private static Image  excellent = new Image(ClassLoader.getSystemResource("picture/Excellent.jpg").toString());
 	private static ButtonsEndScreen menu;
 	
 	public EndScreen(Stage primaryStage,GraphicsContext gc) {
@@ -91,8 +86,8 @@ public class EndScreen{
 			menu.setOnMouseMoved(e ->{
 		
 //				public void handle(ActionEvent event) {
-				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
 			});
 		}
 }
