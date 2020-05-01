@@ -3,13 +3,19 @@ package entity;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
+
+
+
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
 
+
 public class Station extends Block implements Interactable{
+
 	private Entity OnStationExists = null;
 	protected boolean visible;
 	
@@ -46,11 +52,12 @@ public class Station extends Block implements Interactable{
 					e.setHolding(false);
 					return true;
 				}else if (getOnStationExists() instanceof Dish) {
-					
+					Dish dish1 = (Dish) getOnStationExists();
+					dish1.gathers(e);
 				}
 			}
-		}return false;	
-	}
+		}
+	}return false;
 	}
 
 	public Entity getOnStationExists() {

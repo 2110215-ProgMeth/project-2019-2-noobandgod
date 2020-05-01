@@ -1,10 +1,11 @@
 package entity;
 
 import entity.base.Entity;
+import entity.base.Interactable;
 import exception.CookFailedException;
 
 import exception.InteractFailedException;
-
+import javafx.scene.canvas.GraphicsContext;
 import logic.Sprites;
 
 public class CuttingBoard extends Equipment implements Interactable{
@@ -49,6 +50,21 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	public char getSymbol() {
 		return Sprites.CuttingBoard;
+	}
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean isVisible() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
