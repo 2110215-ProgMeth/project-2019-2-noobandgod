@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import logic.GameController;
 import screen.GameScreen;
 import screen.StartScreen;
+import sharedObject.RenderableHolder;
 
 public class Main extends Application {
 	@Override
@@ -32,6 +33,8 @@ public class Main extends Application {
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setTitle("Umm Aroiii!!");
 		primaryStage.show();
+		
+		RenderableHolder.show();
 
 		}
 

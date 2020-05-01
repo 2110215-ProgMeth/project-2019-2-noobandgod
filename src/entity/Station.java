@@ -8,6 +8,7 @@ import exception.HoldFailedException;
 import exception.PlaceFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
 
@@ -15,8 +16,8 @@ public class Station extends Block implements Holdable,Placeable{
 	private Entity OnStationExists = null;
 	protected boolean visible;
 	
-	private static Image stationtest1 = new Image(ClassLoader.getSystemResource("picture/station.png").toString());
-	private static Image stationtest2 = new Image(ClassLoader.getSystemResource("picture/stationtest2.png").toString());
+	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
+	private static Image station2 = new Image(ClassLoader.getSystemResource("picture/station2.png").toString());
 	
 	public Station() {
 		setOnStationExists(null);
@@ -118,20 +119,26 @@ public class Station extends Block implements Holdable,Placeable{
 
 	@Override
 	public int getZ() {
-		return 100;
+		return getY();
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 		
-		if(isAnyBlockDownward) {
-			gc.drawImage(stationtest2, x, y);
+		System.out.println("Drawing Station at ("+getX()+","+getY()+")");
+		
+		if(!isAnyBlockDownward) {
+			gc.drawImage(station1, x, y);
 		} else {
-			gc.drawImage(stationtest1, x, y);
+			gc.drawImage(station2, x, y);
+			
+			//WritableImage station2 = new WritableImage(station1.getPixelReader(), 0, 0, 64, 58);
+			//gc.drawImage(station2, x, y, 64, 72);
 		}
+		
 	}
 
 	@Override

@@ -30,6 +30,7 @@ public class RenderableHolder {
 	}
 	
 	public void update() {
+		Collections.sort(entities, comparator);
 		for (int i = entities.size() - 1; i >= 0; i--) {
 			if (!entities.get(i).isVisible())
 				entities.remove(i);
@@ -51,7 +52,7 @@ public class RenderableHolder {
 	public static void show() {
 		ArrayList<IRenderable> entities2 = RenderableHolder.getInstance().getEntities();
 		for (IRenderable entity: entities2) {
-			System.out.println(entity.toString());
+			System.out.println(entity.toString()+entity.getZ());
 		}
 	}
 	
