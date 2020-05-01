@@ -110,7 +110,7 @@ public class Player extends Entity implements Updatable{
 	
 	@Override
 	public int getZ() {
-		return getY()+1;
+		return getY()*3+1;
 	}
 
 	@Override

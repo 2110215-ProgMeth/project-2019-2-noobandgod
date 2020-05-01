@@ -192,6 +192,7 @@ public class GameMap {
 	public boolean isInteractPossible(int targetx, int targety) {
 		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
 			//out of bound -> return false
+			System.out.println("Out of bound interacting");
 			return false;
 		} 
 		
