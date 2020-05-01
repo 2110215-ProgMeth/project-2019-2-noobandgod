@@ -1,5 +1,7 @@
 package entity;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+
 import entity.base.Entity;
 import entity.base.Updatable;
 import input.InputUtility;
@@ -71,6 +73,8 @@ public class Player extends Entity implements Updatable{
 		
 		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
 			setX(targetx); setY(targety);
+			getEntityHeld().setX(targetx); getEntityHeld().setY(targety);
+			
 			System.out.println("Player "+getPlayerNumber()+" has moved to ("+getX()+","+getY()+")!");
 			return true;
 		} else {
@@ -136,7 +140,7 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public boolean isVisible() {
-		return visible;
+		return true;
 	}
 
 	@Override
@@ -152,23 +156,17 @@ public class Player extends Entity implements Updatable{
 			setLastwalkDirection(Direction.UP);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
 			this.move(Direction.DOWN);
 			setLastwalkDirection(Direction.DOWN);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
 			this.move(Direction.LEFT);
 			setLastwalkDirection(Direction.LEFT);
 			setTimeStandStill(0);
 			
-		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
+		} else if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
 			this.move(Direction.RIGHT);
 			setLastwalkDirection(Direction.RIGHT);
 			setTimeStandStill(0);
@@ -179,8 +177,16 @@ public class Player extends Entity implements Updatable{
 				&& !InputUtility.getKeypressed().contains((KeyCode.A)) &&  !InputUtility.getKeypressed().contains((KeyCode.D))) {
 			addTimeStandStill();
 			}
+		
+		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+			
+			
 			
 		}
+		
+		}
+	
+		
 		
 	
 	public void setHolding(boolean isHolding) {

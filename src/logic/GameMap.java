@@ -15,6 +15,7 @@ import entity.Station;
 import entity.TomatoStorage;
 import entity.base.Block;
 import entity.base.Entity;
+import entity.base.Interactable;
 import sharedObject.RenderableHolder;
 
 
@@ -184,6 +185,25 @@ public class GameMap {
 			return false;
 		}
 	}
+	
+	public boolean isInteractPossible(int targetx, int targety) {
+		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
+			//out of bound -> return false
+			return false;
+		} 
+		
+		if (cellmap[targety][targetx].isBlockEmpty()) {
+			//if no block -> no interact
+			return false;
+		}
+		
+		if (cellmap[targety][targetx].getBlock() instanceof Interactable) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	
 	public void updateIsAnyBlockDownward() {
 		for (int i = 0; i < height-1 ; i++) {
