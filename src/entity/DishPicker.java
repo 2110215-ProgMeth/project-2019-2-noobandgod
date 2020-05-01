@@ -12,15 +12,18 @@ import screen.GameScreen;
 public class DishPicker extends Block implements Interactable{
 	private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
 	
-	public boolean interacts(Player e) throws InteractFailedException{
+	public boolean interacts(Player p) throws InteractFailedException{
 		//dont forget to throw an exception
-		if (!e.isHolding()) {
+		if (!p.isHolding()) {
 			Dish dish = new Dish();
-			e.setDishHeld(dish);
-			e.setHolding(true);
+			p.setDishHeld(dish);
+			p.setHolding(true);
 			return true;
-		}throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+		} else {
+			throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+		}
 	}
+	
 	public char getSymbol() {
 		return Sprites.DishPicker;
 	}
