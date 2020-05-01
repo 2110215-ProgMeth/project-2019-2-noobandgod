@@ -15,15 +15,22 @@ public class Player extends Entity implements Updatable{
 	private boolean isHolding;
 	private Ingredient ingredientHeld;
 	private Dish dishHeld;
-	private Direction faceDirection;
+	
 	private int PlayerNumber;
 	protected boolean visible;
+	
+	private int timeStandStill;
+	private boolean isStill;
+	
+	private Direction faceDirection;
+	private Direction lastwalkDirection;
 	
 	private static Image player_faceleft = new Image(ClassLoader.getSystemResource("picture/testplayer2.png").toString());
 	private static Image player_faceright = new Image(ClassLoader.getSystemResource("picture/testplayer3.png").toString());
 	private static Image player_faceup = new Image(ClassLoader.getSystemResource("picture/testplayer4.png").toString());
 	private static Image player_facedown = new Image(ClassLoader.getSystemResource("picture/testplayer5.png").toString());
 	private static Image player_still_down = new Image(ClassLoader.getSystemResource("picture/player_still_down.png").toString());
+	private static Image player_still_left = new Image(ClassLoader.getSystemResource("picture/player_still_left.png").toString());
 	
 	public Player(int playerNumber,int x,int y) {
 		setX(x);
@@ -33,7 +40,10 @@ public class Player extends Entity implements Updatable{
 		setIngredientHeld(null);
 		setDishHeld(null);
 		setFaceDirection(Direction.NONE);
+		setLastwalkDirection(Direction.NONE);
 		setPlayerNumber(playerNumber);
+		setTimeStandStill(0);
+		setStill(true);
 	}
 	
 	public boolean move(Direction dir) {
@@ -83,26 +93,39 @@ public class Player extends Entity implements Updatable{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-16)+this.getY()*pixel;
 		
-		switch (faceDirection) {
-		case LEFT: 
-			gc.drawImage(player_faceleft, x, y);
-			break;
-		case RIGHT:
-			gc.drawImage(player_faceright, x, y);
-			break;
-		case UP:
-			gc.drawImage(player_faceup, x, y);
-			break;
-		case DOWN:
-			gc.drawImage(player_facedown, x, y);
-			break;
-		default:
-			gc.drawImage(player_still_down, x, y);
-			break;
+		if(!isStill) {
+			switch (faceDirection) {
+			case LEFT: 
+				gc.drawImage(player_faceleft, x, y);
+				break;
+			case RIGHT:
+				gc.drawImage(player_faceright, x, y);
+				break;
+			case UP:
+				gc.drawImage(player_faceup, x, y);
+				break;
+			case DOWN:
+				gc.drawImage(player_facedown, x, y);
+				break;
+			default:
+				gc.drawImage(player_still_down, x, y);
+				break;
+			}
+		} else {
+			switch (lastwalkDirection) {
+			case LEFT:
+				gc.drawImage(player_still_left, x, y);
+				break;
+			case DOWN:
+				gc.drawImage(player_still_down, x, y);
+				break;
+			default:
+				gc.drawImage(player_still_left, x, y);
+			}
+			}	
 		}
 		
-		
-	}
+	
 
 	@Override
 	public boolean isVisible() {
@@ -111,22 +134,47 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public void update() {
+		if(getTimeStandStill() > 16) {
+			setStill(true);
+		} else {
+			setStill(false);
+		}
+		
 		if (InputUtility.getKeypressed().contains(KeyCode.W) && this.getPlayerNumber() == 0) {
 			this.move(Direction.UP);
+			setLastwalkDirection(Direction.UP);
+			setTimeStandStill(0);
+			
 		}
 		
 		if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
 			this.move(Direction.DOWN);
+			setLastwalkDirection(Direction.DOWN);
+			setTimeStandStill(0);
+			
 		}
 		
 		if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
 			this.move(Direction.LEFT);
+			setLastwalkDirection(Direction.LEFT);
+			setTimeStandStill(0);
+			
 		}
 		
 		if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
 			this.move(Direction.RIGHT);
+			setLastwalkDirection(Direction.RIGHT);
+			setTimeStandStill(0);
+			
 		}
-	}
+		
+		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S)) 
+				&& !InputUtility.getKeypressed().contains((KeyCode.A)) &&  !InputUtility.getKeypressed().contains((KeyCode.D))) {
+			addTimeStandStill();
+			}
+			
+		}
+		
 	
 	public void setHolding(boolean isHolding) {
 		this.isHolding = isHolding;
@@ -167,4 +215,34 @@ public class Player extends Entity implements Updatable{
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
+
+	public Direction getLastwalkDirection() {
+		return lastwalkDirection;
+	}
+
+	public void setLastwalkDirection(Direction lastwalkDirection) {
+		this.lastwalkDirection = lastwalkDirection;
+	}
+
+	public int getTimeStandStill() {
+		return timeStandStill;
+	}
+
+	public void setTimeStandStill(int timeStandStill) {
+		this.timeStandStill = timeStandStill;
+	}
+	
+	public void addTimeStandStill() {
+		this.timeStandStill += 1;
+	}
+
+	public boolean isStill() {
+		return isStill;
+	}
+
+	public void setStill(boolean isStill) {
+		this.isStill = isStill;
+	}
+	
+	
 }
