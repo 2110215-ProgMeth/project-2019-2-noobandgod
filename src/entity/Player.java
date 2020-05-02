@@ -22,8 +22,6 @@ public class Player extends Entity implements Updatable{
 	private Direction faceDirection;
 	private Direction lastwalkDirection;
 	
-	private static Image player_faceleft = new Image(ClassLoader.getSystemResource("picture/testplayer2.png").toString());
-	private static Image player_faceright = new Image(ClassLoader.getSystemResource("picture/testplayer3.png").toString());
 	private static Image player_faceup = new Image(ClassLoader.getSystemResource("picture/testplayer4.png").toString());
 	private static Image player_facedown = new Image(ClassLoader.getSystemResource("picture/testplayer5.png").toString());
 	
@@ -144,10 +142,10 @@ public class Player extends Entity implements Updatable{
 		if(!isStill) {
 			switch (faceDirection) {
 			case LEFT: 
-				gc.drawImage(player_faceleft, x, y);
+				gc.drawImage(RenderableHolder.player_walk_left_Image, x, y);
 				break;
 			case RIGHT:
-				gc.drawImage(player_faceright, x, y);
+				gc.drawImage(RenderableHolder.player_walk_right_Image, x, y);
 				break;
 			case UP:
 				gc.drawImage(player_faceup, x, y);

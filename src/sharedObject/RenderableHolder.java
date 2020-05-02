@@ -5,11 +5,22 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import entity.base.Updatable;
+import javafx.scene.image.Image;
 
 public class RenderableHolder {
 	private ArrayList<IRenderable> entities;
 	private Comparator<IRenderable> comparator;
 	private static final RenderableHolder instance = new RenderableHolder();
+	
+	//Images
+	//Player
+	public static Image player_walk_left_Image;
+	public static Image player_walk_right_Image;
+	
+	static {
+		loadResource();
+	}
+	
 	
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
@@ -56,6 +67,11 @@ public class RenderableHolder {
 		}
 	}
 	
+	public static void loadResource() {
+		//Player
+		player_walk_left_Image = new Image(ClassLoader.getSystemResource("picture/player_walk_left.png").toString());
+		player_walk_right_Image = new Image(ClassLoader.getSystemResource("picture/player_walk_right.png").toString());
+	}
 	
 	
 }
