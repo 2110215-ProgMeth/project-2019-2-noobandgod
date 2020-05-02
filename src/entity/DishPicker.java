@@ -13,16 +13,11 @@ import sharedObject.RenderableHolder;
 public class DishPicker extends Block implements Interactable{
     private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
 
-    public boolean interacts(Player e) throws InteractFailedException{
-        if (!e.isHolding()) {
-        	System.out.println("Player "+e.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
-        	
-            Dish dish = new Dish();
-            dish.setX(e.getX()); dish.setY(e.getY());
-            RenderableHolder.getInstance().add(dish);
-
-            e.setEntityHeld(dish);
-            e.setHolding(true);
+    public boolean interacts(Player p) throws InteractFailedException{
+        if (!p.isHolding()) {
+        	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
+        	p.addHoldingEntity(new Dish());
+            
             return true;
         } else {
         	System.out.println("You can't take more dish, because you hands aren't available!");

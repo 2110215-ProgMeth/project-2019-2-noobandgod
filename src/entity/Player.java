@@ -9,6 +9,7 @@ import javafx.scene.input.KeyCode;
 import logic.Direction;
 import logic.GameController;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class Player extends Entity implements Updatable{
 	private boolean isHolding;
@@ -51,6 +52,14 @@ public class Player extends Entity implements Updatable{
 		setEntityHeld(null);
 		
 		return removedEntity;
+	}
+	
+	public void addHoldingEntity(Entity e) {
+		setHolding(true);
+		e.setX(this.getX());
+		e.setY(this.getY());
+		this.setEntityHeld(e);
+		RenderableHolder.getInstance().add(e);
 	}
 	
 	
