@@ -26,6 +26,7 @@ public class Station extends Block implements Interactable{
 		setOnStationExists(null);
 		visible = true;
 	}
+	
 	public boolean interacts(Player e) {
 		if (!e.isHolding()) {
 			if (!getOnStationExists().equals(null)) {
