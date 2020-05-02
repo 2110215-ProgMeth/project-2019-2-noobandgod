@@ -16,11 +16,21 @@ public class RenderableHolder {
 	//Player
 	public static Image player_walk_left_Image;
 	public static Image player_walk_right_Image;
+	public static Image player_walk_up_Image;
+	public static Image player_walk_down_Image;
+	
+	public static Image player_still_left_Image;
+	public static Image player_still_right_Image;
+	public static Image player_still_up_Image;
+	public static Image player_still_down_Image;
+	
+	//Bin
+	public static Image bin_infront_Image;
+	public static Image bin_between_Image;
 	
 	static {
 		loadResource();
 	}
-	
 	
 	public RenderableHolder() {
 		entities = new ArrayList<IRenderable>();
@@ -68,9 +78,25 @@ public class RenderableHolder {
 	}
 	
 	public static void loadResource() {
+		String p = "picture/";
+		
 		//Player
-		player_walk_left_Image = new Image(ClassLoader.getSystemResource("picture/player_walk_left.png").toString());
-		player_walk_right_Image = new Image(ClassLoader.getSystemResource("picture/player_walk_right.png").toString());
+		player_walk_left_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_left.png").toString());
+		player_walk_right_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_right.png").toString());
+		player_walk_up_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_up.png").toString());
+		player_walk_down_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_down.png").toString());
+	
+		player_still_left_Image = new Image(ClassLoader.getSystemResource(p+"player_still_left.png").toString());
+		player_still_right_Image = new Image(ClassLoader.getSystemResource(p+"player_still_right.png").toString());
+		player_still_up_Image = new Image(ClassLoader.getSystemResource(p+"player_still_up.png").toString());
+		player_still_down_Image = new Image(ClassLoader.getSystemResource(p+"player_still_down.png").toString());
+	
+		//Bin
+		bin_infront_Image = new Image(ClassLoader.getSystemResource(p+"bin_infront.png").toString());
+		bin_between_Image = new Image(ClassLoader.getSystemResource(p+"bin_between.png").toString());
+	
+		//Station
+		
 	}
 	
 	
