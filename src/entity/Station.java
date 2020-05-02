@@ -52,8 +52,8 @@ public class Station extends Block implements Interactable{
 					e.setEntityHeld(dish);
 					return true;
 			    }else if (!isOnStation()) {
-			    	e.removeEntityHeld();
-			    	setOnStationExists(e.removeEntityHeld());
+			    	Entity entity = e.removeEntityHeld();
+			    	setOnStationExists(entity);
 			    	return true;
 			}else {
 				if (!isOnStation()) {
