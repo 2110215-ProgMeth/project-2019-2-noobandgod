@@ -30,7 +30,7 @@ public class Station extends Block implements Interactable{
 				e.setEntityHeld(getOnStationExists());
 				e.setHolding(true);
 				return true;
-			}		
+			}return false;		
 		}else {
 			if (e.getEntityHeld() instanceof Dish) {
 				Dish dish = (Dish) e.getEntityHeld();
