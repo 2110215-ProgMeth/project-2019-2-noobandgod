@@ -32,6 +32,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 				e.setEntityHeld(getOnCuttingBoardExists());
 				setOnCuttingBoardExists(null);
 				e.setHolding(true);
+				setOnCuttingBoard(false);
 				return true;
 			}
 		}else {
@@ -41,12 +42,13 @@ public class CuttingBoard extends Equipment implements Interactable{
 					dish.adds(getOnCuttingBoardExists());
 					setOnCuttingBoardExists(null);
 					e.setEntityHeld(dish);
+					setOnCuttingBoard(false);
 					return true;
 			    }
 			}else {
 				if (!isOnCuttingBoard()) {
 					setOnCuttingBoardExists(e.getEntityHeld());
-					e.removeEntityHeld();
+					setOnCuttingBoard(true);
 					return true;
 				}
 			}

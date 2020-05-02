@@ -28,6 +28,7 @@ public class FryingPan extends Equipment implements Interactable{
 				e.setEntityHeld(getOnFryingPanExists());
 				setOnFryingPanExists(null);
 				e.setHolding(true);
+				setOnFryingPan(false);
 				return true;
 			}
 		}else {
@@ -37,13 +38,14 @@ public class FryingPan extends Equipment implements Interactable{
 					dish.adds(getOnFryingPanExists());
 					setOnFryingPanExists(null);
 					e.setEntityHeld(dish);
+					setOnFryingPan(false);
 					return true;
 			    }
 			}else {
 				if (!isOnFryingPan()) {
 					if (e.getEntityHeld() instanceof Fish) {
 						setOnFryingPanExists(e.getEntityHeld());
-						e.removeEntityHeld();
+						setOnFryingPan(true);
 						return true;
 					}
 				}

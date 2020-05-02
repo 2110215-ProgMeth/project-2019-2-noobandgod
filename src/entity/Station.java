@@ -41,6 +41,7 @@ public class Station extends Block implements Interactable{
 				setOnStationExists(null);
 				e.setEntityHeld(getOnStationExists());
 				e.setHolding(true);
+				setOnStation(false);
 				return true;
 			}
 		}else {
@@ -50,6 +51,7 @@ public class Station extends Block implements Interactable{
 					dish.adds(getOnStationExists());
 					setOnStationExists(null);
 					e.setEntityHeld(dish);
+					setOnStation(false);
 					return true;
 			    }else if (!isOnStation()) {	    	
 			    	Dish entity = (Dish) e.removeEntityHeld();
