@@ -16,7 +16,7 @@ import screen.GameScreen;
 
 public class Station extends Block implements Interactable{
 
-	private Entity OnStationExists = null;
+	private Entity OnStationExists;
 	protected boolean visible;
 	
 	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
@@ -37,9 +37,10 @@ public class Station extends Block implements Interactable{
 		}else {
 			if (e.getEntityHeld() instanceof Dish) {
 				Dish dish = (Dish) e.getEntityHeld();
-				if (!getOnStationExists().equals(null)) {
+				if (getOnStationExists() instanceof Ingredient) {
 					dish.adds(getOnStationExists());
 					setOnStationExists(null);
+					e.setEntityHeld(dish);
 					return true;
 			    }else if (getOnStationExists().equals(null)) {
 			    	setOnStationExists(e.getEntityHeld());
@@ -55,6 +56,7 @@ public class Station extends Block implements Interactable{
 				}else if (getOnStationExists() instanceof Dish) {
 					Dish dish1 = (Dish) getOnStationExists();
 					dish1.gathers(e);
+					setOnStationExists(dish1);
 					return true;
 				}
 			}
