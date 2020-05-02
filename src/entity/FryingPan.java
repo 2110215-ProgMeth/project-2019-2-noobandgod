@@ -3,11 +3,12 @@ package entity;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
+import exception.InteractFailedException;
 import logic.Sprites;
 
 public class FryingPan extends Equipment implements Interactable{
 	private Ingredient OnFryingPanExists = null;
-	public boolean interacts(Player e) {
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (getOnFryingPanExists() instanceof Ingredient) {
 				setOnFryingPanExists(null);
@@ -33,7 +34,7 @@ public class FryingPan extends Equipment implements Interactable{
 					}
 				}
 			}
-		}return false;	
+		}throw new InteractFailedException("There is something wrong");
 	}
 	public boolean cooks() throws CookFailedException{
 		if (!getOnFryingPanExists().equals(null)) {

@@ -10,7 +10,7 @@ import logic.Sprites;
 
 public class CuttingBoard extends Equipment implements Interactable{
 	private Ingredient OnCuttingBoardExists = null;
-	public boolean interacts(Player e) {
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				setOnCuttingBoardExists(null);
@@ -34,7 +34,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 					return true;
 				}
 			}
-		}return false;	
+		}throw new InteractFailedException("There is something wrong");
 	}
 	public boolean cooks() throws CookFailedException{
 		if (!getOnCuttingBoardExists().equals(null)) {

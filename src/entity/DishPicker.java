@@ -14,7 +14,6 @@ public class DishPicker extends Block implements Interactable{
     private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
 
     public boolean interacts(Player e) throws InteractFailedException{
-        //dont forget to throw an exception
         if (!e.isHolding()) {
         	System.out.println("Player "+e.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	

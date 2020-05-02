@@ -3,6 +3,7 @@ package entity;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -23,7 +24,7 @@ public class Station extends Block implements Interactable{
 		visible = true;
 	}
 	
-	public boolean interacts(Player e) {
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (!getOnStationExists().equals(null)) {
 				setOnStationExists(null);
@@ -58,7 +59,7 @@ public class Station extends Block implements Interactable{
 				}
 			}
 		}
-	}return false;
+	}throw new InteractFailedException("There is something wrong");
 	}
 
 	public Entity getOnStationExists() {
@@ -80,7 +81,7 @@ public class Station extends Block implements Interactable{
 
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return getY();
 	}
 
 	@Override

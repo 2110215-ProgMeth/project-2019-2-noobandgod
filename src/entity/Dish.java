@@ -17,14 +17,7 @@ public class Dish extends Entity {//implements Holdable{
 	public Dish() {
 		this.onDishExists = new ArrayList<Ingredient>();
 	}
-//	public boolean holds(Player e) {
-//		if (!e.isHolding()) {
-//			e.setDishHeld(this);
-//			e.setHolding(true);
-//			return true;
-//			//don't forget that I haven't written about the station where the ingredient lost
-//		}return false;
-//	}
+
 	public boolean gathers(Player e) { // when the station has a dish and people carry an ingredient
 		if (e.isHolding()) {
 			if (e.getEntityHeld() instanceof Ingredient ) {
@@ -35,7 +28,7 @@ public class Dish extends Entity {//implements Holdable{
 						e.setEntityHeld(null);
 						e.setHolding(false);
 						return true;
-					}//throw an exception a lot in this method
+					}
 				}
 			}
 		}return false;
