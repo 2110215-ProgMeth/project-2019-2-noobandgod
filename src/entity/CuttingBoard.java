@@ -10,17 +10,33 @@ import logic.Sprites;
 
 public class CuttingBoard extends Equipment implements Interactable{
 	private Ingredient OnCuttingBoardExists = null;
+	private boolean OnCuttingBoard;
+	
+	public CuttingBoard() {
+		setOnCuttingBoardExists(null);
+		setOnCuttingBoard(false);
+	}
+	
+	
+	public boolean isOnCuttingBoard() {
+		return OnCuttingBoard;
+	}
+	public void setOnCuttingBoard(boolean onCuttingBoard) {
+		OnCuttingBoard = onCuttingBoard;
+	}
+	
+	
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
-				setOnCuttingBoardExists(null);
 				e.setEntityHeld(getOnCuttingBoardExists());
+				setOnCuttingBoardExists(null);
 				e.setHolding(true);
 				return true;
 			}
 		}else {
 			if (e.getEntityHeld() instanceof Dish) {
-				if (!getOnCuttingBoardExists().equals(null)) {
+				if (isOnCuttingBoard()) {
 					Dish dish = (Dish) e.getEntityHeld();
 					dish.adds(getOnCuttingBoardExists());
 					setOnCuttingBoardExists(null);
@@ -28,7 +44,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 					return true;
 			    }
 			}else {
-				if (getOnCuttingBoardExists().equals(null)) {
+				if (!isOnCuttingBoard()) {
 					setOnCuttingBoardExists(e.getEntityHeld());
 					e.removeEntityHeld();
 					return true;

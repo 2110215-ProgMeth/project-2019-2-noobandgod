@@ -41,8 +41,9 @@ public class Station extends Block implements Interactable{
 				setOnStationExists(null);
 				e.setEntityHeld(getOnStationExists());
 				e.setHolding(true);
+				System.out.println("5555");
 				return true;
-			}return false;		
+			}
 		}else {
 			if (e.getEntityHeld() instanceof Dish) {
 				Dish dish = (Dish) e.getEntityHeld();
@@ -50,20 +51,27 @@ public class Station extends Block implements Interactable{
 					dish.adds(getOnStationExists());
 					setOnStationExists(null);
 					e.setEntityHeld(dish);
+					System.out.println("LOL");
 					return true;
-			    }else if (!isOnStation()) {
-			    	Entity entity = e.removeEntityHeld();
-			    	setOnStationExists(entity);
+			    }else if (!isOnStation()) {	    	
+			    	Dish entity = (Dish) e.removeEntityHeld();
+			    	setOnStationExists(dish);
+			    	setOnStation(true);
+			    	System.out.println("heyy");
 			    	return true;
 			}else {
 				if (!isOnStation()) {
 					setOnStationExists(e.removeEntityHeld());
 					e.removeEntityHeld();
+					setOnStation(true);
+					System.out.println("hi");
 					return true;
 				}else if (getOnStationExists() instanceof Dish) {
 					Dish dish1 = (Dish) getOnStationExists();
 					dish1.gathers(e);
 					setOnStationExists(dish1);
+					setOnStation(true);
+					System.out.println("omg");
 					return true;
 				}
 			}

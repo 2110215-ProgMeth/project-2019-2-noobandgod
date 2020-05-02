@@ -7,18 +7,32 @@ import exception.InteractFailedException;
 import logic.Sprites;
 
 public class FryingPan extends Equipment implements Interactable{
-	private Ingredient OnFryingPanExists = null;
+	private Ingredient OnFryingPanExists;
+	private boolean OnFryingPan;
+	
+	public FryingPan() {
+		setOnFryingPan(false);
+		setOnFryingPanExists(null);
+	}
+	
+	public boolean isOnFryingPan() {
+		return OnFryingPan;
+	}
+	private void setOnFryingPan(boolean b) {
+		OnFryingPan = b;
+		
+	}
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (getOnFryingPanExists() instanceof Ingredient) {
-				setOnFryingPanExists(null);
 				e.setEntityHeld(getOnFryingPanExists());
+				setOnFryingPanExists(null);
 				e.setHolding(true);
 				return true;
 			}
 		}else {
 			if (e.getEntityHeld() instanceof Dish) {
-				if (!getOnFryingPanExists().equals(null)) {
+				if (isOnFryingPan()) {
 					Dish dish = (Dish) e.getEntityHeld();
 					dish.adds(getOnFryingPanExists());
 					setOnFryingPanExists(null);
@@ -26,7 +40,7 @@ public class FryingPan extends Equipment implements Interactable{
 					return true;
 			    }
 			}else {
-				if (getOnFryingPanExists().equals(null)) {
+				if (!isOnFryingPan()) {
 					if (e.getEntityHeld() instanceof Fish) {
 						setOnFryingPanExists(e.getEntityHeld());
 						e.removeEntityHeld();
