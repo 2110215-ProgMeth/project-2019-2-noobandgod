@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import entity.Cabbage;
@@ -25,7 +26,8 @@ public class TestStation {
 	Dish dish2;
 	Cabbage cabbage;
 	Tomato tomato;
-	public void setUp() throws InteractFailedException{
+	@Before
+	void setUp() throws InteractFailedException{
 		cabbage = new Cabbage();
 		dish = new Dish();
 		dish1 = new Dish();
@@ -68,7 +70,7 @@ public class TestStation {
 		
 	}
 		@Test
-	public void testConstructorStation() throws Inter{
+	public void testConstructorStation() throws InteractFailedException{
 		assertEquals(false,station1.interacts(player1));
 		assertEquals(true,station1.interacts(player2));
 		assertEquals(true,station1.interacts(player3));

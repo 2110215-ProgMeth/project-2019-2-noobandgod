@@ -14,18 +14,30 @@ import screen.GameScreen;
 public class Station extends Block implements Interactable{
 
 	private Entity OnStationExists;
+	private boolean OnStation;
 	
 	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
 	private static Image station2 = new Image(ClassLoader.getSystemResource("picture/station2.png").toString());
 	
 	public Station() {
 		setOnStationExists(null);
+		setOnStation(false);
 	}
 	
 	
+	public boolean isOnStation() {
+		return OnStation;
+	}
+
+
+	public void setOnStation(boolean isOnStation) {
+		OnStation = isOnStation;
+	}
+
+
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
-			if (!getOnStationExists().equals(null)) {
+			if (isOnStation()) {
 				setOnStationExists(null);
 				e.setEntityHeld(getOnStationExists());
 				e.setHolding(true);
@@ -39,16 +51,14 @@ public class Station extends Block implements Interactable{
 					setOnStationExists(null);
 					e.setEntityHeld(dish);
 					return true;
-			    }else if (getOnStationExists().equals(null)) {
-			    	setOnStationExists(e.getEntityHeld());
-			    	e.setHolding(false);
-			    	e.setEntityHeld(null);
+			    }else if (!isOnStation()) {
+			    	e.removeEntityHeld();
+			    	setOnStationExists(e.removeEntityHeld());
 			    	return true;
 			}else {
-				if (getOnStationExists().equals(null)) {
-					setOnStationExists(e.getEntityHeld());
-					e.setEntityHeld(null);
-					e.setHolding(false);
+				if (!isOnStation()) {
+					setOnStationExists(e.removeEntityHeld());
+					e.removeEntityHeld();
 					return true;
 				}else if (getOnStationExists() instanceof Dish) {
 					Dish dish1 = (Dish) getOnStationExists();

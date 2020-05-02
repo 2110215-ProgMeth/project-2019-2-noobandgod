@@ -25,8 +25,7 @@ public class Dish extends Entity {//implements Holdable{
 				if (ingredient.getState() >= 1) {
 					if (!this.onDishExists.contains(ingredient)){
 						this.onDishExists.add(ingredient);
-						e.setEntityHeld(null);
-						e.setHolding(false);
+						e.removeEntityHeld();
 						return true;
 					}
 				}
