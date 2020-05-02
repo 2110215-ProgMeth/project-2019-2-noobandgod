@@ -12,7 +12,8 @@ import sharedObject.RenderableHolder;
 
 public class DishPicker extends Block implements Interactable{
     private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
-
+    private static Image dishpickerbox_infront = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest_infront.png").toString());
+    
     public boolean interacts(Player p) throws InteractFailedException{
         if (!p.isHolding()) {
         	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
@@ -39,7 +40,12 @@ public class DishPicker extends Block implements Interactable{
         int x = GameScreen.draw_origin_x+this.getX()*pixel;
         int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 
-        gc.drawImage(dishpickerbox, x, y);
+        if(isAnyBlockDownward) {
+        	gc.drawImage(dishpickerbox, x, y);
+        } else {
+        	gc.drawImage(dishpickerbox_infront, x, y);
+        }
+        
     }
     @Override
     public boolean isVisible() {
