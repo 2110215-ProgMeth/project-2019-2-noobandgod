@@ -54,14 +54,17 @@ public class Player extends Entity implements Updatable{
 		return removedEntity;
 	}
 	
-	public void addHoldingEntity(Entity e) {
-		setHolding(true);
-		e.setX(this.getX());
-		e.setY(this.getY());
-		this.setEntityHeld(e);
-		RenderableHolder.getInstance().add(e);
+	public void setEntityHeld(Entity entityHeld) {
+		if (!(entityHeld == null)) {
+			setHolding(true);
+			entityHeld.setX(this.getX());
+			entityHeld.setY(this.getY());
+			this.entityHeld = entityHeld;
+			RenderableHolder.getInstance().add(entityHeld);
+		} else {
+			this.entityHeld = null;
+		}
 	}
-	
 	
 	public boolean move(Direction dir) {
 		setFaceDirection(dir);
@@ -259,10 +262,6 @@ public class Player extends Entity implements Updatable{
 	}
 	public Entity getEntityHeld() {
 		return entityHeld;
-	}
-
-	public void setEntityHeld(Entity entityHeld) {
-		this.entityHeld = entityHeld;
 	}
 
 	public Direction getFaceDirection() {
