@@ -14,15 +14,14 @@ import screen.GameScreen;
 public class Station extends Block implements Interactable{
 
 	private Entity OnStationExists;
-	protected boolean visible;
 	
 	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
 	private static Image station2 = new Image(ClassLoader.getSystemResource("picture/station2.png").toString());
 	
 	public Station() {
 		setOnStationExists(null);
-		visible = true;
 	}
+	
 	
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
@@ -105,7 +104,7 @@ public class Station extends Block implements Interactable{
 
 	@Override
 	public boolean isVisible() {
-		return visible;
+		return true;
 	}
 
 	

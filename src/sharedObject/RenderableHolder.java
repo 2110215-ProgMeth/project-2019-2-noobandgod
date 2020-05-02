@@ -24,7 +24,7 @@ public class RenderableHolder {
 	public void add(IRenderable entity) {
 		entities.add(entity);
 		
-		System.out.println("Suscessfully added "+entity.toString()+"\nto entites");
+		System.out.println("Suscessfully added "+entity.toString()+"\nto entites....");
 		
 		Collections.sort(entities, comparator);
 	}

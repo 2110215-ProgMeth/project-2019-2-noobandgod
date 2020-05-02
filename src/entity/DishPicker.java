@@ -25,6 +25,7 @@ public class DishPicker extends Block implements Interactable{
             e.setHolding(true);
             return true;
         } else {
+        	System.out.println("You can't take more dish, because you hands aren't available!");
             throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
         }
     }

@@ -14,7 +14,6 @@ public class Player extends Entity implements Updatable{
 	private boolean isHolding;
 	private Entity entityHeld;
 	private int PlayerNumber;
-	protected boolean visible;
 	
 	private int timeStandStill;
 	private boolean isStill;
@@ -44,6 +43,16 @@ public class Player extends Entity implements Updatable{
 		setTimeStandStill(0);
 		setStill(true);
 	}
+	
+	public Entity removeHoldingEntity() {
+		setHolding(false);
+		getEntityHeld().setDestroyed(true);
+		Entity removedEntity = getEntityHeld();
+		setEntityHeld(null);
+		
+		return removedEntity;
+	}
+	
 	
 	public boolean move(Direction dir) {
 		setFaceDirection(dir);
