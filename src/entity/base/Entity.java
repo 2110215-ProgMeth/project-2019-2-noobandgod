@@ -5,6 +5,8 @@ import sharedObject.IRenderable;
 public abstract class Entity implements IRenderable {
 	private int x;
 	private int y;
+	
+	private boolean isDestroyed;
 
 	public int getX() {
 		return x;
@@ -18,5 +20,14 @@ public abstract class Entity implements IRenderable {
 	public void setY(int y) {
 		this.y = y;
 	}
+	public boolean isDestroyed() {
+		return isDestroyed;
+	}
+	public void setDestroyed(boolean isDestroyed) {
+		this.isDestroyed = isDestroyed;
+	}
+	
+	
+	
 	
 }

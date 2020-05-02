@@ -10,11 +10,11 @@ import screen.GameScreen;
 
 public class Dish extends Entity {//implements Holdable{
 	private ArrayList<Ingredient> onDishExists;
-	private boolean isDestroyed;
 	
 	private static Image dish_empty = new Image(ClassLoader.getSystemResource("picture/dish_empty.png").toString());
 	
 	public Dish() {
+		setDestroyed(false);
 		this.onDishExists = new ArrayList<Ingredient>();
 	}
 
@@ -33,6 +33,7 @@ public class Dish extends Entity {//implements Holdable{
 			}
 		}return false;
 	}
+	
 	public void adds(Entity e) {
 		if (e instanceof Fish) {
 			Fish fish = (Fish) e;
@@ -45,6 +46,13 @@ public class Dish extends Entity {//implements Holdable{
 			this.onDishExists.add(tomato);
 		}
 	}
+	
+	public String toString() {
+		String result = "DISH";
+		return result;
+	}
+	
+	
 	public ArrayList<Ingredient> getOnDishExists() {
 		return this.onDishExists;
 	}
@@ -64,6 +72,6 @@ public class Dish extends Entity {//implements Holdable{
 	}
 	@Override
 	public boolean isVisible() {
-		return true;
+		return !isDestroyed();
 	}
 }
