@@ -10,7 +10,7 @@ public class FishStorage extends IngredientStorage{
 			e.setEntityHeld(fish);
 			e.setHolding(true);
 			return true;
-		}throw new InteractFailedException("Please place donw the carried item before picking up new fish");//throw exception like Ingredient
+		}throw new InteractFailedException("Please place down the carried item before picking up new fish");//throw exception like Ingredient
 	}
 	public char getSymbol() {
 		return Sprites.FishStorage;

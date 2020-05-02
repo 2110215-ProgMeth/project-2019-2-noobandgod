@@ -34,7 +34,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 					return true;
 				}
 			}
-		}throw new InteractFailedException("There is something wrong");
+		}return false;
 	}
 	public boolean cooks() throws CookFailedException{
 		if (!getOnCuttingBoardExists().equals(null)) {

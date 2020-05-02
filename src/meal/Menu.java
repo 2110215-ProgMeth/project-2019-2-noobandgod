@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entity.Dish;
 import entity.Ingredient;
+import entity.base.Entity;
 
 public abstract class Menu {
 	protected String name;
@@ -16,7 +17,8 @@ public abstract class Menu {
 		setTimeleft(timeleft);
 	}
 	
-	public boolean isAllIngredients(Dish d) {
+	public boolean isAllIngredients(Entity e) {
+		Dish d = (Dish) e;
 		ArrayList<Ingredient> ondish = d.getOnDishExists();
 		
 		int numberingredients = this.ingredients.size();
