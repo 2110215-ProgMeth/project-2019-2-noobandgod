@@ -3,10 +3,6 @@ package entity;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
-
-
-
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
