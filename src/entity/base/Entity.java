@@ -2,7 +2,7 @@ package entity.base;
 
 import sharedObject.IRenderable;
 
-public abstract class Entity implements IRenderable {
+public abstract class Entity implements IRenderable,Cloneable {
 	private int x;
 	private int y;
 	
@@ -27,7 +27,13 @@ public abstract class Entity implements IRenderable {
 		this.isDestroyed = isDestroyed;
 	}
 	
-	
-	
+	@Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new InternalError("can't clone");
+		}
+	}
 	
 }

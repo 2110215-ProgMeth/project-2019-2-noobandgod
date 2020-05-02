@@ -22,15 +22,6 @@ public class Player extends Entity implements Updatable{
 	private Direction faceDirection;
 	private Direction lastwalkDirection;
 	
-	private static Image player_faceup = new Image(ClassLoader.getSystemResource("picture/testplayer4.png").toString());
-	private static Image player_facedown = new Image(ClassLoader.getSystemResource("picture/testplayer5.png").toString());
-	
-	private static Image player_still_left = new Image(ClassLoader.getSystemResource("picture/player_still_left.png").toString());
-	private static Image player_still_right = new Image(ClassLoader.getSystemResource("picture/player_still_right.png").toString());
-	private static Image player_still_up = new Image(ClassLoader.getSystemResource("picture/player_still_up.png").toString());
-	private static Image player_still_down = new Image(ClassLoader.getSystemResource("picture/player_still_down.png").toString());
-	
-	
 	public Player(int playerNumber,int x,int y) {
 		setX(x);
 		setY(y);
@@ -45,7 +36,8 @@ public class Player extends Entity implements Updatable{
 	
 	public Entity removeEntityHeld() {
 		setHolding(false);
-		Entity removedEntity = getEntityHeld();
+		Entity removedEntity = (Entity) getEntityHeld().clone();
+		
 		getEntityHeld().setDestroyed(true);
 		setEntityHeld(null);
 		
@@ -148,31 +140,31 @@ public class Player extends Entity implements Updatable{
 				gc.drawImage(RenderableHolder.player_walk_right_Image, x, y);
 				break;
 			case UP:
-				gc.drawImage(player_faceup, x, y);
+				gc.drawImage(RenderableHolder.player_walk_up_Image, x, y);
 				break;
 			case DOWN:
-				gc.drawImage(player_facedown, x, y);
+				gc.drawImage(RenderableHolder.player_walk_down_Image, x, y);
 				break;
 			default:
-				gc.drawImage(player_still_down, x, y);
+				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
 				break;
 			}
 		} else {
 			switch (lastwalkDirection) {
 			case LEFT:
-				gc.drawImage(player_still_left, x, y);
+				gc.drawImage(RenderableHolder.player_still_left_Image, x, y);
 				break;
 			case RIGHT:
-				gc.drawImage(player_still_right, x, y);
+				gc.drawImage(RenderableHolder.player_still_right_Image, x, y);
 				break;
 			case UP:
-				gc.drawImage(player_still_up, x, y);
+				gc.drawImage(RenderableHolder.player_still_up_Image, x, y);
 				break;
 			case DOWN:
-				gc.drawImage(player_still_down, x, y);
+				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
 				break;
 			default:
-				gc.drawImage(player_still_down, x, y);
+				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
 			}
 			}	
 		}

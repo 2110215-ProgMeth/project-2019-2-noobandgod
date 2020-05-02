@@ -113,9 +113,6 @@ public class Station extends Block implements Interactable{
 			gc.drawImage(station1, x, y);
 		} else {
 			gc.drawImage(station2, x, y);
-			
-			//WritableImage station2 = new WritableImage(station1.getPixelReader(), 0, 0, 64, 58);
-			//gc.drawImage(station2, x, y, 64, 72);
 		}
 		
 	}

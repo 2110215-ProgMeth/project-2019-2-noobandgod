@@ -9,11 +9,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
-public class Bin extends Block implements Interactable{
-	private static Image bintest = new Image(ClassLoader.getSystemResource("picture/bintest.png").toString());
-	private static Image bintest2 = new Image(ClassLoader.getSystemResource("picture/bintest2.png").toString());
-			
+public class Bin extends Block implements Interactable{			
 	
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (e.isHolding()) {
@@ -44,9 +42,9 @@ public class Bin extends Block implements Interactable{
 		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 		
 		if(isAnyBlockDownward) {
-			gc.drawImage(bintest2, x, y);
+			gc.drawImage(RenderableHolder.bin_between_Image, x, y);
 		} else {
-			gc.drawImage(bintest, x, y);
+			gc.drawImage(RenderableHolder.bin_infront_Image, x, y);
 		}
 		
 	}

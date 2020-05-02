@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import screen.GameScreen;
 
-public class Dish extends Entity {//implements Holdable{
+public class Dish extends Entity {
 	private ArrayList<Ingredient> onDishExists;
 	
 	private static Image dish_empty = new Image(ClassLoader.getSystemResource("picture/dish_empty.png").toString());
