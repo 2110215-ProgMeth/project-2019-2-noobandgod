@@ -59,7 +59,7 @@ public class Station extends Block implements Interactable{
 				}
 			}
 		}
-	}throw new InteractFailedException("There is something wrong");
+	}return false;
 	}
 
 	public Entity getOnStationExists() {

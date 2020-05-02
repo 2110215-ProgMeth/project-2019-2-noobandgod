@@ -64,7 +64,7 @@ public class OrderManager {
 		for (int i=0 ; i<orders.size(); i++) {
 			Menu menu = orders.get(i);
 			
-			if (menu.isAllIngredients(p.getDishHeld())) {
+			if (menu.isAllIngredients(p.getEntityHeld())) {
 				indexmatch = i;
 				anymatch = true;
 				break;	
@@ -82,7 +82,7 @@ public class OrderManager {
 			}
 			GameController.addCoinCount(menuremoved.price);
 			GameController.addScoreCount(menuremoved.getMax_score());
-			p.setDishHeld(null);
+			p.setEntityHeld(null);
 			return true;
 		} else {
 			GameController.addScoreCount(-10);

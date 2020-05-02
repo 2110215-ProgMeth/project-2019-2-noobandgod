@@ -9,6 +9,7 @@ import entity.Dish;
 import entity.Player;
 import entity.Station;
 import entity.Tomato;
+import exception.InteractFailedException;
 
 public class TestStation {
 	Player player1;
@@ -24,7 +25,7 @@ public class TestStation {
 	Dish dish2;
 	Cabbage cabbage;
 	Tomato tomato;
-	public void setUp() {
+	public void setUp() throws InteractFailedException{
 		cabbage = new Cabbage();
 		dish = new Dish();
 		dish1 = new Dish();
@@ -52,7 +53,11 @@ public class TestStation {
 		station4 = new Station();
 		station4.setOnStationExists(dish2);
 		
-		station1.interacts(player2);// nothing and dish
+
+			station1.interacts(player2);// nothing and dish
+
+			
+
 		//station1.interacts(player3);
 		station2.interacts(player3);// dish and cabbage
 		//station2.interacts(player1);
@@ -63,7 +68,7 @@ public class TestStation {
 		
 	}
 		@Test
-	public void testConstructorStation() {
+	public void testConstructorStation() throws Inter{
 		assertEquals(false,station1.interacts(player1));
 		assertEquals(true,station1.interacts(player2));
 		assertEquals(true,station1.interacts(player3));
