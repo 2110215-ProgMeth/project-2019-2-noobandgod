@@ -3,10 +3,6 @@ package entity;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
-
-
-
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -26,6 +22,7 @@ public class Station extends Block implements Interactable{
 		setOnStationExists(null);
 		visible = true;
 	}
+	
 	public boolean interacts(Player e) {
 		if (!e.isHolding()) {
 			if (!getOnStationExists().equals(null)) {

@@ -142,37 +142,6 @@ public class GameMap {
 		return cellmap[y][x].getBlock();
 	}
 	
-	public boolean placeEntityOnBlock(Entity e,int x,int y) {
-		Cell cell = cellmap[y][x];
-		if (!cell.isOnTop()) {
-			if(e instanceof Dish) {
-				cell.setEntityOnTop(e);
-				return true;
-			} else if (e instanceof Ingredient) {
-				//check ว่า ingredient ผ่านกระบวนการ cook แล้วรึยัง ถ้าผ่านแล้ววางไม่ได้**
-				cell.setEntityOnTop(e);
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-		
-	}
-
-	public Entity removeEntityOnBlock(int x,int y) {
-		if (cellmap[x][y].isOnTop()) {
-			Cell cell = cellmap[y][x];
-			Entity e = cell.getEntityOnTop();
-			cell.setEntityOnTop(null);
-			cell.setOnTop(false);
-			return e;
-		} else {
-			return null;
-		}
-	}
-	
 	public boolean isMovePossible(int targetx, int targety) {
 		//System.out.println("target x: "+targetx+" ,target y: "+targety);
 		

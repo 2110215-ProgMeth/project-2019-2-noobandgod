@@ -10,7 +10,6 @@ import logic.Direction;
 import logic.GameController;
 import screen.GameScreen;
 
-
 public class Player extends Entity implements Updatable{
 	private boolean isHolding;
 	private Entity entityHeld;
@@ -167,6 +166,8 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public void update() {
+		//System.out.println(toString());
+		
 		if(getTimeStandStill() > 13) {
 			setStill(true);
 		} else {
@@ -211,8 +212,14 @@ public class Player extends Entity implements Updatable{
 				System.out.println("Interact failed!");
 			}
 		}
-		
-		
+	}
+	
+	public String toString() {
+		String result = "Player number: "+getPlayerNumber();
+		result += "\nHolding someting? "+isHolding();
+		result += "\nis still? "+isStill();
+		result += "\nStanding at: ("+getX()+","+getY()+")";
+		return result;
 	}
 		
 		

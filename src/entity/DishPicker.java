@@ -16,10 +16,10 @@ public class DishPicker extends Block implements Interactable{
     public boolean interacts(Player e) throws InteractFailedException{
         //dont forget to throw an exception
         if (!e.isHolding()) {
+        	System.out.println("Player "+e.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
+        	
             Dish dish = new Dish();
-
             dish.setX(e.getX()); dish.setY(e.getY());
-
             RenderableHolder.getInstance().add(dish);
 
             e.setEntityHeld(dish);
