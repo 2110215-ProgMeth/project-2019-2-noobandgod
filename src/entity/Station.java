@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 
 public class Station extends Block implements Interactable{
@@ -38,8 +39,8 @@ public class Station extends Block implements Interactable{
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (isOnStation()) {
-				setOnStationExists(null);
 				e.setEntityHeld(getOnStationExists());
+				setOnStationExists(null);
 				e.setHolding(true);
 				setOnStation(false);
 				return true;
@@ -110,6 +111,18 @@ public class Station extends Block implements Interactable{
 			gc.drawImage(station1, x, y);
 		} else {
 			gc.drawImage(station2, x, y);
+		}
+		
+		if(OnStation) {
+			if (OnStationExists instanceof Dish) {
+				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
+					if(!isAnyBlockDownward) {
+						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+3);
+					} else {
+						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+7);
+					}
+				}
+			}
 		}
 		
 	}
