@@ -45,7 +45,7 @@ public class Player extends Entity implements Updatable{
 		setStill(true);
 	}
 	
-	public Entity removeHoldingEntity() {
+	public Entity removeEntityHeld() {
 		setHolding(false);
 		getEntityHeld().setDestroyed(true);
 		Entity removedEntity = getEntityHeld();
