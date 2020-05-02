@@ -80,7 +80,7 @@ public class Station extends Block implements Interactable{
 
 	@Override
 	public int getZ() {
-		return getY();
+		return getY()*3;
 	}
 
 	@Override
