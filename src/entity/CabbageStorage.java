@@ -9,17 +9,19 @@ import sharedObject.RenderableHolder;
 
 public class CabbageStorage extends IngredientStorage {
 	
-	public boolean interacts(Player p) throws InteractFailedException{
+	public boolean interacts(Player p) { //throws InteractFailedException{
 		if (!isAvailable) {
 			System.out.println("CABBAGE is out of stock!");
 			return false;
 		}
+		if ()
 	
 		if (!p.isHolding()) {
 			p.setEntityHeld(new Cabbage());		
 			return true;
 		} else {
-			throw new InteractFailedException("Please place donw the carried item before picking up a new caabbage");
+			System.out.println("Please place donw the carried item before picking up a new caabbage");
+			//throw new InteractFailedException("Please place donw the carried item before picking up a new caabbage");
 		}
 	}
 	

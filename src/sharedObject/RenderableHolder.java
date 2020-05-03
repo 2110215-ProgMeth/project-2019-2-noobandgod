@@ -39,6 +39,7 @@ public class RenderableHolder {
 	//Dish
 	public static Image dish_ontable_empty;
 	
+	
 	static {
 		loadResource();
 	}
