@@ -51,27 +51,23 @@ public class Station extends Block implements Interactable{
 					setOnStationExists(null);
 					e.setEntityHeld(dish);
 					setOnStation(false);
-					System.out.println("4");
 					return true;
 			    }else if (!isOnStation()) {	    	
 			    	Dish entity = (Dish) e.removeEntityHeld();
 			    	setOnStationExists(entity);
 			    	setOnStation(true);
-			    	System.out.println("3");
 			    	return true;
 			    }
 			}else {
 				if (!isOnStation()) {
 					setOnStationExists(e.removeEntityHeld());
 					setOnStation(true);
-					System.out.println("2");
 					return true;
 				}else if (getOnStationExists() instanceof Dish) {
 					Dish dish1 = (Dish) getOnStationExists();
 					dish1.gathers(e);
 					setOnStationExists(dish1);
 					setOnStation(true);
-					System.out.println("5");
 					return true;
 				}
 			}
