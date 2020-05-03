@@ -16,7 +16,7 @@ public class DishPicker extends Block implements Interactable{
         if (!p.isHolding()) {
         	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	p.setEntityHeld(new Dish());
-            
+            p.setHolding(true);
             return true;
         } else {
         	System.out.println("You can't take more dish, because you hands aren't available!");

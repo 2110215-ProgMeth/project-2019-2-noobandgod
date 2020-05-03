@@ -3,6 +3,7 @@ package entity;
 import entity.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class Cabbage extends Ingredient{
 	private static int price = 10;
@@ -25,7 +26,7 @@ public class Cabbage extends Ingredient{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-30)+this.getY()*pixel;
 		
-		gc.drawImage(, x, y);
+		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 		
 	}
 	@Override

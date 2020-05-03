@@ -13,14 +13,15 @@ public class CabbageStorage extends IngredientStorage {
 		if (!isAvailable) {
 			System.out.println("CABBAGE is out of stock!");
 			return false;
-		}
-		if ()
-	
+		}	
 		if (!p.isHolding()) {
-			p.setEntityHeld(new Cabbage());		
+			p.setEntityHeld(new Cabbage());
+			GameController.addCabbage_AMOUNT(-1);
+			p.setHolding(true);
 			return true;
 		} else {
-			System.out.println("Please place donw the carried item before picking up a new caabbage");
+			System.out.println("Please place down the carried item before picking up a new caabbage");
+			return false;
 			//throw new InteractFailedException("Please place donw the carried item before picking up a new caabbage");
 		}
 	}
