@@ -125,9 +125,9 @@ public class Station extends Block implements Interactable{
 		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.station_infront_Image, x, y);
+			gc.drawImage(RenderableHolder.station_infront_Image, x, y-6);
 		} else {
-			gc.drawImage(RenderableHolder.station_between_Image, x, y);
+			gc.drawImage(RenderableHolder.station_between_Image, x, y-6);
 		}
 		
 		if(OnStation) {

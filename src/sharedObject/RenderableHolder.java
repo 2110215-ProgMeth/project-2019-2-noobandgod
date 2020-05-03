@@ -36,6 +36,13 @@ public class RenderableHolder {
 	public static Image cabbagestorage_infront_Image;
 	public static Image cabbagestorage_between_Image;
 	
+	//Cabbage
+	public static Image cabbage_Image;
+	
+	//TomatoStorage
+	public static Image tomatostorage_infront_Image;
+	public static Image tomatostorage_between_Image;
+	
 	//Dish
 	public static Image dish_ontable_empty_Image;
 	public static Image dish_onhead_empty_Image;
@@ -43,6 +50,7 @@ public class RenderableHolder {
 	//DishPicker
 	public static Image dishpicker_infront_Image;
 	public static Image dishpicker_between_Image;
+	
 	
 	
 	
@@ -124,6 +132,13 @@ public class RenderableHolder {
 		cabbagestorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"cabbagestorage_infront.png").toString());
 		cabbagestorage_between_Image = new Image(ClassLoader.getSystemResource(p+"cabbagestorage_between.png").toString());
 	
+		//Cabbage
+		cabbage_Image = new Image(ClassLoader.getSystemResource(p+"cabbage.png").toString());
+
+		//TomatoStorage
+		tomatostorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_infront.png").toString());
+		tomatostorage_between_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_between.png").toString());
+		
 		//Dish
 		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
 		dish_onhead_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_onhead_empty.png").toString());
