@@ -15,7 +15,7 @@ public class Cabbage extends Ingredient{
 		return price;
 	}
 	public String toString() {
-		String result = "DISH";
+		String result = "CABBAGE";
 		return result;
 	}
 	public int getZ() {
@@ -26,7 +26,7 @@ public class Cabbage extends Ingredient{
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-30)+this.getY()*pixel;
 		
-		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);//still not finish
 		
 	}
 	@Override
