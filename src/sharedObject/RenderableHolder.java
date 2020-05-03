@@ -77,13 +77,16 @@ public class RenderableHolder {
 	}
 	
 	public void update() {
+		
 		Collections.sort(entities, comparator);
 		for (int i = entities.size() - 1; i >= 0; i--) {
+			if (entities.get(i) instanceof Updatable) {
+				((Updatable) entities.get(i)).update();
+			
 			if (!entities.get(i).isVisible())
 				entities.remove(i);
 				//continue;
-			if (entities.get(i) instanceof Updatable) {
-				((Updatable) entities.get(i)).update();
+			
 			}
 		}
 	}
