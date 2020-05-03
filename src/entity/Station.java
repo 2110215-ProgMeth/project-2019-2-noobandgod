@@ -114,9 +114,9 @@ public class Station extends Block implements Interactable{
 			if (OnStationExists instanceof Dish) {
 				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
 					if(!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+3);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+3);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+7);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+7);
 					}
 				}
 			}

@@ -48,7 +48,7 @@ public class GameController {
 	
 	public static void InitializeIngredient() {
 		setTomato_AMOUNT(1);
-		setCabbage_AMOUNT(0);
+		setCabbage_AMOUNT(2);
 		setFish_AMOUNT(0);
 	}
 	

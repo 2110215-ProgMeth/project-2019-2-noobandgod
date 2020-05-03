@@ -11,8 +11,6 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class DishPicker extends Block implements Interactable{
-    private static Image dishpickerbox = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest.png").toString());
-    private static Image dishpickerbox_infront = new Image(ClassLoader.getSystemResource("picture/boxwithdishtest_infront.png").toString());
     
     public boolean interacts(Player p) throws InteractFailedException{
         if (!p.isHolding()) {
@@ -41,9 +39,9 @@ public class DishPicker extends Block implements Interactable{
         int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 
         if(isAnyBlockDownward) {
-        	gc.drawImage(dishpickerbox, x, y);
+        	gc.drawImage(RenderableHolder.dishpicker_between_Image, x, y);
         } else {
-        	gc.drawImage(dishpickerbox_infront, x, y);
+        	gc.drawImage(RenderableHolder.dishpicker_infront_Image, x, y);
         }
         
     }
