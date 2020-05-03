@@ -32,6 +32,14 @@ public abstract class Ingredient extends Entity {
 	public void setPlaced(boolean isPlaced) {
 		this.isPlaced = isPlaced;
 	}
-	
+	public static String getString(Ingredient i) {
+		if (i instanceof Cabbage) {
+			return "Cabbage";
+		}else if (i instanceof Tomato) {
+			return "Tomato";
+		}else {
+			return "Fish";
+		}
+	}
 	
 }

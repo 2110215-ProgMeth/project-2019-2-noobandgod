@@ -17,7 +17,7 @@ public class FoodCounter extends Block implements Interactable{
 		// TODO Auto-generated method stub
 		if (e.isHolding()) {
 			if(e.getEntityHeld() instanceof Dish) {
-				return GameController.getOrderManager.sendOrder(e);
+				return GameController.getOrderManager().sendOrder(e);
 			}throw new SendFoodFailedException("The carried menu isn't is in the list");
 		}throw new InteractFailedException("There is nothing to be delivered");
 	}

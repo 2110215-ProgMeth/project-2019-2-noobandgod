@@ -41,4 +41,5 @@ public class Cabbage extends Ingredient{
 		return !isDestroyed();
 	}
 	
+	
 }

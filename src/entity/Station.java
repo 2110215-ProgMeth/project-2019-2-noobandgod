@@ -1,5 +1,9 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
@@ -152,12 +156,22 @@ public class Station extends Block implements Interactable{
 						}
 					}
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 2) {
-	
-					
+						ArrayList<String> ondish = new ArrayList<>();
+						for (Ingredient i : ((Dish) OnStationExists).getOnDishExists()) {
+							ondish.add(Ingredient.getString(i));
+						}Collections.sort(ondish);
+						if (ondish.get(0).equals("Cabbage")) {
+							if (ondish.get(1).equals("Fish")) {//cabbage and fish both state 1
+								//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+							}else if(ondish.get(1).equals("Tomato")) {//cabbage adn tomato
+								//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+							}
+						}else {//Tomato and fish
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+						}
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 3){//sahimmi salad
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
 				}
-				
 				
 			}else if (OnStationExists instanceof Tomato) {//tomato pure
 				if (((Tomato) OnStationExists).getState()==0){//tomato state 0
@@ -167,7 +181,7 @@ public class Station extends Block implements Interactable{
 				}
 			}else if (OnStationExists instanceof Cabbage) {//cabbage pure
 				if (((Cabbage) OnStationExists).getState()==0){//cabbage state 0
-					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+					gc.drawImage(RenderableHolder.cabbage_Image, x, y-1);
 				}else {//cabbage state1
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}
@@ -176,13 +190,15 @@ public class Station extends Block implements Interactable{
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}else if (((Fish) OnStationExists).getState()==1) {//fish state1
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
-				}else {//fish state2
+				}else {//fish state2 friedfish
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}
 			}
 		}
 		
 	}
+
+
 
 	@Override
 	public boolean isVisible() {
