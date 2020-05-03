@@ -52,4 +52,10 @@ public class Bin extends Block implements Interactable{
 	public boolean isVisible() {
 		return true;
 	}
+	
+	public String toString() {
+		String result = "BIN";
+		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		return result;
+	}
 }

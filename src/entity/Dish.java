@@ -47,6 +47,7 @@ public class Dish extends Entity {
 	
 	public String toString() {
 		String result = "DISH";
+		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
 		return result;
 	}
 	

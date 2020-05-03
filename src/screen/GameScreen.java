@@ -105,6 +105,8 @@ public class GameScreen {
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
 				
+				RenderableHolder.getInstance().show();
+				
 			}
 		};animationTimer.start();
 		
