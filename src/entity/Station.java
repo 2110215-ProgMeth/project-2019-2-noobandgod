@@ -17,9 +17,6 @@ public class Station extends Block implements Interactable{
 	private Entity OnStationExists;
 	private boolean OnStation;
 	
-	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
-	private static Image station2 = new Image(ClassLoader.getSystemResource("picture/station2.png").toString());
-	
 	public Station() {
 		setOnStationExists(null);
 		setOnStation(false);
@@ -108,9 +105,9 @@ public class Station extends Block implements Interactable{
 		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(station1, x, y);
+			gc.drawImage(RenderableHolder.station_infront_Image, x, y);
 		} else {
-			gc.drawImage(station2, x, y);
+			gc.drawImage(RenderableHolder.station_between_Image, x, y);
 		}
 		
 		if(OnStation) {

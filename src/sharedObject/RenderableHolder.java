@@ -28,6 +28,10 @@ public class RenderableHolder {
 	public static Image bin_infront_Image;
 	public static Image bin_between_Image;
 	
+	//Station
+	public static Image station_infront_Image;
+	public static Image station_between_Image;
+	
 	//CabbageStorage
 	public static Image cabbagestorage_infront_Image;
 	public static Image cabbagestorage_between_Image;
@@ -103,6 +107,8 @@ public class RenderableHolder {
 		bin_between_Image = new Image(ClassLoader.getSystemResource(p+"bin_between.png").toString());
 	
 		//Station
+		station_infront_Image = new Image(ClassLoader.getSystemResource(p+"station_infront.png").toString());
+		station_between_Image = new Image(ClassLoader.getSystemResource(p+"station_between.png").toString());
 		
 		
 		//CabbageStorage
