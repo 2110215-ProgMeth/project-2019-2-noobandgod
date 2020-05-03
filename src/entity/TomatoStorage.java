@@ -41,12 +41,12 @@ public class TomatoStorage extends IngredientStorage{
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.cabbagestorage_infront_Image, x, y);//not finish
+			gc.drawImage(RenderableHolder.tomatostorage_infront_Image, x, y-6);
 		} else {
-			gc.drawImage(RenderableHolder.cabbagestorage_between_Image, x, y);//not finish
+			gc.drawImage(RenderableHolder.tomatostorage_between_Image, x, y-6);
 		}
 		
 	}
