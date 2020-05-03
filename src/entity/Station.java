@@ -38,8 +38,8 @@ public class Station extends Block implements Interactable{
 	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (isOnStation()) {
-				setOnStationExists(null);
 				e.setEntityHeld(getOnStationExists());
+				setOnStationExists(null);
 				e.setHolding(true);
 				setOnStation(false);
 				return true;
