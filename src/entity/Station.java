@@ -141,10 +141,9 @@ public class Station extends Block implements Interactable{
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
 					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with tomato
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
-						}
+				
 					}else if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Cabbage) {//dish with cabbage
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
-						}
 					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
 						if (((Fish) OnStationExists).getState()==1){//fish state1
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
@@ -152,14 +151,13 @@ public class Station extends Block implements Interactable{
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 						}
 					}
-					
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 2) {
-				}
+	
 					
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 3){//sahimmi salad
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
 				}
-
+				
 				
 			}else if (OnStationExists instanceof Tomato) {//tomato pure
 				if (((Tomato) OnStationExists).getState()==0){//tomato state 0
