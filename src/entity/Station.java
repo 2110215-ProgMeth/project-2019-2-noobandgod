@@ -63,7 +63,6 @@ public class Station extends Block implements Interactable{
 			}else {
 				if (!isOnStation()) {
 					setOnStationExists(e.removeEntityHeld());
-					//e.removeEntityHeld();
 					setOnStation(true);
 					System.out.println("2");
 					return true;
