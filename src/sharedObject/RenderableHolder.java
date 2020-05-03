@@ -82,11 +82,11 @@ public class RenderableHolder {
 		for (int i = entities.size() - 1; i >= 0; i--) {
 			if (entities.get(i) instanceof Updatable) {
 				((Updatable) entities.get(i)).update();
-			
-			if (!entities.get(i).isVisible())
-				entities.remove(i);
-				//continue;
-			
+			}
+		}
+		for (int i1 = entities.size() - 1; i1 >= 0; i1--) {
+			if (!entities.get(i1).isVisible()) {
+				entities.remove(i1);
 			}
 		}
 	}
