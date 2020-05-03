@@ -9,15 +9,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 
 public class Station extends Block implements Interactable{
 
 	private Entity OnStationExists;
 	private boolean OnStation;
-	
-	private static Image station1 = new Image(ClassLoader.getSystemResource("picture/station1.png").toString());
-	private static Image station2 = new Image(ClassLoader.getSystemResource("picture/station2.png").toString());
 	
 	public Station() {
 		setOnStationExists(null);
@@ -107,9 +105,21 @@ public class Station extends Block implements Interactable{
 		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(station1, x, y);
+			gc.drawImage(RenderableHolder.station_infront_Image, x, y);
 		} else {
-			gc.drawImage(station2, x, y);
+			gc.drawImage(RenderableHolder.station_between_Image, x, y);
+		}
+		
+		if(OnStation) {
+			if (OnStationExists instanceof Dish) {
+				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
+					if(!isAnyBlockDownward) {
+						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+3);
+					} else {
+						gc.drawImage(RenderableHolder.dish_ontable_empty, x, y+7);
+					}
+				}
+			}
 		}
 		
 	}

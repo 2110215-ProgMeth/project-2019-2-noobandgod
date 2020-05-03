@@ -28,6 +28,17 @@ public class RenderableHolder {
 	public static Image bin_infront_Image;
 	public static Image bin_between_Image;
 	
+	//Station
+	public static Image station_infront_Image;
+	public static Image station_between_Image;
+	
+	//CabbageStorage
+	public static Image cabbagestorage_infront_Image;
+	public static Image cabbagestorage_between_Image;
+	
+	//Dish
+	public static Image dish_ontable_empty;
+	
 	static {
 		loadResource();
 	}
@@ -96,7 +107,16 @@ public class RenderableHolder {
 		bin_between_Image = new Image(ClassLoader.getSystemResource(p+"bin_between.png").toString());
 	
 		//Station
+		station_infront_Image = new Image(ClassLoader.getSystemResource(p+"station_infront.png").toString());
+		station_between_Image = new Image(ClassLoader.getSystemResource(p+"station_between.png").toString());
 		
+		
+		//CabbageStorage
+		cabbagestorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"cabbagestorage_infront.png").toString());
+		cabbagestorage_between_Image = new Image(ClassLoader.getSystemResource(p+"cabbagestorage_between.png").toString());
+	
+		//Dish
+		dish_ontable_empty = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
 	}
 	
 	

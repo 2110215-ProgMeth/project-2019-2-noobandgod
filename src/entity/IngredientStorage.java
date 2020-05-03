@@ -6,4 +6,5 @@ import entity.base.Interactable;
 
 public abstract class IngredientStorage extends Block implements Interactable {
 	private int amount;
+	
 }
