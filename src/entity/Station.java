@@ -113,7 +113,7 @@ public class Station extends Block implements Interactable{
 
 	@Override
 	public int getZ() {
-		return getY();
+		return getY()*3;
 	}
 
 	@Override
@@ -131,13 +131,55 @@ public class Station extends Block implements Interactable{
 		}
 		
 		if(OnStation) {
-			if (OnStationExists instanceof Dish) {
+			if (OnStationExists instanceof Dish) {//with dish
 				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
 					if(!isAnyBlockDownward) {
 						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 					} else {
 						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
 					}
+				}else if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
+					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with tomato
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						}
+					}else if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Cabbage) {//dish with cabbage
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						}
+					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
+						if (((Fish) OnStationExists).getState()==1){//fish state1
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						}else {//fish state2
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						}
+					}
+					
+				}else if (((Dish) OnStationExists).getOnDishExists().size() == 2) {
+				}
+					
+				}else if (((Dish) OnStationExists).getOnDishExists().size() == 3){//sahimmi salad
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+				}
+
+				
+			}else if (OnStationExists instanceof Tomato) {//tomato pure
+				if (((Tomato) OnStationExists).getState()==0){//tomato state 0
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else {//tomato state1
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}
+			}else if (OnStationExists instanceof Cabbage) {//cabbage pure
+				if (((Cabbage) OnStationExists).getState()==0){//cabbage state 0
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else {//cabbage state1
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}
+			}else if(OnStationExists instanceof Fish) {//pure fish
+				if (((Fish) OnStationExists).getState()==0){//fish state 0
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else if (((Fish) OnStationExists).getState()==1) {//fish state1
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else {//fish state2
+					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}
 			}
 		}
