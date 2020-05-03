@@ -35,15 +35,20 @@ public class Station extends Block implements Interactable{
 
 
 	public boolean interacts(Player e) throws InteractFailedException{
-		if (!e.isHolding()) {
+		if (!e.isHolding()) { //if player's hand is available to pick something
 			if (isOnStation()) {
-				e.setEntityHeld(getOnStationExists());
-				setOnStationExists(null);
-				e.setHolding(true);
-				setOnStation(false);
+				Entity ontableEntity_clone = this.removedEntityOnStation();
+				e.setEntityHeld(ontableEntity_clone);
+				//set the entity in our hand (isPlaced = false)
+				if (ontableEntity_clone instanceof Dish) {
+					((Dish) ontableEntity_clone).setPlaced(false);
+				} else if (ontableEntity_clone instanceof Ingredient) {
+					((Ingredient) ontableEntity_clone).setPlaced(false);
+				}
 				return true;
 			}
 		}else {
+			//if on player's hand is DISH
 			if (e.getEntityHeld() instanceof Dish) {
 				Dish dish = (Dish) e.getEntityHeld();
 				if (getOnStationExists() instanceof Ingredient) {
@@ -52,8 +57,13 @@ public class Station extends Block implements Interactable{
 					e.setEntityHeld(dish);
 					setOnStation(false);
 					return true;
-			    }else if (!isOnStation()) {	    	
+			    }else if (!isOnStation()) {	  
+			    	//if the station is available -> PLACE THE DISH
+			    	dish.setPlaced(true); 
 			    	Dish entity = (Dish) e.removeEntityHeld();
+			    	entity.setX(this.getX()); 
+			    	entity.setY(this.getY());
+			    	RenderableHolder.getInstance().add(entity);
 			    	setOnStationExists(entity);
 			    	setOnStation(true);
 			    	return true;
@@ -73,6 +83,16 @@ public class Station extends Block implements Interactable{
 			}
 		}return false;
 	}
+	
+	public Entity removedEntityOnStation() {
+		setOnStation(false);
+		Entity removedEntity = (Entity) getOnStationExists().clone();
+		
+		getOnStationExists().setDestroyed(true);
+		setOnStationExists(null);
+		return removedEntity;
+	}
+	
 
 	public Entity getOnStationExists() {
 		return OnStationExists;
@@ -100,7 +120,7 @@ public class Station extends Block implements Interactable{
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
 		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
 		
@@ -114,9 +134,9 @@ public class Station extends Block implements Interactable{
 			if (OnStationExists instanceof Dish) {
 				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
 					if(!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+3);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+7);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
 					}
 				}
 			}

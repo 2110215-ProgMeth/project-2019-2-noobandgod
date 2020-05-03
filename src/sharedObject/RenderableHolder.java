@@ -91,7 +91,7 @@ public class RenderableHolder {
 	public static void show() {
 		ArrayList<IRenderable> entities2 = RenderableHolder.getInstance().getEntities();
 		for (IRenderable entity: entities2) {
-			System.out.println(entity.toString()+"  Z = "+entity.getZ());
+			System.out.println(entity.toString()+"  (Z = "+entity.getZ()+")");
 			System.out.println("-------------------------------");
 		}
 		System.out.println("===================================");

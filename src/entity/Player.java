@@ -226,7 +226,7 @@ public class Player extends Entity implements Updatable{
 	}
 	
 	public String toString() {
-		String result = "Player number: "+getPlayerNumber();
+		String result = "PLAYER NO: "+getPlayerNumber();
 		result += "\nHolding someting? "+isHolding();
 		result += "\nis still? "+isStill();
 		result += "\nStanding at: ("+getX()+","+getY()+")";

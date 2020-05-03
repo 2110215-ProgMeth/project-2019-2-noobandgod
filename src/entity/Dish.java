@@ -3,16 +3,16 @@ package entity;
 import java.util.ArrayList;
 
 import entity.base.Entity;
-import entity.base.Interactable;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Dish extends Entity {
 	private ArrayList<Ingredient> onDishExists;
+	private boolean isPlaced;
 	
 	public Dish() {
+		setPlaced(false);
 		setDestroyed(false);
 		this.onDishExists = new ArrayList<Ingredient>();
 	}
@@ -48,6 +48,7 @@ public class Dish extends Entity {
 	public String toString() {
 		String result = "DISH";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nisPlacedonTable? " + this.isPlaced;
 		return result;
 	}
 	
@@ -64,13 +65,27 @@ public class Dish extends Entity {
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-30)+this.getY()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
-		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+		if(!isPlaced) {
+			if(onDishExists.size() == 0) {
+				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
+			}
+		}
 		
 	}
 	@Override
 	public boolean isVisible() {
 		return !isDestroyed();
 	}
+
+	public boolean isPlaced() {
+		return isPlaced;
+	}
+
+	public void setPlaced(boolean isPlaced) {
+		this.isPlaced = isPlaced;
+	}
+	
+	
 }

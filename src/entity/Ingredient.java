@@ -3,7 +3,8 @@ package entity;
 import entity.base.Entity;
 
 public abstract class Ingredient extends Entity {
-	private int State;
+	protected int State;
+	protected boolean isPlaced;
 
 	public void setState(int state) {
 		this.State = state;
@@ -24,6 +25,12 @@ public abstract class Ingredient extends Entity {
 		if (State != other.State)
 			return false;
 		return true;
+	}
+	public boolean isPlaced() {
+		return isPlaced;
+	}
+	public void setPlaced(boolean isPlaced) {
+		this.isPlaced = isPlaced;
 	}
 	
 	
