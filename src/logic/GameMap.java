@@ -159,6 +159,8 @@ public class GameMap {
 	}
 	
 	public boolean isInteractPossible(int targetx, int targety) {
+		System.out.println("You are interacting @("+targetx+","+targety+")");
+		
 		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
 			//out of bound -> return false
 			System.out.println("Out of bound interacting");
