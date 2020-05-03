@@ -37,7 +37,13 @@ public class RenderableHolder {
 	public static Image cabbagestorage_between_Image;
 	
 	//Dish
-	public static Image dish_ontable_empty;
+	public static Image dish_ontable_empty_Image;
+	public static Image dish_onhead_empty_Image;
+	
+	//DishPicker
+	public static Image dishpicker_infront_Image;
+	public static Image dishpicker_between_Image;
+	
 	
 	
 	static {
@@ -117,7 +123,12 @@ public class RenderableHolder {
 		cabbagestorage_between_Image = new Image(ClassLoader.getSystemResource(p+"cabbagestorage_between.png").toString());
 	
 		//Dish
-		dish_ontable_empty = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
+		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
+		dish_onhead_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_onhead_empty.png").toString());
+	
+		//DishPicker
+		dishpicker_infront_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_infront.png").toString());
+		dishpicker_between_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_between.png").toString());
 	}
 	
 	

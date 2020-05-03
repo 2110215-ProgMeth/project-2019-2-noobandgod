@@ -7,11 +7,10 @@ import entity.base.Interactable;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class Dish extends Entity {
 	private ArrayList<Ingredient> onDishExists;
-	
-	private static Image dish_empty = new Image(ClassLoader.getSystemResource("picture/dish_empty.png").toString());
 	
 	public Dish() {
 		setDestroyed(false);
@@ -66,7 +65,7 @@ public class Dish extends Entity {
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
 		int y = (GameScreen.draw_origin_y-30)+this.getY()*pixel;
 		
-		gc.drawImage(dish_empty, x, y);
+		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 		
 	}
 	@Override
