@@ -31,10 +31,10 @@ public class CuttingBoard extends Equipment implements Interactable{
 	public boolean interacts(Player e) throws InteractFailedException{//dont forget to setplace
 		if (!e.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
-				e.setEntityHeld(getOnCuttingBoardExists());
-				setOnCuttingBoardExists(null);
+				Ingredient entity_clone = this.removedEntityOnCuttingBoard();
+				e.setEntityHeld(entity_clone);
 				e.setHolding(true);
-				setOnCuttingBoard(false);
+				((Ingredient) entity_clone).setPlaced(false);
 				return true;
 			}
 		}else {//holding something
@@ -42,25 +42,32 @@ public class CuttingBoard extends Equipment implements Interactable{
 				if (isOnCuttingBoard()) {
 					Dish dish = (Dish) e.getEntityHeld();
 					if (dish.check((Ingredient) getOnCuttingBoardExists())){
-						dish.adds(getOnCuttingBoardExists());
-						setOnCuttingBoardExists(null);
+						Ingredient entity_clone = this.removedEntityOnCuttingBoard();
+						dish.adds(entity_clone);
 						e.setEntityHeld(dish);
-						setOnCuttingBoard(false);
+						((Dish) dish).setPlaced(false);
 						return true;
 					}
 				}
 			}else {//holding ingredient
-				if (!isOnCuttingBoard()) {
-					setOnCuttingBoardExists(e.getEntityHeld());
+				if (!isOnCuttingBoard()) {	
+					Entity entity_clone = e.removeEntityHeld();
+					setOnCuttingBoardExists(entity_clone);
 					setOnCuttingBoard(true);
-					e.setHolding(false);
-					e.setEntityHeld(null);
+					((Ingredient) entity_clone).setPlaced(true);
 					return true;
 				}
 			}
 		}return false;
 	}
-
+	public Ingredient removedEntityOnCuttingBoard() {
+		setOnCuttingBoard(false);
+		Ingredient removedEntity = (Ingredient) getOnCuttingBoardExists().clone();
+		
+		getOnCuttingBoardExists().setDestroyed(true);
+		setOnCuttingBoardExists(null);
+		return removedEntity;
+	}
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
 		if (OnCuttingBoard) {
 			getOnCuttingBoardExists().setState(1);
