@@ -58,7 +58,7 @@ public class FryingPan extends Equipment implements Interactable{
 		return false;
 		//throw new InteractFailedException("There is something wrong");
 	}
-	public boolean cooks() { //throws CookFailedException{
+	public boolean cooks(Player p) { //throws CookFailedException{
 		if (OnFryingPan) {
 				getOnFryingPanExists().setState(2);
 				return true;

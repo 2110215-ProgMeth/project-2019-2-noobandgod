@@ -1,7 +1,8 @@
 package entity.base;
 
+import entity.Player;
 import exception.CookFailedException;
 
 public interface Cookable {
-	public abstract boolean cooks() throws CookFailedException;
+	public abstract boolean cooks(Player p) throws CookFailedException;
 }
