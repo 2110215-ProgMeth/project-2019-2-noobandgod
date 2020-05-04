@@ -155,7 +155,7 @@ public class Station extends Block implements Interactable{
 					}else if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Cabbage) {//dish with cabbage
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
-						if (((Fish) OnStationExists).getState()==1){//fish state1
+						if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState()==1){//fish state1
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 						}else {//fish state2
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
