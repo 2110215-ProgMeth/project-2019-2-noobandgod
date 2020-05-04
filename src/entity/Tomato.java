@@ -35,6 +35,8 @@ public class Tomato extends Ingredient{
 		if(!isPlaced) {
 			if (getState() == 0) {
 				gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
+			}else if (getState() == 1) {
+				//gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
 			}
 		}
 

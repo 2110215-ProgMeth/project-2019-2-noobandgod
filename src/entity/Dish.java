@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import entity.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
@@ -71,6 +72,45 @@ public class Dish extends Entity {
 			if(onDishExists.size() == 0) {
 				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
 			}
+//			
+//			if (getOnDishExists().size() == 0) {          //this is the same as above ****since 71-74*****
+//				if(!isAnyBlockDownward) {
+//					gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+//				} else {
+//					gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+//				}
+			else if (onDishExists.size() == 1) {// dish with one ingredient
+				if ((onDishExists.get(0) instanceof Tomato)) {//dish with tomato
+						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+			
+				}else if ((onDishExists.get(0) instanceof Cabbage)) {//dish with cabbage
+						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else if((onDishExists.get(0) instanceof Fish)) {//dish with fish
+					if (((Fish) onDishExists.get(0)).getState()==1){//fish state1
+						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+					}else {//fish state2
+						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+					}
+				}
+			}else if (onDishExists.size() == 2) {
+					ArrayList<String> ondish = new ArrayList<>();
+					for (Ingredient i : onDishExists) {
+						ondish.add(Ingredient.getString(i));
+					}Collections.sort(ondish);
+					if (ondish.get(0).equals("Cabbage")) {
+						if (ondish.get(1).equals("Fish")) {//cabbage and fish both state 1
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+						}else if(ondish.get(1).equals("Tomato")) {//cabbage adn tomato
+							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+						}
+					}else {//Tomato and fish
+						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+					}
+			}else if (onDishExists.size() == 3){//sahimmi salad
+				//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+			}
+			
+		
 		}
 		
 	}
@@ -97,7 +137,7 @@ public class Dish extends Entity {
 				return false;
 			}
 		}
-		for (Ingredient ingredient: getOnDishExists()) {//check if this thing has a same type if it is,return false;
+		for (Ingredient ingredient: getOnDishExists()) {//check if this ingredient's type is in the dish.If it is,return false;
 			if (ingredient instanceof Cabbage) {
 				if (i instanceof Cabbage) {
 					return false;

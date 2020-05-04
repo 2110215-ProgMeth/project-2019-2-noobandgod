@@ -33,6 +33,8 @@ public class Fish extends Ingredient{
 		if(!isPlaced) {
 			if (getState() == 0) {
 				gc.drawImage(RenderableHolder.fish_Image, x, y-34);
+			}else if (getState() == 1) {
+				//gc.drawImage(RenderableHolder.fish_Image, x, y-34);
 			}
 		}
 
