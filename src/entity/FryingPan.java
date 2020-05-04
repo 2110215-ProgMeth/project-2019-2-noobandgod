@@ -35,11 +35,13 @@ public class FryingPan extends Equipment implements Interactable{
 			if (e.getEntityHeld() instanceof Dish) {
 				if (isOnFryingPan()) {
 					Dish dish = (Dish) e.getEntityHeld();
-					dish.adds(getOnFryingPanExists());
-					setOnFryingPanExists(null);
-					e.setEntityHeld(dish);
-					setOnFryingPan(false);
-					return true;
+					if (dish.check((Ingredient) getOnFryingPanExists())){
+						dish.adds(getOnFryingPanExists());
+						setOnFryingPanExists(null);
+						e.setEntityHeld(dish);
+						setOnFryingPan(false);
+						return true;
+					}
 			    }
 			}else {
 				if (!isOnFryingPan()) {
@@ -53,7 +55,7 @@ public class FryingPan extends Equipment implements Interactable{
 		}throw new InteractFailedException("There is something wrong");
 	}
 	public boolean cooks() throws CookFailedException{
-		if (!getOnFryingPanExists().equals(null)) {
+		if (OnFryingPan) {
 				getOnFryingPanExists().setState(2);
 				return true;
 		}throw new CookFailedException("There is nothing to be cooked");//throw an exception that nothing to be cooked
