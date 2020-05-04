@@ -11,18 +11,20 @@ import logic.GameController;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements Updatable{
+public class Player extends Entity implements Updatable,Runnable {
 	private boolean isHolding;
 	private Entity entityHeld;
 	private int PlayerNumber;
-	
+
 	private int timeStandStill;
 	private boolean isStill;
-	
+
 	private Direction faceDirection;
 	private Direction lastwalkDirection;
-	
-	public Player(int playerNumber,int x,int y) {
+
+	private boolean isFreeze;
+
+	public Player(int playerNumber, int x, int y) {
 		setX(x);
 		setY(y);
 		setHolding(false);
@@ -32,18 +34,19 @@ public class Player extends Entity implements Updatable{
 		setPlayerNumber(playerNumber);
 		setTimeStandStill(0);
 		setStill(true);
+		setFreeze(isFreeze);
 	}
-	
+
 	public Entity removeEntityHeld() {
 		setHolding(false);
 		Entity removedEntity = (Entity) getEntityHeld().clone();
-		
+
 		getEntityHeld().setDestroyed(true);
 		setEntityHeld(null);
-		
+
 		return removedEntity;
 	}
-	
+
 	public void setEntityHeld(Entity entityHeld) {
 		if (!(entityHeld == null)) {
 			setHolding(true);
@@ -55,51 +58,56 @@ public class Player extends Entity implements Updatable{
 			this.entityHeld = null;
 		}
 	}
-	
+
 	public boolean move(Direction dir) {
-		setFaceDirection(dir);
-		
-		int targetx = this.getX();
-		int targety = this.getY();
-		
-		switch(dir) {
-		case LEFT:
-			targetx -= 1;
-			break;
-		case UP:
-			targety -= 1;
-			break;
-		case RIGHT:
-			targetx += 1;
-			break;
-		case DOWN:
-			targety += 1;
-			break;
-		default:
-			break;
-		}
-		
-		if(GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
-			setX(targetx); setY(targety);
-			
-			if(isHolding) {
-				getEntityHeld().setX(targetx); getEntityHeld().setY(targety);
+		if (!isFreeze) {
+			setFaceDirection(dir);
+			int targetx = this.getX();
+			int targety = this.getY();
+
+			switch (dir) {
+			case LEFT:
+				targetx -= 1;
+				break;
+			case UP:
+				targety -= 1;
+				break;
+			case RIGHT:
+				targetx += 1;
+				break;
+			case DOWN:
+				targety += 1;
+				break;
+			default:
+				break;
 			}
-			
-			System.out.println("Player "+getPlayerNumber()+" has moved to ("+getX()+","+getY()+")!");
-			return true;
-		} else {
-			return false;
+
+			if (GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
+				setX(targetx);
+				setY(targety);
+
+				if (isHolding) {
+					getEntityHeld().setX(targetx);
+					getEntityHeld().setY(targety);
+				}
+
+				System.out.println("Player " + getPlayerNumber() + " has moved to (" + getX() + "," + getY() + ")!");
+				return true;
+			} else {
+				return false;
+			}
+
 		}
+		return false;
 	}
-	
+
 	public Integer[] getWhereInteract() {
 		Direction dir = getFaceDirection();
-		
+
 		int targetx = this.getX();
 		int targety = this.getY();
-		
-		switch(dir) {
+
+		switch (dir) {
 		case LEFT:
 			targetx -= 1;
 			break;
@@ -115,25 +123,25 @@ public class Player extends Entity implements Updatable{
 		default:
 			break;
 		}
-		return new Integer[] {targetx,targety};
+		return new Integer[] { targetx, targety };
 	}
-	
+
 	@Override
 	public int getZ() {
-		return getY()*3+1;
+		return getY() * 3 + 1;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-20)+this.getY()*pixel;
-		
-		//System.out.println("Drawing Player at ("+getX()+","+getY()+")");
-		
-		if(!isStill) {
+		int x = GameScreen.draw_origin_x + this.getX() * pixel;
+		int y = (GameScreen.draw_origin_y - 20) + this.getY() * pixel;
+
+		// System.out.println("Drawing Player at ("+getX()+","+getY()+")");
+
+		if (!isStill) {
 			switch (faceDirection) {
-			case LEFT: 
+			case LEFT:
 				gc.drawImage(RenderableHolder.player_walk_left_Image, x, y);
 				break;
 			case RIGHT:
@@ -166,9 +174,8 @@ public class Player extends Entity implements Updatable{
 			default:
 				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
 			}
-			}	
 		}
-		
+	}
 
 	@Override
 	public boolean isVisible() {
@@ -177,78 +184,93 @@ public class Player extends Entity implements Updatable{
 
 	@Override
 	public void update() {
-		//System.out.println(toString());
-		
-		if(getTimeStandStill() > 13) {
+		// System.out.println(toString());
+		if (getTimeStandStill() > 13) {
 			setStill(true);
 		} else {
 			setStill(false);
 		}
-		
-		if (InputUtility.getKeypressed().contains(KeyCode.W) && this.getPlayerNumber() == 0) {
-			this.move(Direction.UP);
-			setLastwalkDirection(Direction.UP);
-			setTimeStandStill(0);
-			
-		} else if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
-			this.move(Direction.DOWN);
-			setLastwalkDirection(Direction.DOWN);
-			setTimeStandStill(0);
-			
-		} else if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
-			this.move(Direction.LEFT);
-			setLastwalkDirection(Direction.LEFT);
-			setTimeStandStill(0);
-			
-		} else if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
-			this.move(Direction.RIGHT);
-			setLastwalkDirection(Direction.RIGHT);
-			setTimeStandStill(0);
-			
+		if (!isFreeze) {
+			if (InputUtility.getKeypressed().contains(KeyCode.W) && this.getPlayerNumber() == 0) {
+				this.move(Direction.UP);
+				setLastwalkDirection(Direction.UP);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.S) && this.getPlayerNumber() == 0) {
+				this.move(Direction.DOWN);
+				setLastwalkDirection(Direction.DOWN);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.A) && this.getPlayerNumber() == 0) {
+				this.move(Direction.LEFT);
+				setLastwalkDirection(Direction.LEFT);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.D) && this.getPlayerNumber() == 0) {
+				this.move(Direction.RIGHT);
+				setLastwalkDirection(Direction.RIGHT);
+				setTimeStandStill(0);
+
+			}
 		}
-		
-		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S)) 
-				&& !InputUtility.getKeypressed().contains((KeyCode.A)) &&  !InputUtility.getKeypressed().contains((KeyCode.D))) {
+
+		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S))
+				&& !InputUtility.getKeypressed().contains((KeyCode.A))
+				&& !InputUtility.getKeypressed().contains((KeyCode.D))) {
 			addTimeStandStill();
 		}
-		
-		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT)) || InputUtility.getKeypressed().contains(KeyCode.CONTROL)) {
+
+		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))
+				|| InputUtility.getKeypressed().contains(KeyCode.CONTROL)) {
 			Integer[] targetcoordinate = getWhereInteract();
 			int targetx = targetcoordinate[0];
 			int targety = targetcoordinate[1];
-			
-			if(InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
-				if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety, 0)) {
+
+			if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+				if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx,
+						targety, 0)) {
 					System.out.println("Interact completed!");
 				} else {
 					System.out.println("Interact failed!");
 				}
-			} else if(InputUtility.getKeypressed().contains((KeyCode.CONTROL))){
-				if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety, 1)) {
+			} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
+				if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx,
+						targety, 1)) {
+					setFreeze(true);
+					if (isFreeze) {
+						run();
+					}setFreeze(false);
 					System.out.println("Cook completed!");
 				} else {
 					System.out.println("Cook failed!");
 				}
 			}
-		}	
-			
-	
+		}
+
 	}
-	
+	public void run() {
+		try {
+			Thread.sleep(5000);
+			InputUtility.removeKeyPressed();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		
+	}
+
 	public String toString() {
-		String result = "PLAYER NO: "+getPlayerNumber();
-		result += "\nHolding someting? "+isHolding();
-		result += "\nis still? "+isStill();
-		result += "\nStanding at: ("+getX()+","+getY()+")";
+		String result = "PLAYER NO: " + getPlayerNumber();
+		result += "\nHolding someting? " + isHolding();
+		result += "\nis still? " + isStill();
+		result += "\nStanding at: (" + getX() + "," + getY() + ")";
 		return result;
 	}
-		
-		
-	
+
 	public void setHolding(boolean isHolding) {
 		this.isHolding = isHolding;
 	}
-	
+
 	public void setFaceDirection(Direction faceDirection) {
 		this.faceDirection = faceDirection;
 	}
@@ -260,6 +282,7 @@ public class Player extends Entity implements Updatable{
 	public boolean isHolding() {
 		return isHolding;
 	}
+
 	public Entity getEntityHeld() {
 		return entityHeld;
 	}
@@ -267,7 +290,7 @@ public class Player extends Entity implements Updatable{
 	public Direction getFaceDirection() {
 		return faceDirection;
 	}
-	
+
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
@@ -287,7 +310,7 @@ public class Player extends Entity implements Updatable{
 	public void setTimeStandStill(int timeStandStill) {
 		this.timeStandStill = timeStandStill;
 	}
-	
+
 	public void addTimeStandStill() {
 		this.timeStandStill += 1;
 	}
@@ -299,6 +322,13 @@ public class Player extends Entity implements Updatable{
 	public void setStill(boolean isStill) {
 		this.isStill = isStill;
 	}
-	
-	
+
+	public boolean isFreeze() {
+		return isFreeze;
+	}
+
+	public void setFreeze(boolean isFreeze) {
+		this.isFreeze = isFreeze;
+	}
+
 }
