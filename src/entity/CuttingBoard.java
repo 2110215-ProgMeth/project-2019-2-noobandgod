@@ -28,7 +28,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	
 	
-	public boolean interacts(Player e) throws InteractFailedException{
+	public boolean interacts(Player e) throws InteractFailedException{//dont forget to setplace
 		if (!e.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				e.setEntityHeld(getOnCuttingBoardExists());
