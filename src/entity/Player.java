@@ -12,7 +12,7 @@ import logic.GameController;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements Updatable,Runnable {
+public class Player extends Entity implements Updatable, Runnable {
 	private boolean isHolding;
 	private Entity entityHeld;
 	private int PlayerNumber;
@@ -35,7 +35,7 @@ public class Player extends Entity implements Updatable,Runnable {
 		setPlayerNumber(playerNumber);
 		setTimeStandStill(0);
 		setStill(true);
-		setFreeze(isFreeze);
+		setFreeze(false);
 	}
 
 	public Entity removeEntityHeld() {
@@ -226,37 +226,38 @@ public class Player extends Entity implements Updatable,Runnable {
 			Integer[] targetcoordinate = getWhereInteract();
 			int targetx = targetcoordinate[0];
 			int targety = targetcoordinate[1];
-
-			if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
-				if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx,
-						targety, 0)) {
-					System.out.println("Interact completed!");
-				} else {
-					System.out.println("Interact failed!");
-				}
-			} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
-				if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx,
-						targety, 1)) {
-						run();
-						//System.out.println("Cook completed!");
-					}else {
-					System.out.println("Cook failed!");
+			if (!isFreeze) {
+				if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0),
+							targetx, targety, 0)) {
+						System.out.println("Interact completed!");
+					} else {
+						System.out.println("Interact failed!");
+					}
+				} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
+					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0),
+							targetx, targety, 1)) {
+						run(0);
+						// System.out.println("Cook completed!");
+					} else {
+						System.out.println("Cook failed!");
+					}
 				}
 			}
 		}
 	}
 
-	
-	public void run() {
+	public void run(int playerNumber) {
 		final long startNanoTime = System.nanoTime();
 		new AnimationTimer() {
 
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
 				if (t < 5) {
-					setFreeze(true);
-				}else {
-					setFreeze(false);
+					GameController.getPlayers(playerNumber).setFreeze(true);
+
+				} else {
+					GameController.getPlayers(playerNumber).setFreeze(false);
 					System.out.println("Cook completed!");
 					stop();
 				}

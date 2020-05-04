@@ -17,14 +17,14 @@ public class Dish extends Entity {
 		this.onDishExists = new ArrayList<Ingredient>();
 	}
 
-	public boolean gathers(Player e) { // when the station has a dish and people carry an ingredient
-		if (e.isHolding()) {
-			if (e.getEntityHeld() instanceof Ingredient ) {
-				Ingredient ingredient = (Ingredient) e.getEntityHeld();
+	public boolean gathers(Player p) { // when the station has a dish and people carry an ingredient
+		if (p.isHolding()) {
+			if (p.getEntityHeld() instanceof Ingredient ) {
+				Ingredient ingredient = (Ingredient) p.getEntityHeld();
 				if (ingredient.getState() >= 1) {
 					if (!this.onDishExists.contains(ingredient)){
 						this.onDishExists.add(ingredient);
-						e.removeEntityHeld();
+						p.removeEntityHeld();
 						return true;
 					}
 				}

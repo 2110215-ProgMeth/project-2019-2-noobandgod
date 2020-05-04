@@ -65,11 +65,11 @@ public class Station extends Block implements Interactable{
 			    }else if (!isOnStation()) {	  
 			    	//if the station is available -> PLACE THE DISH
 			    	dish.setPlaced(true); 
-			    	Dish entity = (Dish) e.removeEntityHeld();
-			    	entity.setX(this.getX()); 
-			    	entity.setY(this.getY());
-			    	RenderableHolder.getInstance().add(entity);
-			    	setOnStationExists(entity);
+			    	Dish dish1 = (Dish) e.removeEntityHeld();
+			    	dish1.setX(this.getX()); 
+			    	dish1.setY(this.getY());
+			    	RenderableHolder.getInstance().add(dish1);
+			    	setOnStationExists(dish1);
 			    	setOnStation(true);
 			    	return true;
 			    }
@@ -82,8 +82,7 @@ public class Station extends Block implements Interactable{
 					Dish dish1 = (Dish) getOnStationExists();
 					if (dish1.check((Ingredient) e.getEntityHeld())) {
 						dish1.gathers(e);
-						setOnStationExists(dish1);
-						setOnStation(true);
+						//setOnStationExists(dish1);
 						return true;
 					}
 				}	
