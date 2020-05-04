@@ -92,8 +92,28 @@ public class CuttingBoard extends Equipment implements Interactable{
 			gc.drawImage(RenderableHolder.cuttingboard_infront_Image, x, y-6,65,70);
 		} else {
 			gc.drawImage(RenderableHolder.cuttingboard_between_Image, x, y-6);
-		}
-		
+		} 
+		//Please read the code afterwards and edit pls...................
+		/* if (onPlaceif(OnCuttingBoardExists instanceof Cabbage) {
+			 if (((Cabbage) OnCuttingBoardExists).getState() == 0) {
+				 gc.drawImage(RenderableHolder.cabbage_Image, x-2, y+5,64,40);
+			 }else {//cabbage state1
+				 gc.drawImage(RenderableHolder.cabbage_Image, x, y,64,40);
+			 }
+		 }else if (OnCuttingBoardExists instanceof Tomato) {
+			 if (((Tomato) OnCuttingBoardExists).getState() == 0) {
+				 gc.drawImage(RenderableHolder.tomato_Image, x-2, y);
+			 }else {//tomato state1
+				 gc.drawImage(RenderableHolder.tomato_Image, x, y,64,40);
+			 }
+		 }else if (OnCuttingBoardExists instanceof Fish) {
+			 if (((Fish) OnCuttingBoardExists).getState() == 0) {
+				 gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+			 }else {//fish state1
+				 gc.drawImage(RenderableHolder.cabbage_Image, x, y,64,40);
+			 }
+		 }
+		*/
 	}
 	@Override
 	public boolean isVisible() {
