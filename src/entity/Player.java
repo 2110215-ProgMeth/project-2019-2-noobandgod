@@ -225,9 +225,9 @@ public class Player extends Entity implements Updatable{
 				}
 			} else if(InputUtility.getKeypressed().contains((KeyCode.CONTROL))){
 				if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety, 1)) {
-					System.out.println("Interact completed!");
+					System.out.println("Cook completed!");
 				} else {
-					System.out.println("Interact failed!");
+					System.out.println("Cook failed!");
 				}
 			}
 		}	
