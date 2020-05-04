@@ -27,7 +27,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 	
 	
 	public boolean interacts(Player e) throws InteractFailedException{
-		if (!e.isHolding()) {
+		if (!e.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				e.setEntityHeld(getOnCuttingBoardExists());
 				setOnCuttingBoardExists(null);
@@ -35,16 +35,19 @@ public class CuttingBoard extends Equipment implements Interactable{
 				setOnCuttingBoard(false);
 				return true;
 			}
-		}else {
+		}else {//holding something
 			if (e.getEntityHeld() instanceof Dish) {
 				if (isOnCuttingBoard()) {
 					Dish dish = (Dish) e.getEntityHeld();
-					dish.adds(getOnCuttingBoardExists());
-					setOnCuttingBoardExists(null);
-					e.setEntityHeld(dish);
-					setOnCuttingBoard(false);
-					return true;
-			    }
+					if (dish.check((Ingredient) getOnCuttingBoardExists())){
+						dish.adds(getOnCuttingBoardExists());
+						setOnCuttingBoardExists(null);
+						e.setEntityHeld(dish);
+						setOnCuttingBoard(false);
+						return true;
+					}
+					
+				}
 			}else {
 				if (!isOnCuttingBoard()) {
 					setOnCuttingBoardExists(e.getEntityHeld());
