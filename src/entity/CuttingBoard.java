@@ -5,6 +5,7 @@ import entity.base.Interactable;
 import exception.CookFailedException;
 
 import exception.InteractFailedException;
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import logic.Sprites;
 import screen.GameScreen;
@@ -70,7 +71,23 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
 		if (OnCuttingBoard) {
-			getOnCuttingBoardExists().setState(1);
+			final long startNanoTime = System.nanoTime();
+			new AnimationTimer() {
+
+			public void handle(long currentNanoTime) {
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
+				if (t < 5) {
+					p.setFreeze(true);
+
+				} else {
+					p.setFreeze(false);
+					OnCuttingBoardExists.setState(1);
+					System.out.println("Cook completed!");
+					stop();
+				}
+
+			}
+			}.start();
 			return true;
 		}System.out.println("There is nothing to be cooked");
 		return false;
