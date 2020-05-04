@@ -40,7 +40,7 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 				gc.fillRect(x, y, width, maxheight);
 				
 				if (width >= maxwidth) {
-					gc.clearRect(x, y, maxwidth, maxheight);
+					gc.clearRect(x, y, maxwidth+0.1, maxheight);
 					this.stop();
 				}
 			}

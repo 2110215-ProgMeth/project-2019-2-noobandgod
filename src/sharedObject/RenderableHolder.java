@@ -38,6 +38,7 @@ public class RenderableHolder {
 	
 	//Cabbage
 	public static Image cabbage_Image;
+	public static Image cabbage_sliced_Image;
 	
 	//TomatoStorage
 	public static Image tomatostorage_infront_Image;
@@ -45,6 +46,7 @@ public class RenderableHolder {
 	
 	//Tomato
 	public static Image tomato_Image;
+	public static Image tomato_sliced_Image;
 	
 	//FishStorage
 	public static Image fishstorage_infront_Image;
@@ -52,6 +54,7 @@ public class RenderableHolder {
 	
 	//Fish
 	public static Image fish_Image;
+	public static Image fish_sliced_Image;
 	
 	//Dish
 	public static Image dish_ontable_empty_Image;
@@ -151,13 +154,15 @@ public class RenderableHolder {
 	
 		//Cabbage
 		cabbage_Image = new Image(ClassLoader.getSystemResource(p+"cabbage.png").toString());
-
+		cabbage_sliced_Image = new Image(ClassLoader.getSystemResource(p+"cabbage_sliced.png").toString());
+		
 		//TomatoStorage
 		tomatostorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_infront.png").toString());
 		tomatostorage_between_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_between.png").toString());
 		
 		//Tomato
 		tomato_Image = new Image(ClassLoader.getSystemResource(p+"tomato.png").toString());
+		tomato_sliced_Image = new Image(ClassLoader.getSystemResource(p+"tomato_sliced.png").toString());
 		
 		//FishStorage
 		fishstorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"fishstorage_infront.png").toString());
@@ -165,6 +170,7 @@ public class RenderableHolder {
 		
 		//Fish
 		fish_Image = new Image(ClassLoader.getSystemResource(p+"fish.png").toString());
+		fish_sliced_Image = new Image(ClassLoader.getSystemResource(p+"fish_sliced.png").toString());
 		
 		//Dish
 		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
