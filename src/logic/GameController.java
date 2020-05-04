@@ -49,7 +49,7 @@ public class GameController {
 	public static void InitializeIngredient() {
 		setTomato_AMOUNT(1);
 		setCabbage_AMOUNT(2);
-		setFish_AMOUNT(0);
+		setFish_AMOUNT(3);
 	}
 	
 	public static void InitializePlayer(int numberOfPlayers) {
