@@ -3,6 +3,7 @@ package entity;
 import entity.base.Entity;
 import entity.base.Updatable;
 import input.InputUtility;
+import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -236,29 +237,32 @@ public class Player extends Entity implements Updatable,Runnable {
 			} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
 				if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx,
 						targety, 1)) {
-					setFreeze(true);
-					if (isFreeze) {
 						run();
-					}setFreeze(false);
-						
-					
-					System.out.println("Cook completed!");
-				} else {
+						//System.out.println("Cook completed!");
+					}else {
 					System.out.println("Cook failed!");
 				}
 			}
 		}
-
 	}
-	public static void run() {
-		try {
-			Thread.sleep(5000);
-			InputUtility.removeKeyPressed();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		}
-		
+
+	
+	public void run() {
+		final long startNanoTime = System.nanoTime();
+		new AnimationTimer() {
+
+			public void handle(long currentNanoTime) {
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
+				if (t < 5) {
+					setFreeze(true);
+				}else {
+					setFreeze(false);
+					System.out.println("Cook completed!");
+					stop();
+				}
+
+			}
+		}.start();
 	}
 
 	public String toString() {
