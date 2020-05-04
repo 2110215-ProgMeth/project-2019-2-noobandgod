@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import entity.Cabbage;
+import entity.Dish;
 import entity.base.Updatable;
 import javafx.scene.image.Image;
 
@@ -119,8 +121,11 @@ public class RenderableHolder {
 	public static void show() {
 		ArrayList<IRenderable> entities2 = RenderableHolder.getInstance().getEntities();
 		for (IRenderable entity: entities2) {
-			System.out.println(entity.toString()+"  (Z = "+entity.getZ()+")");
-			System.out.println("-------------------------------");
+			if (entity instanceof Dish || entity instanceof Cabbage) {
+				System.out.println(entity.toString()+"  (Z = "+entity.getZ()+")");
+				System.out.println("-------------------------------");
+			}
+			
 		}
 		System.out.println("===================================");
 	}

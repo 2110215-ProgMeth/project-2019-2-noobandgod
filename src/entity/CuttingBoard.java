@@ -7,6 +7,7 @@ import exception.CookFailedException;
 import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
+import logic.GameController;
 import logic.Sprites;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
@@ -18,8 +19,8 @@ public class CuttingBoard extends Equipment implements Interactable{
 	public CuttingBoard() {
 		setOnCuttingBoardExists(null);
 		setOnCuttingBoard(false);
+		setWorking(false);
 	}
-	
 	
 	public boolean isOnCuttingBoard() {
 		return OnCuttingBoard;
@@ -27,7 +28,6 @@ public class CuttingBoard extends Equipment implements Interactable{
 	public void setOnCuttingBoard(boolean onCuttingBoard) {
 		OnCuttingBoard = onCuttingBoard;
 	}
-	
 	
 	public boolean interacts(Player e) throws InteractFailedException{//dont forget to setplace
 		if (!e.isHolding()) {// empty hand
@@ -53,6 +53,8 @@ public class CuttingBoard extends Equipment implements Interactable{
 			}else {//holding ingredient
 				if (!isOnCuttingBoard()) {	
 					Entity entity_clone = e.removeEntityHeld();
+					entity_clone.setX(this.getX()); entity_clone.setY(this.getY());
+					RenderableHolder.getInstance().add(entity_clone);
 					setOnCuttingBoardExists(entity_clone);
 					setOnCuttingBoard(true);
 					((Ingredient) entity_clone).setPlaced(true);
@@ -69,23 +71,25 @@ public class CuttingBoard extends Equipment implements Interactable{
 		setOnCuttingBoardExists(null);
 		return removedEntity;
 	}
+	
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
-		if (OnCuttingBoard) {
+		if (OnCuttingBoard && !isWorking) {
+			setWorking(true);
+			drawProgessBar(GameScreen.gamegc, GameController.CUTTINGBOARD_COOLDOWN);
 			final long startNanoTime = System.nanoTime();
 			new AnimationTimer() {
 
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				if (t < 5) {
+				if (t < GameController.CUTTINGBOARD_COOLDOWN) {
 					p.setFreeze(true);
-
 				} else {
 					p.setFreeze(false);
 					OnCuttingBoardExists.setState(1);
 					System.out.println("Cook completed!");
+					setWorking(false);
 					stop();
 				}
-
 			}
 			}.start();
 			return true;
@@ -93,6 +97,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 		return false;
 		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
 	}
+	
 	public Ingredient getOnCuttingBoardExists() {
 		return (Ingredient) OnCuttingBoardExists;
 	}

@@ -24,7 +24,7 @@ import logic.Direction;
 public class GameScreen {
 	private Stage primaryStage;
 	private Canvas gameCanvas;
-	private GraphicsContext gamegc;
+	public static GraphicsContext gamegc;
 	
 	public static int draw_origin_x;
 	public static int draw_origin_y; 
@@ -105,7 +105,7 @@ public class GameScreen {
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
 				
-				//RenderableHolder.getInstance().show();
+				RenderableHolder.show();
 				
 			}
 		};animationTimer.start();

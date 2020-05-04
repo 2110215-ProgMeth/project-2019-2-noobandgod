@@ -19,10 +19,10 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 		
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel-7;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel-14;
 		
 		double maxwidth = 64;
-		double maxheight = 5;
+		double maxheight = 10;
 		
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width = 0;
@@ -33,10 +33,14 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 				
 				gc.clearRect(x, y, maxwidth, maxheight);
 				
-				gc.setFill(Color.ALICEBLUE);
-				gc.fillRect(x, y, maxwidth , maxheight);
+				gc.setStroke(Color.GREEN);
+				gc.setLineWidth(1);
 				
-				gc.setFill(Color.GREEN);
+				gc.setFill(Color.WHITE);
+				gc.fillRect(x, y, maxwidth , maxheight);
+				gc.strokeRect(x, y, maxwidth, maxheight);
+				
+				gc.setFill(Color.LIMEGREEN);
 				gc.fillRect(x, y, width, maxheight);
 				
 				if (width >= maxwidth) {

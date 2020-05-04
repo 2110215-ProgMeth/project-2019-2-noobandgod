@@ -72,23 +72,20 @@ public class Dish extends Entity {
 			if(onDishExists.size() == 0) {
 				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
 			}
-//			
-//			if (getOnDishExists().size() == 0) {          //this is the same as above ****since 71-74*****
-//				if(!isAnyBlockDownward) {
-//					gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
-//				} else {
-//					gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
-//				}
+
 			else if (onDishExists.size() == 1) {// dish with one ingredient
-				if ((onDishExists.get(0) instanceof Tomato)) {//dish with tomato
-						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
+				
+				if ((onDishExists.get(0) instanceof Tomato)) { //dish with sliced tomato
+					gc.drawImage(RenderableHolder.tomato_sliced_Image, x+12, y-42, 40, 32);
 			
-				}else if ((onDishExists.get(0) instanceof Cabbage)) {//dish with cabbage
-						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}else if ((onDishExists.get(0) instanceof Cabbage)) { //dish with sliced cabbage
+					gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y-30);
+					
 				}else if((onDishExists.get(0) instanceof Fish)) {//dish with fish
 					if (((Fish) onDishExists.get(0)).getState()==1){//fish state1
-						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
-					}else {//fish state2
+						gc.drawImage(RenderableHolder.fish_sliced_Image, x+11, y-38, 42, 28);
+					} else {//fish state2
 						//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 					}
 				}
@@ -127,7 +124,8 @@ public class Dish extends Entity {
 		this.isPlaced = isPlaced;
 	}
 	public boolean check(Ingredient i) {
-		if (i.getState() <1) {
+		if (i.getState() < 1) {
+			System.out.println("You can't place raw ingredient on a dish!");
 			return false;
 		}
 		if (i instanceof Fish) {//check fish which is different from other types

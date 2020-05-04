@@ -76,12 +76,21 @@ public class Station extends Block implements Interactable{
 			    }
 			}else {// player's hand is Ingredient
 				if (!isOnStation()) {//empty station
-					Entity entity_clone = e.removeEntityHeld();
-					setOnStationExists((Ingredient)entity_clone);
-					setOnStation(true);
-					((Ingredient) entity_clone).setPlaced(true);
-					return true;
-				}else if (getOnStationExists() instanceof Dish) {//It has a dish on station already so it doesn't have to setPlace
+					if (((Ingredient) e.getEntityHeld()).getState() == 0) {
+						Entity entity_clone = e.removeEntityHeld();
+						entity_clone.setX(this.getX());
+						entity_clone.setY(this.getY());
+						RenderableHolder.getInstance().add(entity_clone);
+						setOnStationExists((Ingredient)entity_clone);
+						setOnStation(true);
+						((Ingredient) entity_clone).setPlaced(true);
+						return true;
+					} else {
+						System.out.println("You cannot place cooked ingredient on dirty table!");
+						return false;
+					}
+				
+				} else if (getOnStationExists() instanceof Dish) {//It has a dish on station already so it doesn't have to setPlace
 					Dish dish1 = (Dish) getOnStationExists();
 					if (dish1.check((Ingredient) e.getEntityHeld())) {
 						dish1.gathers(e);
@@ -142,21 +151,25 @@ public class Station extends Block implements Interactable{
 		
 		if(OnStation) {
 			if (OnStationExists instanceof Dish) {//with dish
-				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
+				if (((Dish) OnStationExists).getOnDishExists().size() >= 0) {
 					if(!isAnyBlockDownward) {
 						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 					} else {
 						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 					}
-				}else if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
-					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with tomato
-							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+				}
 				
+				if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
+					
+					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with sliced tomato
+						gc.drawImage(RenderableHolder.tomato_sliced_Image, x+12, y);
+							
 					}else if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Cabbage) {//dish with cabbage
-							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+5);
+					
 					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
 						if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState()==1){//fish state1
-							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+							gc.drawImage(RenderableHolder.fish_sliced_Image, x+10, y+5, 42, 28);
 						}else {//fish state2
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 						}
@@ -179,19 +192,15 @@ public class Station extends Block implements Interactable{
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
 				}
 				
+			//Note that you can't place cooked ingredient on station without dish!	
+				
 			}else if (OnStationExists instanceof Tomato) {//tomato pure
-				if (((Tomato) OnStationExists).getState()==0){//tomato state 0
+				if (((Tomato) OnStationExists).getState() == 0){//tomato state 0
 					if (!isAnyBlockDownward) {
 						gc.drawImage(RenderableHolder.tomato_Image, x, y-3);
 					} else {
 						gc.drawImage(RenderableHolder.tomato_Image, x, y-1,64,48);
 					}
-				}else {//tomato state1
-					if(isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.tomato_sliced_Image, x+10, y+5);
-					} else {
-						gc.drawImage(RenderableHolder.tomato_sliced_Image, x+10, y);
-					}	
 				}
 				
 			}else if (OnStationExists instanceof Cabbage) {//cabbage pure
@@ -200,9 +209,7 @@ public class Station extends Block implements Interactable{
 						gc.drawImage(RenderableHolder.cabbage_Image, x, y-1);
 					} else {
 						gc.drawImage(RenderableHolder.cabbage_Image, x, y+2,64,48);
-					}	
-				}else {//cabbage state1
-					gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+5);
+					}
 				}
 				
 			}else if(OnStationExists instanceof Fish) {//pure fish
@@ -212,14 +219,9 @@ public class Station extends Block implements Interactable{
 					} else {
 						gc.drawImage(RenderableHolder.fish_Image, x, y+10);
 					}
-				}else if (((Fish) OnStationExists).getState()==1) {//fish state1
-					gc.drawImage(RenderableHolder.fish_sliced_Image, x+5, y+5);
-				}else {//fish state2 friedfish
-					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}
 			}
 		}
-		
 	}
 
 
