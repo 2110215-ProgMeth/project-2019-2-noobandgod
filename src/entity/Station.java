@@ -138,9 +138,9 @@ public class Station extends Block implements Interactable{
 			if (OnStationExists instanceof Dish) {//with dish
 				if (((Dish) OnStationExists).getOnDishExists().size() == 0) {
 					if(!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
 					}
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
 					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with tomato
@@ -181,7 +181,11 @@ public class Station extends Block implements Interactable{
 				}
 			}else if (OnStationExists instanceof Cabbage) {//cabbage pure
 				if (((Cabbage) OnStationExists).getState()==0){//cabbage state 0
-					gc.drawImage(RenderableHolder.cabbage_Image, x, y-1);
+					if (!isAnyBlockDownward) {
+						gc.drawImage(RenderableHolder.cabbage_Image, x, y-1);
+					} else {
+						gc.drawImage(RenderableHolder.cabbage_Image, x, y+2,64,48);
+					}	
 				}else {//cabbage state1
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}

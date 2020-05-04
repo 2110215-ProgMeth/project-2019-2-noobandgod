@@ -36,4 +36,8 @@ public abstract class Entity implements IRenderable,Cloneable {
 		}
 	}
 	
+	public String getCoordinate() {
+		return "("+this.getX()+","+this.getY()+")";
+	}
+	
 }
