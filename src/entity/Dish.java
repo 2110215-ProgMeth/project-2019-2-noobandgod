@@ -87,6 +87,9 @@ public class Dish extends Entity {
 		this.isPlaced = isPlaced;
 	}
 	public boolean check(Ingredient i) {
+		if (i.getState() <1) {
+			return false;
+		}
 		if (i instanceof Fish) {//check fish which is different from other types
 			if (((Fish) i).getState()==2 && getOnDishExists().size()==0) {
 				return true;

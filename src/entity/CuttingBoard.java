@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import logic.Sprites;
 
 public class CuttingBoard extends Equipment implements Interactable{
-	private Ingredient OnCuttingBoardExists = null;
+	private Ingredient OnCuttingBoardExists ;
 	private boolean OnCuttingBoard;
 	
 	public CuttingBoard() {
@@ -46,7 +46,6 @@ public class CuttingBoard extends Equipment implements Interactable{
 						setOnCuttingBoard(false);
 						return true;
 					}
-					
 				}
 			}else {
 				if (!isOnCuttingBoard()) {
@@ -58,7 +57,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 		}return false;
 	}
 	public boolean cooks() throws CookFailedException{
-		if (!getOnCuttingBoardExists().equals(null)) {
+		if (OnCuttingBoard) {
 			getOnCuttingBoardExists().setState(1);
 			return true;
 		}throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
