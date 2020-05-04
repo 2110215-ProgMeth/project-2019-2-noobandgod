@@ -21,7 +21,6 @@ public class Station extends Block implements Interactable{
 
 	private Entity OnStationExists;
 	private boolean OnStation;
-	
 	public Station() {
 		setOnStationExists(null);
 		setOnStation(false);
@@ -56,11 +55,13 @@ public class Station extends Block implements Interactable{
 			if (e.getEntityHeld() instanceof Dish) {
 				Dish dish = (Dish) e.getEntityHeld();
 				if (getOnStationExists() instanceof Ingredient) {
-					dish.adds(getOnStationExists());
-					setOnStationExists(null);
-					e.setEntityHeld(dish);
-					setOnStation(false);
-					return true;
+					if(dish.check((Ingredient) getOnStationExists())) {
+						dish.adds(getOnStationExists());
+						setOnStationExists(null);
+						e.setEntityHeld(dish);
+						setOnStation(false);
+						return true;
+					}
 			    }else if (!isOnStation()) {	  
 			    	//if the station is available -> PLACE THE DISH
 			    	dish.setPlaced(true); 
@@ -72,19 +73,22 @@ public class Station extends Block implements Interactable{
 			    	setOnStation(true);
 			    	return true;
 			    }
-			}else {
-				if (!isOnStation()) {
+			}else {// player's hand is Ingredient
+				if (!isOnStation()) {//empty station?
 					setOnStationExists(e.removeEntityHeld());
 					setOnStation(true);
 					return true;
 				}else if (getOnStationExists() instanceof Dish) {
 					Dish dish1 = (Dish) getOnStationExists();
-					dish1.gathers(e);
-					setOnStationExists(dish1);
-					setOnStation(true);
-					return true;
-				}
+					if (dish1.check((Ingredient) e.getEntityHeld())) {
+						dish1.gathers(e);
+						setOnStationExists(dish1);
+						setOnStation(true);
+						return true;
+					}
+				}	
 			}
+			
 		}return false;
 	}
 	

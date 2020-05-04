@@ -86,6 +86,30 @@ public class Dish extends Entity {
 	public void setPlaced(boolean isPlaced) {
 		this.isPlaced = isPlaced;
 	}
-	
-	
+	public boolean check(Ingredient i) {
+		if (i instanceof Fish) {//check fish which is different from other types
+			if (((Fish) i).getState()==2 && getOnDishExists().size()==0) {
+				return true;
+			}else if (((Fish) i).getState()==2 && getOnDishExists().size()>=1) {
+				return false;
+			}
+		}
+		for (Ingredient ingredient: getOnDishExists()) {//check if this thing has a same type if it is,return false;
+			if (ingredient instanceof Cabbage) {
+				if (i instanceof Cabbage) {
+					return false;
+				}return true;  
+			}else if (ingredient instanceof Fish) {
+				if (i instanceof Fish) {
+					return false;
+				}return true;  
+			}else {//tomato
+				if (i instanceof Tomato) {
+					return false;
+				}return true;  
+			}
+		}
+		return true;
+	}
+
 }
