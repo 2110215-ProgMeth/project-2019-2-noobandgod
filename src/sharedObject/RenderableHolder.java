@@ -61,6 +61,10 @@ public class RenderableHolder {
 	public static Image dishpicker_infront_Image;
 	public static Image dishpicker_between_Image;
 	
+	//CuttingBoard
+	public static Image cuttingboard_infront_Image;
+	public static Image cuttingboard_between_Image;
+	
 	
 	
 	
@@ -169,6 +173,10 @@ public class RenderableHolder {
 		//DishPicker
 		dishpicker_infront_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_infront.png").toString());
 		dishpicker_between_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_between.png").toString());
+	
+		//CuttingBoard
+		cuttingboard_infront_Image = new Image(ClassLoader.getSystemResource(p+"cuttingboard_infront.png").toString());
+		cuttingboard_between_Image = new Image(ClassLoader.getSystemResource(p+"cuttingboard_between.png").toString());
 	}
 	
 	

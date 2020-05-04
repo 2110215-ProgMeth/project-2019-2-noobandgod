@@ -179,7 +179,11 @@ public class Station extends Block implements Interactable{
 				
 			}else if (OnStationExists instanceof Tomato) {//tomato pure
 				if (((Tomato) OnStationExists).getState()==0){//tomato state 0
-					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+					if (!isAnyBlockDownward) {
+						gc.drawImage(RenderableHolder.tomato_Image, x, y-3);
+					} else {
+						gc.drawImage(RenderableHolder.tomato_Image, x, y-1,64,48);
+					}
 				}else {//tomato state1
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}
@@ -195,7 +199,13 @@ public class Station extends Block implements Interactable{
 				}
 			}else if(OnStationExists instanceof Fish) {//pure fish
 				if (((Fish) OnStationExists).getState()==0){//fish state 0
-					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+					if (!isAnyBlockDownward) {
+						gc.drawImage(RenderableHolder.fish_Image, x, y+5);
+					} else {
+						gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+					}
+					
+					
 				}else if (((Fish) OnStationExists).getState()==1) {//fish state1
 					//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
 				}else {//fish state2 friedfish
