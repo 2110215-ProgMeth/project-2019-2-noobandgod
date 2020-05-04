@@ -41,14 +41,5 @@ public abstract class Ingredient extends Entity {
 			return "Fish";
 		}
 	}
-//	public static changeType(Ingredient i) {
-//		if (i instanceof Cabbage) {
-//			return (Cabbage) i;
-//		}else if (i instanceof Tomato) {
-//			Tomato i1 = (Tomato) i1;
-//		}else {
-//			return (Fish) i;
-//		}
-//	}
 	
 }

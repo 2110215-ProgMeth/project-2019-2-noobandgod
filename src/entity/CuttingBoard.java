@@ -38,7 +38,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 				return true;
 			}
 		}else {//holding something
-			if (e.getEntityHeld() instanceof Dish) {
+			if (e.getEntityHeld() instanceof Dish) {//holding dish
 				if (isOnCuttingBoard()) {
 					Dish dish = (Dish) e.getEntityHeld();
 					if (dish.check((Ingredient) getOnCuttingBoardExists())){
@@ -49,10 +49,12 @@ public class CuttingBoard extends Equipment implements Interactable{
 						return true;
 					}
 				}
-			}else {
+			}else {//holding ingredient
 				if (!isOnCuttingBoard()) {
 					setOnCuttingBoardExists(e.getEntityHeld());
 					setOnCuttingBoard(true);
+					e.setHolding(false);
+					e.setEntityHeld(null);
 					return true;
 				}
 			}
