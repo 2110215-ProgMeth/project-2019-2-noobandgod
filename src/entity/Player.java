@@ -212,17 +212,27 @@ public class Player extends Entity implements Updatable{
 			addTimeStandStill();
 		}
 		
-		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT)) || InputUtility.getKeypressed().contains(KeyCode.CONTROL)) {
 			Integer[] targetcoordinate = getWhereInteract();
 			int targetx = targetcoordinate[0];
 			int targety = targetcoordinate[1];
 			
-			if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety)) {
-				System.out.println("Interact completed!");
-			} else {
-				System.out.println("Interact failed!");
+			if(InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
+				if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety, 0)) {
+					System.out.println("Interact completed!");
+				} else {
+					System.out.println("Interact failed!");
+				}
+			} else if(InputUtility.getKeypressed().contains((KeyCode.CONTROL))){
+				if(GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0), targetx, targety, 1)) {
+					System.out.println("Interact completed!");
+				} else {
+					System.out.println("Interact failed!");
+				}
 			}
-		}
+		}	
+			
+	
 	}
 	
 	public String toString() {

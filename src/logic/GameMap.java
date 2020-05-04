@@ -6,6 +6,7 @@ import entity.CabbageStorage;
 import entity.CuttingBoard;
 import entity.Dish;
 import entity.DishPicker;
+import entity.Equipment;
 import entity.FishStorage;
 import entity.FoodCounter;
 import entity.FryingPan;
@@ -180,22 +181,45 @@ public class GameMap {
 		}
 	}
 	
-	public boolean interactWithBlockTarget(Player p,int targetx, int targety) {
+	public boolean interactWithBlockTarget(Player p,int targetx, int targety, int interactType) {
 		if(isInteractPossible(targetx, targety)) {
 			Block target = cellmap[targety][targetx].getBlock();
 			Interactable t = (Interactable) target;
-			try {
-				if(t.interacts(p)) {
-					return true;
-				} else
+			
+			
+			if(interactType == 0) {
+				try {
+					if(t.interacts(p)) {
+						return true;
+					} else
+						return false;
+				} catch (InteractFailedException | SendFoodFailedException e) {
+					e.printStackTrace();
 					return false;
-			} catch (InteractFailedException | SendFoodFailedException e) {
-				e.printStackTrace();
-				return false;
+				}
 			} 
+			
+			else if (interactType == 1) {
+				if (target instanceof Equipment) {
+					try {
+						if(t.interacts(p)) {
+							return true;
+						} else
+							return false;
+					} catch (InteractFailedException | SendFoodFailedException e) {
+						e.printStackTrace();
+						return false;
+					}
+				} else {
+					System.out.println("THIS IS NOT EQUIPMENT");
+					return false;
+				}
+			}
+			//interactType dosn't match!
+			return false;
 		}
 		else {
-			return false;
+			return false; //if interact is not possible
 			}
 		}
 	
