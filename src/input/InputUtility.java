@@ -26,7 +26,12 @@ public class InputUtility {
 		for (int i = keypressed.size()-1; i>=0; i--) {
 			keypressed.remove(i);
 		}
-		
+	}
+	
+	public static void removeSpecificKeyCode(KeyCode keyCode) {
+		if (keypressed.contains(keyCode)) {
+			keypressed.remove(keyCode);
+		} 
 	}
 	
 }
