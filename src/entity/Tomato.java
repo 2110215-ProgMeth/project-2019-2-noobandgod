@@ -29,9 +29,13 @@ public class Tomato extends Ingredient{
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x + this.getX() * pixel;
-		int y = (GameScreen.draw_origin_y - 30) + this.getY() * pixel;
+		int y = GameScreen.draw_origin_y + this.getY() * pixel;
 
-		gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);//still not finish
+		if(!isPlaced) {
+			if (getState() == 0) {
+				gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
+			}
+		}
 
 	}
 

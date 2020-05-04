@@ -43,6 +43,16 @@ public class RenderableHolder {
 	public static Image tomatostorage_infront_Image;
 	public static Image tomatostorage_between_Image;
 	
+	//Tomato
+	public static Image tomato_Image;
+	
+	//FishStorage
+	public static Image fishstorage_infront_Image;
+	public static Image fishstorage_between_Image;
+	
+	//Fish
+	public static Image fish_Image;
+	
 	//Dish
 	public static Image dish_ontable_empty_Image;
 	public static Image dish_onhead_empty_Image;
@@ -141,6 +151,16 @@ public class RenderableHolder {
 		//TomatoStorage
 		tomatostorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_infront.png").toString());
 		tomatostorage_between_Image = new Image(ClassLoader.getSystemResource(p+"tomatostorage_between.png").toString());
+		
+		//Tomato
+		tomato_Image = new Image(ClassLoader.getSystemResource(p+"tomato.png").toString());
+		
+		//FishStorage
+		fishstorage_infront_Image = new Image(ClassLoader.getSystemResource(p+"fishstorage_infront.png").toString());
+		fishstorage_between_Image = new Image(ClassLoader.getSystemResource(p+"fishstorage_between.png").toString());
+		
+		//Fish
+		fish_Image = new Image(ClassLoader.getSystemResource(p+"fish.png").toString());
 		
 		//Dish
 		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
