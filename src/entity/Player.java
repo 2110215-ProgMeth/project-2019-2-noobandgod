@@ -237,8 +237,7 @@ public class Player extends Entity implements Updatable, Runnable {
 				} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0),
 							targetx, targety, 1)) {
-						run(0);
-						// System.out.println("Cook completed!");
+					 System.out.println("Cook completed!");
 					} else {
 						System.out.println("Cook failed!");
 					}
@@ -246,26 +245,6 @@ public class Player extends Entity implements Updatable, Runnable {
 			}
 		}
 	}
-
-	public void run(int playerNumber) {
-		final long startNanoTime = System.nanoTime();
-		new AnimationTimer() {
-
-			public void handle(long currentNanoTime) {
-				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				if (t < 5) {
-					GameController.getPlayers(playerNumber).setFreeze(true);
-
-				} else {
-					GameController.getPlayers(playerNumber).setFreeze(false);
-					System.out.println("Cook completed!");
-					stop();
-				}
-
-			}
-		}.start();
-	}
-
 	public String toString() {
 		String result = "PLAYER NO: " + getPlayerNumber();
 		result += "\nHolding someting? " + isHolding();

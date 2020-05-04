@@ -26,10 +26,10 @@ public class FryingPan extends Equipment implements Interactable{
 	public boolean interacts(Player e) {//throws InteractFailedException{
 		if (!e.isHolding()) {
 			if (getOnFryingPanExists() instanceof Ingredient) {
-				e.setEntityHeld(getOnFryingPanExists());
-				setOnFryingPanExists(null);
+				Ingredient ingredient_clone = this.removedEntityOnFryingPan();
+				e.setEntityHeld(ingredient_clone);
 				e.setHolding(true);
-				setOnFryingPan(false);
+				ingredient_clone.setPlaced(false);
 				return true;
 			}
 		}else {
@@ -37,20 +37,20 @@ public class FryingPan extends Equipment implements Interactable{
 				if (isOnFryingPan()) {
 					Dish dish = (Dish) e.getEntityHeld();
 					if (dish.check((Ingredient) getOnFryingPanExists())){
-						dish.adds(getOnFryingPanExists());
-						setOnFryingPanExists(null);
+						Ingredient ingredient_clone = this.removedEntityOnFryingPan();
+						dish.adds(ingredient_clone);
 						e.setEntityHeld(dish);
-						setOnFryingPan(false);
+						dish.setPlaced(false);
 						return true;
 					}
 			    }
 			}else {
 				if (!isOnFryingPan()) {
 					if (e.getEntityHeld() instanceof Fish) {
-						setOnFryingPanExists(e.getEntityHeld());
+						Fish entity_clone = (Fish) e.removeEntityHeld();
+						setOnFryingPanExists(entity_clone);
 						setOnFryingPan(true);
-						e.setHolding(false);
-						e.setEntityHeld(null);
+						entity_clone.setPlaced(true);
 						return true;
 					}
 				}
@@ -58,6 +58,14 @@ public class FryingPan extends Equipment implements Interactable{
 		}System.out.println("There is something wrong");
 		return false;
 		//throw new InteractFailedException("There is something wrong");
+	}
+	public Ingredient removedEntityOnFryingPan() {
+		setOnFryingPan(false);
+		Ingredient removedEntity = (Ingredient) getOnFryingPanExists().clone();
+		
+		getOnFryingPanExists().setDestroyed(true);
+		setOnFryingPanExists(null);
+		return removedEntity;
 	}
 	public boolean cooks(Player p) throws CookFailedException{ //throws CookFailedException{
 		if (OnFryingPan) {
