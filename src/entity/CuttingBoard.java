@@ -60,6 +60,13 @@ public class CuttingBoard extends Equipment implements Interactable{
 			}
 		}return false;
 	}
+	public boolean isCookable(Player p) throws CookFailedException{// throws CookFailedException{
+		if (OnCuttingBoard) {
+			return true;
+		}System.out.println("There is nothing to be cooked");
+		return false;
+		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
+	}
 	public boolean cooks(Player p) {// throws CookFailedException{
 		if (OnCuttingBoard) {
 			getOnCuttingBoardExists().setState(1);

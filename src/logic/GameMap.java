@@ -206,7 +206,7 @@ public class GameMap {
 				if (target instanceof Cookable) {
 					Cookable t = (Cookable) target;
 					try {
-						if(t.cooks(p)) {
+						if(t.isCookable(p)) {
 							return true;
 						} else
 							return false;

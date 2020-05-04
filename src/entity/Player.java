@@ -240,6 +240,8 @@ public class Player extends Entity implements Updatable,Runnable {
 					if (isFreeze) {
 						run();
 					}setFreeze(false);
+						
+					
 					System.out.println("Cook completed!");
 				} else {
 					System.out.println("Cook failed!");
@@ -248,7 +250,7 @@ public class Player extends Entity implements Updatable,Runnable {
 		}
 
 	}
-	public void run() {
+	public static void run() {
 		try {
 			Thread.sleep(5000);
 			InputUtility.removeKeyPressed();
