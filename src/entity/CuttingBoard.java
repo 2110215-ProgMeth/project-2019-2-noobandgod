@@ -7,6 +7,8 @@ import exception.CookFailedException;
 import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import logic.Sprites;
+import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class CuttingBoard extends Equipment implements Interactable{
 	private Ingredient OnCuttingBoardExists ;
@@ -73,18 +75,24 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return getY()*3;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		
+		if(!isAnyBlockDownward) {
+			gc.drawImage(RenderableHolder.cuttingboard_infront_Image, x, y-6);
+		} else {
+			gc.drawImage(RenderableHolder.cuttingboard_between_Image, x, y-6);
+		}
 		
 	}
 	@Override
 	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 }
