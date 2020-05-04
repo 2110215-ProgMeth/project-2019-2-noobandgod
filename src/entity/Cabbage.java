@@ -34,7 +34,7 @@ public class Cabbage extends Ingredient{
 			if(getState() == 0) {
 				gc.drawImage(RenderableHolder.cabbage_Image, x, y-46,64,40);
 			}else if (getState() ==1) {//cabbage state1
-				//gc.drawImage(RenderableHolder.cabbage_Image, x, y-46,64,40);
+				gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y-40,64,40);
 				
 			}
 		}

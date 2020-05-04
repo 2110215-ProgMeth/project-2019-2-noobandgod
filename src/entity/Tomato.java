@@ -12,9 +12,7 @@ public class Tomato extends Ingredient{
 		setState(0);
 		setPlaced(false);
 	}
-	public char getSymbol() {
-		return Sprites.Tomato;
-	}
+	
 	public static int getPrice() {
 		return price;
 	}
@@ -36,7 +34,7 @@ public class Tomato extends Ingredient{
 			if (getState() == 0) {
 				gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
 			}else if (getState() == 1) {
-				//gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
+				gc.drawImage(RenderableHolder.tomato_sliced_Image, x+10, y-40);
 			}
 		}
 
