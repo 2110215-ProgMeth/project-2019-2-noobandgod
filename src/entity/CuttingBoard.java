@@ -100,27 +100,50 @@ public class CuttingBoard extends Equipment implements Interactable{
 		} else {
 			gc.drawImage(RenderableHolder.cuttingboard_between_Image, x, y-6);
 		} 
-		//Please read the code afterwards and edit pls...................
-		/* if (onPlaceif(OnCuttingBoardExists instanceof Cabbage) {
+		//Please read the code afterwards and edit pls..................
+		
+		if (OnCuttingBoardExists instanceof Cabbage) {
 			 if (((Cabbage) OnCuttingBoardExists).getState() == 0) {
-				 gc.drawImage(RenderableHolder.cabbage_Image, x-2, y+5,64,40);
-			 }else {//cabbage state1
-				 gc.drawImage(RenderableHolder.cabbage_Image, x, y,64,40);
-			 }
+				 if(isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.cabbage_Image, x-2, y+5,64,40);
+				 } else {
+					 gc.drawImage(RenderableHolder.cabbage_Image, x-2, y,64,40);
+				 }
+		} else {//cabbage state1
+			  gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y,64,40);
+		}
+			 
 		 }else if (OnCuttingBoardExists instanceof Tomato) {
 			 if (((Tomato) OnCuttingBoardExists).getState() == 0) {
-				 gc.drawImage(RenderableHolder.tomato_Image, x-2, y);
+				 if (isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.tomato_Image, x-2, y);
+				 } else {
+					 gc.drawImage(RenderableHolder.tomato_Image, x-2, y-5,64,40);
+				 }
 			 }else {//tomato state1
-				 gc.drawImage(RenderableHolder.tomato_Image, x, y,64,40);
+				 if (isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.tomato_sliced_Image, x+8, y+5);
+				 } else {
+					 gc.drawImage(RenderableHolder.tomato_sliced_Image, x+8, y);
+				 }
 			 }
+			 
 		 }else if (OnCuttingBoardExists instanceof Fish) {
 			 if (((Fish) OnCuttingBoardExists).getState() == 0) {
-				 gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+				 if (isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+				 } else {
+					 gc.drawImage(RenderableHolder.fish_Image, x, y);
+				 }
 			 }else {//fish state1
-				 gc.drawImage(RenderableHolder.cabbage_Image, x, y,64,40);
+				 if (isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.fish_sliced_Image, x+6, y+6,48,32);
+				 } else {
+					 gc.drawImage(RenderableHolder.fish_sliced_Image, x+6, y,48,32);
+				 }	 
 			 }
 		 }
-		*/
+		
 	}
 	@Override
 	public boolean isVisible() {
