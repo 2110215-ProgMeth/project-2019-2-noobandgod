@@ -12,7 +12,7 @@ import sharedObject.RenderableHolder;
 
 public class DishPicker extends Block implements Interactable{
     
-    public boolean interacts(Player p) throws InteractFailedException{
+    public boolean interacts(Player p) {//hrows InteractFailedException{
         if (!p.isHolding()) {
         	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	p.setEntityHeld(new Dish());
@@ -20,7 +20,8 @@ public class DishPicker extends Block implements Interactable{
             return true;
         } else {
         	System.out.println("You can't take more dish, because you hands aren't available!");
-            throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+        	return false;
+            //throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
         }
     }
 

@@ -56,10 +56,10 @@ public class Station extends Block implements Interactable{
 				Dish dish = (Dish) e.getEntityHeld();
 				if (getOnStationExists() instanceof Ingredient) {
 					if(dish.check((Ingredient) getOnStationExists())) {
-						dish.adds(getOnStationExists());
-						setOnStationExists(null);
+						Entity ontableEntity_clone = this.removedEntityOnStation();
+						dish.adds((Ingredient) ontableEntity_clone);
 						e.setEntityHeld(dish);
-						setOnStation(false);
+						dish.setPlaced(false);//dish on hand and ingredient on station.I think the ingredient has added to the dish so the setPlae must be used in type of dish
 						return true;
 					}
 			    }else if (!isOnStation()) {	  
@@ -71,18 +71,21 @@ public class Station extends Block implements Interactable{
 			    	RenderableHolder.getInstance().add(dish1);
 			    	setOnStationExists(dish1);
 			    	setOnStation(true);
+			    	dish1.setPlaced(true);
 			    	return true;
 			    }
 			}else {// player's hand is Ingredient
-				if (!isOnStation()) {//empty station?
-					setOnStationExists(e.removeEntityHeld());
+				if (!isOnStation()) {//empty station
+					Entity entity_clone = e.removeEntityHeld();
+					setOnStationExists((Ingredient)entity_clone);
 					setOnStation(true);
+					((Ingredient) entity_clone).setPlaced(true);
 					return true;
-				}else if (getOnStationExists() instanceof Dish) {
+				}else if (getOnStationExists() instanceof Dish) {//It has a dish on station already so it doesn't have to setPlace
 					Dish dish1 = (Dish) getOnStationExists();
 					if (dish1.check((Ingredient) e.getEntityHeld())) {
 						dish1.gathers(e);
-						//setOnStationExists(dish1);
+						setOnStationExists(dish1);
 						return true;
 					}
 				}	

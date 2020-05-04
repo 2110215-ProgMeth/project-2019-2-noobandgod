@@ -9,6 +9,7 @@ public class Cabbage extends Ingredient{
 	private static int price = 10;
 	public Cabbage() {
 		setState(0);
+		setPlaced(false);
 	}
 
 	public static int getPrice() {
@@ -32,6 +33,9 @@ public class Cabbage extends Ingredient{
 		if(!isPlaced) {
 			if(getState() == 0) {
 				gc.drawImage(RenderableHolder.cabbage_Image, x, y-46,64,40);
+			}else if (getState() ==1) {//cabbage state1
+				//gc.drawImage(RenderableHolder.cabbage_Image, x, y-46,64,40);
+				
 			}
 		}
 		

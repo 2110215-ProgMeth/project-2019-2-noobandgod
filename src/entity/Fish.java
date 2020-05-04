@@ -10,6 +10,7 @@ public class Fish extends Ingredient{
 	
 	public Fish() {
 		setState(0);
+		setPlaced(false);
 	}
 	public static int getPrice() {
 		return price;

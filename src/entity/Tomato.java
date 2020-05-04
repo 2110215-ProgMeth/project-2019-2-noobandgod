@@ -10,6 +10,7 @@ public class Tomato extends Ingredient{
 	
 	public Tomato() {
 		setState(0);
+		setPlaced(false);
 	}
 	public char getSymbol() {
 		return Sprites.Tomato;
