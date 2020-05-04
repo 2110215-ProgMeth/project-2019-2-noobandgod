@@ -48,4 +48,12 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 		animationTimer.start();
 		
 	}
+	public boolean isWorking() {
+		return isWorking;
+	}
+
+	public void setWorking(boolean isWorking) {
+		this.isWorking = isWorking;
+	}
+
 }

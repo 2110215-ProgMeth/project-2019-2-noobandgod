@@ -13,6 +13,7 @@ public class FryingPan extends Equipment implements Interactable{
 	public FryingPan() {
 		setOnFryingPan(false);
 		setOnFryingPanExists(null);
+		setWorking(false);
 	}
 	
 	public boolean isOnFryingPan() {
