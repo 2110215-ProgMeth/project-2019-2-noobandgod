@@ -16,8 +16,10 @@ import entity.Player;
 import entity.Station;
 import entity.TomatoStorage;
 import entity.base.Block;
+import entity.base.Cookable;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.CookFailedException;
 import exception.InteractFailedException;
 import exception.SendFoodFailedException;
 import sharedObject.RenderableHolder;
@@ -184,10 +186,11 @@ public class GameMap {
 	public boolean interactWithBlockTarget(Player p,int targetx, int targety, int interactType) {
 		if(isInteractPossible(targetx, targety)) {
 			Block target = cellmap[targety][targetx].getBlock();
-			Interactable t = (Interactable) target;
+
 			
 			
 			if(interactType == 0) {
+				Interactable t = (Interactable) target;
 				try {
 					if(t.interacts(p)) {
 						return true;
@@ -200,13 +203,14 @@ public class GameMap {
 			} 
 			
 			else if (interactType == 1) {
-				if (target instanceof Equipment) {
+				if (target instanceof Cookable) {
+					Cookable t = (Cookable) target;
 					try {
-						if(t.interacts(p)) {
+						if(t.cooks(p)) {
 							return true;
 						} else
 							return false;
-					} catch (InteractFailedException | SendFoodFailedException e) {
+					} catch (CookFailedException e) {
 						e.printStackTrace();
 						return false;
 					}
