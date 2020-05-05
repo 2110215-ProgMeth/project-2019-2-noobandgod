@@ -17,7 +17,7 @@ public class OrderPane extends HBox {
 			OrderBox order = new OrderBox(type);
 			this.getChildren().add(order);
 		}
-		updateOrderNumber();
+		//updateOrderNumber();
 	}
 
 	public int typeMenu() {
