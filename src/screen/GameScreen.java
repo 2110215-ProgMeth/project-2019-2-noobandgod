@@ -41,8 +41,8 @@ public class GameScreen {
 		GameController.InitializeMap(gamemap);
 		SimulationManager.initializeAllPane();
 		
-		draw_origin_x = 32;
-		draw_origin_y = 32;
+		draw_origin_x = 48;
+		draw_origin_y = 48;
 		pixel = 64;
 		//---------------------------------------------------
 		
@@ -59,7 +59,7 @@ public class GameScreen {
 		ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
 		
 		
-		this.gameCanvas = new Canvas(768,512);
+		this.gameCanvas = new Canvas(800,544);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
 		//initialize grey background
 		//gamegc.setFill(Color.GRAY);
@@ -105,7 +105,7 @@ public class GameScreen {
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
 				
-				RenderableHolder.show();
+				//RenderableHolder.show();
 				
 			}
 		};animationTimer.start();

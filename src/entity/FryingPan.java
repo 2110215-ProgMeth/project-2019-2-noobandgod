@@ -5,9 +5,11 @@ import entity.base.Interactable;
 import exception.CookFailedException;
 import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
+import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class FryingPan extends Equipment implements Interactable{
 	private Ingredient OnFryingPanExists;
@@ -107,6 +109,31 @@ public class FryingPan extends Equipment implements Interactable{
 	}
 	public char getSymbol() {
 		return Sprites.FryingPan;
+	}
+
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return getY()*3;
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		
+		if(!isAnyBlockDownward) {
+			gc.drawImage(RenderableHolder.fryingpan_infront_Image, x, y-6,65,70);
+		} else {
+			gc.drawImage(RenderableHolder.fryingpan_between_Image, x, y-6);
+		} 
+		
+	}
+
+	@Override
+	public boolean isVisible() {
+		return true;
 	}
 	
 }
