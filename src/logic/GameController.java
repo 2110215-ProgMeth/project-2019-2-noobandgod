@@ -21,7 +21,6 @@ public class GameController {
 	public static int MAX_TIME;
 
 	public static final int CUTTINGBOARD_COOLDOWN = 1;
-	public static final int FRYINGPAN_COOLDOWN = 2;
 	
 	public static int Cabbage_AMOUNT;
 	public static int Tomato_AMOUNT;

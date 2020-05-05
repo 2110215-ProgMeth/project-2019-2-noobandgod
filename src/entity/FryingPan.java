@@ -73,18 +73,22 @@ public class FryingPan extends Equipment implements Interactable{
 		return removedEntity;
 	}
 	public boolean cooks(Player p) throws CookFailedException{ //throws CookFailedException{
+		if (!OnFryingPan){
+			return false;
+		}
 		if (OnFryingPanExists.getState() >= 1) {
 			System.out.println("This ingredient has already been cooked");
+			return false;
 		}
-		if (OnFryingPan && isWorking) {
+		if (OnFryingPan && !isWorking) {
 			setWorking(true);
-			drawProgessBar(GameScreen.gamegc, GameController.FRYINGPAN_COOLDOWN);
+			drawProgessBar(GameScreen.gamegc, GameController.CUTTINGBOARD_COOLDOWN);
 			final long startNanoTime = System.nanoTime();
 			new AnimationTimer() {
 
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				if (t < GameController.FRYINGPAN_COOLDOWN) {
+				if (t < GameController.CUTTINGBOARD_COOLDOWN) {
 					p.setFreeze(true);
 				} else {
 					p.setFreeze(false);

@@ -8,7 +8,7 @@ public class OrderPane extends HBox {
 
 	public OrderPane() {
 		setOrderNumber(0);
-		this.setPrefHeight(100);
+		this.setPrefHeight(128);
 		this.setPrefWidth(500);
 		this.setSpacing(16);
 

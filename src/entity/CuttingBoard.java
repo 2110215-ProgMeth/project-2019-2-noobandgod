@@ -73,6 +73,9 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
+		if (!p.isHolding() && !isOnCuttingBoard()){
+			return false;
+		}
 		if (OnCuttingBoardExists.getState() >= 1) {
 			return false;
 		}
@@ -96,7 +99,8 @@ public class CuttingBoard extends Equipment implements Interactable{
 			}
 			}.start();
 			return true;
-		}System.out.println("There is nothing to be cooked");
+		}
+		System.out.println("There is nothing to be cooked");
 		return false;
 		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
 	}
