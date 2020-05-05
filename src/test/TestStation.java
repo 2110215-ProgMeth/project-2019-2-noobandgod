@@ -83,6 +83,7 @@ public class TestStation {
 		assertEquals(true,station4.interacts(player4));
 			
 	}
+	@Test
 	public void testConstructorPlayer() {
 //		assertEquals(false,player1.isHolding());
 //		assertEquals(null,player1.getEntityHeld());
@@ -91,7 +92,7 @@ public class TestStation {
 //		assertEquals(false,player3.isHolding());
 //		assertEquals(true,player3.getEntityHeld() instanceof Cabbage);
 	}
-	
+	@Test
 	public void testStation() {
 		assertEquals(false,player2.isHolding());
 		assertEquals(null,player2.getEntityHeld());
