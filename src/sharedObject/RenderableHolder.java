@@ -57,6 +57,7 @@ public class RenderableHolder {
 	//Fish
 	public static Image fish_Image;
 	public static Image fish_sliced_Image;
+	public static Image fish_fried_Image;
 	
 	//Dish
 	public static Image dish_ontable_empty_Image;
@@ -70,8 +71,9 @@ public class RenderableHolder {
 	public static Image cuttingboard_infront_Image;
 	public static Image cuttingboard_between_Image;
 	
-	
-	
+	//FryingPan
+	public static Image fryingpan_infront_Image;
+	public static Image fryingpan_between_Image;
 	
 	static {
 		loadResource();
@@ -176,6 +178,7 @@ public class RenderableHolder {
 		//Fish
 		fish_Image = new Image(ClassLoader.getSystemResource(p+"fish.png").toString());
 		fish_sliced_Image = new Image(ClassLoader.getSystemResource(p+"fish_sliced.png").toString());
+		fish_fried_Image = new Image(ClassLoader.getSystemResource(p+"fish_fried.png").toString());
 		
 		//Dish
 		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
@@ -188,6 +191,11 @@ public class RenderableHolder {
 		//CuttingBoard
 		cuttingboard_infront_Image = new Image(ClassLoader.getSystemResource(p+"cuttingboard_infront.png").toString());
 		cuttingboard_between_Image = new Image(ClassLoader.getSystemResource(p+"cuttingboard_between.png").toString());
+	
+		//FryingPan
+		fryingpan_infront_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_infront.png").toString());
+		fryingpan_between_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_between.png").toString());
+	
 	}
 	
 	
