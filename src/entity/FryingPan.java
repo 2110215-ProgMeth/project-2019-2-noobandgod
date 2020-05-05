@@ -27,17 +27,17 @@ public class FryingPan extends Equipment implements Interactable{
 		
 	}
 	public boolean interacts(Player e) {//throws InteractFailedException{
-		if (!e.isHolding()) {
-			if (getOnFryingPanExists() instanceof Ingredient) {
+		if (!e.isHolding()) {//holding nothing
+			if (getOnFryingPanExists() instanceof Ingredient) {//food on frying pan
 				Ingredient ingredient_clone = this.removedEntityOnFryingPan();
 				e.setEntityHeld(ingredient_clone);
 				e.setHolding(true);
 				ingredient_clone.setPlaced(false);
 				return true;
 			}
-		}else {
-			if (e.getEntityHeld() instanceof Dish) {
-				if (isOnFryingPan()) {
+		}else {//holding something
+			if (e.getEntityHeld() instanceof Dish) {//holding a dish
+				if (isOnFryingPan()) {//ingredient on frying pan
 					Dish dish = (Dish) e.getEntityHeld();
 					if (dish.check((Ingredient) getOnFryingPanExists())){
 						Ingredient ingredient_clone = this.removedEntityOnFryingPan();
@@ -47,8 +47,8 @@ public class FryingPan extends Equipment implements Interactable{
 						return true;
 					}
 			    }
-			}else {
-				if (!isOnFryingPan()) {
+			}else {//holding fish
+				if (!isOnFryingPan()) {//nothing on the frying pan
 					if (e.getEntityHeld() instanceof Fish) {
 						Fish entity_clone = (Fish) e.removeEntityHeld();
 						setOnFryingPanExists(entity_clone);
