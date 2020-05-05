@@ -52,11 +52,16 @@ public class FryingPan extends Equipment implements Interactable{
 			}else {//holding fish
 				if (!isOnFryingPan()) {//nothing on the frying pan
 					if (e.getEntityHeld() instanceof Fish) {
-						Fish entity_clone = (Fish) e.removeEntityHeld();
-						setOnFryingPanExists(entity_clone);
-						setOnFryingPan(true);
-						entity_clone.setPlaced(true);
-						return true;
+						if(((Fish) e.getEntityHeld()).getState() == 1) {
+							System.out.println("NO SASHIMI ON PAN");
+							return false;
+						} else {
+							Fish entity_clone = (Fish) e.removeEntityHeld();
+							setOnFryingPanExists(entity_clone);
+							setOnFryingPan(true);
+							entity_clone.setPlaced(true);
+							return true;
+						}
 					}
 				}
 			}
@@ -132,6 +137,22 @@ public class FryingPan extends Equipment implements Interactable{
 		} else {
 			gc.drawImage(RenderableHolder.fryingpan_between_Image, x, y-6);
 		} 
+		
+		if (OnFryingPanExists instanceof Fish) {
+			if (((Fish) OnFryingPanExists).getState() == 0) { //raw fish
+				if(!isAnyBlockDownward) {
+					gc.drawImage(RenderableHolder.fish_Image, x, y);
+				} else {
+					gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+				}
+			} else if (((Fish) OnFryingPanExists).getState() == 2){
+				if(!isAnyBlockDownward) {
+					gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+7, 40, 28);
+				} else {
+					gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+10, 45, 32);
+				}
+			}
+		}
 		
 	}
 

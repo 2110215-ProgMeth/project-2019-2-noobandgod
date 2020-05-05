@@ -168,10 +168,11 @@ public class Station extends Block implements Interactable{
 						gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+5);
 					
 					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
-						if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState()==1){//fish state1
+						if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState() == 1){//fish state1
 							gc.drawImage(RenderableHolder.fish_sliced_Image, x+10, y+5, 42, 28);
-						}else {//fish state2
-							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+5);
+							
+						}else if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState() == 2){//fish state2
+							gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+5, 45, 35);
 						}
 					}
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 2) {
@@ -181,9 +182,13 @@ public class Station extends Block implements Interactable{
 						}Collections.sort(ondish);
 						if (ondish.get(0).equals("Cabbage")) {
 							if (ondish.get(1).equals("Fish")) {//cabbage and fish both state 1
-								//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
-							}else if(ondish.get(1).equals("Tomato")) {//cabbage adn tomato
-								//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);
+								gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+13, 64, 28);
+								gc.drawImage(RenderableHolder.fish_sliced_Image, x+15, y+2, 34, 20);
+								
+							}else if(ondish.get(1).equals("Tomato")) {//cabbage add tomato (sliced)
+								gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+13, 64, 28);
+								gc.drawImage(RenderableHolder.tomato_sliced_Image, x+15, y+2, 34, 20);
+								
 							}
 						}else {//Tomato and fish
 							//gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y+9);

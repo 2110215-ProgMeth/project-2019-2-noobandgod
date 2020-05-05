@@ -164,16 +164,24 @@ public class CuttingBoard extends Equipment implements Interactable{
 				 } else {
 					 gc.drawImage(RenderableHolder.fish_Image, x, y);
 				 }
-			 }else {//fish state1
+			 } else if (((Fish) OnCuttingBoardExists).getState() == 1) {
 				 if (isAnyBlockDownward) {
 					 gc.drawImage(RenderableHolder.fish_sliced_Image, x+6, y+6,48,32);
 				 } else {
 					 gc.drawImage(RenderableHolder.fish_sliced_Image, x+6, y,48,32);
-				 }	 
+				 }	
+			 } else {
+				 if (isAnyBlockDownward) {
+					 gc.drawImage(RenderableHolder.fish_fried_Image, x+6, y+6,48,32);
+				 } else {
+					 gc.drawImage(RenderableHolder.fish_fried_Image, x+6, y+3,48,32);
+				 }	
 			 }
-		 }
-		
+		}
 	}
+		
+
+
 	@Override
 	public boolean isVisible() {
 		return true;
