@@ -24,7 +24,7 @@ public class OrderBox extends VBox {
 		getMenuName(typeMenu);
 		
 		this.foodPic = new Pane();
-		foodPic.setPrefHeight(32);
+		foodPic.setPrefHeight(64);
 		foodPic.setPrefWidth(24);
 		
 /*		if (typeMenu==1) {
@@ -75,18 +75,19 @@ public class OrderBox extends VBox {
 				
 				gc.setFill(Color.WHITE);
 				gc.fillRect(0, 0, progressBar.getWidth() , progressBar.getHeight());
-				gc.strokeRect(x, y, maxwidth, maxheight);
+				gc.strokeRect(0, 0, progressBar.getWidth(),progressBar.getHeight());
 				
 				gc.setFill(Color.LIMEGREEN);
-				gc.fillRect(x, y, width, maxheight);
+				gc.fillRect(0, 0, progressBar.getWidth(), progressBar.getHeight());
 				
-				if (width >= maxwidth) {
-					gc.clearRect(x, y, maxwidth+0.1, maxheight);
+				if (width >= progressBar.getWidth()) {
+					gc.clearRect(0,0, progressBar.getWidth()+0.1,progressBar.getHeight());
 					this.stop();
 				}
 			}
 		};
 		animationTimer.start();
+	}
 		
 
 	public void getMenuName(int typeMenu) {
