@@ -75,6 +75,10 @@ public class RenderableHolder {
 	public static Image fryingpan_infront_Image;
 	public static Image fryingpan_between_Image;
 	
+	//FoodCounter
+	public static Image foodcounter_infront_Image;
+	public static Image foodcounter_between_Image;
+	
 	static {
 		loadResource();
 	}
@@ -196,6 +200,9 @@ public class RenderableHolder {
 		fryingpan_infront_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_infront.png").toString());
 		fryingpan_between_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_between.png").toString());
 	
+		//FoodCounter
+		foodcounter_infront_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_infront.png").toString());
+		foodcounter_between_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_between.png").toString());
 	}
 	
 	

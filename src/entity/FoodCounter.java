@@ -1,14 +1,14 @@
 package entity;
 
 import entity.base.Block;
-import entity.base.Consumable;
-import entity.base.Entity;
 import entity.base.Interactable;
 import exception.InteractFailedException;
 import exception.SendFoodFailedException;
+import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
-import meal.OrderManager;
+import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class FoodCounter extends Block implements Interactable{
 
@@ -26,5 +26,28 @@ public class FoodCounter extends Block implements Interactable{
 		// TODO Auto-generated method stub
 		return Sprites.FoodCounter;
 	}
+	@Override
+	public int getZ() {
+		return getY()*3;
+	}
+	@Override
+	public void draw(GraphicsContext gc) {
+		int pixel = GameScreen.pixel;
+		int x = GameScreen.draw_origin_x+this.getX()*pixel;
+		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		
+		if(!isAnyBlockDownward) {
+			gc.drawImage(RenderableHolder.foodcounter_infront_Image, x, y-6,65,70);
+		} else {
+			gc.drawImage(RenderableHolder.foodcounter_between_Image, x, y-6);
+		}
+		
+	}
+	@Override
+	public boolean isVisible() {
+		return true;
+	}
+	
+	
 
 }
