@@ -4,7 +4,10 @@ import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
 import exception.InteractFailedException;
+import javafx.animation.AnimationTimer;
+import logic.GameController;
 import logic.Sprites;
+import screen.GameScreen;
 
 public class FryingPan extends Equipment implements Interactable{
 	private Ingredient OnFryingPanExists;
@@ -68,9 +71,29 @@ public class FryingPan extends Equipment implements Interactable{
 		return removedEntity;
 	}
 	public boolean cooks(Player p) throws CookFailedException{ //throws CookFailedException{
-		if (OnFryingPan) {
-				getOnFryingPanExists().setState(2);
-				return true;
+		if (OnFryingPanExists.getState() >= 1) {
+			System.out.println("This ingredient has already been cooked");
+		}
+		if (OnFryingPan && isWorking) {
+			setWorking(true);
+			drawProgessBar(GameScreen.gamegc, GameController.FRYINGPAN_COOLDOWN);
+			final long startNanoTime = System.nanoTime();
+			new AnimationTimer() {
+
+			public void handle(long currentNanoTime) {
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
+				if (t < GameController.FRYINGPAN_COOLDOWN) {
+					p.setFreeze(true);
+				} else {
+					p.setFreeze(false);
+					OnFryingPanExists.setState(2);
+					System.out.println("Cook completed!");
+					setWorking(false);
+					stop();
+				}
+			}
+			}.start();
+			return true;
 		}System.out.println("There is nothing to be cooked");
 		return false;
 		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that nothing to be cooked
