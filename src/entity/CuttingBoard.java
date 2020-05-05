@@ -74,7 +74,6 @@ public class CuttingBoard extends Equipment implements Interactable{
 	
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
 		if (OnCuttingBoardExists.getState() >= 1) {
-			System.out.println("This ingredient has been alrefady cooked");
 			return false;
 		}
 		if (OnCuttingBoard && !isWorking) {
