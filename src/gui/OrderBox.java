@@ -17,7 +17,6 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class OrderBox extends Canvas{
-	private Canvas orderCanvas;
 	private GraphicsContext ordergc;
 
 	public OrderBox(Menu menu) {
@@ -27,12 +26,12 @@ public class OrderBox extends Canvas{
 		ordergc.setFill(Color.RED);
 		ordergc.setLineWidth(2);
 		
-		this.setHeight(160);
+		this.setHeight(192);
 		this.setWidth(160);
 		
-		//Font font = Font.font("Times New Roman", FontWeight.LIGHT, 16);
-		//ordergc.setFont(font);
-		//ordergc.fillText("Simple Salad",16,12);
+		Font font = Font.font(16);
+		ordergc.setFont(font);
+	
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad",50,12);
 			drawProgressBar(3);
@@ -40,9 +39,10 @@ public class OrderBox extends Canvas{
 		}else if (menu.getName().equals("Sashimi Salad")) {
 			
 			this.setWidth(160);
-			ordergc.fillText("Sashimi Salad",30,10);
+			
+			ordergc.fillText("Sashimi Salad",30,13);
 			drawProgressBar(menu.getTimeleft());
-			ordergc.drawImage(menu.getMenuImage(),0,20);
+			ordergc.drawImage(menu.getMenuImage(),0,20,155,145);
 			
 		}else { //fried fish
 			
@@ -57,10 +57,10 @@ public class OrderBox extends Canvas{
 	public void drawProgressBar(int maxTime) {
 		final long startNanoTime = System.nanoTime();
 		final double max_width = this.getWidth();
-		final int max_height = 8;
+		final int max_height = 16;
 		
 		int x = 0;
-		int y = (int) this.getHeight() - 8;
+		int y = (int) this.getHeight() - 18;
 		
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width;
@@ -72,7 +72,7 @@ public class OrderBox extends Canvas{
 				ordergc.clearRect(x, y, max_width, max_height);
 				ordergc.setLineWidth(1);				
 				ordergc.setFill(Color.WHITE);
-
+				
 				
 				//System.out.println(width <= 0.67*max_width);
 				if (width >= 0.67*max_width) {
@@ -87,6 +87,10 @@ public class OrderBox extends Canvas{
 				}
 				ordergc.strokeRect(x, y, max_width, max_height);
 				ordergc.fillRect(x, y, width, max_height);
+				
+				int time = (int) t;
+				ordergc.setFill(Color.BLACK);
+				ordergc.fillText(""+(maxTime-time), x+getWidth()/2, y+12);
 				
 				if (t >= maxTime) {
 					//ordergc.clearRect(0,0, max_width+1,max_height+1);

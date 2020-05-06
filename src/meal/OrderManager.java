@@ -98,7 +98,7 @@ public class OrderManager {
 		return orders;
 	}
 
-	public int typemenu() {
+	public static int typemenu() {
 		int max = 9;
 		int min = 1;
 		int range = max - min + 1;
@@ -123,15 +123,17 @@ public class OrderManager {
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
 
 		}
-		if (GameController.getOrderManager().getOrders().size() < 4) {
-			
+		if (GameController.getOrderManager().getOrders().size() <= 4) {
 			int type = typemenu();
 			if (type ==1) {
-				GameController.getOrderManager().getOrders().add(new Salad);
+				Menu simpleSalad = new Salad(20,0);
+				GameController.getOrderManager().getOrders().add(simpleSalad);
 			}else if (type ==2) {
-				GameController.getOrderManager().getOrders().add(e);
+				Menu SashimiSalad = new Salad(20,1);
+				GameController.getOrderManager().getOrders().add(SashimiSalad);
 			}else {
-				GameController.getOrderManager().getOrders().add(new FriedFish());
+				Menu friedFish = new FriedFish(20);
+				GameController.getOrderManager().getOrders().add(friedFish);
 			}
 
 		}

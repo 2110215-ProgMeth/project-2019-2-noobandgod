@@ -1,6 +1,7 @@
 package entity;
 
 import entity.base.Entity;
+import entity.base.Interactable;
 import entity.base.Updatable;
 import input.InputUtility;
 import javafx.animation.AnimationTimer;
@@ -13,7 +14,7 @@ import logic.GameController;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements Updatable {
+public class Player extends Entity implements Updatable,Interactable {
 	private boolean isHolding;
 	private Entity entityHeld;
 	private int PlayerNumber;
@@ -38,7 +39,17 @@ public class Player extends Entity implements Updatable {
 		setStill(true);
 		setFreeze(false);
 	}
-
+	public boolean interacts(Player p) {
+		if(!p.isHolding() && this.isHolding()) {  
+			Entity entity_clone = this.removeEntityHeld();
+			p.setEntityHeld(entity_clone);
+			return true;
+		}else if (p.isHolding() && !this.isHolding()) {
+			Entity entity_clone = p.removeEntityHeld();
+			this.setEntityHeld(entity_clone);
+			return true;
+		}return false;
+	}
 	public Entity removeEntityHeld() {
 		setHolding(false);
 		Entity removedEntity = (Entity) getEntityHeld().clone();
@@ -327,13 +338,13 @@ public class Player extends Entity implements Updatable {
 			addTimeStandStill();
 		}
 
-		if ((InputUtility.getKeypressed().contains((KeyCode.ENTER))
+		if ((InputUtility.getKeypressed().contains((KeyCode.SEMICOLON))
 				|| InputUtility.getKeypressed().contains(KeyCode.QUOTE)) && this.getPlayerNumber() == 1) {
 			Integer[] targetcoordinate = getWhereInteract();
 			int targetx = targetcoordinate[0];
 			int targety = targetcoordinate[1];
 			if (!isFreeze) {
-				if (InputUtility.getKeypressed().contains((KeyCode.ENTER))) {
+				if (InputUtility.getKeypressed().contains((KeyCode.SEMICOLON))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(1),
 							targetx, targety, 0)) {
 						System.out.println("Interact completed!");
