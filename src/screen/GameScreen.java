@@ -53,12 +53,12 @@ public class GameScreen {
 
 		VBox leftBox = new VBox(8);
 		
-//		StackPane pane1 = new StackPane();
+		StackPane orderPane = new StackPane();
 		Canvas orderCanvas = new Canvas(768,128);
 		GraphicsContext ordergc = orderCanvas.getGraphicsContext2D();
 		ordergc.setFill(Color.LIMEGREEN);
 		ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
-//		pane1.getChildren().addAll(orderCanvas,SimulationManager.getOrderPane());
+		orderPane.getChildren().addAll(orderCanvas);
 		
 		this.gameCanvas = new Canvas(800,544);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
@@ -76,7 +76,7 @@ public class GameScreen {
 		pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
 		
 		
-		leftBox.getChildren().addAll(orderCanvas,gameCanvas,pane);
+		leftBox.getChildren().addAll(orderPane,gameCanvas,pane);
 		
 		//---------------------------------------------------
 		VBox rightBox = new VBox(8);

@@ -19,15 +19,15 @@ public class OrderBox extends VBox {
 	
 	public OrderBox(int typeMenu) {
 		super();
-		this.setPrefHeight(64);
+		this.setPrefHeight(80);
 		this.setPrefWidth(80);
-		this.setSpacing(16);
+		//this.setSpacing(16);
 		this.setAlignment(Pos.CENTER);
 		
 		getMenuName(typeMenu);
 		
 		this.foodPic = new Pane();
-		foodPic.setPrefHeight(64);
+		foodPic.setPrefHeight(32);
 		foodPic.setPrefWidth(24);
 		
 		progressBar = new Canvas();

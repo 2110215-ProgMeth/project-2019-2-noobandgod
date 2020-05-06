@@ -12,7 +12,7 @@ import logic.GameController;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements Updatable, Runnable {
+public class Player extends Entity implements Updatable {
 	private boolean isHolding;
 	private Entity entityHeld;
 	private int PlayerNumber;

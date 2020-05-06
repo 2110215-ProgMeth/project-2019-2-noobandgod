@@ -5,15 +5,14 @@ import logic.GameController;
 
 public class OrderPane extends HBox {
 	private int orderNumber;
-
+	private int type;
 	public OrderPane() {
 		setOrderNumber(0);
-		this.setPrefHeight(128);
+		this.setPrefHeight(100);
 		this.setPrefWidth(500);
-		this.setSpacing(16);
 
 		for (int i = 0; i < 5; i++) {
-			int type = typeMenu();
+			type = typeMenu();
 			OrderBox order = new OrderBox(type);
 			this.getChildren().add(order);
 		}
