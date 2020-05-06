@@ -145,7 +145,7 @@ public class GameMap {
 		return cellmap[y][x].getBlock();
 	}
 	
-	public boolean isMovePossible(int targetx, int targety) {
+	public boolean isMovePossible(Player p,int targetx, int targety) {
 		//System.out.println("target x: "+targetx+" ,target y: "+targety);
 		
 		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
@@ -187,8 +187,6 @@ public class GameMap {
 		if(isInteractPossible(targetx, targety)) {
 			Block target = cellmap[targety][targetx].getBlock();
 
-			
-			
 			if(interactType == 0) {
 				Interactable t = (Interactable) target;
 				try {

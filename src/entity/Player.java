@@ -83,7 +83,7 @@ public class Player extends Entity implements Updatable {
 				break;
 			}
 
-			if (GameController.getCurrentGameMap().isMovePossible(targetx, targety)) {
+			if (GameController.getCurrentGameMap().isMovePossible(this,targetx, targety)) {
 				setX(targetx);
 				setY(targety);
 
@@ -191,6 +191,9 @@ public class Player extends Entity implements Updatable {
 		} else {
 			setStill(false);
 		}
+		
+		//======================================================================================
+		//for player 0 
 		if (!isFreeze) {
 			if (InputUtility.getKeypressed().contains(KeyCode.W) && this.getPlayerNumber() == 0) {
 				this.move(Direction.UP);
@@ -216,13 +219,13 @@ public class Player extends Entity implements Updatable {
 		}
 
 		if (!InputUtility.getKeypressed().contains((KeyCode.W)) && !InputUtility.getKeypressed().contains((KeyCode.S))
-				&& !InputUtility.getKeypressed().contains((KeyCode.A))
-				&& !InputUtility.getKeypressed().contains((KeyCode.D))) {
+				&& !InputUtility.getKeypressed().contains((KeyCode.A)) && !InputUtility.getKeypressed().contains((KeyCode.D))
+				&& this.getPlayerNumber() == 0) {
 			addTimeStandStill();
 		}
 
-		if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))
-				|| InputUtility.getKeypressed().contains(KeyCode.CONTROL)) {
+		if ((InputUtility.getKeypressed().contains((KeyCode.SHIFT))
+				|| InputUtility.getKeypressed().contains(KeyCode.CONTROL)) && this.getPlayerNumber() == 0) {
 			Integer[] targetcoordinate = getWhereInteract();
 			int targetx = targetcoordinate[0];
 			int targety = targetcoordinate[1];
@@ -244,6 +247,8 @@ public class Player extends Entity implements Updatable {
 				}
 			}
 		}
+		//======================================================================================
+		
 	}
 	public String toString() {
 		String result = "PLAYER NO: " + getPlayerNumber();

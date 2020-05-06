@@ -41,7 +41,7 @@ public class GameController {
 		setScoreCount(999);
 		InitializeIngredient();
 		
-		InitializePlayer(1);
+		InitializePlayer(2);
 		
 		setIsTimeUp(false);
 		
@@ -61,9 +61,14 @@ public class GameController {
 			
 			players.add(player0);
 			RenderableHolder.getInstance().add(player0);
+		} else if (numberOfPlayers == 2) {
+			players = new ArrayList<Player>();
+			Player player0 = new Player(0,1,1);
+			Player player1 = new Player(1,8,2);
+			
+			players.add(player0); RenderableHolder.getInstance().add(player0);
+			players.add(player1); RenderableHolder.getInstance().add(player1);
 		}
-		
-		
 	}
 
 	public static void movePlayer(Direction dir,Player p) {
