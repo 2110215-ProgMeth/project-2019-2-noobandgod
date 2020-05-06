@@ -2,6 +2,8 @@ package gui;
 
 import javafx.scene.layout.HBox;
 import logic.GameController;
+import meal.Menu;
+import meal.OrderManager;
 
 public class OrderPane extends HBox {
 	private int orderNumber;
@@ -10,9 +12,8 @@ public class OrderPane extends HBox {
 		this.setPrefWidth(800);
 		//this.setSpacing(16);
 		setOrderNumber(0);
-		for (int i = 0; i < 10; i++) {
-			int type = typeMenu();
-			OrderBox order = new OrderBox(type);
+		for (Menu menu : GameController.getOrderManager().getOrders()) {
+			OrderBox order = new OrderBox(menu);
 			this.getChildren().add(order);
 		}
 		//updateOrderNumber();

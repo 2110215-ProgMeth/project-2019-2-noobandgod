@@ -55,12 +55,11 @@ public class GameScreen {
 		VBox leftBox = new VBox(8);
 		
 		
-		//StackPane orderPane = new StackPane();
+
 		//Canvas orderCanvas = new Canvas(768,128);
 		//GraphicsContext ordergc = orderCanvas.getGraphicsContext2D();
 		//ordergc.setFill(Color.LIMEGREEN);
 		//ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
-		//.getChildren().addAll(SimulationManager.getOrderPane());//,orderCanvas1);
 		
 		this.gameCanvas = new Canvas(800,544);
 		this.gamegc = gameCanvas.getGraphicsContext2D();

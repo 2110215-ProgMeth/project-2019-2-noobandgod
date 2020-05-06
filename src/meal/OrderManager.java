@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import entity.Dish;
 import entity.Player;
 import exception.RemoveOrderFailedException;
+import javafx.animation.AnimationTimer;
+import javafx.scene.paint.Color;
 import logic.GameController;
 
 public class OrderManager {
@@ -61,6 +63,7 @@ public class OrderManager {
 		boolean anymatch = false;
 		int indexmatch = -1;
 		
+		
 		for (int i=0 ; i<orders.size(); i++) {
 			Menu menu = orders.get(i);
 			
@@ -91,5 +94,43 @@ public class OrderManager {
 		}
 		
 	}
+	
+	public ArrayList<Menu> getOrders() {
+		return orders;
+	}
+
+	public int typemenu() {
+		int max = 9;
+		int min = 1;
+		int range = max - min + 1;
+		int rand = (int) (Math.random() * range) + min;
+		if (rand <= 3) {
+			return 1;
+		} else if (rand <= 6) {
+			return 2;
+		} else {
+			return 3;
+		}
+	}
+	public static void updateOrderNumber() {
+		new AnimationTimer() {
+			double alpha = 0.0;
+			boolean increase = true;
+
+			public void handle(long currentNanoTime) {
+				for (Menu menu:GameController.getOrderManager().getOrders()) {
+						
+						
+					}
+				}
+				if (GameController.is_timeup) {
+					stop();
+					
+				}
+			}
+		}.start();
+		
+	}
+
 	
 }

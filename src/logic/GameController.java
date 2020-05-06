@@ -15,7 +15,7 @@ public class GameController {
 	private static int coin_count;
 	private static int score_count;
 	
-	private static boolean is_timeup;
+	public static boolean is_timeup;
 	
 	public static int MAX_ORDER;
 	public static int MAX_TIME;
