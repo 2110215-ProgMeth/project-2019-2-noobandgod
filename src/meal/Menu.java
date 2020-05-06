@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.Dish;
 import entity.Ingredient;
 import entity.base.Entity;
+import javafx.scene.image.Image;
 
 public abstract class Menu {
 	protected String name;
@@ -12,6 +13,7 @@ public abstract class Menu {
 	protected int max_score;
 	protected ArrayList<Ingredient> ingredients;
 	protected int timeleft;
+	protected Image menuImage;
 	
 	public Menu(int timeleft) {
 		setTimeleft(timeleft);
@@ -90,6 +92,10 @@ public abstract class Menu {
 
 	public void setMax_score(int max_score) {
 		this.max_score = max_score;
+	}
+	
+	public Image getMenuImage() {
+		return menuImage;
 	}
 
 	@Override

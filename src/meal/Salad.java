@@ -8,6 +8,7 @@ import entity.Fish;
 import entity.FishStorage;
 import entity.Ingredient;
 import entity.Tomato;
+import sharedObject.RenderableHolder;
 
 public class Salad extends Menu{
 	protected int saladType;
@@ -29,6 +30,7 @@ public class Salad extends Menu{
 		} else if (saladType == 1) {
 			setSaladType(saladType);
 			this.name = "Sashimi Salad";
+			this.menuImage = RenderableHolder.menu_sashimisalad_Image;
 			
 			//set price and max_score
 			

@@ -76,6 +76,9 @@ public class RenderableHolder {
 	public static Image foodcounter_infront_Image;
 	public static Image foodcounter_between_Image;
 	
+	//Menu
+	public static Image menu_sashimisalad_Image;
+	
 	//TimeBox
 	public static Image timebox_bg_Image;
 	
@@ -200,6 +203,9 @@ public class RenderableHolder {
 		foodcounter_infront_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_infront.png").toString());
 		foodcounter_between_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_between.png").toString());
 	
+		//Menu
+		menu_sashimisalad_Image = new Image(ClassLoader.getSystemResource(p+"menu_sashimisalad.png").toString());
+		
 		//TimeBox
 		timebox_bg_Image = new Image(ClassLoader.getSystemResource(p+"timebox_bg.png").toString());
 	}
