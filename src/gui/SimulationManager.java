@@ -10,8 +10,11 @@ public class SimulationManager {
 	public static void initializeAllPane() {
 		shopPane = new ShopPane(GameController.INGREDIENTS);
 		dataPane = new DataPane();
-		//orderPane = new OrderPane();
-		
+		orderPane = new OrderPane();
+	}
+
+	public static OrderPane getOrderPane() {
+		return orderPane;
 	}
 
 	public static ShopPane getShopPane() {
@@ -21,8 +24,5 @@ public class SimulationManager {
 	public static DataPane getDataPane() {
 		return dataPane;
 	}
-//	public static OrderPane getOrderPane() {
-//		return orderPane;
-//	}
 	
 }

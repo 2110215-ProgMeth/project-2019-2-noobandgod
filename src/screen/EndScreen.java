@@ -35,7 +35,7 @@ public class EndScreen{
 	
 	public void draw(GraphicsContext gc) {	
 			
-			GameController.setScoreCount(299);
+			GameController.setScoreCount(99);
 			gc.setFill(Color.RED);
 			gc.setStroke(Color.BLUE);
 			gc.setLineWidth(2);
@@ -53,8 +53,7 @@ public class EndScreen{
 			}else if (200 <= score && score < 300) {
 				gc.drawImage(veryGood, 0, 0, 900, 800);
 				gc.fillText("Very Good!!", 250,200);
-				gc.strokeText("Very Good!!", 250, 200);
-			}else if (300 <= score) {
+				gc.strokeText("Very Good!!", 250, 200);Font menu = Font.font("Times New Roman", FontWeight.LIGHT, 16);
 				gc.drawImage(excellent, 0, 0, 900, 800);
 				gc.fillText("Excellent!!!", 250,200);
 				gc.strokeText("Excellent!!!", 250, 200);

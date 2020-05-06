@@ -9,106 +9,92 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import logic.GameController;
 import screen.GameScreen;
 
-public class OrderBox extends VBox {
-	private Pane foodPic;
-	private Canvas progressBar;
-	private Label menuName;
-	
+public class OrderBox extends Canvas{
+	private Canvas orderCanvas;
+	private GraphicsContext ordergc;
 	public OrderBox(int typeMenu) {
-		super();
-		this.setPrefHeight(80);
-		this.setPrefWidth(80);
-		//this.setSpacing(16);
-		this.setAlignment(Pos.CENTER);
 		
-		getMenuName(typeMenu);
+		orderCanvas = new Canvas(80,96);
+		ordergc = orderCanvas.getGraphicsContext2D();
+//		if (typeMenu == 1) {//simple salad
+//			drawProgressBar(ordergc,3);
+//			drawOrderPicture(ordergc,1);
+//			
+//		}else if (typeMenu==2) {//sashimi salad
+//			drawProgressBar(ordergc,4);
+//			drawOrderPicture(ordergc,2);
+//		}else {				//fried fish
+//			drawProgressBar(ordergc,2);
+//			drawOrderPicture(ordergc,3);
+//		}
+//		this.getMenuName(typeMenu);
 		
-		this.foodPic = new Pane();
-		foodPic.setPrefHeight(32);
-		foodPic.setPrefWidth(24);
-		
-		progressBar = new Canvas();
-		
-		if (typeMenu==1) {//simple salad
-			progressBar.prefHeight(16);
-			progressBar.prefWidth(48);
-			drawProgressBar(GameScreen.gamegc,3);
-			
-			
-		}else if (typeMenu==2) {//sashimi salad
-			progressBar.prefHeight(16);
-			progressBar.prefWidth(64);
-			drawProgressBar(GameScreen.gamegc,3);
-			
-		}else {//fried fish
-			progressBar.prefHeight(16);
-			progressBar.prefWidth(32);
-			drawProgressBar(GameScreen.gamegc,1);
-			
-		}
-		
-		
-		
-	
-		
-		this.getChildren().addAll(menuName,foodPic,progressBar);
 	}
 	
 	public void drawProgressBar(GraphicsContext gc, int maxTime) {
 		final long startNanoTime = System.nanoTime();
-		
-//		int pixel = GameScreen.pixel;
-//		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-//		int y = GameScreen.draw_origin_y+this.getY()*pixel-14;
-		
+		final int max_width = maxTime*16;
+		final int max_height = 16;
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width;
 			@Override
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				width = progressBar.getWidth() -(t/maxTime)*progressBar.getWidth();
+				width = max_width*(1 -(t/maxTime));
 				
-				gc.clearRect(0, 0, progressBar.getWidth(), progressBar.getHeight());
+				gc.clearRect(0, 112, max_width, max_height);
 				
 				gc.setStroke(Color.GREEN);
 				gc.setLineWidth(1);
 				
 				gc.setFill(Color.WHITE);
-				gc.fillRect(0, 0, progressBar.getWidth() , progressBar.getHeight());
-				gc.strokeRect(0, 0, progressBar.getWidth(),progressBar.getHeight());
+				gc.fillRect(0,112, max_width, max_height);
+				gc.strokeRect(0, 112, max_width, max_height);
 				
-				if (width >= 2/3*progressBar.getWidth()) {
+				if (width >= 2/3*max_width) {
 					gc.setFill(Color.LIMEGREEN);
-				}else if (width < 2/3*progressBar.getWidth() && width >= 1/3*progressBar.getWidth()){
+				}else if (width < 2/3*max_width && width >= 1/3*max_width){
 					gc.setFill(Color.YELLOW);
 				}else {
 					gc.setFill(Color.RED);
 				}
-				gc.fillRect(0, 0, width, progressBar.getHeight());
+				gc.fillRect(0, 112, width, max_height);
 				
-				if (width >= progressBar.getWidth()) {
-					gc.clearRect(0,0, progressBar.getWidth()+0.1,progressBar.getHeight());
+				if (width >= max_width) {
+					gc.clearRect(0,0, max_width,max_height);
 					this.stop();
 				}
 			}
 		};
 		animationTimer.start();
 	}
-		
+	public void drawOrderPicture(GraphicsContext gc,int type) {
+		if (type == 1) {
+			
+		}else if (type ==2) {
+			
+		}else {
+			
+		}
+	}
 
 	public void getMenuName(int typeMenu) {
+		ordergc.setFill(Color.BLUE);
+		ordergc.setLineWidth(2);
+		Font menu = Font.font("Times New Roman", FontWeight.LIGHT, 16);
+		ordergc.setFont(menu);
 		if (typeMenu == 1) {
-			menuName = new Label("Simple Salad");
+			ordergc.fillText("Simple Salad",16,12);
 		}else if (typeMenu == 2) {
-			menuName = new Label("Sashimi Salad");
+			ordergc.fillText("Sashimi Salad",16,12);
 		}else if (typeMenu ==3) {
-			menuName = new Label("Fried Fish");
+			ordergc.fillText("Fried Fish",16,12);
 		}
-		menuName.setPrefHeight(16);
-		menuName.setPrefWidth(64);
 	}
 	
 	
