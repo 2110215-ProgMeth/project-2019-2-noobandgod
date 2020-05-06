@@ -23,10 +23,10 @@ public class OrderBox extends Canvas{
 		
 		//orderCanvas = new Canvas(80,96);
 		ordergc = this.getGraphicsContext2D();
-		ordergc.setFill(Color.BLUE);
+		ordergc.setFill(Color.RED);
 		ordergc.setLineWidth(2);
-		Font font = Font.font("Times New Roman", FontWeight.LIGHT, 16);
-		ordergc.setFont(font);
+		//Font font = Font.font("Times New Roman", FontWeight.LIGHT, 16);
+		//ordergc.setFont(font);
 		ordergc.fillText("Simple Salad",16,12);
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad",16,12);

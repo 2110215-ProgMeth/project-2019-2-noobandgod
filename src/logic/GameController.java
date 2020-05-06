@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import entity.Player;
 import gui.SimulationManager;
+import meal.FriedFish;
+import meal.Menu;
 import meal.OrderManager;
 import sharedObject.RenderableHolder;
 
@@ -41,6 +43,8 @@ public class GameController {
 		setIsTimeUp(false);
 		
 		orderManager = new OrderManager();
+		Menu menu1 = new FriedFish(20);
+		orderManager.addOrder(menu1); 
 	}
 	
 	

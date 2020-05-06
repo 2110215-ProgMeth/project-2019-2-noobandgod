@@ -11,45 +11,45 @@ import logic.GameController;
 
 public class OrderManager {
 	private ArrayList<Menu> orders;
-	
+
 	public OrderManager() {
 		this.orders = new ArrayList<Menu>();
 	}
-	
+
 	public boolean addOrder(Menu m) {
-		if (orders.size()+1 <= GameController.MAX_ORDER) {
+		if (orders.size() + 1 <= GameController.MAX_ORDER) {
 			orders.add(m);
-		
+
 			System.out.println("Menu has already added");
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	public Menu removeOrder(int index) throws RemoveOrderFailedException{
-		if (index > orders.size()-1) {
+
+	public Menu removeOrder(int index) throws RemoveOrderFailedException {
+		if (index > orders.size() - 1) {
 			throw new RemoveOrderFailedException("Number you inserted exceed orders size");
 		} else if (index < 0) {
-			throw new RemoveOrderFailedException("Number cannot be negative");		
+			throw new RemoveOrderFailedException("Number cannot be negative");
 		} else {
 			Menu removedMenu = orders.get(index);
 			orders.remove(index);
-			
-			System.out.println("Menu: "+removedMenu.getName()+" has been removed");
+
+			System.out.println("Menu: " + removedMenu.getName() + " has been removed");
 			return removedMenu;
 		}
 	}
-	
+
 	public void removeOrderOutOfTime() {
 		ArrayList<Integer> intarray = new ArrayList<Integer>();
-		for (int i=0 ; i<orders.size() ; i++) {
+		for (int i = 0; i < orders.size(); i++) {
 			if (orders.get(i).getTimeleft() <= 0) {
 				intarray.add(i);
 			}
 		}
-		
-		for (int i=0; i<intarray.size(); i++) {
+
+		for (int i = 0; i < intarray.size(); i++) {
 			try {
 				removeOrder(intarray.get(i));
 			} catch (RemoveOrderFailedException e) {
@@ -58,23 +58,22 @@ public class OrderManager {
 			}
 		}
 	}
-	
+
 	public boolean sendOrder(Player p) {
 		boolean anymatch = false;
 		int indexmatch = -1;
-		
-		
-		for (int i=0 ; i<orders.size(); i++) {
+
+		for (int i = 0; i < orders.size(); i++) {
 			Menu menu = orders.get(i);
-			
+
 			if (menu.isAllIngredients(p.getEntityHeld())) {
 				indexmatch = i;
 				anymatch = true;
-				break;	
+				break;
 			}
 		}
-		
-		if(anymatch) {
+
+		if (anymatch) {
 			Menu menuremoved;
 			try {
 				menuremoved = removeOrder(indexmatch);
@@ -90,11 +89,11 @@ public class OrderManager {
 		} else {
 			GameController.addScoreCount(-10);
 			System.out.println("No menu match with your dish! Penalty -10 points");
-			return false;	
+			return false;
 		}
-		
+
 	}
-	
+
 	public ArrayList<Menu> getOrders() {
 		return orders;
 	}
@@ -112,25 +111,24 @@ public class OrderManager {
 			return 3;
 		}
 	}
-	public static void updateOrderNumber() {
-		new AnimationTimer() {
-			double alpha = 0.0;
-			boolean increase = true;
 
-			public void handle(long currentNanoTime) {
-				for (Menu menu:GameController.getOrderManager().getOrders()) {
-						
-						
-					}
-				}
-				if (GameController.is_timeup) {
-					stop();
-					
-				}
+	public static void updateOrderNumber() {
+
+		for (Menu menu : GameController.getOrderManager().getOrders()) {
+
+		}
+		if (GameController.getOrderManager().getOrders().size() < 4) {
+			int type = typemenu();
+			if (type ==1) {
+				GameController.getOrderManager().getOrders().add(new Salad);
+			}else if (type ==2) {
+				GameController.getOrderManager().getOrders().add(e);
+			}else {
+				GameController.getOrderManager().getOrders().add(new FriedFish());
 			}
-		}.start();
-		
+
+		}
+
 	}
 
-	
 }
