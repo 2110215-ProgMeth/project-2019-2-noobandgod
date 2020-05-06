@@ -31,20 +31,20 @@ public class GameController {
 	
 	private static OrderManager orderManager;
 	
-	
-	public static void InitializeMap(String[][] map) {
-		System.out.println("Initializing Map...");
-		
-		gameMap = new GameMap(map);
+	public static void InitializeGame(int numberOfPlayers, String[][] map) {
+		InitializeMap(map);
+		InitializeIngredient();
+		InitializePlayer(numberOfPlayers);
 		
 		setCoinCount(500);
 		setScoreCount(999);
-		InitializeIngredient();
-		
-		InitializePlayer(2);
-		
 		setIsTimeUp(false);
-		
+	}
+	
+	
+	public static void InitializeMap(String[][] map) {
+		System.out.println("Initializing Map...");
+		gameMap = new GameMap(map);
 		System.out.println("Successfully Initializing Map!");
 	}
 	
