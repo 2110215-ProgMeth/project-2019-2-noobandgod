@@ -26,6 +26,7 @@ public class GameScreen {
 	private Stage primaryStage;
 	private Canvas gameCanvas;
 	public static GraphicsContext gamegc;
+	public static GraphicsContext timegc;
 	
 	public static int draw_origin_x;
 	public static int draw_origin_y; 
@@ -82,10 +83,9 @@ public class GameScreen {
 		//---------------------------------------------------
 		VBox rightBox = new VBox(8);
 		
-		Canvas timeCanvas = new Canvas(190,100);
-		GraphicsContext timegc = timeCanvas.getGraphicsContext2D();
-		timegc.setFill(Color.ORANGE);
-		timegc.fillRect(0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
+		Canvas timeCanvas = new Canvas(190,128);
+		timegc = timeCanvas.getGraphicsContext2D();
+		timegc.drawImage(RenderableHolder.timebox_bg_Image, 0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
 		
 		
 		rightBox.getChildren().addAll(timeCanvas,SimulationManager.getShopPane());

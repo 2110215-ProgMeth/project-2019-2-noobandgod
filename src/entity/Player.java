@@ -6,6 +6,7 @@ import input.InputUtility;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import logic.Direction;
 import logic.GameController;
@@ -138,42 +139,90 @@ public class Player extends Entity implements Updatable {
 		int x = GameScreen.draw_origin_x + this.getX() * pixel;
 		int y = (GameScreen.draw_origin_y - 20) + this.getY() * pixel;
 
-		// System.out.println("Drawing Player at ("+getX()+","+getY()+")");
-
-		if (!isStill) {
-			switch (faceDirection) {
-			case LEFT:
-				gc.drawImage(RenderableHolder.player_walk_left_Image, x, y);
-				break;
-			case RIGHT:
-				gc.drawImage(RenderableHolder.player_walk_right_Image, x, y);
-				break;
-			case UP:
-				gc.drawImage(RenderableHolder.player_walk_up_Image, x, y);
-				break;
-			case DOWN:
-				gc.drawImage(RenderableHolder.player_walk_down_Image, x, y);
-				break;
-			default:
-				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
-				break;
+		int player_width = 64;
+		int player_height = 80;
+		
+		WritableImage player_Image;
+		
+		
+		if(this.getPlayerNumber() == 0) {
+			if (!isStill) {
+				switch (faceDirection) {
+				case LEFT:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),80,96,player_width,player_height);
+					break;
+				case RIGHT:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),160,96,player_width,player_height);
+					break;
+				case UP:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),240,96,player_width,player_height);
+					break;
+				case DOWN:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,96,player_width,player_height);
+					break;
+				default:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+					break;
+				}
+				gc.drawImage(player_Image, x, y, 64, 80);
+				
+			} else {
+				switch (lastwalkDirection) {
+				case LEFT:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),80,0,player_width,player_height);
+					break;
+				case RIGHT:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),160,0,player_width,player_height);
+					break;
+				case UP:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),240,0,player_width,player_height);
+					break;
+				case DOWN:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+					break;
+				default:
+					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+				}
+				gc.drawImage(player_Image, x, y, 64, 80);
 			}
-		} else {
-			switch (lastwalkDirection) {
-			case LEFT:
-				gc.drawImage(RenderableHolder.player_still_left_Image, x, y);
-				break;
-			case RIGHT:
-				gc.drawImage(RenderableHolder.player_still_right_Image, x, y);
-				break;
-			case UP:
-				gc.drawImage(RenderableHolder.player_still_up_Image, x, y);
-				break;
-			case DOWN:
-				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
-				break;
-			default:
-				gc.drawImage(RenderableHolder.player_still_down_Image, x, y);
+		} else if (this.getPlayerNumber() == 1) {
+			if (!isStill) {
+				switch (faceDirection) {
+				case LEFT:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),80,96,player_width,player_height);
+					break;
+				case RIGHT:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),160,96,player_width,player_height);
+					break;
+				case UP:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),240,96,player_width,player_height);
+					break;
+				case DOWN:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,96,player_width,player_height);
+					break;
+				default:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+					break;
+				}
+				gc.drawImage(player_Image, x, y, 64, 80);
+			} else {
+				switch (lastwalkDirection) {
+				case LEFT:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),80,0,player_width,player_height);
+					break;
+				case RIGHT:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),160,0,player_width,player_height);
+					break;
+				case UP:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),240,0,player_width,player_height);
+					break;
+				case DOWN:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+					break;
+				default:
+					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,0,player_width,player_height);
+				}
+				gc.drawImage(player_Image, x, y, 64, 80);
 			}
 		}
 	}
