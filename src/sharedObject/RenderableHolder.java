@@ -16,17 +16,8 @@ public class RenderableHolder {
 	
 	//Images
 	//Player
-	public static Image player_walk_left_Image;
-	public static Image player_walk_right_Image;
-	public static Image player_walk_up_Image;
-	public static Image player_walk_down_Image;
-	
-	public static Image player_still_left_Image;
-	public static Image player_still_right_Image;
-	public static Image player_still_up_Image;
-	public static Image player_still_down_Image;
-	
 	public static Image player0_sprite_Image;
+	public static Image player1_sprite_Image;
 	
 	//Bin
 	public static Image bin_infront_Image;
@@ -146,17 +137,8 @@ public class RenderableHolder {
 		String p = "picture/";
 		
 		//Player
-		player_walk_left_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_left.png").toString());
-		player_walk_right_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_right.png").toString());
-		player_walk_up_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_up.png").toString());
-		player_walk_down_Image = new Image(ClassLoader.getSystemResource(p+"player_walk_down.png").toString());
-	
-		player_still_left_Image = new Image(ClassLoader.getSystemResource(p+"player_still_left.png").toString());
-		player_still_right_Image = new Image(ClassLoader.getSystemResource(p+"player_still_right.png").toString());
-		player_still_up_Image = new Image(ClassLoader.getSystemResource(p+"player_still_up.png").toString());
-		player_still_down_Image = new Image(ClassLoader.getSystemResource(p+"player_still_down.png").toString());
-	
 		player0_sprite_Image = new Image(ClassLoader.getSystemResource(p+"player0_sprite.png").toString());
+		player1_sprite_Image = new Image(ClassLoader.getSystemResource(p+"player1_sprite.png").toString());
 		//Bin
 		bin_infront_Image = new Image(ClassLoader.getSystemResource(p+"bin_infront.png").toString());
 		bin_between_Image = new Image(ClassLoader.getSystemResource(p+"bin_between.png").toString());
