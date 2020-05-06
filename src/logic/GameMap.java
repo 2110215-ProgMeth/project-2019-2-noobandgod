@@ -180,7 +180,7 @@ public class GameMap {
 		}
 	}
 	
-	public boolean isInteractPossible(int targetx, int targety) {
+	public boolean isInteractPossible(Player p,int targetx, int targety) {
 		System.out.println("You are interacting @("+targetx+","+targety+")");
 		
 		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
@@ -203,7 +203,36 @@ public class GameMap {
 	}
 	
 	public boolean interactWithBlockTarget(Player p,int targetx, int targety, int interactType) {
-		if(isInteractPossible(targetx, targety)) {
+		
+		if (interactWithAnotherPlayer(p, targetx, targety)) {
+			if (p.getPlayerNumber() == 0) {
+				Interactable player = (Interactable) GameController.getPlayers(1);
+				try {
+					if(player.interacts(p)) {
+						return true;
+					} else {
+						return false;
+					}
+				} catch (InteractFailedException | SendFoodFailedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (p.getPlayerNumber() == 1) {
+				Interactable player = (Interactable) GameController.getPlayers(0);
+				try {
+					if(player.interacts(p)) {
+						return true;
+					} else {
+						return false;
+					}
+				} catch (InteractFailedException | SendFoodFailedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+			}
+		}
+		
+		if(isInteractPossible(p, targetx, targety)) {
 			Block target = cellmap[targety][targetx].getBlock();
 
 			if(interactType == 0) {
@@ -242,7 +271,29 @@ public class GameMap {
 		else {
 			return false; //if interact is not possible
 			}
+	}
+	
+	public boolean interactWithAnotherPlayer(Player p, int targetx, int targety) {
+		if (GameController.getAmountofPlayer() == 2) {
+			if(p.getPlayerNumber() == 0) {
+				if(targetx == GameController.getPlayers(1).getX() && targety == GameController.getPlayers(1).getY()) {
+					return true;
+				}
+			} else if (p.getPlayerNumber() == 1) {
+				if(targetx == GameController.getPlayers(0).getX() && targety == GameController.getPlayers(0).getY()) {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
+		return false;
+	}
+
+	
+	
 	
 	public void updateIsAnyBlockDownward() {
 		for (int i = 0; i < height-1 ; i++) {
