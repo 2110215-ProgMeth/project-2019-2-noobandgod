@@ -94,10 +94,10 @@ public class GameScreen {
 		root.getChildren().addAll(leftBox,rightBox);
 		root.setAlignment(Pos.CENTER);
 		
+		
 		Scene scene = new Scene(root);
 		
 		addListener(scene, gamegc);
-		
 		AnimationTimer animationTimer = new AnimationTimer() {
 			public void handle(long arg0) {
 				//fulfill background

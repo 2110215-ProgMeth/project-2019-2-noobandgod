@@ -62,6 +62,10 @@ public class RenderableHolder {
 	//Dish
 	public static Image dish_ontable_empty_Image;
 	public static Image dish_onhead_empty_Image;
+	public static Image dish_onhead_simplesalad_Image;
+	public static Image dish_onhead_sashimisalad_Image;
+	public static Image dish_ontable_simplesalad_Image;
+	public static Image dish_ontable_sashimisalad_Image;
 	
 	//DishPicker
 	public static Image dishpicker_infront_Image;
@@ -187,7 +191,11 @@ public class RenderableHolder {
 		//Dish
 		dish_ontable_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_empty.png").toString());
 		dish_onhead_empty_Image = new Image(ClassLoader.getSystemResource(p+"dish_onhead_empty.png").toString());
-	
+		dish_onhead_simplesalad_Image = new Image(ClassLoader.getSystemResource(p+"dish_onhead_simplesalad.png").toString());
+		dish_onhead_sashimisalad_Image = new Image(ClassLoader.getSystemResource(p+"dish_onhead_sashimisalad.png").toString());
+		dish_ontable_simplesalad_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_simplesalad.png").toString());
+		dish_ontable_sashimisalad_Image = new Image(ClassLoader.getSystemResource(p+"dish_ontable_sashimisalad.png").toString());
+		
 		//DishPicker
 		dishpicker_infront_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_infront.png").toString());
 		dishpicker_between_Image = new Image(ClassLoader.getSystemResource(p+"dishpicker_between.png").toString());
