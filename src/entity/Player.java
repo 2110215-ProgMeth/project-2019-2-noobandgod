@@ -248,6 +248,62 @@ public class Player extends Entity implements Updatable {
 			}
 		}
 		//======================================================================================
+		if (!isFreeze) {
+			if (InputUtility.getKeypressed().contains(KeyCode.I) && this.getPlayerNumber() == 1) {
+				this.move(Direction.UP);
+				setLastwalkDirection(Direction.UP);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.K) && this.getPlayerNumber() == 1) {
+				this.move(Direction.DOWN);
+				setLastwalkDirection(Direction.DOWN);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.J) && this.getPlayerNumber() == 1) {
+				this.move(Direction.LEFT);
+				setLastwalkDirection(Direction.LEFT);
+				setTimeStandStill(0);
+
+			} else if (InputUtility.getKeypressed().contains(KeyCode.L) && this.getPlayerNumber() == 1) {
+				this.move(Direction.RIGHT);
+				setLastwalkDirection(Direction.RIGHT);
+				setTimeStandStill(0);
+
+			}
+		}
+
+		if (!InputUtility.getKeypressed().contains((KeyCode.I)) && !InputUtility.getKeypressed().contains((KeyCode.J))
+				&& !InputUtility.getKeypressed().contains((KeyCode.K)) && !InputUtility.getKeypressed().contains((KeyCode.L))
+				&& this.getPlayerNumber() == 1) {
+			addTimeStandStill();
+		}
+
+		if ((InputUtility.getKeypressed().contains((KeyCode.ENTER))
+				|| InputUtility.getKeypressed().contains(KeyCode.QUOTE)) && this.getPlayerNumber() == 1) {
+			Integer[] targetcoordinate = getWhereInteract();
+			int targetx = targetcoordinate[0];
+			int targety = targetcoordinate[1];
+			if (!isFreeze) {
+				if (InputUtility.getKeypressed().contains((KeyCode.ENTER))) {
+					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(1),
+							targetx, targety, 0)) {
+						System.out.println("Interact completed!");
+					} else {
+						System.out.println("Interact failed!");
+					}
+				} else if (InputUtility.getKeypressed().contains((KeyCode.QUOTE))) {
+					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(1),
+							targetx, targety, 1)) {
+						
+					} else {
+						System.out.println("Cook failed!");
+					}
+				}
+			}
+		}
+		
+		
+		//======================================================================================
 		
 	}
 	public String toString() {
