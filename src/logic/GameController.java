@@ -29,7 +29,7 @@ public class GameController {
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
 	
-	private static OrderManager orderManager;
+	public static OrderManager orderManager;
 	
 	public static void InitializeGame(int numberOfPlayers, String[][] map) {
 		InitializeMap(map);
@@ -39,6 +39,8 @@ public class GameController {
 		setCoinCount(500);
 		setScoreCount(999);
 		setIsTimeUp(false);
+		
+		orderManager = new OrderManager();
 	}
 	
 	
