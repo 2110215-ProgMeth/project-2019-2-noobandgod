@@ -160,6 +160,10 @@ public class GameController {
 	public static Player getPlayers(int numberPlayer) {
 		return players.get(numberPlayer);
 	}
+	
+	public static int getAmountofPlayer() {
+		return players.size();
+	}
 
 	public static boolean isThisIngredientNameValid(String ingredientName) {
 		return Arrays.asList(INGREDIENTS).contains(ingredientName);

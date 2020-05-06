@@ -153,8 +153,27 @@ public class GameMap {
 			return false;
 		} 
 		
-		if (cellmap[targety][targetx].isBlockEmpty()) {
-			//if target block is empty (space) -> return true
+		if(!cellmap[targety][targetx].isBlockEmpty()) {
+			return false;
+		}
+		
+		if (GameController.getAmountofPlayer() == 2) {
+			if(p.getPlayerNumber() == 0) {
+				if (targetx == GameController.getPlayers(1).getX() && targety == GameController.getPlayers(1).getY()) {
+					return false;
+				} else {
+					return true;
+				}
+			} else if (p.getPlayerNumber() == 1) {
+				if (targetx == GameController.getPlayers(0).getX() && targety == GameController.getPlayers(0).getY()) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return false;
+			}
+		} else if (GameController.getAmountofPlayer() == 1) {
 			return true;
 		} else {
 			return false;
