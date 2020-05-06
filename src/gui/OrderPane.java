@@ -8,9 +8,9 @@ import meal.OrderManager;
 public class OrderPane extends HBox {
 	private int orderNumber;
 	public OrderPane() {
-		this.setPrefHeight(128);
+		this.setPrefHeight(165);
 		this.setPrefWidth(800);
-		//this.setSpacing(16);
+		this.setSpacing(4);
 		//setOrderNumber(0);
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
 			OrderBox order = new OrderBox(menu);

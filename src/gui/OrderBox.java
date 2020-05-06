@@ -14,6 +14,7 @@ import javafx.scene.text.FontWeight;
 import logic.GameController;
 import meal.Menu;
 import screen.GameScreen;
+import sharedObject.RenderableHolder;
 
 public class OrderBox extends Canvas{
 	private Canvas orderCanvas;
@@ -26,8 +27,8 @@ public class OrderBox extends Canvas{
 		ordergc.setFill(Color.RED);
 		ordergc.setLineWidth(2);
 		
-		this.setHeight(128);
-		this.setWidth(200);
+		this.setHeight(160);
+		this.setWidth(160);
 		
 		//Font font = Font.font("Times New Roman", FontWeight.LIGHT, 16);
 		//ordergc.setFont(font);
@@ -35,26 +36,32 @@ public class OrderBox extends Canvas{
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad",50,12);
 			drawProgressBar(3);
-			drawOrderPicture(1);
 			this.setWidth(67);
-		}else if (menu.getName().equals("Sahimi Salad")) {
-			ordergc.fillText("Sashimi Salad",50,12);
-			drawProgressBar(4);
-			drawOrderPicture(2);
-			this.setWidth(100);
-		}else {			//fried fish
-			ordergc.fillText("Fried Fish",50,12);
+		}else if (menu.getName().equals("Sashimi Salad")) {
+			
+			this.setWidth(160);
+			ordergc.fillText("Sashimi Salad",30,10);
+			drawProgressBar(menu.getTimeleft());
+			ordergc.drawImage(menu.getMenuImage(),0,20);
+			
+		}else { //fried fish
+			
+			this.setWidth(160);
+			ordergc.fillText("Fried Fish",this.getWidth()/2-30,10);
 			drawProgressBar(5);
-			drawOrderPicture(3);
-			this.setWidth(200);
+			
 		}
 		
 	}
 	
 	public void drawProgressBar(int maxTime) {
 		final long startNanoTime = System.nanoTime();
-		final double max_width = 200;
-		final int max_height = 10;
+		final double max_width = this.getWidth();
+		final int max_height = 8;
+		
+		int x = 0;
+		int y = (int) this.getHeight() - 8;
+		
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width;
 			@Override
@@ -62,7 +69,7 @@ public class OrderBox extends Canvas{
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
 				width =  max_width*(1 -(t/maxTime));
 				
-				ordergc.clearRect(0, 112, max_width, max_height);
+				ordergc.clearRect(x, y, max_width, max_height);
 				ordergc.setLineWidth(1);				
 				ordergc.setFill(Color.WHITE);
 
@@ -71,7 +78,6 @@ public class OrderBox extends Canvas{
 				if (width >= 0.67*max_width) {
 					ordergc.setStroke(Color.GREEN);
 					ordergc.setFill(Color.LIMEGREEN);
-					System.out.println(width+"  "+max_width);
 				}else if (width < 0.67*max_width && width >= 0.33*max_width){
 					ordergc.setStroke(Color.ORANGE);
 					ordergc.setFill(Color.ORANGE);
@@ -79,8 +85,8 @@ public class OrderBox extends Canvas{
 					ordergc.setStroke(Color.RED);
 					ordergc.setFill(Color.RED);
 				}
-				ordergc.strokeRect(0, 112, max_width, max_height);
-				ordergc.fillRect(0, 112, width, max_height);
+				ordergc.strokeRect(x, y, max_width, max_height);
+				ordergc.fillRect(x, y, width, max_height);
 				
 				if (t >= maxTime) {
 					//ordergc.clearRect(0,0, max_width+1,max_height+1);
@@ -91,15 +97,5 @@ public class OrderBox extends Canvas{
 		};
 		animationTimer.start();
 	}
-	public void drawOrderPicture(int type) {
-		if (type == 1) {
-			
-		}else if (type ==2) {
-			
-		}else {
-			
-		}
-	}
-
 	
 }

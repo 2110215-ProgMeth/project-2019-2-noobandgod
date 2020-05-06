@@ -7,6 +7,7 @@ import gui.SimulationManager;
 import meal.FriedFish;
 import meal.Menu;
 import meal.OrderManager;
+import meal.Salad;
 import sharedObject.RenderableHolder;
 
 public class GameController {
@@ -43,8 +44,12 @@ public class GameController {
 		setIsTimeUp(false);
 		
 		orderManager = new OrderManager();
-		Menu menu1 = new FriedFish(20);
+		
+		//Add menu testing
+		Menu menu1 = new Salad(4,1);
+		Menu menu2 = new Salad(5,1);
 		orderManager.addOrder(menu1); 
+		orderManager.addOrder(menu2); 
 		
 		System.out.println(orderManager.getOrders());
 	}
