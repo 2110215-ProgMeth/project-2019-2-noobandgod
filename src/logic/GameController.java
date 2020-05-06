@@ -19,7 +19,7 @@ public class GameController {
 	
 	public static boolean is_timeup;
 	
-	public static int MAX_ORDER;
+	public final static int MAX_ORDER = 5;
 	public static int MAX_TIME;
 
 	public static final int CUTTINGBOARD_COOLDOWN = 1;
@@ -45,6 +45,8 @@ public class GameController {
 		orderManager = new OrderManager();
 		Menu menu1 = new FriedFish(20);
 		orderManager.addOrder(menu1); 
+		
+		System.out.println(orderManager.getOrders());
 	}
 	
 	

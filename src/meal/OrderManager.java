@@ -111,24 +111,30 @@ public class OrderManager {
 			return 3;
 		}
 	}
-
-	public static void updateOrderNumber() {
-
-		for (Menu menu : GameController.getOrderManager().getOrders()) {
-
+	
+	public void printOrderStatus() {
+		for (Menu m: orders) {
+			System.out.print(m.getName());
 		}
-		if (GameController.getOrderManager().getOrders().size() < 4) {
-			int type = typemenu();
-			if (type ==1) {
-				GameController.getOrderManager().getOrders().add(new Salad);
-			}else if (type ==2) {
-				GameController.getOrderManager().getOrders().add(e);
-			}else {
-				GameController.getOrderManager().getOrders().add(new FriedFish());
-			}
-
-		}
-
 	}
+
+//	public static void updateOrderNumber() {
+//
+//		for (Menu menu : GameController.getOrderManager().getOrders()) {
+//
+//		}
+//		if (GameController.getOrderManager().getOrders().size() < 4) {
+//			int type = typemenu();
+//			if (type ==1) {
+//				GameController.getOrderManager().getOrders().add(new Salad);
+//			}else if (type ==2) {
+//				GameController.getOrderManager().getOrders().add(e);
+//			}else {
+//				GameController.getOrderManager().getOrders().add(new FriedFish());
+//			}
+//
+//		}
+//
+//	}
 
 }

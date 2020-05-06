@@ -25,21 +25,28 @@ public class OrderBox extends Canvas{
 		ordergc = this.getGraphicsContext2D();
 		ordergc.setFill(Color.RED);
 		ordergc.setLineWidth(2);
+		
+		this.setHeight(128);
+		this.setWidth(200);
+		
 		//Font font = Font.font("Times New Roman", FontWeight.LIGHT, 16);
 		//ordergc.setFont(font);
-		ordergc.fillText("Simple Salad",16,12);
+		//ordergc.fillText("Simple Salad",16,12);
 		if (menu.getName().equals("Simple Salad")) {
-			ordergc.fillText("Simple Salad",16,12);
+			ordergc.fillText("Simple Salad",0,12);
 			drawProgressBar(3);
 			drawOrderPicture(1);
+			this.setWidth(67);
 		}else if (menu.getName().equals("Sahimi Salad")) {
-			ordergc.fillText("Sashimi Salad",16,12);
+			ordergc.fillText("Sashimi Salad",0,12);
 			drawProgressBar(4);
 			drawOrderPicture(2);
+			this.setWidth(100);
 		}else {			//fried fish
-			ordergc.fillText("Fried Fish",16,12);
-			drawProgressBar(2);
+			ordergc.fillText("Fried Fish",0,12);
+			drawProgressBar(20);
 			drawOrderPicture(3);
+			this.setWidth(64);
 		}
 		
 	}
@@ -47,7 +54,7 @@ public class OrderBox extends Canvas{
 	public void drawProgressBar(int maxTime) {
 		final long startNanoTime = System.nanoTime();
 		final int max_width = maxTime*16;
-		final int max_height = 16;
+		final int max_height = 10;
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width;
 			@Override
