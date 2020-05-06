@@ -33,55 +33,58 @@ public class OrderBox extends Canvas{
 		//ordergc.setFont(font);
 		//ordergc.fillText("Simple Salad",16,12);
 		if (menu.getName().equals("Simple Salad")) {
-			ordergc.fillText("Simple Salad",0,12);
+			ordergc.fillText("Simple Salad",50,12);
 			drawProgressBar(3);
 			drawOrderPicture(1);
 			this.setWidth(67);
 		}else if (menu.getName().equals("Sahimi Salad")) {
-			ordergc.fillText("Sashimi Salad",0,12);
+			ordergc.fillText("Sashimi Salad",50,12);
 			drawProgressBar(4);
 			drawOrderPicture(2);
 			this.setWidth(100);
 		}else {			//fried fish
-			ordergc.fillText("Fried Fish",0,12);
-			drawProgressBar(20);
+			ordergc.fillText("Fried Fish",50,12);
+			drawProgressBar(5);
 			drawOrderPicture(3);
-			this.setWidth(64);
+			this.setWidth(200);
 		}
 		
 	}
 	
 	public void drawProgressBar(int maxTime) {
 		final long startNanoTime = System.nanoTime();
-		final int max_width = maxTime*16;
+		final double max_width = 200;
 		final int max_height = 10;
 		AnimationTimer animationTimer = new AnimationTimer() {
 			double width;
 			@Override
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				width = max_width*(1 -(t/maxTime));
+				width =  max_width*(1 -(t/maxTime));
 				
 				ordergc.clearRect(0, 112, max_width, max_height);
-				
-				ordergc.setStroke(Color.GREEN);
-				ordergc.setLineWidth(1);
-				
+				ordergc.setLineWidth(1);				
 				ordergc.setFill(Color.WHITE);
-				ordergc.fillRect(0,112, max_width, max_height);
-				ordergc.strokeRect(0, 112, max_width, max_height);
+
 				
-				if (width >= 2/3*max_width) {
+				//System.out.println(width <= 0.67*max_width);
+				if (width >= 0.67*max_width) {
+					ordergc.setStroke(Color.GREEN);
 					ordergc.setFill(Color.LIMEGREEN);
-				}else if (width < 2/3*max_width && width >= 1/3*max_width){
-					ordergc.setFill(Color.YELLOW);
+					System.out.println(width+"  "+max_width);
+				}else if (width < 0.67*max_width && width >= 0.33*max_width){
+					ordergc.setStroke(Color.ORANGE);
+					ordergc.setFill(Color.ORANGE);
 				}else {
+					ordergc.setStroke(Color.RED);
 					ordergc.setFill(Color.RED);
 				}
+				ordergc.strokeRect(0, 112, max_width, max_height);
 				ordergc.fillRect(0, 112, width, max_height);
 				
-				if (width >= max_width) {
-					ordergc.clearRect(0,0, max_width,max_height);
+				if (t >= maxTime) {
+					//ordergc.clearRect(0,0, max_width+1,max_height+1);
+					//ordergc.clearRect(50, 12, max_width, max_height+);
 					this.stop();
 				}
 			}

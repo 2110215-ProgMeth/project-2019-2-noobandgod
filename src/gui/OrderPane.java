@@ -19,20 +19,6 @@ public class OrderPane extends HBox {
 		//updateOrderNumber();
 	}
 
-	public int typeMenu() {
-		int max = 9;
-		int min = 1;
-		int range = max - min + 1;
-		int rand = (int) (Math.random() * range) + min;
-		if (rand <= 3) {
-			return 1;
-		} else if (rand <= 6) {
-			return 2;
-		} else {
-			return 3;
-		}
-	}
-
 	public void updateOrderNumber() {
 	
 		
