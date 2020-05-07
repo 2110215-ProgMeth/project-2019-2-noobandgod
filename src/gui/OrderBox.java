@@ -90,7 +90,7 @@ public class OrderBox extends Canvas{
 				
 				int time = (int) t;
 				ordergc.setFill(Color.BLACK);
-				ordergc.fillText(""+(maxTime-time), x+getWidth()/2, y+12);
+				ordergc.fillText(""+(maxTime-time), x+getWidth()/2-8, y+12);
 				
 				if (t >= maxTime) {
 					//ordergc.clearRect(0,0, max_width+1,max_height+1);
