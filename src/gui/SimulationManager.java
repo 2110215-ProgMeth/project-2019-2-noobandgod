@@ -28,11 +28,6 @@ public class SimulationManager {
 	
 	public static void updatePane() {
 		dataPane.update();
-		for (Menu menu : GameController.getOrderManager().getOrders()) {
-			if (menu.getTimeLeft() <= 0) {
-				orderPane.update();
-			}
-		}
 	}
 	
 }

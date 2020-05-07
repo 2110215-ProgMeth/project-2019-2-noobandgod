@@ -34,7 +34,7 @@ public class OrderBox extends Canvas {
 
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad", 50, 12);
-				drawProgressBar(3, menu, menu.getTimeLeft());
+			drawProgressBar(3, menu, menu.getTimeLeft());
 			this.setWidth(160);
 
 		} else if (menu.getName().equals("Sashimi Salad")) {
@@ -42,15 +42,15 @@ public class OrderBox extends Canvas {
 			this.setWidth(160);
 
 			ordergc.fillText("Sashimi Salad", 30, 13);
-				drawProgressBar(menu.getTimeMax(), menu, menu.getTimeLeft());
-			
+			drawProgressBar(menu.getTimeMax(), menu, menu.getTimeLeft());
+
 			ordergc.drawImage(menu.getMenuImage(), 0, 20, 155, 145);
 
 		} else { // fried fish
 
 			this.setWidth(160);
 			ordergc.fillText("Fried Fish", this.getWidth() / 2 - 30, 10);
-				drawProgressBar(5, menu, menu.getTimeLeft());
+			drawProgressBar(5, menu, menu.getTimeLeft());
 
 		}
 	}
@@ -59,7 +59,7 @@ public class OrderBox extends Canvas {
 		final long startNanoTime = System.nanoTime();
 		final double max_width = this.getWidth();
 		final int max_height = 16;
-		
+
 		int x = 0;
 		int y = (int) this.getHeight() - 18;
 		AnimationTimer animationTimer = new AnimationTimer() {
@@ -68,7 +68,7 @@ public class OrderBox extends Canvas {
 			@Override
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				width = max_width * ((TimeLeft-t)*1.0/maxTime);
+				width = max_width * ((TimeLeft - t) * 1.0 / maxTime);
 				ordergc.clearRect(x, y, max_width, max_height);
 				ordergc.setLineWidth(1);
 				ordergc.setFill(Color.WHITE);
@@ -89,7 +89,7 @@ public class OrderBox extends Canvas {
 				int time = (int) t;
 				menu.setTimeLeft(maxTime - time);
 				ordergc.setFill(Color.BLACK);
-				ordergc.fillText("" + (TimeLeft-time), x + getWidth() / 2 - 8, y + 12);
+				ordergc.fillText("" + (TimeLeft - time), x + getWidth() / 2 - 8, y + 12);
 				if (t >= TimeLeft || menu.isSend()) {
 					ordergc.clearRect(0, 0, 160 + 1, 192 + 1);
 					OrderManager.updateOrderNumber();

@@ -46,10 +46,14 @@ public class GameController {
 		orderManager = new OrderManager();
 		
 		//Add menu testing
-		Menu menu1 = new Salad(20,1);
-		Menu menu2 = new Salad(30,1);
+		Menu menu1 = new Salad(8,1);
+		Menu menu2 = new Salad(5,1);
+		Menu menu3 = new Salad(2, 1);
+		Menu menu4 = new Salad(11, 1);
 		orderManager.addOrder(menu1); 
 		orderManager.addOrder(menu2); 
+		orderManager.addOrder(menu3);
+		orderManager.addOrder(menu4);
 		
 		System.out.println(orderManager.getOrders());
 	}

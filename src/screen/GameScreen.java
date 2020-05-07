@@ -101,6 +101,7 @@ public class GameScreen {
 				InputUtility.removeKeyPressed();
 				//===========================================
 				SimulationManager.updatePane();
+				GameController.getOrderManager().printTimeLeftOfEachMenu();
 				
 				//RenderableHolder.show();
 				

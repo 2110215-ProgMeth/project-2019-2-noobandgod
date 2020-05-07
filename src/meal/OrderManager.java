@@ -7,6 +7,7 @@ import entity.Player;
 import exception.RemoveOrderFailedException;
 import gui.OrderBox;
 import gui.OrderPane;
+import gui.SimulationManager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import logic.GameController;
@@ -115,10 +116,12 @@ public class OrderManager {
 		}
 	}
 	
-	public void printOrderStatus() {
-		for (Menu m: orders) {
-			System.out.print(m.getName());
+	public void printTimeLeftOfEachMenu() {
+		ArrayList<Integer> a = new ArrayList<Integer>();
+		for (Menu m: getOrders()) {
+			a.add(m.getTimeLeft());
 		}
+		System.out.println(a);
 	}
 
 	public static void updateOrderNumber() {
@@ -128,8 +131,9 @@ public class OrderManager {
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() <= 0) {//when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
 //				OrderPane orderpane = new OrderPane();
-
 			}
+		
+		SimulationManager.getOrderPane().update();
 		}
 //		if (GameController.getOrderManager().getOrders().size() <= 4) {
 //			int type = typemenu();

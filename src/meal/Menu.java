@@ -35,7 +35,8 @@ public abstract class Menu {
 	public Menu(int timeMax) {
 		setSend(false);
 		setTimeMax(timeMax);
-		setTimeLeft((int)(timeMax*0.67));
+		setTimeLeft(timeMax);
+		//setTimeLeft((int)(timeMax*0.67));
 	}
 	
 	public boolean isAllIngredients(Entity e) {
