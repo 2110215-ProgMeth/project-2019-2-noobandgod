@@ -1,7 +1,6 @@
 package screen;
 
 import application.CSVParser;
-import gui.DataPane2;
 import gui.OrderPane;
 import gui.SimulationManager;
 import input.InputUtility;
@@ -41,7 +40,7 @@ public class GameScreen {
 		//---------------------------------------------------
 		//Initialzing map and system
 		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
-		GameController.InitializeGame(2, gamemap);
+		GameController.InitializeGame(1, gamemap);
 		SimulationManager.initializeAllPane();
 		
 		draw_origin_x = 48;
@@ -70,15 +69,8 @@ public class GameScreen {
 		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//RenderableHolder.show();
-		
-		//StackPane pane = new StackPane();
-		//Canvas testCanvas2 = new Canvas(800,96);
-		//GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
-		//gc2.setFill(Color.YELLOW);
-		//gc2.fillRect(0, 0, gc2.getCanvas().getWidth(), gc2.getCanvas().getHeight());
-		//pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
-		
-		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, new DataPane2());
+				
+		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, SimulationManager.getDataPane());
 		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------

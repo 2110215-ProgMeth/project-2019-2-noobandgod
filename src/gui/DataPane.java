@@ -1,50 +1,25 @@
 package gui;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import logic.GameController;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import sharedObject.RenderableHolder;
 
-public class DataPane extends HBox{
-	private IngredientStoragePane ingredientStoragePane;
-	private ScoreMoneyBox scoreMoneyBox;
+public class DataPane extends Canvas{
+		private static int width = 800;
+		private static int height = 96;
+		private static GraphicsContext datagc;
 	
 	public DataPane() {
-		super();
-		this.setPadding(new Insets(8));
-		this.setMaxHeight(96);
-		this.setMaxWidth(800);
+		this.setWidth(width);
+		this.setHeight(height);
 		
-		VBox timerBox = new VBox();
-		timerBox.setAlignment(Pos.CENTER);
-			
-		
-		this.scoreMoneyBox = new ScoreMoneyBox();
-		
-		VBox box = new VBox();
-		Label storageLabel = new Label("Your Storage");
-		
-		this.ingredientStoragePane = new IngredientStoragePane(GameController.INGREDIENTS);
-		
-		box.getChildren().addAll(storageLabel,ingredientStoragePane);
-		
-		
-		
-		this.getChildren().addAll(timerBox,scoreMoneyBox,box);
-	}
-
-	public ScoreMoneyBox getScoreMoneyBox() {
-		return scoreMoneyBox;
-	}
-
-	public IngredientStoragePane getIngredientStoragePane() {
-		return ingredientStoragePane;
+		datagc = this.getGraphicsContext2D();
+		drawBackground(datagc);
+	
 	}
 	
-	
-	
-	
+	public void drawBackground(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.datapane_bg_Image, 0, 0, this.getWidth(), this.getHeight());
+		
+	}
 }
