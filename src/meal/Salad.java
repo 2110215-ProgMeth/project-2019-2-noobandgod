@@ -13,8 +13,8 @@ import sharedObject.RenderableHolder;
 public class Salad extends Menu{
 	protected int saladType;
 
-	public Salad(int timeleft,int saladType) {
-		super(timeleft);
+	public Salad(int timeMax,int saladType) {
+		super(timeMax);
 		if (saladType == 0) {
 			setSaladType(saladType);
 			this.name = "Simple Salad";

@@ -41,7 +41,7 @@ public class OrderBox extends Canvas{
 			this.setWidth(160);
 			
 			ordergc.fillText("Sashimi Salad",30,13);
-			drawProgressBar(menu.getTimeleft());
+			drawProgressBar(menu.getTimeMax());
 			ordergc.drawImage(menu.getMenuImage(),0,20,155,145);
 			
 		}else { //fried fish
