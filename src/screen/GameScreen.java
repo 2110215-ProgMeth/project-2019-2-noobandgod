@@ -1,6 +1,7 @@
 package screen;
 
 import application.CSVParser;
+import gui.DataPane2;
 import gui.OrderPane;
 import gui.SimulationManager;
 import input.InputUtility;
@@ -70,15 +71,15 @@ public class GameScreen {
 		
 		//RenderableHolder.show();
 		
-		StackPane pane = new StackPane();
-		Canvas testCanvas2 = new Canvas(768,100);
-		GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
-		gc2.setFill(Color.YELLOW);
-		gc2.fillRect(0, 0, gc2.getCanvas().getWidth(), gc2.getCanvas().getHeight());
-		pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
+		//StackPane pane = new StackPane();
+		//Canvas testCanvas2 = new Canvas(800,96);
+		//GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
+		//gc2.setFill(Color.YELLOW);
+		//gc2.fillRect(0, 0, gc2.getCanvas().getWidth(), gc2.getCanvas().getHeight());
+		//pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
 		
-		
-		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
+		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, new DataPane2());
+		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------
 		VBox rightBox = new VBox(8);
