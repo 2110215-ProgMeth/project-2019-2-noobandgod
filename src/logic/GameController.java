@@ -39,8 +39,8 @@ public class GameController {
 		InitializeIngredient();
 		InitializePlayer(numberOfPlayers);
 		
-		setCoinCount(500);
-		setScoreCount(999);
+		setCoinCount(200);
+		setScoreCount(100);
 		setIsTimeUp(false);
 		
 		orderManager = new OrderManager();
@@ -63,7 +63,7 @@ public class GameController {
 	
 	public static void InitializeIngredient() {
 		setTomato_AMOUNT(1);
-		setCabbage_AMOUNT(2);
+		setCabbage_AMOUNT(9);
 		setFish_AMOUNT(3);
 	}
 	

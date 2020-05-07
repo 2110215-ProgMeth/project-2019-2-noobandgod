@@ -86,6 +86,16 @@ public class RenderableHolder {
 	//DataPane
 	public static Image datapane_bg_Image;
 	
+	//Crate
+	public static Image crate_tomato_empty_Image;
+	public static Image crate_tomato_Image;
+	
+	public static Image crate_cabbage_empty_Image;
+	public static Image crate_cabbage_Image;
+	
+	public static Image crate_fish_empty_Image;
+	public static Image crate_fish_Image;
+	
 	static {
 		loadResource();
 	}
@@ -216,6 +226,17 @@ public class RenderableHolder {
 	
 		//DataPane
 		datapane_bg_Image = new Image(ClassLoader.getSystemResource(p+"datapane_bg.png").toString());
+	
+	
+		//Crate
+		crate_tomato_empty_Image = new Image(ClassLoader.getSystemResource(p+"crate_tomato_empty.png").toString());
+		crate_tomato_Image = new Image(ClassLoader.getSystemResource(p+"crate_tomato.png").toString());
+		
+		crate_cabbage_empty_Image = new Image(ClassLoader.getSystemResource(p+"crate_cabbage_empty.png").toString());
+		crate_cabbage_Image = new Image(ClassLoader.getSystemResource(p+"crate_cabbage.png").toString());
+	
+		crate_fish_empty_Image = new Image(ClassLoader.getSystemResource(p+"crate_fish_empty.png").toString());
+		crate_fish_Image = new Image(ClassLoader.getSystemResource(p+"crate_fish.png").toString());
 	}
 	
 	
