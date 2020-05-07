@@ -83,6 +83,9 @@ public class RenderableHolder {
 	//TimeBox
 	public static Image timebox_bg_Image;
 	
+	//DataPane
+	public static Image datapane_bg_Image;
+	
 	static {
 		loadResource();
 	}
@@ -210,6 +213,9 @@ public class RenderableHolder {
 		
 		//TimeBox
 		timebox_bg_Image = new Image(ClassLoader.getSystemResource(p+"timebox_bg.png").toString());
+	
+		//DataPane
+		datapane_bg_Image = new Image(ClassLoader.getSystemResource(p+"datapane_bg.png").toString());
 	}
 	
 	

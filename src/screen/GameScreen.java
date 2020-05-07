@@ -40,7 +40,7 @@ public class GameScreen {
 		//---------------------------------------------------
 		//Initialzing map and system
 		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
-		GameController.InitializeGame(2, gamemap);
+		GameController.InitializeGame(1, gamemap);
 		SimulationManager.initializeAllPane();
 		
 		draw_origin_x = 48;
@@ -53,7 +53,7 @@ public class GameScreen {
 		root.setPadding(new Insets(8));
 		
 
-		VBox leftBox = new VBox(8);
+		VBox leftBox = new VBox(4);
 		
 		
 
@@ -69,16 +69,9 @@ public class GameScreen {
 		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//RenderableHolder.show();
-		
-		StackPane pane = new StackPane();
-		Canvas testCanvas2 = new Canvas(768,100);
-		GraphicsContext gc2 = testCanvas2.getGraphicsContext2D();
-		gc2.setFill(Color.YELLOW);
-		gc2.fillRect(0, 0, gc2.getCanvas().getWidth(), gc2.getCanvas().getHeight());
-		pane.getChildren().addAll(testCanvas2,SimulationManager.getDataPane());
-		
-		
-		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
+				
+		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, SimulationManager.getDataPane());
+		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------
 		VBox rightBox = new VBox(8);
@@ -102,10 +95,12 @@ public class GameScreen {
 				//fulfill background
 				gamegc.setFill(Color.GRAY);
 				gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
-				
+				//===========================================
 				RenderableHolder.getInstance().update();
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
+				//===========================================
+				SimulationManager.updatePane();
 				
 				//RenderableHolder.show();
 				

@@ -86,7 +86,7 @@ public class OrderManager {
 			}
 			GameController.addCoinCount(menuremoved.price);
 			GameController.addScoreCount(menuremoved.getMax_score());
-			p.setEntityHeld(null);
+			p.removeEntityHeld();
 			return true;
 		} else {
 			GameController.addScoreCount(-10);

@@ -1,56 +1,45 @@
 package gui;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import logic.GameController;
+import sharedObject.RenderableHolder;
+import sun.jvm.hotspot.gc.shared.GCCause;
 
-public class DataPane extends HBox{
-	private IngredientStoragePane ingredientStoragePane;
-	private ScoreMoneyBox scoreMoneyBox;
+public class DataPane extends Canvas{
+		private static int width = 800;
+		private static int height = 96;
+		private static GraphicsContext datagc;
+		private static int score;
+		private static int money;
 	
 	public DataPane() {
-		super();
-		this.setPadding(new Insets(8));
-		this.setMaxHeight(100);
-		this.setMaxWidth(640);
+		this.setWidth(width);
+		this.setHeight(height);
 		
-		VBox timerBox = new VBox();
-		timerBox.setAlignment(Pos.CENTER);
-			Label timeLabel = new Label("Time");
-			timeLabel.setFont(new Font(16));
-		
-		timerBox.getChildren().addAll(timeLabel);
-		
-		
-		
-		
-		this.scoreMoneyBox = new ScoreMoneyBox();
-		
-		VBox box = new VBox();
-		Label storageLabel = new Label("Your Storage");
-		
-		this.ingredientStoragePane = new IngredientStoragePane(GameController.INGREDIENTS);
-		
-		box.getChildren().addAll(storageLabel,ingredientStoragePane);
-		
-		
-		
-		this.getChildren().addAll(timerBox,scoreMoneyBox,box);
+		datagc = this.getGraphicsContext2D();
+	
+	}
+	
+	public void update() {
+		datagc.clearRect(0, 0, this.getWidth(), this.getHeight());
+		drawBackground(datagc);
+		score = GameController.getScore_count();
+		money = GameController.getCoin_count();
+		drawScoreandMoney(datagc);
+	}
+	
+	public void drawBackground(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.datapane_bg_Image, 0, 0, this.getWidth(), this.getHeight());
+	}
+	
+	public void drawScoreandMoney(GraphicsContext gc) {
+		gc.setFill(Color.WHITESMOKE);
+		gc.setFont(new Font(28));
+		gc.fillText(Integer.toString(score), 82, 68);
+		gc.fillText(Integer.toString(money), 276, 68);
 	}
 
-	public ScoreMoneyBox getScoreMoneyBox() {
-		return scoreMoneyBox;
-	}
-
-	public IngredientStoragePane getIngredientStoragePane() {
-		return ingredientStoragePane;
-	}
-	
-	
-	
-	
 }

@@ -12,11 +12,11 @@ public abstract class Menu {
 	protected int price;
 	protected int max_score;
 	protected ArrayList<Ingredient> ingredients;
-	protected int timeleft;
+	protected int timeMax;
 	protected Image menuImage;
 	
-	public Menu(int timeleft) {
-		setTimeleft(timeleft);
+	public Menu(int timeMax) {
+		setTimeMax(timeMax);
 	}
 	
 	public boolean isAllIngredients(Entity e) {
@@ -58,12 +58,12 @@ public abstract class Menu {
 		}
 	}
 
-	public int getTimeleft() {
-		return timeleft;
+	public int getTimeMax() {
+		return timeMax;
 	}
 
-	public void setTimeleft(int timeleft) {
-		this.timeleft = timeleft;
+	public void setTimeMax(int timeMax) {
+		this.timeMax = timeMax;
 	}
 
 	public String getName() {
@@ -103,7 +103,6 @@ public abstract class Menu {
 		String a;
 		a = "Menu Name: "+this.name+"\n";
 		a += "Price: "+this.price+"\n";
-		a += "Time left: "+this.timeleft+"\n";
 		return a;
 	}
 	

@@ -102,7 +102,6 @@ public class GameController {
 
 	public static void addCoinCount(int coin) {
 		coin_count += coin;
-		SimulationManager.getDataPane().getScoreMoneyBox().updateMoney();
 	}
 	
 	public static void setCoinCount(int coin) {
@@ -111,7 +110,6 @@ public class GameController {
 	
 	public static void addScoreCount(int score) {
 		score_count += score;
-		SimulationManager.getDataPane().getScoreMoneyBox().updateScore();
 	}
 	
 	public static void setScoreCount(int score) {
@@ -132,17 +130,14 @@ public class GameController {
 
 	public static void addTomato_AMOUNT(int tomato_AMOUNT) {
 		Tomato_AMOUNT += tomato_AMOUNT;
-		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
 	}
 
 	public static void addCabbage_AMOUNT(int cabbage_AMOUNT) {
 		Cabbage_AMOUNT += cabbage_AMOUNT;
-		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
 	}
 	
 	public static void addFish_AMOUNT(int fish_AMOUNT) {
 		Fish_AMOUNT += fish_AMOUNT;
-		SimulationManager.getDataPane().getIngredientStoragePane().updateIngredientAmount();
 	}
 	
 	public static int getTomato_AMOUNT() {

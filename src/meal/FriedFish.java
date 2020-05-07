@@ -8,8 +8,8 @@ import sharedObject.RenderableHolder;
 
 public class FriedFish extends Menu{
 
-	public FriedFish(int timeleft) {
-		super(timeleft);
+	public FriedFish(int timeMax) {
+		super(timeMax);
 		this.name = "Fried Fish";
 		this.menuImage = RenderableHolder.menu_friedfish_Image;
 		//set price and max score
