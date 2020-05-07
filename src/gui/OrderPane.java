@@ -6,14 +6,14 @@ import meal.Menu;
 import meal.OrderManager;
 
 public class OrderPane extends HBox {
-	private int orderNumber;
+	private int orderNumber = 0;
 	public OrderPane() {
 		this.setPrefHeight(165);
 		this.setPrefWidth(800);
 		this.setSpacing(4);
-		//setOrderNumber(0);
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
-			OrderBox order = new OrderBox(menu);
+			OrderBox order = new OrderBox(menu,orderNumber);
+			orderNumber++;
 			this.getChildren().add(order);
 		}
 		//updateOrderNumber();

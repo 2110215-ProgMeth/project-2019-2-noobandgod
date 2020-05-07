@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entity.Dish;
 import entity.Player;
 import exception.RemoveOrderFailedException;
+import gui.OrderBox;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import logic.GameController;
@@ -77,6 +78,7 @@ public class OrderManager {
 			Menu menuremoved;
 			try {
 				menuremoved = removeOrder(indexmatch);
+				OrderBox.sendOrder(menuremoved);
 			} catch (RemoveOrderFailedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -119,25 +121,25 @@ public class OrderManager {
 	}
 
 	public static void updateOrderNumber() {
-
+		int order = 0;
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
-
-		}
-		if (GameController.getOrderManager().getOrders().size() <= 4) {
-			int type = typemenu();
-			if (type ==1) {
-				Menu simpleSalad = new Salad(20,0);
-				GameController.getOrderManager().getOrders().add(simpleSalad);
-			}else if (type ==2) {
-				Menu SashimiSalad = new Salad(20,1);
-				GameController.getOrderManager().getOrders().add(SashimiSalad);
-			}else {
-				Menu friedFish = new FriedFish(20);
-				GameController.getOrderManager().getOrders().add(friedFish);
+			if (menu.getTimeleft() <= 0) {//when menu is timeup
+				GameController.getOrderManager().getOrders().remove(order);
 			}
+			order ++;
+		}
+//		if (GameController.getOrderManager().getOrders().size() <= 4) {
+//			int type = typemenu();
+//			if (type ==1) {
+//				Menu simpleSalad = new Salad(20,0);
+//				GameController.getOrderManager().getOrders().add(simpleSalad);
+//			}else if (type ==2) {
+//				Menu SashimiSalad = new Salad(20,1);
+//				GameController.getOrderManager().getOrders().add(SashimiSalad);
+//			}else {
+//				Menu friedFish = new FriedFish(20);
+//				GameController.getOrderManager().getOrders().add(friedFish);
+//			}
 
 		}
-
 	}
-
-}

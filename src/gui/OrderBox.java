@@ -13,14 +13,17 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import logic.GameController;
 import meal.Menu;
+import meal.OrderManager;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class OrderBox extends Canvas{
-	private GraphicsContext ordergc;
+	private static GraphicsContext ordergc;
+	private static boolean isSend;
+	
 
-	public OrderBox(Menu menu) {
-		
+	public OrderBox(Menu menu,int orderNumber) {
+		this.isSend= false;
 		//orderCanvas = new Canvas(80,96);
 		ordergc = this.getGraphicsContext2D();
 		ordergc.setFill(Color.RED);
@@ -34,27 +37,29 @@ public class OrderBox extends Canvas{
 	
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad",50,12);
-			drawProgressBar(3);
+			drawProgressBar(3,menu);
 			this.setWidth(67);
 		}else if (menu.getName().equals("Sashimi Salad")) {
 			
 			this.setWidth(160);
 			
 			ordergc.fillText("Sashimi Salad",30,13);
-			drawProgressBar(menu.getTimeleft());
+			drawProgressBar(menu.getTimeleft(),menu);
 			ordergc.drawImage(menu.getMenuImage(),0,20,155,145);
 			
 		}else { //fried fish
 			
 			this.setWidth(160);
 			ordergc.fillText("Fried Fish",this.getWidth()/2-30,10);
-			drawProgressBar(5);
+			drawProgressBar(5,menu);
 			
 		}
-		
 	}
 	
-	public void drawProgressBar(int maxTime) {
+	public boolean isSend() {
+		return isSend;
+	}
+	public void drawProgressBar(int maxTime,Menu menu) {
 		final long startNanoTime = System.nanoTime();
 		final double max_width = this.getWidth();
 		final int max_height = 16;
@@ -74,7 +79,6 @@ public class OrderBox extends Canvas{
 				ordergc.setFill(Color.WHITE);
 				
 				
-				//System.out.println(width <= 0.67*max_width);
 				if (width >= 0.67*max_width) {
 					ordergc.setStroke(Color.GREEN);
 					ordergc.setFill(Color.LIMEGREEN);
@@ -89,17 +93,21 @@ public class OrderBox extends Canvas{
 				ordergc.fillRect(x, y, width, max_height);
 				
 				int time = (int) t;
+				menu.setTimeleft(maxTime - time);
 				ordergc.setFill(Color.BLACK);
-				ordergc.fillText(""+(maxTime-time), x+getWidth()/2-8, y+12);
-				
-				if (t >= maxTime) {
-					//ordergc.clearRect(0,0, max_width+1,max_height+1);
-					//ordergc.clearRect(50, 12, max_width, max_height+);
+				ordergc.fillText(""+(maxTime - time), x+getWidth()/2-8, y+12);
+				if (t >= maxTime || isSend) {
+					ordergc.clearRect(0,0, 160+1,192+1);
+					OrderManager.updateOrderNumber();
 					this.stop();
 				}
 			}
 		};
 		animationTimer.start();
+	}
+	public static void sendOrder(Menu menu) {
+		ordergc.clearRect(0,0, 160+1,192+1);
+		isSend= true;
 	}
 	
 }
