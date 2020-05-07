@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logic.GameController;
 import sharedObject.IRenderable;
@@ -31,6 +32,8 @@ public class GameScreen {
 	public static int draw_origin_x;
 	public static int draw_origin_y; 
 	public static int pixel;
+	
+	public static int gametime;
 	
 	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
 	private static Image floortest = new Image(image_path);
@@ -78,8 +81,22 @@ public class GameScreen {
 		
 		Canvas timeCanvas = new Canvas(190,192);
 		timegc = timeCanvas.getGraphicsContext2D();
-		timegc.drawImage(RenderableHolder.timebox_bg_Image, 0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
+		gametime = GameController.MAX_TIME;
 		
+		final long startNanoTime = System.nanoTime();
+		AnimationTimer timer = new AnimationTimer() {
+			public void handle(long currentNanoTime) {
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
+				gametime = (int) (GameController.MAX_TIME - t);
+				System.out.println(t);
+				drawTime();
+				
+				if(gametime <= 0) {
+					System.out.println("TIMES UP");
+					this.stop();
+				}
+			}
+		};
 		
 		rightBox.getChildren().addAll(timeCanvas,SimulationManager.getShopPane());
 		//---------------------------------------------------
@@ -101,12 +118,15 @@ public class GameScreen {
 				InputUtility.removeKeyPressed();
 				//===========================================
 				SimulationManager.updatePane();
-				GameController.getOrderManager().printTimeLeftOfEachMenu();
+				//GameController.getOrderManager().printTimeLeftOfEachMenu();
 				
 				//RenderableHolder.show();
 				
 			}
-		};animationTimer.start();
+		};
+		
+		timer.start();
+		animationTimer.start();
 		
 		
 		this.primaryStage = primaryStage;
@@ -142,5 +162,10 @@ public class GameScreen {
 		
 	}
 	
-	
+	public void drawTime() {
+		timegc.clearRect(0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight()); //don't remove
+		timegc.drawImage(RenderableHolder.timebox_bg_Image, 0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
+		timegc.setFont(new Font(30));
+		timegc.fillText(Integer.toString(gametime), 70, 140);
+	}
 }

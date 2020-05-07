@@ -20,9 +20,6 @@ public class GameController {
 	
 	public static boolean is_timeup;
 	
-	public final static int MAX_ORDER = 5;
-	public static int MAX_TIME;
-
 	public static final int CUTTINGBOARD_COOLDOWN = 1;
 	
 	public static int Cabbage_AMOUNT;
@@ -31,6 +28,8 @@ public class GameController {
 	
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
+	public static final int MAX_TIME = 10;
+	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
 	
@@ -178,6 +177,7 @@ public class GameController {
 	public static boolean isThisIngredientNameValid(String ingredientName) {
 		return Arrays.asList(INGREDIENTS).contains(ingredientName);
 	}
+	
 	
 	
 	
