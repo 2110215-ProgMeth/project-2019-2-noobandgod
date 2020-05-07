@@ -27,7 +27,7 @@ public class OrderBox extends Canvas {
 		ordergc.setLineWidth(2);
 
 		this.setHeight(192);
-		this.setWidth(160);
+		this.setWidth(150);
 
 		Font font = Font.font(16);
 		ordergc.setFont(font);
@@ -35,11 +35,11 @@ public class OrderBox extends Canvas {
 		if (menu.getName().equals("Simple Salad")) {
 			ordergc.fillText("Simple Salad", 50, 12);
 			drawProgressBar(3, menu, menu.getTimeLeft());
-			this.setWidth(160);
+			this.setWidth(150);
 
 		} else if (menu.getName().equals("Sashimi Salad")) {
 
-			this.setWidth(160);
+			this.setWidth(150);
 
 			ordergc.fillText("Sashimi Salad", 30, 13);
 			drawProgressBar(menu.getTimeMax(), menu, menu.getTimeLeft());
@@ -48,7 +48,7 @@ public class OrderBox extends Canvas {
 
 		} else { // fried fish
 
-			this.setWidth(160);
+			this.setWidth(150);
 			ordergc.fillText("Fried Fish", this.getWidth() / 2 - 30, 10);
 			drawProgressBar(5, menu, menu.getTimeLeft());
 

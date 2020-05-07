@@ -63,20 +63,27 @@ public class OrderManager {
 	}
 
 	public boolean sendOrder(Player p) {
-		boolean anymatch = false;
 		int indexmatch = -1;
-
+		ArrayList<Menu> menumatch = new ArrayList<Menu>();
+		ArrayList<Integer> menuindex = new ArrayList<Integer>();
 		for (int i = 0; i < orders.size(); i++) {
 			Menu menu = orders.get(i);
-
+			
 			if (menu.isAllIngredients(p.getEntityHeld())) {
-				indexmatch = i;
-				anymatch = true;
-				break;
+				menumatch.add(menu);
+				menuindex.add(i);
 			}
 		}
 
-		if (anymatch) {
+		if (menumatch.size()!=0) {
+			Menu min = menumatch.get(0);
+			indexmatch = menuindex.get(0);
+			for (int i = 1; i< menumatch.size();i++) {
+				if (menumatch.get(i).getTimeLeft()< min.getTimeLeft()) {
+					min = menumatch.get(i);
+					indexmatch = menuindex.get(i);
+				}
+			}
 			Menu menuremoved;
 			try {
 				menuremoved = removeOrder(indexmatch);
@@ -116,22 +123,24 @@ public class OrderManager {
 		}
 	}
 	
-//	public void printTimeLeftOfEachMenu() {
-//		ArrayList<Integer> a = new ArrayList<Integer>();
-//		for (Menu m: getOrders()) {
-//			a.add(m.getTimeLeft());
-//		}
-//		System.out.println(a);
-//	}
+	public void printTimeLeftOfEachMenu() {
+		ArrayList<Double> a = new ArrayList<Double>();
+		for (Menu m: getOrders()) {
+			a.add(m.getTimeLeft());
+		}
+		System.out.println(a);
+	}
 
 	public static void updateOrderNumber() {
 		for (int order = GameController.getOrderManager().getOrders().size()-1;order >=0;order--)
 			//ArrayList<Menu> menu_clone = new ArrayList<>();
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {//when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
-				
-		SimulationManager.getOrderPane().update();
-			
+			}//else if (GameController.getOrderManager().getOrders().get(order).isSend()) {
+				//GameController.getOrderManager().getOrders().remove(order);
+			SimulationManager.getOrderPane().update();
+	}
+}
 //		if (GameController.getOrderManager().getOrders().size() <= 4) {
 //			int type = typemenu();
 //			if (type ==1) {
@@ -145,7 +154,4 @@ public class OrderManager {
 //				GameController.getOrderManager().getOrders().add(friedFish);
 //			}
 
-		}
-	}
-	}
 	
