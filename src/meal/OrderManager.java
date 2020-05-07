@@ -45,7 +45,7 @@ public class OrderManager {
 	public void removeOrderOutOfTime() {
 		ArrayList<Integer> intarray = new ArrayList<Integer>();
 		for (int i = 0; i < orders.size(); i++) {
-			if (orders.get(i).getTimeleft() <= 0) {
+			if (orders.get(i).getTimeLeft() <= 0) {
 				intarray.add(i);
 			}
 		}
@@ -123,7 +123,7 @@ public class OrderManager {
 	public static void updateOrderNumber() {
 		int order = 0;
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
-			if (menu.getTimeleft() <= 0) {//when menu is timeup
+			if (menu.getTimeLeft() <= 0) {//when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
 			}
 			order ++;

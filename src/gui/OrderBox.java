@@ -44,13 +44,9 @@ public class OrderBox extends Canvas{
 			this.setWidth(160);
 			
 			ordergc.fillText("Sashimi Salad",30,13);
-<<<<<<< HEAD
-			drawProgressBar(menu.getTimeleft(),menu);
-||||||| merged common ancestors
-			drawProgressBar(menu.getTimeleft());
-=======
-			drawProgressBar(menu.getTimeMax());
->>>>>>> cdd395518da6a3fc15838963356e019e011a4fa7
+
+			drawProgressBar(menu.getTimeLeft(),menu);
+			drawProgressBar(menu.getTimeMax(),menu);
 			ordergc.drawImage(menu.getMenuImage(),0,20,155,145);
 			
 		}else { //fried fish
@@ -99,7 +95,7 @@ public class OrderBox extends Canvas{
 				ordergc.fillRect(x, y, width, max_height);
 				
 				int time = (int) t;
-				menu.setTimeleft(maxTime - time);
+				menu.setTimeLeft(maxTime - time);
 				ordergc.setFill(Color.BLACK);
 				ordergc.fillText(""+(maxTime - time), x+getWidth()/2-8, y+12);
 				if (t >= maxTime || isSend) {

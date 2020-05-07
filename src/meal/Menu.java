@@ -14,7 +14,16 @@ public abstract class Menu {
 	protected ArrayList<Ingredient> ingredients;
 	protected int timeMax;
 	protected Image menuImage;
+	protected int timeLeft;
 	
+	public int getTimeLeft() {
+		return timeLeft;
+	}
+
+	public void setTimeLeft(int timeLeft) {
+		this.timeLeft = timeLeft;
+	}
+
 	public Menu(int timeMax) {
 		setTimeMax(timeMax);
 	}
