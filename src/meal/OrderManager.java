@@ -116,25 +116,22 @@ public class OrderManager {
 		}
 	}
 	
-	public void printTimeLeftOfEachMenu() {
-		ArrayList<Integer> a = new ArrayList<Integer>();
-		for (Menu m: getOrders()) {
-			a.add(m.getTimeLeft());
-		}
-		System.out.println(a);
-	}
+//	public void printTimeLeftOfEachMenu() {
+//		ArrayList<Integer> a = new ArrayList<Integer>();
+//		for (Menu m: getOrders()) {
+//			a.add(m.getTimeLeft());
+//		}
+//		System.out.println(a);
+//	}
 
 	public static void updateOrderNumber() {
-		//int order = GameController.getOrderManager().getOrders().size();
 		for (int order = GameController.getOrderManager().getOrders().size()-1;order >=0;order--)
 			//ArrayList<Menu> menu_clone = new ArrayList<>();
-			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() <= 0) {//when menu is timeup
+			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {//when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
-//				OrderPane orderpane = new OrderPane();
-			}
-		
+				
 		SimulationManager.getOrderPane().update();
-		}
+			
 //		if (GameController.getOrderManager().getOrders().size() <= 4) {
 //			int type = typemenu();
 //			if (type ==1) {
@@ -149,4 +146,6 @@ public class OrderManager {
 //			}
 
 		}
+	}
+	}
 	

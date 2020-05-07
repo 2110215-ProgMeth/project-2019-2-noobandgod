@@ -14,7 +14,7 @@ public abstract class Menu {
 	protected ArrayList<Ingredient> ingredients;
 	protected int timeMax;
 	protected Image menuImage;
-	protected int timeLeft;
+	protected double timeLeft;
 	protected boolean isSend;
 	public boolean isSend() {
 		return isSend;
@@ -24,11 +24,11 @@ public abstract class Menu {
 		this.isSend = isSend;
 	}
 
-	public int getTimeLeft() {
+	public double getTimeLeft() {
 		return timeLeft;
 	}
 
-	public void setTimeLeft(int timeLeft) {
+	public void setTimeLeft(double timeLeft) {
 		this.timeLeft = timeLeft;
 	}
 

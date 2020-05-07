@@ -55,7 +55,7 @@ public class OrderBox extends Canvas {
 		}
 	}
 
-	public void drawProgressBar(int maxTime, Menu menu, int TimeLeft) {
+	public void drawProgressBar(int maxTime, Menu menu, double TimeLeft) {
 		final long startNanoTime = System.nanoTime();
 		final double max_width = this.getWidth();
 		final int max_height = 16;
@@ -67,8 +67,8 @@ public class OrderBox extends Canvas {
 
 			@Override
 			public void handle(long currentNanoTime) {
-				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				width = max_width * ((TimeLeft - t) * 1.0 / maxTime);
+				double t = (currentNanoTime - startNanoTime) / 1000000000.0;
+				width = max_width * ((TimeLeft - t) / maxTime);
 				ordergc.clearRect(x, y, max_width, max_height);
 				ordergc.setLineWidth(1);
 				ordergc.setFill(Color.WHITE);
@@ -86,15 +86,14 @@ public class OrderBox extends Canvas {
 				ordergc.strokeRect(x, y, max_width, max_height);
 				ordergc.fillRect(x, y, width, max_height);
 
-				int time = (int) t;
-				menu.setTimeLeft(maxTime - time);
+				double time = Math.round(t*10)/10.0;
+				menu.setTimeLeft(TimeLeft - time);
 				ordergc.setFill(Color.BLACK);
-				ordergc.fillText("" + (TimeLeft - time), x + getWidth() / 2 - 8, y + 12);
+				ordergc.fillText("" + Math.round((TimeLeft - time)*10)/10.0, x + getWidth() / 2 - 8, y + 12);
 				if (t >= TimeLeft || menu.isSend()) {
+					this.stop();
 					ordergc.clearRect(0, 0, 160 + 1, 192 + 1);
 					OrderManager.updateOrderNumber();
-					SimulationManager.updatePane();
-					this.stop();
 				}
 			}
 		};
