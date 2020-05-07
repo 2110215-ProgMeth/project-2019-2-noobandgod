@@ -95,10 +95,12 @@ public class GameScreen {
 				//fulfill background
 				gamegc.setFill(Color.GRAY);
 				gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
-				
+				//===========================================
 				RenderableHolder.getInstance().update();
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
+				//===========================================
+				SimulationManager.updatePane();
 				
 				//RenderableHolder.show();
 				

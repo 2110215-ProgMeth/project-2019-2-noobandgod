@@ -25,4 +25,8 @@ public class SimulationManager {
 		return dataPane;
 	}
 	
+	public static void updatePane() {
+		dataPane.update();
+	}
+	
 }
