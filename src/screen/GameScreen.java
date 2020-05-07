@@ -69,7 +69,7 @@ public class GameScreen {
 		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//RenderableHolder.show();
-				
+		
 		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, SimulationManager.getDataPane());
 		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		

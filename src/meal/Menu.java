@@ -15,7 +15,15 @@ public abstract class Menu {
 	protected int timeMax;
 	protected Image menuImage;
 	protected int timeLeft;
-	
+	protected boolean isSend;
+	public boolean isSend() {
+		return isSend;
+	}
+
+	public void setSend(boolean isSend) {
+		this.isSend = isSend;
+	}
+
 	public int getTimeLeft() {
 		return timeLeft;
 	}
@@ -25,7 +33,9 @@ public abstract class Menu {
 	}
 
 	public Menu(int timeMax) {
+		setSend(false);
 		setTimeMax(timeMax);
+		setTimeLeft((int)(timeMax*0.67));
 	}
 	
 	public boolean isAllIngredients(Entity e) {
