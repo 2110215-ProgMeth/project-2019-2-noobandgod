@@ -53,7 +53,7 @@ public class GameScreen {
 		root.setPadding(new Insets(8));
 		
 
-		VBox leftBox = new VBox(8);
+		VBox leftBox = new VBox(4);
 		
 		
 

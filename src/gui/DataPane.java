@@ -20,13 +20,7 @@ public class DataPane extends HBox{
 		
 		VBox timerBox = new VBox();
 		timerBox.setAlignment(Pos.CENTER);
-			Label timeLabel = new Label("Time");
-			timeLabel.setFont(new Font(16));
-		
-		timerBox.getChildren().addAll(timeLabel);
-		
-		
-		
+			
 		
 		this.scoreMoneyBox = new ScoreMoneyBox();
 		
