@@ -76,7 +76,7 @@ public class GameScreen {
 		//---------------------------------------------------
 		VBox rightBox = new VBox(8);
 		
-		Canvas timeCanvas = new Canvas(190,128);
+		Canvas timeCanvas = new Canvas(190,192);
 		timegc = timeCanvas.getGraphicsContext2D();
 		timegc.drawImage(RenderableHolder.timebox_bg_Image, 0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
 		

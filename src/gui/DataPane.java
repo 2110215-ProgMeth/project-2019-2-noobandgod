@@ -46,8 +46,32 @@ public class DataPane extends Canvas{
 	public void drawScoreandMoney(GraphicsContext gc) {
 		gc.setFill(Color.WHITESMOKE);
 		gc.setFont(new Font(28));
-		gc.fillText(Integer.toString(score), 82, 68);
-		gc.fillText(Integer.toString(money), 276, 68);
+		
+		//Score
+		if (0 <= score && score <= 9) {
+			gc.fillText(Integer.toString(score), 90, 68);
+		} else if (10 <= score && score <= 99) {
+			gc.fillText(Integer.toString(score), 82, 68);
+		} else if (100 <= score && score <= 999) {
+			gc.fillText(Integer.toString(score), 74, 68);
+		} else if (1000 <= score && score <= 9999) {
+			gc.fillText(Integer.toString(score), 66, 68);
+		} else if (10000 <= score && score <= 99999) {
+			gc.fillText(Integer.toString(score), 58, 68);
+		}
+		
+		//Money
+		if (0 <= money && money <= 9) {
+			gc.fillText(Integer.toString(money), 285, 68);
+		} else if (10 <= money && money <= 99){
+			gc.fillText(Integer.toString(money), 277, 68);
+		} else if (100 <= money && money <= 999) {
+			gc.fillText(Integer.toString(money), 268, 68);
+		} else if (1000 <= money && money <= 9999) {
+			gc.fillText(Integer.toString(money), 260, 68);
+		} else if (10000 <= money && money <= 99999) {
+			gc.fillText(Integer.toString(money), 252, 68);
+		}
 	}
 	
 	public void drawIngredientAmount(GraphicsContext gc) {
@@ -109,11 +133,7 @@ public class DataPane extends Canvas{
 			gc.setFill(Color.LIGHTBLUE);
 			gc.setFont(new Font(35));
 			gc.fillText(Integer.toString(Fish_amount), 741, 58);
-		}
-		
-		
-		
-		
+		}		
 	}
 
 }

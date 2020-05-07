@@ -39,8 +39,8 @@ public class GameController {
 		InitializeIngredient();
 		InitializePlayer(numberOfPlayers);
 		
-		setCoinCount(500);
-		setScoreCount(999);
+		setCoinCount(200);
+		setScoreCount(100);
 		setIsTimeUp(false);
 		
 		orderManager = new OrderManager();
