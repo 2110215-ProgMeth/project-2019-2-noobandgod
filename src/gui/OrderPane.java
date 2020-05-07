@@ -16,14 +16,11 @@ public class OrderPane extends HBox {
 			this.getChildren().add(order);
 		}
 	}
-	public static void update() {
-			ArrayList<Menu> menu = new ArrayList<>();
+	public void update() {
+			//this.getChildren().removeAll();
+		System.out.println("55550");
 			for (Menu food : GameController.getOrderManager().getOrders()) {
-				menu.add(food);
-			}
-			this.getChildren().removeAll();
-			for (Menu clone_menu : menu) {
-				OrderBox order = new OrderBox(clone_menu);
+				OrderBox order = new OrderBox(food);
 				this.getChildren().add(order);
 			}
 	}

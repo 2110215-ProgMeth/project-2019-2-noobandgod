@@ -1,6 +1,7 @@
 package gui;
 
 import logic.GameController;
+import meal.Menu;
 
 public class SimulationManager {
 	private static ShopPane shopPane;
@@ -27,6 +28,11 @@ public class SimulationManager {
 	
 	public static void updatePane() {
 		dataPane.update();
+		for (Menu menu : GameController.getOrderManager().getOrders()) {
+			if (menu.getTimeLeft() <= 0) {
+				orderPane.update();
+			}
+		}
 	}
 	
 }

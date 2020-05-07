@@ -127,14 +127,8 @@ public class OrderManager {
 			//ArrayList<Menu> menu_clone = new ArrayList<>();
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() <= 0) {//when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
-				OrderPane.update();
 //				OrderPane orderpane = new OrderPane();
-//				for (Menu menu1: GameController.getOrderManager().getOrders()) {
-//					if (menu1.getTimeLeft() != 0) {
-//						OrderBox orderbox = new OrderBox(menu1);
-//						orderpane.getChildren().add(orderbox);
-//					}
-//				}
+
 			}
 		}
 //		if (GameController.getOrderManager().getOrders().size() <= 4) {

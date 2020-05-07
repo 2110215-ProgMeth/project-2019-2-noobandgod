@@ -3,7 +3,6 @@ package application;
 
 import gui.DataPane;
 import gui.IngredientShopBox;
-import gui.IngredientStorageBox;
 import gui.ShopPane;
 import gui.SimulationManager;
 import javafx.animation.AnimationTimer;
