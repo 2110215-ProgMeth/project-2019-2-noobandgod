@@ -24,7 +24,7 @@ public class ShopPane extends VBox {
 	public ShopPane(String[] ingredientName) {
 		this.setPrefHeight(512);
 		this.setPrefWidth(190);
-		this.setSpacing(16);
+		this.setSpacing(8);
 		
 		Label shopLabel = new Label("Shop");
 		shopLabel.setFont(new Font(20));
