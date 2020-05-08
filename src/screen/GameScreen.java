@@ -50,30 +50,32 @@ public class GameScreen {
 		draw_origin_y = 24;
 		pixel = 64;
 		//---------------------------------------------------
-		
-		
 		HBox root = new HBox(8);
 		root.setPadding(new Insets(4));
 		
 
 		VBox leftBox = new VBox(4);
-		
-		
-
-		//Canvas orderCanvas = new Canvas(768,128);
-		//GraphicsContext ordergc = orderCanvas.getGraphicsContext2D();
-		//ordergc.setFill(Color.LIMEGREEN);
-		//ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
-		
+		;
 		this.gameCanvas = new Canvas(800,496);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
+		
 		//initialize grey background
 		//gamegc.setFill(Color.GRAY);
 		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 		
 		//RenderableHolder.show();
 		
-		leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas, SimulationManager.getDataPane());
+		StackPane orderPane = new StackPane();
+		orderPane.setPrefWidth(800);
+		orderPane.setPrefHeight(192);
+		
+		Canvas orderCanvas = new Canvas(800,192);
+		GraphicsContext orderbg = orderCanvas.getGraphicsContext2D();
+		orderbg.drawImage(RenderableHolder.orderpane_bg_Image, 0, 0, orderbg.getCanvas().getWidth(), orderbg.getCanvas().getHeight());;
+		
+		orderPane.getChildren().addAll(orderCanvas,SimulationManager.getOrderPane());
+		
+		leftBox.getChildren().addAll(orderPane,gameCanvas, SimulationManager.getDataPane());
 		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------

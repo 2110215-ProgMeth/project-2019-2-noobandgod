@@ -87,6 +87,9 @@ public class RenderableHolder {
 	//DataPane
 	public static Image datapane_bg_Image;
 	
+	//OrderPane
+	public static Image orderpane_bg_Image;
+	
 	//Crate
 	public static Image crate_tomato_empty_Image;
 	public static Image crate_tomato_Image;
@@ -229,6 +232,8 @@ public class RenderableHolder {
 		//DataPane
 		datapane_bg_Image = new Image(ClassLoader.getSystemResource(p+"datapane_bg.png").toString());
 	
+		//OrderPane
+		orderpane_bg_Image = new Image(ClassLoader.getSystemResource(p+"orderpane_bg.png").toString());
 	
 		//Crate
 		crate_tomato_empty_Image = new Image(ClassLoader.getSystemResource(p+"crate_tomato_empty.png").toString());

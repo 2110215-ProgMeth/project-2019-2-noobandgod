@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import logic.GameController;
 import meal.Menu;
@@ -11,6 +12,8 @@ public class OrderPane extends HBox {
 		this.setPrefHeight(192);
 		this.setPrefWidth(800);
 		this.setSpacing(6);
+		this.setPadding(new Insets(4));
+		
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
 			OrderBox order = new OrderBox(menu);
 			this.getChildren().add(order);
