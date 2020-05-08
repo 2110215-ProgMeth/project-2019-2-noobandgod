@@ -29,7 +29,7 @@ public class GameController {
 	
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
-	public static final int MAX_TIME = 50;
+	public static final int MAX_TIME = 20;
 	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
@@ -60,12 +60,12 @@ public class GameController {
 		//Menu menu3 = new Salad(20, 1);
 		//Menu menu3 = new FriedFish(30);
 		//Menu menu4 = new Salad(40,1);
-		Menu menu5 = new Salad(40,1);
+		//Menu menu5 = new Salad(40,1);
 		//orderManager.addOrder(menu1); 
 		//orderManager.addOrder(menu2); 
 		//orderManager.addOrder(menu3);
 		//orderManager.addOrder(menu4);
-		orderManager.addOrder(menu5);
+		//orderManager.addOrder(menu5);
 		
 		System.out.println(orderManager.getOrders());
 	}
