@@ -58,6 +58,21 @@ public class DataPane extends Canvas{
 			gc.fillText(Integer.toString(score), 66, 68);
 		} else if (10000 <= score && score <= 99999) {
 			gc.fillText(Integer.toString(score), 58, 68);
+		} else if (score >= 100000) {
+			gc.fillText("99999", 58, 68);
+		} //negative score case
+		else if (-9 <= score && score <= -1) {
+			gc.fillText(Integer.toString(score), 82, 68);
+		} else if (-99 <= score && score <= -10) {
+			gc.fillText(Integer.toString(score), 74, 68);
+		} else if (-999 <= score && score <= -100) {
+			gc.fillText(Integer.toString(score), 66, 68);
+		} else if (-9999 <= score && score <= -1000) {
+			gc.fillText(Integer.toString(score), 58, 68);
+		} else if (-99999 <= score && score <= -10000) {
+			gc.fillText(Integer.toString(score), 50, 68);
+		} else if (score <= -100000) {
+			gc.fillText("-99999", 50, 68);
 		}
 		
 		//Money
@@ -71,6 +86,8 @@ public class DataPane extends Canvas{
 			gc.fillText(Integer.toString(money), 260, 68);
 		} else if (10000 <= money && money <= 99999) {
 			gc.fillText(Integer.toString(money), 252, 68);
+		} else if (money >= 100000) {
+			gc.fillText("99999", 252, 68);
 		}
 	}
 	
@@ -93,6 +110,10 @@ public class DataPane extends Canvas{
 			gc.setFill(Color.LIGHTPINK);
 			gc.setFont(new Font(35));
 			gc.fillText(Integer.toString(Tomato_amount), 476, 58);
+		} else if (Tomato_amount >= 100) {
+			gc.setFill(Color.LIGHTPINK);
+			gc.setFont(new Font(35));
+			gc.fillText("99", 476, 58);
 		}
 		
 		//Cabbage
@@ -113,6 +134,10 @@ public class DataPane extends Canvas{
 			gc.setFill(Color.LIME);
 			gc.setFont(new Font(35));
 			gc.fillText(Integer.toString(Cabbage_amount), 609, 58);
+		} else if (Cabbage_amount >= 100) {
+			gc.setFill(Color.LIME);
+			gc.setFont(new Font(35));
+			gc.fillText("99", 609, 58);
 		}
 		
 		//Fish
@@ -133,7 +158,11 @@ public class DataPane extends Canvas{
 			gc.setFill(Color.LIGHTBLUE);
 			gc.setFont(new Font(35));
 			gc.fillText(Integer.toString(Fish_amount), 741, 58);
-		}		
+		} else if (Fish_amount >= 100) {
+			gc.setFill(Color.LIGHTBLUE);
+			gc.setFont(new Font(35));
+			gc.fillText("99", 741, 58);
+		}
 	}
 
 }

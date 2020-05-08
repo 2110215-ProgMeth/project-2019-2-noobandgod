@@ -23,26 +23,41 @@ public class OrderBox extends Canvas {
 	public OrderBox(Menu menu) {
 		// orderCanvas = new Canvas(80,96);
 		ordergc = this.getGraphicsContext2D();
-		ordergc.setFill(Color.BLACK);
 		ordergc.setLineWidth(2);
 
 		this.setHeight(192);
 		
 		Font font = Font.font(14);
 		ordergc.setFont(font);
-
+		
+		
 		if (menu.getName().equals("Simple Salad")) {
 			this.setWidth(120);
+			
+			ordergc.setFill(Color.WHITE);
+			ordergc.fillRect(0, 2, this.getWidth(), 14);
+			
+			ordergc.setFill(Color.BLACK);
 			ordergc.fillText("Simple Salad", this.getWidth() / 2 - 40, 13);
 			ordergc.drawImage(menu.getMenuImage(), 0, 20, 120, 145);
 			
 		} else if (menu.getName().equals("Sashimi Salad")) {
 			this.setWidth(150);
+			
+			ordergc.setFill(Color.WHITE);
+			ordergc.fillRect(0, 2, this.getWidth(), 14);
+			
+			ordergc.setFill(Color.BLACK);
 			ordergc.fillText("Sashimi Salad", 30, 13);
 			ordergc.drawImage(menu.getMenuImage(), 0, 20, 150, 145);
 
 		} else { // fried fish
 			this.setWidth(110);
+			
+			ordergc.setFill(Color.WHITE);
+			ordergc.fillRect(0, 2, this.getWidth(), 14);
+			
+			ordergc.setFill(Color.BLACK);
 			ordergc.fillText("Fried Fish", this.getWidth() / 2 - 30, 13);
 			ordergc.drawImage(menu.getMenuImage(), 0, 20, 110, 145);
 

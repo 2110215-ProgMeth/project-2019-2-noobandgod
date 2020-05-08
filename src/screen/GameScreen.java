@@ -51,7 +51,7 @@ public class GameScreen {
 		draw_origin_y = 24;
 		pixel = 64;
 		//---------------------------------------------------
-		HBox root = new HBox(8);
+		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 		
 
@@ -80,7 +80,7 @@ public class GameScreen {
 		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------
-		VBox rightBox = new VBox(8);
+		VBox rightBox = new VBox(4);
 		
 		Canvas timeCanvas = new Canvas(190,192);
 		timegc = timeCanvas.getGraphicsContext2D();
@@ -97,6 +97,7 @@ public class GameScreen {
 				System.out.println(GameController.getSuccessDish()+"  "+GameController.getFailedDish());
 				if(gametime <= 0) {
 					System.out.println("TIMES UP");
+					GameController.is_timeup = true;
 					this.stop();
 				}
 			}
@@ -123,6 +124,11 @@ public class GameScreen {
 				//===========================================
 				SimulationManager.updatePane();
 				GameController.getOrderManager().printTimeLeftOfEachMenu();
+				
+				if(GameController.is_timeup) {
+					System.out.println("TIME UP");
+					this.stop();
+				}
 				
 				//RenderableHolder.show();
 				
@@ -170,6 +176,15 @@ public class GameScreen {
 		timegc.clearRect(0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight()); //don't remove
 		timegc.drawImage(RenderableHolder.timebox_bg_Image, 0, 0, timegc.getCanvas().getWidth(), timegc.getCanvas().getHeight());
 		timegc.setFont(new Font(30));
-		timegc.fillText(Integer.toString(gametime), 70, 140);
+		timegc.setFill(Color.WHITE);
+		
+		if (100 <= gametime && gametime <= 999) {
+			timegc.fillText(Integer.toString(gametime), 68, 158);
+		} else if (10 <= gametime && gametime <= 99) {
+			timegc.fillText(Integer.toString(gametime), 76, 158);
+		} else if (0 <= gametime && gametime <= 9){
+			timegc.setFill(Color.RED);
+			timegc.fillText(Integer.toString(gametime), 84, 158);
+		}
 	}
 }
