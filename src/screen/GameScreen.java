@@ -56,15 +56,10 @@ public class GameScreen {
 		
 
 		VBox leftBox = new VBox(4);
-		;
+		
 		this.gameCanvas = new Canvas(800,496);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
 		
-		//initialize grey background
-		//gamegc.setFill(Color.GRAY);
-		//gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
-		
-		//RenderableHolder.show();
 		
 		StackPane orderPane = new StackPane();
 		orderPane.setPrefWidth(800);
@@ -77,8 +72,6 @@ public class GameScreen {
 		orderPane.getChildren().addAll(orderCanvas,SimulationManager.getOrderPane());
 		
 		leftBox.getChildren().addAll(orderPane,gameCanvas, SimulationManager.getDataPane());
-		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
-		
 		//---------------------------------------------------
 		VBox rightBox = new VBox(4);
 		
@@ -114,9 +107,6 @@ public class GameScreen {
 		addListener(scene, gamegc);
 		AnimationTimer animationTimer = new AnimationTimer() {
 			public void handle(long arg0) {
-				//fulfill background
-				gamegc.setFill(Color.GRAY);
-				gamegc.fillRect(0, 0, gamegc.getCanvas().getWidth(), gamegc.getCanvas().getHeight());
 				//===========================================
 				RenderableHolder.getInstance().update();
 				paintGameScreenComponent();
@@ -166,10 +156,13 @@ public class GameScreen {
 			}
 		}
 		
+		//background
+		gamegc.drawImage(RenderableHolder.gamescreen_bg_Image,0,0,gameCanvas.getWidth(),gameCanvas.getHeight());
+	
+		//allblock and entity!!
 		for(IRenderable entity: RenderableHolder.getInstance().getEntities()) {
 			entity.draw(gamegc);
 		}
-		
 	}
 	
 	public void drawTime() {

@@ -94,6 +94,9 @@ public class RenderableHolder {
 	public static Image shoppane_window_Image;
 	public static Image shoppane_bg_Image;
 	
+	//GameScreen
+	public static Image gamescreen_bg_Image;
+	
 	//Crate
 	public static Image crate_tomato_empty_Image;
 	public static Image crate_tomato_Image;
@@ -242,6 +245,9 @@ public class RenderableHolder {
 		//ShopPane
 		shoppane_window_Image = new Image(ClassLoader.getSystemResource(p+"shoppane_window.png").toString());
 		shoppane_bg_Image = new Image(ClassLoader.getSystemResource(p+"shoppane_bg.png").toString());
+		
+		//GameScreen
+		gamescreen_bg_Image = new Image(ClassLoader.getSystemResource(p+"gamescreen_bg.png").toString());
 		
 		//Crate
 		crate_tomato_empty_Image = new Image(ClassLoader.getSystemResource(p+"crate_tomato_empty.png").toString());
