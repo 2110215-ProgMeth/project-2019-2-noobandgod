@@ -78,6 +78,7 @@ public class RenderableHolder {
 	
 	//Menu
 	public static Image menu_sashimisalad_Image;
+	public static Image menu_simplesalad_Image;
 	public static Image menu_friedfish_Image;
 	
 	//TimeBox
@@ -219,6 +220,7 @@ public class RenderableHolder {
 	
 		//Menu
 		menu_sashimisalad_Image = new Image(ClassLoader.getSystemResource(p+"menu_sashimisalad.png").toString());
+		menu_simplesalad_Image = new Image(ClassLoader.getSystemResource(p+"menu_simplesalad.png").toString());
 		menu_friedfish_Image = new Image(ClassLoader.getSystemResource(p+"menu_friedfish.png").toString());
 		
 		//TimeBox

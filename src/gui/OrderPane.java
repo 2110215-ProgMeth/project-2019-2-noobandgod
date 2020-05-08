@@ -10,7 +10,7 @@ public class OrderPane extends HBox {
 	public OrderPane() {
 		this.setPrefHeight(192);
 		this.setPrefWidth(800);
-		this.setSpacing(4);
+		this.setSpacing(6);
 		for (Menu menu : GameController.getOrderManager().getOrders()) {
 			OrderBox order = new OrderBox(menu);
 			this.getChildren().add(order);

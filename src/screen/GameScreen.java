@@ -47,13 +47,13 @@ public class GameScreen {
 		SimulationManager.initializeAllPane();
 		
 		draw_origin_x = 48;
-		draw_origin_y = 48;
+		draw_origin_y = 24;
 		pixel = 64;
 		//---------------------------------------------------
 		
 		
 		HBox root = new HBox(8);
-		root.setPadding(new Insets(8));
+		root.setPadding(new Insets(4));
 		
 
 		VBox leftBox = new VBox(4);
@@ -65,7 +65,7 @@ public class GameScreen {
 		//ordergc.setFill(Color.LIMEGREEN);
 		//ordergc.fillRect(0, 0, ordergc.getCanvas().getWidth(), ordergc.getCanvas().getHeight());
 		
-		this.gameCanvas = new Canvas(800,544);
+		this.gameCanvas = new Canvas(800,496);
 		this.gamegc = gameCanvas.getGraphicsContext2D();
 		//initialize grey background
 		//gamegc.setFill(Color.GRAY);

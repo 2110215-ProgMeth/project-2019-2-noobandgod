@@ -21,6 +21,7 @@ public class GameController {
 	public static boolean is_timeup;
 	
 	public static final int CUTTINGBOARD_COOLDOWN = 1;
+	public static final int FRYINGPAN_COOLDOWN = 2;
 	
 	public static int Cabbage_AMOUNT;
 	public static int Tomato_AMOUNT;
@@ -46,9 +47,11 @@ public class GameController {
 		
 		//Add menu testing
 		Menu menu1 = new Salad(60,1);
-		Menu menu2 = new Salad(50,1);
-		Menu menu3 = new Salad(30, 1);
-		Menu menu4 = new Salad(40, 1);
+		Menu menu2 = new Salad(15,0);
+		//Menu menu2 = new Salad(50,1);
+		//Menu menu3 = new Salad(20, 1);
+		Menu menu3 = new FriedFish(30);
+		Menu menu4 = new Salad(40,1);
 		Menu menu5 = new Salad(40,1);
 		orderManager.addOrder(menu1); 
 		orderManager.addOrder(menu2); 

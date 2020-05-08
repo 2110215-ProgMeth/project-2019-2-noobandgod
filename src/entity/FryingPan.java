@@ -87,13 +87,13 @@ public class FryingPan extends Equipment implements Interactable{
 		}
 		if (OnFryingPan && !isWorking) {
 			setWorking(true);
-			drawProgessBar(GameScreen.gamegc, GameController.CUTTINGBOARD_COOLDOWN);
+			drawProgessBar(GameScreen.gamegc, GameController.FRYINGPAN_COOLDOWN);
 			final long startNanoTime = System.nanoTime();
 			new AnimationTimer() {
 
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
-				if (t < GameController.CUTTINGBOARD_COOLDOWN) {
+				if (t < GameController.FRYINGPAN_COOLDOWN) {
 					p.setFreeze(true);
 				} else {
 					p.setFreeze(false);

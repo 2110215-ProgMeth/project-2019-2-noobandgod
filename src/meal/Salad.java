@@ -18,6 +18,7 @@ public class Salad extends Menu{
 		if (saladType == 0) {
 			setSaladType(saladType);
 			this.name = "Simple Salad";
+			this.menuImage = RenderableHolder.menu_simplesalad_Image;
 			
 			//set price and max_score
 			

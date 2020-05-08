@@ -23,36 +23,33 @@ public class OrderBox extends Canvas {
 	public OrderBox(Menu menu) {
 		// orderCanvas = new Canvas(80,96);
 		ordergc = this.getGraphicsContext2D();
-		ordergc.setFill(Color.RED);
+		ordergc.setFill(Color.BLACK);
 		ordergc.setLineWidth(2);
 
 		this.setHeight(192);
-		this.setWidth(150);
-
-		Font font = Font.font(16);
+		
+		Font font = Font.font(14);
 		ordergc.setFont(font);
 
 		if (menu.getName().equals("Simple Salad")) {
-			ordergc.fillText("Simple Salad", 50, 12);
-			drawProgressBar(3, menu, menu.getTimeLeft());
-			this.setWidth(150);
-
+			this.setWidth(120);
+			ordergc.fillText("Simple Salad", this.getWidth() / 2 - 40, 13);
+			ordergc.drawImage(menu.getMenuImage(), 0, 20, 120, 145);
+			
 		} else if (menu.getName().equals("Sashimi Salad")) {
-
 			this.setWidth(150);
-
 			ordergc.fillText("Sashimi Salad", 30, 13);
-			drawProgressBar(menu.getTimeMax(), menu, menu.getTimeLeft());
-
-			ordergc.drawImage(menu.getMenuImage(), 0, 20, 155, 145);
+			ordergc.drawImage(menu.getMenuImage(), 0, 20, 150, 145);
 
 		} else { // fried fish
-
-			this.setWidth(150);
-			ordergc.fillText("Fried Fish", this.getWidth() / 2 - 30, 10);
-			drawProgressBar(5, menu, menu.getTimeLeft());
+			this.setWidth(110);
+			ordergc.fillText("Fried Fish", this.getWidth() / 2 - 30, 13);
+			ordergc.drawImage(menu.getMenuImage(), 0, 20, 110, 145);
 
 		}
+		
+		drawProgressBar(menu.getTimeMax(), menu, menu.getTimeLeft());
+		
 	}
 
 	public void drawProgressBar(int maxTime, Menu menu, double TimeLeft) {
