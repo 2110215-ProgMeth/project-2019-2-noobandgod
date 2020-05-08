@@ -92,6 +92,10 @@ public class OrderBox extends Canvas {
 					ordergc.clearRect(0, 0, 160 + 1, 192 + 1);
 					OrderManager.updateOrderNumber();
 				}
+				if (GameScreen.gametime == 0) {
+					ordergc.clearRect(0, 0, 160 + 1, 192 + 1);
+					OrderManager.updateOrderNumber();
+				}
 			}
 		};
 		animationTimer.start();

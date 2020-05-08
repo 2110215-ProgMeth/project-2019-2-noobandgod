@@ -143,7 +143,7 @@ public class OrderManager {
 											// menu instantly
 		if (((GameController.getOrderManager().getOrders().size() <=( GameController.MAX_ORDER -1 ))&& (GameScreen.gametime % GameController.timeToAddMenu == 0))
 				|| GameController.getOrderManager().getOrders().size() == 0) {
-			if (GameScreen.gametime != 0) {
+			if (GameScreen.gametime > 0) {
 				if (GameController.getTimeChecked() != GameScreen.gametime) {
 					int type = typemenu();
 					if (type >= 1 && type <=3) {
@@ -159,6 +159,9 @@ public class OrderManager {
 					SimulationManager.getOrderPane().update();
 					GameController.setTimeChecked(GameScreen.gametime);
 				}
+			}else {
+				GameController.getOrderManager().getOrders().clear();
+				SimulationManager.getOrderPane().update();
 			}
 		}
 	}
