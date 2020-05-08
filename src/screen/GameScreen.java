@@ -93,7 +93,7 @@ public class GameScreen {
 				gametime = (int) (GameController.MAX_TIME - t);
 				System.out.println(t);
 				drawTime();
-				OrderManager.addMenuEvery20Sec();
+				OrderManager.addMenu();
 				System.out.println(GameController.getSuccessDish()+"  "+GameController.getFailedDish());
 				if(gametime <= 0) {
 					System.out.println("TIMES UP");

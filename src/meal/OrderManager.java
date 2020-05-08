@@ -144,9 +144,9 @@ public class OrderManager {
 		SimulationManager.getOrderPane().update();
 	}
 
-	public static void addMenuEvery20Sec() {// add menu every 20 second or if the size of an order equal 0,create new
+	public static void addMenu() {// add menu every 20 second or if the size of an order equal 0,create new
 											// menu instantly
-		if ((GameController.getOrderManager().getOrders().size() <= 4 && GameScreen.gametime % 20 == 0)
+		if (((GameController.getOrderManager().getOrders().size() <=( GameController.MAX_ORDER -1 ))&& (GameScreen.gametime % GameController.timeToAddMenu == 0))
 				|| GameController.getOrderManager().getOrders().size() == 0) {
 			if (GameScreen.gametime != 0) {
 				if (GameController.getTimeChecked() != GameScreen.gametime) {

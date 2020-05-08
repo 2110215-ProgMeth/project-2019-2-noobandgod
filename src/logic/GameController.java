@@ -33,9 +33,10 @@ public class GameController {
 	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
-	
 	private static int successDish;
 	private static int failedDish;
+	
+	public static final int timeToAddMenu = 40;
 	
 	private static int timeChecked;
 
