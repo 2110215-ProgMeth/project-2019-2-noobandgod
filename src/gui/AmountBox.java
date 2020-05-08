@@ -16,6 +16,8 @@ import logic.GameController;
 public class AmountBox extends HBox {
 	private int amount;
 	private Label amountBuy;
+	private Button addButton;
+	private Button removeButton;
 	
 	public AmountBox() {
 		super();
@@ -23,14 +25,14 @@ public class AmountBox extends HBox {
 		this.setPrefWidth(128);
 		
 		
-		Label amountLabel = new Label("  amount:  ");
+		Label amountLabel = new Label("X ");
 		amountLabel.setFont(new Font(16));
 		
 		this.amount = 0;
 		this.amountBuy = new Label("0  ");
 		amountBuy.setFont(new Font(16));
 		//---------------------------------------------------------------------
-		Button addButton = new Button("+");
+		this.addButton = new Button("+");
 		addButton.setPrefWidth(16);
 		
 		addButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -40,7 +42,7 @@ public class AmountBox extends HBox {
 			}
 		});
 		//---------------------------------------------------------------------
-		Button removeButton = new Button("-");
+		this.removeButton = new Button("-");
 		removeButton.setPrefWidth(16);
 		removeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -72,6 +74,16 @@ public class AmountBox extends HBox {
 	public void setAmount(int amount) {
 		this.amount = amount;
 		this.amountBuy.setText("0  ");
+	}
+	
+	public void update() {
+		if(amount == 0) {
+			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
+			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold;");
+		} else {
+			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
+			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
+		}
 	}
 	
 	

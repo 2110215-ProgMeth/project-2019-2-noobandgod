@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import logic.GameController;
 import sharedObject.RenderableHolder;
 
@@ -25,6 +26,7 @@ public class ShopPane extends StackPane {
 	private ObservableList<IngredientShopBox> ingredientShopBoxs = FXCollections.observableArrayList();
 	private Label totalpriceLabel;
 	private int totalpay;
+	private Button buyButton;
 	
 	private static int width = 190;
 	private static int height = 596;
@@ -43,10 +45,11 @@ public class ShopPane extends StackPane {
 		VBox mainBox = new VBox(5);
 		
 		Label shopLabel = new Label("Shop");
-		shopLabel.setFont(new Font(20));
+		shopLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+		shopLabel.setTextFill(Color.PALEGOLDENROD);
 		mainBox.getChildren().add(shopLabel);
 		
-		
+		//-------------------------------------------------
 		for (String ingredient : ingredientName) {
 			IngredientShopBox ingredientShopBox = new IngredientShopBox(ingredient);
 			this.ingredientShopBoxs.add(ingredientShopBox);
@@ -57,7 +60,7 @@ public class ShopPane extends StackPane {
 		totalpriceLabel.setTextFill(Color.WHITE);
 		totalpriceLabel.setFont(new Font(20));
 		//-------------------------------------------------
-		Button buyButton = new Button("Buy");
+		this.buyButton = new Button("Buy");
 		buyButton.setPrefWidth(96);
 		buyButton.setPrefHeight(30);
 		
@@ -119,12 +122,31 @@ public class ShopPane extends StackPane {
 				break;
 			}
 		}	
-			
-		
+				
 	}
 	
 	public void setTotalpay(int totalpay) {
 		this.totalpay = totalpay;
+	}
+	
+	public void update() {
+		int money = GameController.getCoin_count();
+		if (totalpay == 0) {
+			totalpriceLabel.setTextFill(Color.WHITE);
+			buyButton.setStyle("-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold;");
+		} else if (money <= totalpay) {
+			totalpriceLabel.setTextFill(Color.PINK);
+			buyButton.setStyle("-fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold;");
+			
+		} else {
+			totalpriceLabel.setTextFill(Color.LIMEGREEN);
+			buyButton.setStyle("-fx-background-color: limegreen; -fx-text-fill: darkgreen; -fx-font-weight: bold;");
+		}
+		
+		for (IngredientShopBox a: ingredientShopBoxs) {
+			a.getAmountBox().update();
+		}
+		
 	}
 	
 	

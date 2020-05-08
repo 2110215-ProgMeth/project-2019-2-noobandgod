@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import sharedObject.RenderableHolder;
 
 public class IngredientShopBox extends StackPane{
@@ -21,7 +22,7 @@ public class IngredientShopBox extends StackPane{
 	private String ingredientName;
 	
 	private static int width = 180;
-	private static int height = 155;
+	private static int height = 157;
 	
 	public IngredientShopBox(String ingredientName) {
 		setIngredientName(ingredientName);
@@ -34,8 +35,6 @@ public class IngredientShopBox extends StackPane{
 		Canvas bg = new Canvas(width,height);
 		GraphicsContext bggc = bg.getGraphicsContext2D();
 		bggc.drawImage(RenderableHolder.shoppane_window_Image, 0, 0,bg.getWidth(), bg.getHeight());
-		//bggc.setFill(Color.YELLOW);
-		//bggc.fillRect(0, 0, 180, 125);
 		
 		this.getChildren().add(bg);
 		//-------------------------------------------------
@@ -48,7 +47,7 @@ public class IngredientShopBox extends StackPane{
 		//-------------------------------------------------
 		//Ingredient Name
 		Label nameLabel = new Label(ingredientName);
-		nameLabel.setFont(new Font(16));
+		nameLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
 		nameLabel.setTextFill(Color.BLACK);
 		
 		try {
@@ -62,32 +61,35 @@ public class IngredientShopBox extends StackPane{
 		ingredientPic.setPrefHeight(64);
 		ingredientPic.setPrefWidth(64);
 		
-		ImageView testImageView = new ImageView(RenderableHolder.cabbage_Image);
-		testImageView.setFitHeight(40);
-
-		ingredientPic.getChildren().add(testImageView);
+		
+		if (ingredientName == "Cabbage") {
+			ImageView testImageView = new ImageView(RenderableHolder.cabbage_Image);
+			testImageView.setFitHeight(40);
+			ingredientPic.getChildren().add(testImageView);
+		} else if (ingredientName == "Tomato") {
+			ImageView testImageView = new ImageView(RenderableHolder.tomato_Image);
+			testImageView.setFitHeight(40);
+			ingredientPic.getChildren().add(testImageView);
+		} else { //fish case
+			ImageView testImageView = new ImageView(RenderableHolder.fish_Image);
+			testImageView.setFitHeight(40);
+			ingredientPic.getChildren().add(testImageView);
+		}
+		
 		//-------------------------------------------------
 		//Ingredient Price
 		
-		Label priceLabel = new Label(ingredientItem.getPrice()+" $ / piece");
-		priceLabel.setFont(new Font(12));
+		Label priceLabel = new Label(ingredientItem.getPrice()+" $ /piece");
+		priceLabel.setFont(new Font(14));
 		//-------------------------------------------------
 		
-		
-		
 		this.amountBox = new AmountBox();
-
-		//this.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
-		//this.setAlignment(Pos.CENTER);
 		
 		mainBox.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
 		this.getChildren().add(mainBox);
 		
-		//String cssLayout = "-fx-border-color: green;\n" +
-               // "-fx-border-insets: 2;\n" +
-               // "-fx-border-width: 1;\n" +
-               // "-fx-border-style: dashed;\n";
-		//this.setStyle(cssLayout);
+		
+		
 	}
 
 	public IngredientItem getIngredientItem() {

@@ -27,6 +27,7 @@ public class SimulationManager {
 	}
 	
 	public static void updatePane() {
+		shopPane.update();
 		dataPane.update();
 	}
 	
