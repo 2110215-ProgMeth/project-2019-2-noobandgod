@@ -20,19 +20,22 @@ public class IngredientShopBox extends StackPane{
 	private IngredientItem ingredientItem;
 	private String ingredientName;
 	
+	private static int width = 180;
+	private static int height = 155;
+	
 	public IngredientShopBox(String ingredientName) {
 		setIngredientName(ingredientName);
 		
-		this.setPrefHeight(125);
-		this.setPrefWidth(180);
-		this.setPadding(new Insets(2));
+		this.setPrefWidth(width); this.setPrefHeight(height);
 		
+		this.setPadding(new Insets(2));
 		//-------------------------------------------------
 		//Background 
-		Canvas bg = new Canvas(180,125);
+		Canvas bg = new Canvas(width,height);
 		GraphicsContext bggc = bg.getGraphicsContext2D();
-		bggc.setFill(Color.YELLOW);
-		bggc.fillRect(0, 0, 180, 125);
+		bggc.drawImage(RenderableHolder.shoppane_window_Image, 0, 0,bg.getWidth(), bg.getHeight());
+		//bggc.setFill(Color.YELLOW);
+		//bggc.fillRect(0, 0, 180, 125);
 		
 		this.getChildren().add(bg);
 		//-------------------------------------------------
@@ -41,6 +44,7 @@ public class IngredientShopBox extends StackPane{
 		mainBox.setPrefWidth(117);
 		mainBox.setPrefHeight(125);
 		mainBox.setAlignment(Pos.CENTER);
+		//mainBox.setPadding(new Insets(5,0,0,0));
 		//-------------------------------------------------
 		//Ingredient Name
 		Label nameLabel = new Label(ingredientName);
@@ -60,7 +64,7 @@ public class IngredientShopBox extends StackPane{
 		
 		ImageView testImageView = new ImageView(RenderableHolder.cabbage_Image);
 		testImageView.setFitHeight(40);
-		
+
 		ingredientPic.getChildren().add(testImageView);
 		//-------------------------------------------------
 		//Ingredient Price
@@ -79,13 +83,11 @@ public class IngredientShopBox extends StackPane{
 		mainBox.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
 		this.getChildren().add(mainBox);
 		
-		
-		
-		String cssLayout = "-fx-border-color: green;\n" +
-                "-fx-border-insets: 2;\n" +
-                "-fx-border-width: 1;\n" +
-                "-fx-border-style: dashed;\n";
-		this.setStyle(cssLayout);
+		//String cssLayout = "-fx-border-color: green;\n" +
+               // "-fx-border-insets: 2;\n" +
+               // "-fx-border-width: 1;\n" +
+               // "-fx-border-style: dashed;\n";
+		//this.setStyle(cssLayout);
 	}
 
 	public IngredientItem getIngredientItem() {

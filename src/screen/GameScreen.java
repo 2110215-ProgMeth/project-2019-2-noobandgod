@@ -51,7 +51,7 @@ public class GameScreen {
 		draw_origin_y = 24;
 		pixel = 64;
 		//---------------------------------------------------
-		HBox root = new HBox(8);
+		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 		
 
@@ -80,7 +80,7 @@ public class GameScreen {
 		//leftBox.getChildren().addAll(SimulationManager.getOrderPane(),gameCanvas,pane);
 		
 		//---------------------------------------------------
-		VBox rightBox = new VBox(8);
+		VBox rightBox = new VBox(4);
 		
 		Canvas timeCanvas = new Canvas(190,192);
 		timegc = timeCanvas.getGraphicsContext2D();

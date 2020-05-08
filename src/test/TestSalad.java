@@ -62,7 +62,6 @@ public class TestSalad {
 	public void testConstructorSimpleSalad() {
 		assertEquals("Simple Salad", simplesalad1.getName());
 		assertEquals(0, simplesalad1.getSaladType());
-		assertEquals(30, simplesalad1.getTimeleft());
 		assertEquals(true, simplesalad1.getIngredients().contains(tomatosliced));
 		assertEquals(true, simplesalad1.getIngredients().contains(cabbagesliced));
 		assertEquals(false, simplesalad1.getIngredients().contains(new Tomato()));
@@ -73,7 +72,6 @@ public class TestSalad {
 	public void testConstructorSashimiSalad() {
 		assertEquals("Sashimi Salad", sashimisalad1.getName());
 		assertEquals(1, sashimisalad1.getSaladType());
-		assertEquals(22, sashimisalad1.getTimeleft());
 		assertEquals(true, sashimisalad1.getIngredients().contains(tomatosliced));
 		assertEquals(true, sashimisalad1.getIngredients().contains(cabbagesliced));
 		assertEquals(true, sashimisalad1.getIngredients().contains(fishsliced));
