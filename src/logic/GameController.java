@@ -29,34 +29,41 @@ public class GameController {
 	
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
-	public static final int MAX_TIME = 10;
+	public static final int MAX_TIME = 50;
 	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
 	
+	private static int successDish;
+	private static int failedDish;
+	
+	private static int timeChecked;
+
 	public static void InitializeGame(int numberOfPlayers, String[][] map) {
 		InitializeMap(map);
 		InitializeIngredient();
 		InitializePlayer(numberOfPlayers);
 		
+		setSuccessDish(0);
+		setFailedDish(0);
 		setCoinCount(200);
 		setScoreCount(100);
 		setIsTimeUp(false);
-		
+		setTimeChecked(10000);
 		orderManager = new OrderManager();
 		
 		//Add menu testing
-		Menu menu1 = new Salad(60,1);
-		Menu menu2 = new Salad(15,0);
+		//Menu menu1 = new Salad(60,1);
+		//Menu menu2 = new Salad(15,0);
 		//Menu menu2 = new Salad(50,1);
 		//Menu menu3 = new Salad(20, 1);
-		Menu menu3 = new FriedFish(30);
-		Menu menu4 = new Salad(40,1);
+		//Menu menu3 = new FriedFish(30);
+		//Menu menu4 = new Salad(40,1);
 		Menu menu5 = new Salad(40,1);
-		orderManager.addOrder(menu1); 
-		orderManager.addOrder(menu2); 
-		orderManager.addOrder(menu3);
-		orderManager.addOrder(menu4);
+		//orderManager.addOrder(menu1); 
+		//orderManager.addOrder(menu2); 
+		//orderManager.addOrder(menu3);
+		//orderManager.addOrder(menu4);
 		orderManager.addOrder(menu5);
 		
 		System.out.println(orderManager.getOrders());
@@ -183,7 +190,34 @@ public class GameController {
 		return Arrays.asList(INGREDIENTS).contains(ingredientName);
 	}
 	
-	
+	public static int getSuccessDish() {
+		return successDish;
+	}
+
+
+	public static void setSuccessDish(int successDish) {
+		GameController.successDish = successDish;
+	}
+
+
+	public static int getFailedDish() {
+		return failedDish;
+	}
+
+
+	public static void setFailedDish(int failedDish) {
+		GameController.failedDish = failedDish;
+	}
+	public static int getTimeChecked() {
+		return timeChecked;
+	}
+
+
+	public static void setTimeChecked(int timeChecked) {
+		GameController.timeChecked = timeChecked;
+	}
+
+
 	
 	
 }

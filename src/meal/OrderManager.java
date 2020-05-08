@@ -11,6 +11,7 @@ import gui.SimulationManager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import logic.GameController;
+import screen.GameScreen;
 
 public class OrderManager {
 	private ArrayList<Menu> orders;
@@ -68,18 +69,18 @@ public class OrderManager {
 		ArrayList<Integer> menuindex = new ArrayList<Integer>();
 		for (int i = 0; i < orders.size(); i++) {
 			Menu menu = orders.get(i);
-			
+
 			if (menu.isAllIngredients(p.getEntityHeld())) {
 				menumatch.add(menu);
 				menuindex.add(i);
 			}
 		}
 
-		if (menumatch.size()!=0) {
+		if (menumatch.size() != 0) {
 			Menu min = menumatch.get(0);
 			indexmatch = menuindex.get(0);
-			for (int i = 1; i< menumatch.size();i++) {
-				if (menumatch.get(i).getTimeLeft()< min.getTimeLeft()) {
+			for (int i = 1; i < menumatch.size(); i++) {
+				if (menumatch.get(i).getTimeLeft() < min.getTimeLeft()) {
 					min = menumatch.get(i);
 					indexmatch = menuindex.get(i);
 				}
@@ -87,6 +88,7 @@ public class OrderManager {
 			Menu menuremoved;
 			try {
 				menuremoved = removeOrder(indexmatch);
+				GameController.setSuccessDish(GameController.getSuccessDish() + 1);
 				OrderBox.sendOrder(menuremoved);
 			} catch (RemoveOrderFailedException e) {
 				// TODO Auto-generated catch block
@@ -122,36 +124,47 @@ public class OrderManager {
 			return 3;
 		}
 	}
-	
+
 	public void printTimeLeftOfEachMenu() {
 		ArrayList<Double> a = new ArrayList<Double>();
-		for (Menu m: getOrders()) {
+		for (Menu m : getOrders()) {
 			a.add(m.getTimeLeft());
 		}
 		System.out.println(a);
 	}
 
 	public static void updateOrderNumber() {
-		for (int order = GameController.getOrderManager().getOrders().size()-1;order >=0;order--)
-			//ArrayList<Menu> menu_clone = new ArrayList<>();
-			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {//when menu is timeup
+		for (int order = GameController.getOrderManager().getOrders().size() - 1; order >= 0; order--)
+			// ArrayList<Menu> menu_clone = new ArrayList<>();
+			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {// when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
-			}//else if (GameController.getOrderManager().getOrders().get(order).isSend()) {
-				//GameController.getOrderManager().getOrders().remove(order);
-			SimulationManager.getOrderPane().update();
+				GameController.setFailedDish(GameController.getFailedDish() + 1);
+			} // else if (GameController.getOrderManager().getOrders().get(order).isSend()) {
+				// GameController.getOrderManager().getOrders().remove(order);
+		SimulationManager.getOrderPane().update();
+	}
+
+	public static void addMenuEvery20Sec() {// add menu every 20 second or if the size of an order equal 0,create new
+											// menu instantly
+		if ((GameController.getOrderManager().getOrders().size() <= 4 && GameScreen.gametime % 20 == 0)
+				|| GameController.getOrderManager().getOrders().size() == 0) {
+			if (GameScreen.gametime != 0) {
+				if (GameController.getTimeChecked() != GameScreen.gametime) {
+					int type = typemenu();
+					if (type == 1) {
+						Menu simpleSalad = new Salad(20, 0);
+						GameController.getOrderManager().getOrders().add(simpleSalad);
+					} else if (type == 2) {
+						Menu SashimiSalad = new Salad(20, 1);
+						GameController.getOrderManager().getOrders().add(SashimiSalad);
+					} else {
+						Menu friedFish = new FriedFish(20);
+						GameController.getOrderManager().getOrders().add(friedFish);
+					}
+					SimulationManager.getOrderPane().update();
+					GameController.setTimeChecked(GameScreen.gametime);
+				}
+			}
+		}
 	}
 }
-//		if (GameController.getOrderManager().getOrders().size() <= 4) {
-//			int type = typemenu();
-//			if (type ==1) {
-//				Menu simpleSalad = new Salad(20,0);
-//				GameController.getOrderManager().getOrders().add(simpleSalad);
-//			}else if (type ==2) {
-//				Menu SashimiSalad = new Salad(20,1);
-//				GameController.getOrderManager().getOrders().add(SashimiSalad);
-//			}else {
-//				Menu friedFish = new FriedFish(20);
-//				GameController.getOrderManager().getOrders().add(friedFish);
-//			}
-
-	

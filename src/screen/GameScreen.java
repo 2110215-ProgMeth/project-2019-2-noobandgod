@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logic.GameController;
+import meal.OrderManager;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import logic.Direction;
@@ -92,7 +93,8 @@ public class GameScreen {
 				gametime = (int) (GameController.MAX_TIME - t);
 				System.out.println(t);
 				drawTime();
-				
+				OrderManager.addMenuEvery20Sec();
+				System.out.println(GameController.getSuccessDish()+"  "+GameController.getFailedDish());
 				if(gametime <= 0) {
 					System.out.println("TIMES UP");
 					this.stop();
