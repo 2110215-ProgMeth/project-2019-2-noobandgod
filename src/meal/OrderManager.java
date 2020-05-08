@@ -116,13 +116,7 @@ public class OrderManager {
 		int min = 1;
 		int range = max - min + 1;
 		int rand = (int) (Math.random() * range) + min;
-		if (rand <= 3) {
-			return 1;
-		} else if (rand <= 6) {
-			return 2;
-		} else {
-			return 3;
-		}
+		return rand;
 	}
 
 	public void printTimeLeftOfEachMenu() {
@@ -151,14 +145,14 @@ public class OrderManager {
 			if (GameScreen.gametime != 0) {
 				if (GameController.getTimeChecked() != GameScreen.gametime) {
 					int type = typemenu();
-					if (type == 1) {
-						Menu simpleSalad = new Salad(20, 0);
+					if (type >= 1 && type <=3) {
+						Menu simpleSalad = new Salad(type*5+20, 0);
 						GameController.getOrderManager().getOrders().add(simpleSalad);
-					} else if (type == 2) {
-						Menu SashimiSalad = new Salad(20, 1);
+					} else if (type >= 4 && type <= 6) {
+						Menu SashimiSalad = new Salad((type-1)*5+20, 1);
 						GameController.getOrderManager().getOrders().add(SashimiSalad);
-					} else {
-						Menu friedFish = new FriedFish(20);
+					} else {//7 8 9
+						Menu friedFish = new FriedFish((type-5)*5 +10);
 						GameController.getOrderManager().getOrders().add(friedFish);
 					}
 					SimulationManager.getOrderPane().update();
