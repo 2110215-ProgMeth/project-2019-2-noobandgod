@@ -36,7 +36,7 @@ public class GameController {
 	private static int successDish;
 	private static int failedDish;
 	
-	public static final int timeToAddMenu = 20;
+	public static int timeToAddMenu = 20;
 	
 	private static int timeChecked;
 
@@ -84,12 +84,16 @@ public class GameController {
 	
 	public static void InitializePlayer(int numberOfPlayers) {
 		if (numberOfPlayers == 1) {
+			timeToAddMenu = 20;
+			
 			players = new ArrayList<Player>();
 			Player player0 = new Player(0,1,1);
 			
 			players.add(player0);
 			RenderableHolder.getInstance().add(player0);
 		} else if (numberOfPlayers == 2) {
+			timeToAddMenu = 16;
+			
 			players = new ArrayList<Player>();
 			Player player0 = new Player(0,1,1);
 			Player player1 = new Player(1,9,5);
