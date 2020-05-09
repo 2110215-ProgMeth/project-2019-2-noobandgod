@@ -35,7 +35,7 @@ public class StartScreen{
 		
 	public StartScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		canvas = new Canvas(900, 800);
+		canvas = new Canvas(1000, 800);
 		gc = canvas.getGraphicsContext2D();
 		menu = new ButtonStartScreen();
 		setupButton();
@@ -43,7 +43,7 @@ public class StartScreen{
 	}
 	public void draw(GraphicsContext gc) {
 		root = new StackPane();
-		root.setPrefSize(900, 800);
+		root.setPrefSize(1000, 800);
 		root.getChildren().addAll(canvas,menu);
 		
 		Scene scene = new Scene(root);
@@ -58,14 +58,7 @@ public class StartScreen{
 	public void setBackground() {
 		gc.drawImage(background, 0, 0,900,800);
 		gc.setFill(Color.BLACK);
-		gc.setLineWidth(5);
-		gc.setFont(new Font(50));
-//		gc.strokeRect(600, 275, 300, 75);
-//		gc.strokeRect(600, 450, 300, 75);
-		//gc.rotate(340);
-		gc.fillText("Umm!! Aroiii",530,225);
 		draw(gc);
-		//AudioLoader.END.play();
 		}
 	public void setupButton() {
 		
@@ -75,6 +68,8 @@ public class StartScreen{
 		public void handle(ActionEvent event) {
 //			GameScreen gameScreen = new GameScreen(primaryStage);
 //			GameController.getCurrentGameMap().printMap();
+			//AudioLoader.BUTTON_CLICK.play();
+			//AudioLoader.END.play();
 			root.getChildren().removeAll(menu);
 			EndScreen endscreen = new EndScreen(primaryStage,gc);
 			}
@@ -87,7 +82,8 @@ public class StartScreen{
 			@Override
 			public void handle(MouseEvent arg0) {
 				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.END.play();
+				AudioLoader.BUTTON_CLICK.play();
+				//AudioLoader.END.play();
 				menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 			}

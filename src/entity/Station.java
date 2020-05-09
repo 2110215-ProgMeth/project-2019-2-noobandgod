@@ -7,7 +7,6 @@ import java.util.Collections;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
-import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
@@ -37,7 +36,7 @@ public class Station extends Block implements Interactable{
 	}
 
 
-	public boolean interacts(Player e) throws InteractFailedException{
+	public boolean interacts(Player e){
 		if (!e.isHolding()) { //if player's hand is available to pick something
 			if (isOnStation()) {
 				Entity ontableEntity_clone = this.removedEntityOnStation();

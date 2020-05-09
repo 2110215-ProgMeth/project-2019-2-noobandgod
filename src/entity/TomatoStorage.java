@@ -1,6 +1,5 @@
 package entity;
 
-import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
@@ -8,7 +7,7 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class TomatoStorage extends IngredientStorage{
-	public boolean interacts(Player e) {//throws InteractFailedException{
+	public boolean interacts(Player e) {
 		if (!isAvailable) {
 			System.out.println("TOMATO is out of stock");
 			return false;
@@ -19,8 +18,7 @@ public class TomatoStorage extends IngredientStorage{
 			e.setHolding(true);
 			GameController.addTomato_AMOUNT(-1);
 			return true;
-		}System.out.println("Please place down the carried item before picking up a new Tomato");
-		return false;
+		}return false;
 	}
 	public char getSymbol() {
 		return Sprites.TomatoStorage;

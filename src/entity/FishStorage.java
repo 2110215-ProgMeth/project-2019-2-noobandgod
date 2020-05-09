@@ -1,6 +1,6 @@
 package entity;
 
-import exception.InteractFailedException;
+
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
@@ -19,7 +19,7 @@ public class FishStorage extends IngredientStorage{
 			e.setHolding(true);
 			GameController.addFish_AMOUNT(-1);
 			return true;
-		}System.out.println("Please place down the carried item before picking up a new fish");
+		}//System.out.println("Please place down the carried item before picking up a new fish");
 		return false;
 	}
 	public char getSymbol() {

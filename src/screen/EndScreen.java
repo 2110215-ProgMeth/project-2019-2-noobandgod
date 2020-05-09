@@ -44,18 +44,18 @@ public class EndScreen{
 			gc.setFont(theFont);
 			int score = GameController.getScore_count();
 			if (score < 100) {
-				gc.drawImage(gameOver, 0, 0,900,800);
+				gc.drawImage(gameOver, 0, 0,1000,800);
 				gc.fillText("Bad!!", 350, 200);
 				gc.strokeText("Bad!!", 350, 200);
 			}else if (100 <= score&& score < 200) {
-				gc.drawImage(good, 0, 0, 900, 800);
+				gc.drawImage(good, 0, 0, 1000, 800);
 				gc.fillText("Good!", 350, 200);
 				gc.strokeText("Good!!", 350, 200);
 			}else if (200 <= score && score < 300) {
-				gc.drawImage(veryGood, 0, 0, 900, 800);
+				gc.drawImage(veryGood, 0, 0, 1000, 800);
 				gc.fillText("Very Good!!", 250,200);
 				gc.strokeText("Very Good!!", 250, 200);Font menu = Font.font("Times New Roman", FontWeight.LIGHT, 16);
-				gc.drawImage(excellent, 0, 0, 900, 800);
+				gc.drawImage(excellent, 0, 0, 1000, 800);
 				gc.fillText("Excellent!!!", 250,200);
 				gc.strokeText("Excellent!!!", 250, 200);
 			}

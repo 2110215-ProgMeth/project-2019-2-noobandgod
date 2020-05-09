@@ -1,6 +1,5 @@
 package entity;
 
-import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
@@ -21,9 +20,8 @@ public class CabbageStorage extends IngredientStorage {
 			System.out.println("Player "+p.getPlayerNumber()+" has pick Cabbage at "+this.getCoordinate());
 			return true;
 		} else {
-			System.out.println("Please place down the carried item before picking up a new caabbage");
+			//System.out.println("Please place down the carried item before picking up a new caabbage");
 			return false;
-			//throw new InteractFailedException("Please place donw the carried item before picking up a new caabbage");
 		}
 	}
 	
