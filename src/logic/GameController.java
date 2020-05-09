@@ -29,14 +29,14 @@ public class GameController {
 	
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
-	public static final int MAX_TIME = 210;
+	public static final int MAX_TIME = 225;
 	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
 	private static int successDish;
 	private static int failedDish;
 	
-	public static int timeToAddMenu = 20;
+	public static int timeToAddMenu;
 	
 	private static int timeChecked;
 

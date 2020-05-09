@@ -40,10 +40,10 @@ public class GameScreen {
 		this.primaryStage = primaryStage;
 		//---------------------------------------------------
 		//Initialzing map and system
-		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
+		String[][] map_1 = CSVParser.readCSV("map_1.csv"); //don't delete this line please
 		String[][] map_2 = CSVParser.readCSV("map_2.csv");
 		
-		GameController.InitializeGame(2, map_2);
+		GameController.InitializeGame(2, map_1);
 		SimulationManager.initializeAllPane();
 		
 		draw_origin_x = 48;
@@ -111,7 +111,7 @@ public class GameScreen {
 				InputUtility.removeKeyPressed();
 				//===========================================
 				SimulationManager.updatePane();
-				GameController.getOrderManager().printTimeLeftOfEachMenu();
+				//GameController.getOrderManager().printTimeLeftOfEachMenu();
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");
