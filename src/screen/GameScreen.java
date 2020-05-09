@@ -83,13 +83,12 @@ public class GameScreen {
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
 				gametime = (int) (GameController.MAX_TIME - t);
-				System.out.println(t);
 				drawTime();
 				OrderManager.addMenu();
 				System.out.println(GameController.getSuccessDish()+"  "+GameController.getFailedDish());
 				if(gametime <= 0) {
 					System.out.println("TIMES UP");
-					GameController.is_timeup = true;
+					GameController.setIsTimeUp(true);
 					this.stop();
 				}
 			}
@@ -130,8 +129,6 @@ public class GameScreen {
 		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setScene(scene);
-		
-		
 	}
 	
 	private void addListener(Scene s, GraphicsContext gc) {

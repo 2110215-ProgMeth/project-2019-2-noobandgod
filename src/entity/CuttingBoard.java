@@ -73,7 +73,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 	}
 	
 	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
-		if (!p.isHolding() && !isOnCuttingBoard()){
+		if ((!p.isHolding() && !isOnCuttingBoard()) || (!isOnCuttingBoard())){
 			return false;
 		}
 		if (OnCuttingBoardExists.getState() >= 1) {
