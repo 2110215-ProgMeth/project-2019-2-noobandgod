@@ -41,7 +41,9 @@ public class GameScreen {
 		//---------------------------------------------------
 		//Initialzing map and system
 		String[][] gamemap = CSVParser.readCSV("Book1.csv"); //don't delete this line please
-		GameController.InitializeGame(1, gamemap);
+		String[][] map_2 = CSVParser.readCSV("map_2.csv");
+		
+		GameController.InitializeGame(2, map_2);
 		SimulationManager.initializeAllPane();
 		
 		draw_origin_x = 48;

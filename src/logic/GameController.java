@@ -70,7 +70,6 @@ public class GameController {
 		System.out.println(orderManager.getOrders());
 	}
 	
-	
 	public static void InitializeMap(String[][] map) {
 		System.out.println("Initializing Map...");
 		gameMap = new GameMap(map);
@@ -78,9 +77,9 @@ public class GameController {
 	}
 	
 	public static void InitializeIngredient() {
-		setTomato_AMOUNT(1);
-		setCabbage_AMOUNT(9);
-		setFish_AMOUNT(3);
+		setTomato_AMOUNT(0);
+		setCabbage_AMOUNT(0);
+		setFish_AMOUNT(0);
 	}
 	
 	public static void InitializePlayer(int numberOfPlayers) {
@@ -93,7 +92,7 @@ public class GameController {
 		} else if (numberOfPlayers == 2) {
 			players = new ArrayList<Player>();
 			Player player0 = new Player(0,1,1);
-			Player player1 = new Player(1,8,2);
+			Player player1 = new Player(1,9,5);
 			
 			players.add(player0); RenderableHolder.getInstance().add(player0);
 			players.add(player1); RenderableHolder.getInstance().add(player1);

@@ -44,7 +44,7 @@ public class FishStorage extends IngredientStorage{
 		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.fishstorage_infront_Image, x, y-6);
+			gc.drawImage(RenderableHolder.fishstorage_infront_Image, x, y);
 		} else {
 			gc.drawImage(RenderableHolder.fishstorage_between_Image, x, y-6);
 		}
