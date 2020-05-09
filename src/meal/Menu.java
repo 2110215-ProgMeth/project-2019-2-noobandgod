@@ -16,22 +16,7 @@ public abstract class Menu {
 	protected Image menuImage;
 	protected double timeLeft;
 	protected boolean isSend;
-	public boolean isSend() {
-		return isSend;
-	}
-
-	public void setSend(boolean isSend) {
-		this.isSend = isSend;
-	}
-
-	public double getTimeLeft() {
-		return timeLeft;
-	}
-
-	public void setTimeLeft(double timeLeft) {
-		this.timeLeft = timeLeft;
-	}
-
+	
 	public Menu(int timeMax) {
 		setSend(false);
 		setTimeMax(timeMax);
@@ -77,6 +62,22 @@ public abstract class Menu {
 			
 		}
 	}
+	
+	public boolean isSend() {
+		return isSend;
+	}
+
+	public void setSend(boolean isSend) {
+		this.isSend = isSend;
+	}
+
+	public double getTimeLeft() {
+		return timeLeft;
+	}
+
+	public void setTimeLeft(double timeLeft) {
+		this.timeLeft = timeLeft;
+	}
 
 	public int getTimeMax() {
 		return timeMax;
@@ -112,6 +113,10 @@ public abstract class Menu {
 
 	public void setMax_score(int max_score) {
 		this.max_score = max_score;
+	}
+	
+	public void setMenuImage(Image menuImage) {
+		this.menuImage = menuImage;
 	}
 	
 	public Image getMenuImage() {

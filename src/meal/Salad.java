@@ -17,10 +17,10 @@ public class Salad extends Menu{
 		super(timeMax);
 		if (saladType == 0) {
 			setSaladType(saladType);
-			this.name = "Simple Salad";
-			this.menuImage = RenderableHolder.menu_simplesalad_Image;
-			
-			//set price and max_score
+			setName("Simple Salad");
+			setMenuImage(RenderableHolder.menu_simplesalad_Image);
+			setPrice(45);
+			setMax_score(40);
 			
 			//set ingredients
 			this.ingredients = new ArrayList<Ingredient>();
@@ -30,10 +30,10 @@ public class Salad extends Menu{
 			
 		} else if (saladType == 1) {
 			setSaladType(saladType);
-			this.name = "Sashimi Salad";
-			this.menuImage = RenderableHolder.menu_sashimisalad_Image;
-			
-			//set price and max_score
+			setName("Sashimi Salad");
+			setMenuImage(RenderableHolder.menu_sashimisalad_Image);
+			setPrice(90);
+			setMax_score(60);
 			
 			//set ingredients
 			this.ingredients = new ArrayList<Ingredient>();
@@ -55,9 +55,6 @@ public class Salad extends Menu{
 	public void setSaladType(int saladType) {
 		this.saladType = saladType;
 	}
-	
-	
-
 	
 	
 }

@@ -47,8 +47,8 @@ public class GameController {
 		
 		setSuccessDish(0);
 		setFailedDish(0);
-		setCoinCount(200);
-		setScoreCount(100);
+		setCoinCount(100);
+		setScoreCount(0);
 		setIsTimeUp(false);
 		setTimeChecked(10000);
 		orderManager = new OrderManager();
@@ -77,9 +77,9 @@ public class GameController {
 	}
 	
 	public static void InitializeIngredient() {
-		setTomato_AMOUNT(0);
-		setCabbage_AMOUNT(0);
-		setFish_AMOUNT(0);
+		setTomato_AMOUNT(1);
+		setCabbage_AMOUNT(1);
+		setFish_AMOUNT(1);
 	}
 	
 	public static void InitializePlayer(int numberOfPlayers) {

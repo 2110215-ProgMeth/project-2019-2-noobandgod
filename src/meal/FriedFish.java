@@ -10,9 +10,10 @@ public class FriedFish extends Menu{
 
 	public FriedFish(int timeMax) {
 		super(timeMax);
-		this.name = "Fried Fish";
-		this.menuImage = RenderableHolder.menu_friedfish_Image;
-		//set price and max score
+		setName("Fried Fish");
+		setMenuImage(RenderableHolder.menu_friedfish_Image);
+		setPrice(45);
+		setMax_score(30);
 		
 		//set ingredients
 		this.ingredients = new ArrayList<Ingredient>();

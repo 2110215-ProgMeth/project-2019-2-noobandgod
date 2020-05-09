@@ -100,8 +100,8 @@ public class OrderManager {
 			p.removeEntityHeld();
 			return true;
 		} else {
-			GameController.addScoreCount(-10);
-			System.out.println("No menu match with your dish! Penalty -10 points");
+			//in case wrong dish was sent!
+			GameController.addScoreCount(-5);
 			return false;
 		}
 
@@ -139,8 +139,7 @@ public class OrderManager {
 		SimulationManager.getOrderPane().update();
 	}
 
-	public static void addMenu() {// add menu every 20 second or if the size of an order equal 0,create new
-											// menu instantly
+	public static void addMenu() {
 		if (((GameController.getOrderManager().getOrders().size() <=( GameController.MAX_ORDER -1 ))&& (GameScreen.gametime % GameController.timeToAddMenu == 0))
 				|| GameController.getOrderManager().getOrders().size() == 0) {
 			if (GameScreen.gametime > 0) {
