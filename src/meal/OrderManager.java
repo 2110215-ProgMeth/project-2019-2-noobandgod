@@ -146,19 +146,19 @@ public class OrderManager {
 				if (GameController.getTimeChecked() != GameScreen.gametime) {
 					int type = typemenu();
 					if (type >= 1 && type <=3) {
-						Menu simpleSalad = new Salad(type*5+20, 0);
+						Menu simpleSalad = new Salad(type*5+60, 0);
 						GameController.getOrderManager().getOrders().add(simpleSalad);
 					} else if (type >= 4 && type <= 6) {
-						Menu SashimiSalad = new Salad((type-1)*5+20, 1);
+						Menu SashimiSalad = new Salad((type-3)*5+65, 1);
 						GameController.getOrderManager().getOrders().add(SashimiSalad);
 					} else {//7 8 9
-						Menu friedFish = new FriedFish((type-5)*5 +10);
+						Menu friedFish = new FriedFish((type-6)*5 +50);
 						GameController.getOrderManager().getOrders().add(friedFish);
 					}
 					SimulationManager.getOrderPane().update();
 					GameController.setTimeChecked(GameScreen.gametime);
 				}
-			}else {
+			}else if (GameScreen.gametime == 0){
 				GameController.getOrderManager().getOrders().clear();
 				SimulationManager.getOrderPane().update();
 			}

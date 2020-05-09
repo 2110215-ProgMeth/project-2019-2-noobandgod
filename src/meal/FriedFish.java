@@ -12,7 +12,7 @@ public class FriedFish extends Menu{
 		super(timeMax);
 		setName("Fried Fish");
 		setMenuImage(RenderableHolder.menu_friedfish_Image);
-		setPrice(45);
+		setPrice(50);
 		setMax_score(30);
 		
 		//set ingredients

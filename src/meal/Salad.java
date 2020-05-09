@@ -19,7 +19,7 @@ public class Salad extends Menu{
 			setSaladType(saladType);
 			setName("Simple Salad");
 			setMenuImage(RenderableHolder.menu_simplesalad_Image);
-			setPrice(45);
+			setPrice(50);
 			setMax_score(40);
 			
 			//set ingredients
