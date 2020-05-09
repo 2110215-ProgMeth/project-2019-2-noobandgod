@@ -15,6 +15,9 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	
 	//Images
+	//Floor
+	public static Image floor_Image;
+	
 	//Player
 	public static Image player0_sprite_Image;
 	public static Image player1_sprite_Image;
@@ -71,6 +74,9 @@ public class RenderableHolder {
 	//FryingPan
 	public static Image fryingpan_infront_Image;
 	public static Image fryingpan_between_Image;
+	
+	//Obstacle
+	public static Image obstacle_Image;
 	
 	//FoodCounter
 	public static Image foodcounter_infront_Image;
@@ -167,9 +173,13 @@ public class RenderableHolder {
 	public static void loadResource() {
 		String p = "picture/";
 		
+		//Floor
+		floor_Image = new Image(ClassLoader.getSystemResource(p+"floor.png").toString());
+		
 		//Player
 		player0_sprite_Image = new Image(ClassLoader.getSystemResource(p+"player0_sprite.png").toString());
 		player1_sprite_Image = new Image(ClassLoader.getSystemResource(p+"player1_sprite.png").toString());
+		
 		//Bin
 		bin_infront_Image = new Image(ClassLoader.getSystemResource(p+"bin_infront.png").toString());
 		bin_between_Image = new Image(ClassLoader.getSystemResource(p+"bin_between.png").toString());
@@ -224,6 +234,9 @@ public class RenderableHolder {
 		fryingpan_infront_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_infront.png").toString());
 		fryingpan_between_Image = new Image(ClassLoader.getSystemResource(p+"fryingpan_between.png").toString());
 	
+		//Obstacle
+		obstacle_Image = new Image(ClassLoader.getSystemResource(p+"obstacle.png").toString());
+		
 		//FoodCounter
 		foodcounter_infront_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_infront.png").toString());
 		foodcounter_between_Image = new Image(ClassLoader.getSystemResource(p+"foodcounter_between.png").toString());

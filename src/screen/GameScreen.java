@@ -36,9 +36,6 @@ public class GameScreen {
 	
 	public static int gametime;
 	
-	private static String image_path = ClassLoader.getSystemResource("picture/floortest1.png").toString();
-	private static Image floortest = new Image(image_path);
-	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		//---------------------------------------------------
@@ -58,7 +55,7 @@ public class GameScreen {
 		VBox leftBox = new VBox(4);
 		
 		this.gameCanvas = new Canvas(800,496);
-		this.gamegc = gameCanvas.getGraphicsContext2D();
+		gamegc = gameCanvas.getGraphicsContext2D();
 		
 		
 		StackPane orderPane = new StackPane();
@@ -152,7 +149,7 @@ public class GameScreen {
 		//floor
 		for (int i=0; i < height; i++) {
 			for (int j=0; j < width; j++) {
-				gamegc.drawImage(floortest,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
+				gamegc.drawImage(RenderableHolder.floor_Image,draw_origin_x+(j)*pixel,draw_origin_y+(i)*pixel);
 			}
 		}
 		
@@ -176,7 +173,7 @@ public class GameScreen {
 		} else if (10 <= gametime && gametime <= 99) {
 			timegc.fillText(Integer.toString(gametime), 76, 158);
 		} else if (0 <= gametime && gametime <= 9){
-			timegc.setFill(Color.RED);
+			timegc.setFill(Color.PINK);
 			timegc.fillText(Integer.toString(gametime), 84, 158);
 		}
 	}

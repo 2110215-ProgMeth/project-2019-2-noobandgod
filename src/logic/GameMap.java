@@ -293,12 +293,10 @@ public class GameMap {
 	}
 
 	
-	
-	
 	public void updateIsAnyBlockDownward() {
 		for (int i = 0; i < height-1 ; i++) {
 			for (int j = 0; j < width; j++) {
-				if (!cellmap[i+1][j].isBlockEmpty() && !cellmap[i][j].isBlockEmpty()) {
+				if (!cellmap[i+1][j].isBlockEmpty() && !cellmap[i][j].isBlockEmpty() && !(cellmap[i+1][j].getBlock() instanceof Obstacle)) {
 					//if tihs block is not empty and below block is also not empty
 					//so this block (isanyblockdownward = true) )(used for rendering image)
 					cellmap[i][j].getBlock().setAnyBlockDownward(true);
