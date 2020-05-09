@@ -25,8 +25,6 @@ public class ButtonsEndScreen extends HBox{
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);
 		quitButton.setFont(new Font(30));
-		restartButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: black;");
-		quitButton.setStyle("-fx-background-color: #6495ed; -fx-text-fill: black;");
 		getChildren().addAll(restartButton, quitButton);
 	}
 	public void setupExitButton() {

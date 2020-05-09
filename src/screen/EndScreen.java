@@ -15,6 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import logic.ButtonsEndScreen;
 import logic.GameController;
+import sharedObject.AudioLoader;
 
 public class EndScreen{
 	private Stage primaryStage;
@@ -82,11 +83,18 @@ public class EndScreen{
 				MousePressed();
 		}
 		public void MousePressed() {
-			menu.setOnMouseMoved(e ->{
-		
+			menu.setOnMouseClicked(e ->{
+				AudioLoader.BUTTON_CLICK.play();
+//				public void handle(ActionEvent event) {
+				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			menu.setOnMouseExited(e ->{
+				
 //				public void handle(ActionEvent event) {
 				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
 				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
 			});
 		}
+		
 }
