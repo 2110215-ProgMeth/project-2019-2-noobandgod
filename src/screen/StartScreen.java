@@ -19,6 +19,7 @@ import logic.ButtonStartScreen;
 
 import logic.GameController;
 import screen.GameScreen;
+import sharedObject.AudioLoader;
 public class StartScreen{
 		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
 		private Image background = new Image(image_path);		
@@ -37,7 +38,7 @@ public class StartScreen{
 		gc = canvas.getGraphicsContext2D();
 		menu = new ButtonStartScreen();
 		setupButton();
-
+		//AudioLoader.END_SONG.playSong();
 	}
 	public void draw(GraphicsContext gc) {
 		root = new StackPane();
@@ -80,8 +81,8 @@ public class StartScreen{
 		setBackground();
 	}
 	public void MousePressed() {
-		menu.setOnMouseMoved(e ->{
-	
+		menu.setOnMousePressed(e ->{
+			AudioLoader.BUTTON_CLICK.play();
 //			public void handle(ActionEvent event) {
 			menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
 			menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
