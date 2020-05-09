@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -38,7 +39,7 @@ public class StartScreen{
 		gc = canvas.getGraphicsContext2D();
 		menu = new ButtonStartScreen();
 		setupButton();
-		//AudioLoader.END_SONG.playSong();
+
 	}
 	public void draw(GraphicsContext gc) {
 		root = new StackPane();
@@ -64,6 +65,7 @@ public class StartScreen{
 		//gc.rotate(340);
 		gc.fillText("Umm!! Aroiii",530,225);
 		draw(gc);
+		//AudioLoader.END.play();
 		}
 	public void setupButton() {
 		
@@ -81,11 +83,14 @@ public class StartScreen{
 		setBackground();
 	}
 	public void MousePressed() {
-		menu.setOnMousePressed(e ->{
-			AudioLoader.BUTTON_CLICK.play();
-//			public void handle(ActionEvent event) {
-			menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-			menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-		});
-	}
+		menu.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent arg0) {
+				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.END.play();
+				menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+			}
+	});
+}
 }
