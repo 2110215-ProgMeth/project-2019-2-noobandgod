@@ -15,6 +15,16 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	
 	//Images
+	
+	//---------------[StartScreen & EndScreen]------------------
+	
+	
+	
+	
+	
+	
+	//---------------[GameScreen]-------------------------------
+	
 	//Floor
 	public static Image floor_Image;
 	
@@ -112,6 +122,8 @@ public class RenderableHolder {
 	
 	public static Image crate_fish_empty_Image;
 	public static Image crate_fish_Image;
+	
+	//---------------------------------------------------------
 	
 	static {
 		loadResource();

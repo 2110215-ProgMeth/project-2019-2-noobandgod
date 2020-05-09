@@ -46,48 +46,48 @@ public class GameMap {
 				//setting blocks from excel 
 				switch (map[i][j]) {
 				case "A":
-					System.out.println("Station"+coordinate);
+					//System.out.println("Station"+coordinate);
 					setBlock(new Station(), j, i);
 					break;
 					
 				case "B":
-					System.out.println("TomatoStorage"+coordinate);
+					//System.out.println("TomatoStorage"+coordinate);
 					setBlock(new TomatoStorage(), j, i);
 					break;
 				case "C":
-					System.out.println("CabbageStorage"+coordinate);
+					//System.out.println("CabbageStorage"+coordinate);
 					setBlock(new CabbageStorage(), j, i);
 					break;
 				case "D":
-					System.out.println("FishStorage"+coordinate);
+					//System.out.println("FishStorage"+coordinate);
 					setBlock(new FishStorage(), j, i);
 					break;
 				case "E":
-					System.out.println("DishPicker"+coordinate);
+					//System.out.println("DishPicker"+coordinate);
 					setBlock(new DishPicker(), j, i);
 					break;
 				case "F":
-					System.out.println("Bin"+coordinate);
+					//System.out.println("Bin"+coordinate);
 					setBlock(new Bin(), j, i);
 					break;
 				case "G":
-					System.out.println("Obstacle"+coordinate);
+					//System.out.println("Obstacle"+coordinate);
 					setBlock(new Obstacle(), j, i);
 					break;
 				case "H":
-					System.out.println("FoodCounter"+coordinate);
+					//System.out.println("FoodCounter"+coordinate);
 					setBlock(new FoodCounter(), j, i);
 					break;
 				case "I":
-					System.out.println("CuttingBoard"+coordinate);
+					//System.out.println("CuttingBoard"+coordinate);
 					setBlock(new CuttingBoard(), j, i);
 					break;
 				case "J":
-					System.out.println("FryingPan"+coordinate);
+					//System.out.println("FryingPan"+coordinate);
 					setBlock(new FryingPan(), j, i);
 					break;
 				case "O":
-					System.out.println("SPACE"+coordinate);
+					//System.out.println("SPACE"+coordinate);
 					break;
 				
 				default:
