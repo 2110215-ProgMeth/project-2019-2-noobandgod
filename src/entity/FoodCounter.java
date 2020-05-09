@@ -35,7 +35,7 @@ public class FoodCounter extends Block implements Interactable{
 		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.foodcounter_infront_Image, x, y-6,65,70);
+			gc.drawImage(RenderableHolder.foodcounter_infront_Image, x, y-6,64,70);
 		} else {
 			gc.drawImage(RenderableHolder.foodcounter_between_Image, x, y-6);
 		}

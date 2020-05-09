@@ -133,7 +133,7 @@ public class OrderManager {
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {// when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
 				GameController.setFailedDish(GameController.getFailedDish() + 1);
-				GameController.addScoreCount(-20);
+				GameController.addScoreCount(-5);
 			} // else if (GameController.getOrderManager().getOrders().get(order).isSend()) {
 				// GameController.getOrderManager().getOrders().remove(order);
 		SimulationManager.getOrderPane().update();
