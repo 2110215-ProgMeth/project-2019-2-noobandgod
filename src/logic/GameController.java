@@ -20,8 +20,8 @@ public class GameController {
 	
 	public static boolean is_timeup;
 	
-	public static final int CUTTINGBOARD_COOLDOWN = 1;
-	public static final int FRYINGPAN_COOLDOWN = 2;
+	public static final int CUTTINGBOARD_COOLDOWN = 2;
+	public static final int FRYINGPAN_COOLDOWN = 5;
 	
 	public static int Cabbage_AMOUNT;
 	public static int Tomato_AMOUNT;
@@ -36,7 +36,7 @@ public class GameController {
 	private static int successDish;
 	private static int failedDish;
 	
-	public static final int timeToAddMenu = 40;
+	public static final int timeToAddMenu = 20;
 	
 	private static int timeChecked;
 
@@ -47,7 +47,7 @@ public class GameController {
 		
 		setSuccessDish(0);
 		setFailedDish(0);
-		setCoinCount(100);
+		setCoinCount(150);
 		setScoreCount(0);
 		setIsTimeUp(false);
 		setTimeChecked(10000);

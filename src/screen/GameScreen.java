@@ -87,8 +87,8 @@ public class GameScreen {
 				OrderManager.addMenu();
 				System.out.println(GameController.getSuccessDish()+"  "+GameController.getFailedDish());
 				if(gametime <= 0) {
-					System.out.println("TIMES UP");
 					GameController.setIsTimeUp(true);
+					gametime--;
 					this.stop();
 				}
 			}
