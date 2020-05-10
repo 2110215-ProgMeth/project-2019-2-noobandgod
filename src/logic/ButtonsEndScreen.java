@@ -6,8 +6,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import sharedObject.AudioLoader;
 
 public class ButtonsEndScreen extends HBox{
 	public Button restartButton;
@@ -25,6 +30,9 @@ public class ButtonsEndScreen extends HBox{
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);
 		quitButton.setFont(new Font(30));
+        restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+		setUpButton();
 		getChildren().addAll(restartButton, quitButton);
 	}
 	public void setupExitButton() {
@@ -32,12 +40,27 @@ public class ButtonsEndScreen extends HBox{
 			
 			@Override
 			public void handle(ActionEvent event) {
+//				AudioLoader.BUTTON_CLICK.play();
 				Platform.exit();
 			}
 		});
 	}
+	public void setUpButton() {
+			restartButton.setOnMouseEntered(e ->{
+				restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			restartButton.setOnMouseExited(e ->{
+				restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			quitButton.setOnMouseEntered(e ->{
+				quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+			quitButton.setOnMouseExited(e ->{
+				quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+			});
+		}
+	}
 
-}
 
 
 

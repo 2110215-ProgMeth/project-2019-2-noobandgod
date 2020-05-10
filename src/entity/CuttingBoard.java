@@ -4,7 +4,6 @@ import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
 
-import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
@@ -29,7 +28,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 		OnCuttingBoard = onCuttingBoard;
 	}
 	
-	public boolean interacts(Player e) throws InteractFailedException{//dont forget to setplace
+	public boolean interacts(Player e){//dont forget to setplace
 		if (!e.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				Ingredient entity_clone = this.removedEntityOnCuttingBoard();
@@ -100,9 +99,9 @@ public class CuttingBoard extends Equipment implements Interactable{
 			}.start();
 			return true;
 		}
-		System.out.println("There is nothing to be cooked");
-		return false;
-		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
+//		System.out.println("There is nothing to be cooked");
+//		return false;
+		throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
 	}
 	
 	public Ingredient getOnCuttingBoardExists() {

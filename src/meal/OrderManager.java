@@ -12,6 +12,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import logic.GameController;
 import screen.GameScreen;
+import sharedObject.AudioLoader;
 
 public class OrderManager {
 	private ArrayList<Menu> orders;
@@ -90,6 +91,7 @@ public class OrderManager {
 				menuremoved = removeOrder(indexmatch);
 				GameController.setSuccessDish(GameController.getSuccessDish() + 1);
 				OrderBox.sendOrder(menuremoved);
+//				AudioLoader.SUCCESS_SEND.play();
 			} catch (RemoveOrderFailedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -134,8 +136,8 @@ public class OrderManager {
 				GameController.getOrderManager().getOrders().remove(order);
 				GameController.setFailedDish(GameController.getFailedDish() + 1);
 				GameController.addScoreCount(-5);
-			} // else if (GameController.getOrderManager().getOrders().get(order).isSend()) {
-				// GameController.getOrderManager().getOrders().remove(order);
+//				AudioLoader.ERRORR.play();
+			} 
 		SimulationManager.getOrderPane().update();
 	}
 

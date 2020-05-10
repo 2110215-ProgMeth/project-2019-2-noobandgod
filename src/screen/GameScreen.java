@@ -20,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import logic.GameController;
 import meal.OrderManager;
+import sharedObject.AudioLoader;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
 import logic.Direction;
@@ -49,6 +50,8 @@ public class GameScreen {
 		draw_origin_x = 48;
 		draw_origin_y = 24;
 		pixel = 64;
+		//---------------------------------------------------
+		//AudioLoader.GAME_SONG.playSong();
 		//---------------------------------------------------
 		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
@@ -90,6 +93,8 @@ public class GameScreen {
 					GameController.setIsTimeUp(true);
 					gametime--;
 					this.stop();
+				}if (gametime <= 20) {
+					GameController.setAlmostTimeUP(true);
 				}
 			}
 		};
@@ -116,7 +121,20 @@ public class GameScreen {
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");
+//---------------------------------------------------
+//					AudioLoader.GAME_SONG.stopSong();
+//					AudioLoader.Almost_Time_Up.stop();
+//					if (GameController.getScore_count() >= 0) {
+//						AudioLoader.CONGRAT.play();
+//					}else {
+//						AudioLoader.LOSE.play();
+//					}
+//---------------------------------------------------
 					this.stop();
+//---------------------------------------------------
+//				}if (GameController.almostTimeUP) {
+//					AudioLoader.Almost_Time_Up.play();
+//---------------------------------------------------
 				}
 				
 				//RenderableHolder.show();

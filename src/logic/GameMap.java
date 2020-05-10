@@ -20,7 +20,6 @@ import entity.base.Cookable;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
-import exception.InteractFailedException;
 import exception.SendFoodFailedException;
 import sharedObject.RenderableHolder;
 
@@ -213,7 +212,7 @@ public class GameMap {
 					} else {
 						return false;
 					}
-				} catch (InteractFailedException | SendFoodFailedException e) {
+				} catch ( SendFoodFailedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -225,7 +224,7 @@ public class GameMap {
 					} else {
 						return false;
 					}
-				} catch (InteractFailedException | SendFoodFailedException e) {
+				} catch (SendFoodFailedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}	
@@ -242,7 +241,7 @@ public class GameMap {
 						return true;
 					} else
 						return false;
-				} catch (InteractFailedException | SendFoodFailedException e) {
+				} catch (SendFoodFailedException e) {
 					e.printStackTrace();
 					return false;
 				}

@@ -3,7 +3,6 @@ package entity;
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
-import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import logic.Sprites;
@@ -19,7 +18,7 @@ public class DishPicker extends Block implements Interactable{
             p.setHolding(true);
             return true;
         } else {
-        	System.out.println("You can't take more dish, because you hands aren't available!");
+        	//System.out.println("You can't take more dish, because you hands aren't available!");
         	return false;
             //throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
         }

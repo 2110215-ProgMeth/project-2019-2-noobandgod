@@ -4,6 +4,7 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import screen.StartScreen;
+import sharedObject.AudioLoader;
 
 public class Main2 extends Application {
 	@Override
@@ -11,6 +12,7 @@ public class Main2 extends Application {
 		
 		StartScreen start = new StartScreen(primaryStage);
 		primaryStage.show();
+
 
 	}
 

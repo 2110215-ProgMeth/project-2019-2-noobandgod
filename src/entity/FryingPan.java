@@ -3,7 +3,6 @@ package entity;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
-import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
