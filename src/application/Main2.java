@@ -12,7 +12,7 @@ public class Main2 extends Application {
 		
 		StartScreen start = new StartScreen(primaryStage);
 		primaryStage.show();
-		System.out.println(AudioLoader.BUTTON_CLICK.toString());
+
 
 	}
 

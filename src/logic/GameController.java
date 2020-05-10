@@ -39,6 +39,8 @@ public class GameController {
 	public static int timeToAddMenu;
 	
 	private static int timeChecked;
+	
+	public static boolean almostTimeUP; 
 
 	public static void InitializeGame(int numberOfPlayers, String[][] map) {
 		InitializeMap(map);
@@ -51,6 +53,7 @@ public class GameController {
 		setScoreCount(0);
 		setIsTimeUp(false);
 		setTimeChecked(10000);
+		setAlmostTimeUP(false);
 		orderManager = new OrderManager();
 		
 		//Add menu testing
@@ -221,7 +224,12 @@ public class GameController {
 		GameController.timeChecked = timeChecked;
 	}
 
+	public static boolean isAlmostTimeUP() {
+		return almostTimeUP;
+	}
 
-	
+	public static void setAlmostTimeUP(boolean almostTimeUP) {
+		GameController.almostTimeUP = almostTimeUP;
+	}
 	
 }

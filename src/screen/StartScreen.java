@@ -21,6 +21,7 @@ import logic.ButtonStartScreen;
 import logic.GameController;
 import screen.GameScreen;
 import sharedObject.AudioLoader;
+import sharedObject.Song;
 public class StartScreen{
 		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
 		private Image background = new Image(image_path);		
@@ -47,11 +48,10 @@ public class StartScreen{
 		root.getChildren().addAll(canvas,menu);
 		
 		Scene scene = new Scene(root);
-		//canvas.requestFocus();
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
-		MousePressed();
+		//AudioLoader.START_SONG.playSong();
 
 
 	}
@@ -59,34 +59,43 @@ public class StartScreen{
 		gc.drawImage(background, 0, 0,900,800);
 		gc.setFill(Color.BLACK);
 		draw(gc);
-		}
+		
+	}
 	public void setupButton() {
 		
 		menu.playButton.setOnAction(new EventHandler<ActionEvent>() {
-				
 		@Override
 		public void handle(ActionEvent event) {
 //			GameScreen gameScreen = new GameScreen(primaryStage);
 //			GameController.getCurrentGameMap().printMap();
 			//AudioLoader.BUTTON_CLICK.play();
-			//AudioLoader.END.play();
-			root.getChildren().removeAll(menu);
-			EndScreen endscreen = new EndScreen(primaryStage,gc);
+			menu.setPlayerButton();
 			}
 		});
-			menu.setupExitButton();
+		menu.p1Button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+//				GameScreen gameScreen = new GameScreen(primaryStage);
+//				GameController.getCurrentGameMap().printMap();
+				//AudioLoader.BUTTON_CLICK.play();
+				//AudioLoader.START_SONG.stopSong();
+				root.getChildren().removeAll(menu);
+				EndScreen endscreen = new EndScreen(primaryStage,gc);
+				}
+			});
+		menu.p2Button.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+//				GameScreen gameScreen = new GameScreen(primaryStage);
+//				GameController.getCurrentGameMap().printMap();
+				//AudioLoader.BUTTON_CLICK.play();
+				//AudioLoader.START_SONG.stopSong();
+				root.getChildren().removeAll(menu);
+				EndScreen endscreen = new EndScreen(primaryStage,gc);
+				}
+			});
+		menu.setupExitButton();
 		setBackground();
 	}
-	public void MousePressed() {
-		menu.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent arg0) {
-				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.BUTTON_CLICK.play();
-				//AudioLoader.END.play();
-				menu.playButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.GREENYELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
-			}
-	});
-}
 }

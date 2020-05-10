@@ -31,7 +31,6 @@ public class EndScreen{
 	public EndScreen(Stage primaryStage,GraphicsContext gc) {
 		this.primaryStage = primaryStage;
 		this.draw(gc);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void draw(GraphicsContext gc) {	
@@ -40,8 +39,6 @@ public class EndScreen{
 			gc.setFill(Color.RED);
 			gc.setStroke(Color.BLUE);
 			gc.setLineWidth(2);
-			Font theFont = Font.font("Times New Roman", FontWeight.LIGHT, 100);
-			gc.setFont(theFont);
 			int score = GameController.getScore_count();
 			if (score < 100) {
 				gc.drawImage(gameOver, 0, 0,1000,800);
@@ -54,7 +51,7 @@ public class EndScreen{
 			}else if (200 <= score && score < 300) {
 				gc.drawImage(veryGood, 0, 0, 1000, 800);
 				gc.fillText("Very Good!!", 250,200);
-				gc.strokeText("Very Good!!", 250, 200);Font menu = Font.font("Times New Roman", FontWeight.LIGHT, 16);
+				gc.strokeText("Very Good!!", 250, 200);
 				gc.drawImage(excellent, 0, 0, 1000, 800);
 				gc.fillText("Excellent!!!", 250,200);
 				gc.strokeText("Excellent!!!", 250, 200);
@@ -65,6 +62,7 @@ public class EndScreen{
 			gc.strokeText("SCORE : " + score, 200, 450);
 			menu = new ButtonsEndScreen();
 			StartScreen.getRoot().getChildren().add(menu);
+			//AudioLoader.END_SONG.playSong();
 			setupButton();
 		}
 	
@@ -74,27 +72,12 @@ public class EndScreen{
 					
 			@Override
 			public void handle(ActionEvent event) {
-//				GameScreen gameScreen = new GameScreen(primaryStage);
-//				GameController.getCurrentGameMap().printMap();
+				//AudioLoader.BUTTON_CLICK.play();
+				//AudioLoader.END_SONG.stopSong();
 				StartScreen start = new StartScreen(primaryStage);
 				}
 			});
 				menu.setupExitButton();
-				MousePressed();
-		}
-		public void MousePressed() {
-			menu.setOnMouseClicked(e ->{
-				AudioLoader.BUTTON_CLICK.play();
-//				public void handle(ActionEvent event) {
-				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-			});
-			menu.setOnMouseExited(e ->{
-				
-//				public void handle(ActionEvent event) {
-				menu.restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
-				menu.quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
-			});
 		}
 		
 }

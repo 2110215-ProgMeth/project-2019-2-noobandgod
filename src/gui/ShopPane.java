@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import logic.GameController;
+import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
 public class ShopPane extends StackPane {
@@ -69,12 +70,13 @@ public class ShopPane extends StackPane {
 			@Override
 			public void handle(ActionEvent arg0) {
 				if (GameController.getCoin_count() - totalpay >= 0) {
-					
+//					AudioLoader.BUTTON_CLICK.play();
 					GameController.addCoinCount(-totalpay); //pay money
 					addIngredientFromBuying();
 					resetShop();
 					
 				} else {
+//					AudioLoader.ERRORR.play();
 					System.out.println("Your money is not enough");
 				}
 				
