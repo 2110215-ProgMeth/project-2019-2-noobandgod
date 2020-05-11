@@ -115,6 +115,7 @@ public class GameScreen {
 				//===========================================
 				SimulationManager.updatePane();
 				//GameController.getOrderManager().printTimeLeftOfEachMenu();
+				System.gc();
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");

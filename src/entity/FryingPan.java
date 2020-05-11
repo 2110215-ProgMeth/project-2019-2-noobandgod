@@ -132,7 +132,7 @@ public class FryingPan extends Equipment implements Interactable{
 		int y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.fryingpan_infront_Image, x, y-6,65,70);
+			gc.drawImage(RenderableHolder.fryingpan_infront_Image, x, y-6,64,70);
 		} else {
 			gc.drawImage(RenderableHolder.fryingpan_between_Image, x, y-6);
 		} 
