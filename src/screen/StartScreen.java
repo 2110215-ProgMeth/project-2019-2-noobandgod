@@ -1,5 +1,9 @@
 package screen;
 
+
+import java.io.File;
+import java.net.URL;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,6 +16,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -21,7 +28,6 @@ import logic.ButtonStartScreen;
 import logic.GameController;
 import screen.GameScreen;
 import sharedObject.AudioLoader;
-import sharedObject.Song;
 public class StartScreen{
 		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
 		private Image background = new Image(image_path);		
@@ -41,7 +47,9 @@ public class StartScreen{
 		menu = new ButtonStartScreen();
 		setupButton();
 
-	}
+        
+    }
+
 	public void draw(GraphicsContext gc) {
 		root = new StackPane();
 		root.setPrefSize(1000, 800);
@@ -51,7 +59,8 @@ public class StartScreen{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
-		//AudioLoader.START_SONG.playSong();
+		AudioLoader.Start_Screen.play();
+		//AudioLoader.Start_Screen.setVolume(0.01);
 
 
 	}
@@ -68,7 +77,7 @@ public class StartScreen{
 		public void handle(ActionEvent event) {
 //			GameScreen gameScreen = new GameScreen(primaryStage);
 //			GameController.getCurrentGameMap().printMap();
-			//AudioLoader.BUTTON_CLICK.play();
+			AudioLoader.BUTTON_CLICK.play();
 			menu.setPlayerButton();
 			}
 		});
@@ -77,8 +86,8 @@ public class StartScreen{
 			public void handle(ActionEvent event) {
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
-				//AudioLoader.BUTTON_CLICK.play();
-				//AudioLoader.START_SONG.stopSong();
+				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.Start_Screen.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}
@@ -89,8 +98,8 @@ public class StartScreen{
 			public void handle(ActionEvent event) {
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
-				//AudioLoader.BUTTON_CLICK.play();
-				//AudioLoader.START_SONG.stopSong();
+				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.Start_Screen.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}

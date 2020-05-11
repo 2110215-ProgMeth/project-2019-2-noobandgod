@@ -40,7 +40,7 @@ public class ButtonsEndScreen extends HBox{
 			
 			@Override
 			public void handle(ActionEvent event) {
-//				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.BUTTON_CLICK.play();
 				Platform.exit();
 			}
 		});

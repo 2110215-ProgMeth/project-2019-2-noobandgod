@@ -50,9 +50,7 @@ public class GameScreen {
 		draw_origin_x = 48;
 		draw_origin_y = 24;
 		pixel = 64;
-		//---------------------------------------------------
-		//AudioLoader.GAME_SONG.playSong();
-		//---------------------------------------------------
+//		AudioLoader.Game_Screen.play();
 		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 		
@@ -120,20 +118,26 @@ public class GameScreen {
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");
-//---------------------------------------------------
-//					AudioLoader.GAME_SONG.stopSong();
+
+					
+					
+//					AudioLoader.Game_Screen.stop();
 //					AudioLoader.Almost_Time_Up.stop();
 //					if (GameController.getScore_count() >= 0) {
 //						AudioLoader.CONGRAT.play();
 //					}else {
 //						AudioLoader.LOSE.play();
 //					}
-//---------------------------------------------------
+					
+					
+
 					this.stop();
-//---------------------------------------------------
+					
+					
 //				}if (GameController.almostTimeUP) {
 //					AudioLoader.Almost_Time_Up.play();
-//---------------------------------------------------
+
+					
 				}
 				
 				//RenderableHolder.show();
@@ -143,7 +147,6 @@ public class GameScreen {
 		
 		timer.start();
 		animationTimer.start();
-		
 		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setScene(scene);

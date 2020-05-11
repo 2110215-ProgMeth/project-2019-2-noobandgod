@@ -62,7 +62,7 @@ public class EndScreen{
 			gc.strokeText("SCORE : " + score, 200, 450);
 			menu = new ButtonsEndScreen();
 			StartScreen.getRoot().getChildren().add(menu);
-			//AudioLoader.END_SONG.playSong();
+			AudioLoader.End_Screen.play();
 			setupButton();
 		}
 	
@@ -72,8 +72,8 @@ public class EndScreen{
 					
 			@Override
 			public void handle(ActionEvent event) {
-				//AudioLoader.BUTTON_CLICK.play();
-				//AudioLoader.END_SONG.stopSong();
+				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.End_Screen.stop();
 				StartScreen start = new StartScreen(primaryStage);
 				}
 			});

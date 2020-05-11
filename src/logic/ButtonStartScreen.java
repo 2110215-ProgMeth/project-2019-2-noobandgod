@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -64,7 +65,7 @@ public class ButtonStartScreen extends VBox {
 
 			@Override
 			public void handle(ActionEvent event) {
-//				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.BUTTON_CLICK.play();
 				Platform.exit();
 			}
 		});
@@ -76,6 +77,7 @@ public class ButtonStartScreen extends VBox {
 			public void handle(MouseEvent arg0) {
 				playButton.setBackground(
 						new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				//playButton.setEffect(new DropShadow());
 			}
 		});
 		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
