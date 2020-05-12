@@ -67,6 +67,10 @@ public class CuttingBoard extends Equipment implements Interactable{
 		Ingredient removedEntity = (Ingredient) getOnCuttingBoardExists().clone();
 		
 		getOnCuttingBoardExists().setDestroyed(true);
+		
+		Entity oncuttingBoardEntity = getOnCuttingBoardExists();
+		oncuttingBoardEntity = null;
+		
 		setOnCuttingBoardExists(null);
 		return removedEntity;
 	}

@@ -73,6 +73,10 @@ public class FryingPan extends Equipment implements Interactable{
 		Ingredient removedEntity = (Ingredient) getOnFryingPanExists().clone();
 		
 		getOnFryingPanExists().setDestroyed(true);
+		
+		Entity onfryingpanEntity = getOnFryingPanExists();
+		onfryingpanEntity = null;
+		
 		setOnFryingPanExists(null);
 		return removedEntity;
 	}
