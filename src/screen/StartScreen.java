@@ -1,9 +1,5 @@
 package screen;
 
-
-import java.io.File;
-import java.net.URL;
-
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,9 +26,8 @@ import logic.ButtonStartScreen;
 import logic.GameController;
 import screen.GameScreen;
 import sharedObject.AudioLoader;
+import sharedObject.RenderableHolder;
 public class StartScreen{
-		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
-		private Image background = new Image(image_path);		
 		private Stage primaryStage;
 		private Canvas canvas;
 		private GraphicsContext gc;
@@ -77,7 +72,7 @@ public class StartScreen{
 
 	}
 	public void setBackground() {
-		gc.drawImage(background, 0, 0,1000,800);
+		gc.drawImage(RenderableHolder.startscreen_bg_Image, 0, 0,1000,800);
 		gc.setFill(Color.BLACK);
 		draw(gc);
 		

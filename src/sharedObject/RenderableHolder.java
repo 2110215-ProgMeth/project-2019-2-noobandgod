@@ -18,8 +18,7 @@ public class RenderableHolder {
 	
 	//---------------[StartScreen & EndScreen]------------------
 	
-	
-	
+	public static Image startscreen_bg_Image;
 	
 	public static Image endscreen_bg_good_Image;
 	public static Image endscreen_bg_bad_Image;
@@ -189,6 +188,8 @@ public class RenderableHolder {
 		String p = "picture/";
 		
 		//---------------[StartScreen & EndScreen]------------------
+		
+		startscreen_bg_Image = new Image(ClassLoader.getSystemResource(p+"Background.png").toString());
 		
 		endscreen_bg_bad_Image = new Image(ClassLoader.getSystemResource(p+"endscreen_bg_bad.png").toString());
 		endscreen_bg_good_Image = new Image(ClassLoader.getSystemResource(p+"endscreen_bg_good.png").toString());
