@@ -38,11 +38,11 @@ public class EndScreen {
 		gc.setFont(new Font(100));
 		int score = GameController.getScore_count();
 		if (score < 0) {
-			gc.drawImage(RenderableHolder.endscreen_bg_bad_Image, 1000, 800);
+			gc.drawImage(RenderableHolder.endscreen_bg_bad_Image, 0, 0);
 			gc.fillText("Bad!!", 400, 250);
 			gc.strokeText("Bad!!", 400, 250);
 		} else {
-			gc.drawImage(RenderableHolder.endscreen_bg_good_Image,1000, 800);
+			gc.drawImage(RenderableHolder.endscreen_bg_good_Image,0, 0);
 			if (score >= 0 && score < 100) {
 				gc.fillText("Bad!!", 400, 250);
 				gc.strokeText("Bad!!", 400, 250);
