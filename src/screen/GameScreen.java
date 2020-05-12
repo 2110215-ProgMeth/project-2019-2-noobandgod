@@ -34,25 +34,25 @@ public class GameScreen {
 	public static GraphicsContext gamegc;
 	public static GraphicsContext timegc;
 
-	public static int draw_origin_x;
-	public static int draw_origin_y;
-	public static int pixel;
+	public final static int draw_origin_x = 48;
+	public final static int draw_origin_y = 24;
+	public final static int pixel = 64;
 
 	public static int gametime;
 
-	public GameScreen(Stage primaryStage) {
+	public GameScreen(Stage primaryStage, int numberofPlayer) {
 		this.primaryStage = primaryStage;
 		// ---------------------------------------------------
 		// Initialzing map and system
-		String[][] map_1 = CSVParser.readCSV("map_1.csv"); // don't delete this line please
-		String[][] map_2 = CSVParser.readCSV("map_2.csv");
-
-		GameController.InitializeGame(2, map_1);
+		if (numberofPlayer == 1) {
+			String[][] map_1 = CSVParser.readCSV("map_1.csv");
+			GameController.InitializeGame(1, map_1);
+		} else if (numberofPlayer == 2) {
+			String[][] map_1 = CSVParser.readCSV("map_2.csv");
+			GameController.InitializeGame(2, map_1);
+		}
 		SimulationManager.initializeAllPane();
-
-		draw_origin_x = 48;
-		draw_origin_y = 24;
-		pixel = 64;
+		//----------------------------------------------------
 		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 
