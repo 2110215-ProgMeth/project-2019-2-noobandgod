@@ -29,7 +29,7 @@ public class GameController {
 	
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
-	public static final int MAX_TIME = 225;
+	public static final int MAX_TIME = 32;
 	public final static int MAX_ORDER = 5;
 	
 	public static OrderManager orderManager;
@@ -39,6 +39,8 @@ public class GameController {
 	public static int timeToAddMenu;
 	
 	private static int timeChecked;
+	
+	private static int  almostTimeUpChecked;
 
 	public static void InitializeGame(int numberOfPlayers, String[][] map) {
 		InitializeMap(map);
@@ -50,6 +52,7 @@ public class GameController {
 		setCoinCount(150);
 		setScoreCount(0);
 		setIsTimeUp(false);
+		setAlmostTimeUpChecked(0);
 		setTimeChecked(10000);
 		orderManager = new OrderManager();
 		
@@ -219,6 +222,14 @@ public class GameController {
 
 	public static void setTimeChecked(int timeChecked) {
 		GameController.timeChecked = timeChecked;
+	}
+
+	public static int isAlmostTimeUpChecked() {
+		return almostTimeUpChecked;
+	}
+
+	public static void setAlmostTimeUpChecked(int almostTimeUpChecked) {
+		GameController.almostTimeUpChecked = almostTimeUpChecked;
 	}
 
 }

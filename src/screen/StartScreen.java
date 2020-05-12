@@ -61,7 +61,6 @@ public class StartScreen{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
-		AudioLoader.Start_Screen.play();
 		startScreenSong = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
@@ -99,7 +98,6 @@ public class StartScreen{
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
@@ -112,7 +110,6 @@ public class StartScreen{
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);

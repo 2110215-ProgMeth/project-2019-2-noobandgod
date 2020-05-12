@@ -65,7 +65,6 @@ public class EndScreen{
 			gc.strokeText("SCORE : " + score, 200, 450);
 			menu = new ButtonsEndScreen();
 			StartScreen.getRoot().getChildren().add(menu);
-			AudioLoader.End_Screen.play();
 			endScreenSong = new AnimationTimer() {
 				@Override
 				public void handle(long now) {
@@ -85,7 +84,7 @@ public class EndScreen{
 			@Override
 			public void handle(ActionEvent event) {
 				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.End_Screen.stop();
+
 				endScreenSong.stop();
 				StartScreen start = new StartScreen(primaryStage);
 				}

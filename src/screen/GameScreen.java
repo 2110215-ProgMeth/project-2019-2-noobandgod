@@ -28,6 +28,9 @@ import logic.Direction;
 public class GameScreen {
 	private Stage primaryStage;
 	private Canvas gameCanvas;
+	
+	private AnimationTimer almostTimeUp;
+	
 	public static GraphicsContext gamegc;
 	public static GraphicsContext timegc;
 	
@@ -36,6 +39,7 @@ public class GameScreen {
 	public static int pixel;
 	
 	public static int gametime;
+	
 	
 	public GameScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -50,7 +54,6 @@ public class GameScreen {
 		draw_origin_x = 48;
 		draw_origin_y = 24;
 		pixel = 64;
-		AudioLoader.Game_Screen.play();
 		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 		
@@ -91,11 +94,19 @@ public class GameScreen {
 					GameController.setIsTimeUp(true);
 					gametime--;
 					this.stop();
+				}if (gametime == 30) {
+					GameController.setAlmostTimeUpChecked(GameController.isAlmostTimeUpChecked()+1);
 				}
-				boolean timeChecked = false;
-				if (gametime == 20 && !timeChecked ) {
-					AudioLoader.Almost_Time_Up.play();
-					timeChecked = true;
+				
+				if (GameController.isAlmostTimeUpChecked() == 1 ) {
+					almostTimeUp = new AnimationTimer() {
+						@Override
+						public void handle(long now) {
+							if(!AudioLoader.Almost_Time_Up.isPlaying()) 
+								AudioLoader.Almost_Time_Up.play();
+						}
+					};
+					almostTimeUp.start();
 				}
 			}
 		};
@@ -122,15 +133,17 @@ public class GameScreen {
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");
-	
-					AudioLoader.Game_Screen.stop();
-					AudioLoader.Almost_Time_Up.stop();
 					if (GameController.getScore_count() >= 0) {
 						AudioLoader.CONGRAT.play();
 					}else {
 						AudioLoader.LOSE.play();
 					}
+					AudioLoader.Game_Screen.stop();
+					almostTimeUp.stop();
 					this.stop();
+				}
+				if (!AudioLoader.Game_Screen.isPlaying()) {
+					AudioLoader.Game_Screen.play();
 				}
 				
 				//RenderableHolder.show();
