@@ -25,7 +25,6 @@ public class OrderPane extends HBox {
 	
 	public void update() {
 		this.getChildren().clear();
-		System.out.println("UPDATING ORDERPANE!");
 		
 		for (Menu food : GameController.getOrderManager().getOrders()) {
 				OrderBox order = new OrderBox(food);

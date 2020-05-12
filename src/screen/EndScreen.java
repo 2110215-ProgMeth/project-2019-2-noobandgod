@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import logic.ButtonsEndScreen;
 import logic.GameController;
 import sharedObject.AudioLoader;
+import sharedObject.RenderableHolder;
 
 public class EndScreen{
 	private Stage primaryStage;
@@ -45,7 +46,11 @@ public class EndScreen{
 			gc.setLineWidth(2);
 			gc.setFont(new Font(100));
 			int score = GameController.getScore_count();
-			if (score < 100) {
+			if (score < 0) {
+				gc.drawImage(RenderableHolder., arg1, arg2);
+				gc.fillText("Bad!!", 400, 250);
+				gc.strokeText("Bad!!", 400, 250);
+			}else if ( score >= 0 && score < 100) {
 				gc.drawImage(gameOver, 0, 0,1000,800);
 				gc.fillText("Bad!!", 400, 250);
 				gc.strokeText("Bad!!", 400, 250);
