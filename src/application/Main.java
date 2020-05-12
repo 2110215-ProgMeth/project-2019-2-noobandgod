@@ -27,7 +27,7 @@ import sharedObject.RenderableHolder;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
-		GameScreen gameScreen = new GameScreen(primaryStage);
+		GameScreen gameScreen = new GameScreen(primaryStage,2);
 		GameController.getCurrentGameMap().printMap();
 		primaryStage.setResizable(false); //Unable to resize!
 		primaryStage.setTitle("Umm Aroiii!!");
