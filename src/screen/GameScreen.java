@@ -28,7 +28,6 @@ import logic.Direction;
 public class GameScreen {
 	private Stage primaryStage;
 	private Canvas gameCanvas;
-
 	private AnimationTimer almostTimeUp;
 
 	public static GraphicsContext gamegc;
@@ -130,6 +129,8 @@ public class GameScreen {
 					}
 					AudioLoader.Game_Screen.stop();
 					this.stop();
+					root.getChildren().clear();
+					EndScreen end = new EndScreen(primaryStage);
 					
 				}
 				if (!AudioLoader.Game_Screen.isPlaying() && gametime > 0) {

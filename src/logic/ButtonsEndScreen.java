@@ -25,16 +25,12 @@ public class ButtonsEndScreen extends HBox{
 		setAlignment(Pos.BOTTOM_CENTER);
 		setPadding(new Insets(100));
 		
-		restartButton = new Button("Restart");
-		restartButton.setPrefSize(300,75);
-		restartButton.setFont(new Font(30));
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);
 		quitButton.setFont(new Font(30));
-        restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
         quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		setUpButton();
-		getChildren().addAll(restartButton, quitButton);
+		getChildren().addAll(quitButton);
 	}
 	public void setupExitButton() {
 		quitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -47,14 +43,6 @@ public class ButtonsEndScreen extends HBox{
 		});
 	}
 	public void setUpButton() {
-			restartButton.setOnMouseEntered(e ->{
-				restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
-				restartButton.setEffect(new DropShadow());
-			});
-			restartButton.setOnMouseExited(e ->{
-				restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-				restartButton.setEffect(null);
-			});
 			quitButton.setOnMouseEntered(e ->{
 				quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
 				quitButton.setEffect(new DropShadow());

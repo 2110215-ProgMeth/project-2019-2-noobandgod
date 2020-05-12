@@ -4,12 +4,14 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -21,18 +23,28 @@ import sharedObject.RenderableHolder;
 
 public class EndScreen {
 	private Stage primaryStage;
-
+	private Canvas canvas;
+	private GraphicsContext gc;
 	private static ButtonsEndScreen menu;
 	private AnimationTimer endScreenSong;
+	public static StackPane root;
 
-	public EndScreen(Stage primaryStage, GraphicsContext gc) {
+	public EndScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
+		canvas = new Canvas(1000,800);
+		gc = canvas.getGraphicsContext2D();
+		root = new StackPane();
+		root.setPrefSize(1000, 800);
+		root.getChildren().add(canvas);
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Umm!! Aroiii");
+		primaryStage.setResizable(false);
 		this.draw(gc);
 
 	}
 
 	public void draw(GraphicsContext gc) {
-		GameController.setScoreCount(199);
 		gc.setFill(Color.RED);
 		gc.setStroke(Color.BLUE);
 		gc.setLineWidth(2);
@@ -82,7 +94,7 @@ public class EndScreen {
 		gc.strokeText(Integer.toString(GameController.getFailedDish()), 750, 450);
 
 		menu = new ButtonsEndScreen();
-		StartScreen.getRoot().getChildren().add(menu);
+		root.getChildren().add(menu);
 		endScreenSong = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
@@ -96,17 +108,6 @@ public class EndScreen {
 	}
 
 	public void setupButton() {
-
-		menu.restartButton.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent event) {
-				AudioLoader.BUTTON_CLICK.play();
-				AudioLoader.End_Screen.stop();
-				endScreenSong.stop();
-				StartScreen start = new StartScreen(primaryStage);
-			}
-		});
 		menu.setupExitButton();
 	}
 

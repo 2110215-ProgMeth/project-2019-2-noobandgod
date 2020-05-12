@@ -33,7 +33,7 @@ import sharedObject.AudioLoader;
 public class StartScreen{
 		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
 		private Image background = new Image(image_path);		
-		private Stage primaryStage;
+		public Stage primaryStage;
 		private Canvas canvas;
 		private GraphicsContext gc;
 		public static StackPane root;
@@ -95,7 +95,6 @@ public class StartScreen{
 			@Override
 			public void handle(ActionEvent event) {
 				GameScreen gameScreen = new GameScreen(primaryStage,1);
-				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
@@ -105,13 +104,10 @@ public class StartScreen{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				//GameScreen gameScreen = new GameScreen(primaryStage,2);
-				//GameController.getCurrentGameMap().printMap();
+				GameScreen gameScreen = new GameScreen(primaryStage,2);
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
-				root.getChildren().removeAll(menu);
-				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}
 			});
 		menu.setupExitButton();
