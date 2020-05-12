@@ -107,6 +107,10 @@ public class Station extends Block implements Interactable{
 		Entity removedEntity = (Entity) getOnStationExists().clone();
 		
 		getOnStationExists().setDestroyed(true);
+		
+		Entity onstationEntity = getOnStationExists();
+		onstationEntity = null;
+		
 		setOnStationExists(null);
 		return removedEntity;
 	}
