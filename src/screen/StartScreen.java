@@ -94,7 +94,7 @@ public class StartScreen{
 		menu.p1Button.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				GameScreen gameScreen = new GameScreen(primaryStage);
+				GameScreen gameScreen = new GameScreen(primaryStage,1);
 				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
@@ -107,8 +107,8 @@ public class StartScreen{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				//GameScreen gameScreen = new GameScreen(primaryStage);
-				//GameController.getCurrentGameMap().printMap();
+				GameScreen gameScreen = new GameScreen(primaryStage,2);
+				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
