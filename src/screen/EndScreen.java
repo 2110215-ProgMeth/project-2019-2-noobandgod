@@ -28,7 +28,11 @@ public class EndScreen {
 	private static ButtonsEndScreen menu;
 	private AnimationTimer endScreenSong;
 	public static StackPane root;
-
+	private static final Font mainfont = Font.loadFont(ClassLoader.getSystemResourceAsStream("font/supermarket.ttf"), 100);
+	private static final Font scorefont = Font.loadFont(ClassLoader.getSystemResourceAsStream("font/supermarket.ttf"), 50);
+	private static final Font detailfont = Font.loadFont(ClassLoader.getSystemResourceAsStream("font/supermarket.ttf"), 40);
+	private static int y = 230;
+	
 	public EndScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		canvas = new Canvas(1000,800);
@@ -45,54 +49,75 @@ public class EndScreen {
 	}
 
 	public void draw(GraphicsContext gc) {
-		gc.setFill(Color.RED);
-		gc.setStroke(Color.BLUE);
 		gc.setLineWidth(2);
-		gc.setFont(new Font(100));
-		int score = GameController.getScore_count();
+		gc.setFont(mainfont);
+		int s = GameController.getScore_count();
+		int bonus = GameController.getCoin_count()/10;
+		int score = s+bonus;
+		
 			if (score < 100) {
 				gc.drawImage(RenderableHolder.endscreen_bg_bad_Image, 0, 0);
-				gc.fillText("Bad!!", 400, 250);
-				gc.strokeText("Bad!!", 400, 250);
+				
+				gc.setFill(Color.RED);
+				gc.setStroke(Color.DARKRED);
+				gc.fillText("Bad!!", 420, y);
+				gc.strokeText("Bad!!", 420, y);
+			
 			}else if (score >= 100 && score < 250) {
 				gc.drawImage(RenderableHolder.endscreen_bg_good_Image, 0, 0);
 				gc.drawImage(RenderableHolder.star_Image, 450, 50 , 100 ,100);
-				gc.fillText("Good!!", 350, 250);
-				gc.strokeText("Good!!", 350, 250);
+				
+				gc.setFill(Color.BLUE);
+				gc.setStroke(Color.DARKBLUE);
+				gc.fillText("Good!!", 370, y);
+				gc.strokeText("Good!!", 370, y);
+				
 			} else if (250 <= score && score < 400) {
 				gc.drawImage(RenderableHolder.endscreen_bg_good_Image, 0, 0);
 				gc.drawImage(RenderableHolder.star_Image, 375, 50 , 100 ,100);
 				gc.drawImage(RenderableHolder.star_Image, 525, 50 , 100 ,100);
-				gc.fillText("Very Good!!", 250, 250);
-				gc.strokeText("Very Good!!", 250, 250);
+				
+				gc.setFill(Color.BLUE);
+				gc.setStroke(Color.DARKBLUE);
+				gc.fillText("Very Good!!", 280, y);
+				gc.strokeText("Very Good!!", 280, y);
+			
 			} else if (score >= 400) {
 				gc.drawImage(RenderableHolder.endscreen_bg_good_Image, 0, 0);
 				gc.drawImage(RenderableHolder.star_Image, 325, 50 , 100 ,100);
 				gc.drawImage(RenderableHolder.star_Image, 450, 50 , 100 ,100);
 				gc.drawImage(RenderableHolder.star_Image, 575, 50 , 100 ,100);
-				gc.fillText("Excellent!!!", 275, 250);
-				gc.strokeText("Excellent!!!", 275, 250);
+				
+				gc.setFill(Color.GOLD);
+				gc.setStroke(Color.YELLOW);
+				gc.fillText("Excellent!!!", 290, y);
+				gc.strokeText("Excellent!!!", 290, y);
 			}
-		gc.setFont(new Font(75));
-		gc.setFill(Color.GREEN);
-		gc.setStroke(Color.YELLOW);
-		gc.fillText("SCORE : " + score, 300, 550);
-		gc.strokeText("SCORE : " + score, 300, 550);
-
-		gc.setFont(new Font(50));
-		gc.setFill(Color.WHITE);
-		gc.setStroke(Color.BLACK);
-
-		gc.fillText("Orders delivered : ", 250, 350);
-		gc.strokeText("Orders delivered : ", 250, 350);
-		gc.fillText(Integer.toString(GameController.getSuccessDish()), 750, 350);
-		gc.strokeText(Integer.toString(GameController.getSuccessDish()), 750, 350);
-
-		gc.fillText("Orders failed : ", 250, 450);
-		gc.strokeText("Orders failed : ", 250, 450);
-		gc.fillText(Integer.toString(GameController.getFailedDish()), 750, 450);
-		gc.strokeText(Integer.toString(GameController.getFailedDish()), 750, 450);
-
+			
+		gc.setFont(detailfont);
+		gc.setLineWidth(1);
+		
+		gc.setFill(Color.DARKGREEN);
+		gc.fillText("Orders delivered : ", 250, y+90);
+		
+		if (0 <= GameController.getSuccessDish() && GameController.getSuccessDish() <= 9) {
+			gc.fillText(Integer.toString(GameController.getSuccessDish()), 750, y+90);
+		} else if (10 <= GameController.getSuccessDish() && GameController.getSuccessDish() <= 99) {
+			gc.fillText(Integer.toString(GameController.getSuccessDish()), 734, y+90);
+		}
+		
+		gc.setFill(Color.RED);
+		gc.fillText("Orders failed : ", 250, y+140);;
+		
+		if (0 <= GameController.getFailedDish() && GameController.getFailedDish() <= 9) {
+			gc.fillText(Integer.toString(GameController.getFailedDish()), 750, y+140);
+		} else if (10 <= GameController.getFailedDish() && GameController.getFailedDish() <= 99) {
+			gc.fillText(Integer.toString(GameController.getFailedDish()), 734, y+140);
+		}
+		
+		drawLine(gc);
+		drawScoreandBonus(gc, s, bonus);
+		
 		menu = new ButtonsEndScreen();
 		root.getChildren().add(menu);
 		endScreenSong = new AnimationTimer() {
@@ -109,6 +134,66 @@ public class EndScreen {
 
 	public void setupButton() {
 		menu.setupExitButton();
+	}
+	
+	public void drawLine(GraphicsContext gc) {
+		gc.beginPath();
+		gc.moveTo(245, y+170);
+		gc.lineTo(770, y+170);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(3);
+		gc.stroke();
+		
+		gc.beginPath();
+		gc.moveTo(245, y+300);
+		gc.lineTo(770, y+300);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(3);
+		gc.stroke();
+		
+		gc.beginPath();
+		gc.moveTo(245, y+370);
+		gc.lineTo(770, y+370);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(3);
+		gc.stroke();
+		
+		gc.beginPath();
+		gc.moveTo(245, y+375);
+		gc.lineTo(770, y+375);
+		gc.setStroke(Color.BLACK);
+		gc.setLineWidth(3);
+		gc.stroke();
+	}
+	
+	public void drawScoreandBonus(GraphicsContext gc,int s,int bonus) {		
+		gc.setFill(Color.BLACK);
+		gc.fillText("Score : ", 250, y+220);
+		int digit1 = Integer.toString(s).length();
+		gc.fillText(Integer.toString(s), 750-16*(digit1-1), y+220);
+		
+		//-----------------------------------------------------------
+		
+		gc.setFill(Color.BLUE);
+		gc.fillText("Money Bonus : ", 250, y+270);
+		int digit2 = Integer.toString(bonus).length();
+		gc.fillText("+"+Integer.toString(bonus), 750-16*(digit2), y+270);
+		
+		//-----------------------------------------------------------
+
+		gc.setFont(scorefont);
+		gc.setLineWidth(1);
+		gc.setFill(Color.BLACK);
+		gc.setStroke(Color.GOLD);
+		gc.fillText("TOTAL SCORE : ", 250, y+350);
+		gc.strokeText("TOTAL SCORE : ", 250, y+350);
+		
+		int score = s + bonus;
+		int digit3 = Integer.toString(score).length();
+		
+		gc.setFill(Color.BLACK);
+		gc.fillText(Integer.toString(score), 750-20*(digit3-1), y+350);
+		
 	}
 
 }

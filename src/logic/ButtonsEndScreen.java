@@ -23,7 +23,7 @@ public class ButtonsEndScreen extends HBox{
 		setPrefWidth(700);
 		setPrefHeight(150);
 		setAlignment(Pos.BOTTOM_CENTER);
-		setPadding(new Insets(100));
+		setPadding(new Insets(75));
 		
 		quitButton = new Button("Quit");		
 		quitButton.setPrefSize(300, 75);

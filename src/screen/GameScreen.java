@@ -122,7 +122,7 @@ public class GameScreen {
 
 				if (GameController.is_timeup) {
 					System.out.println("TIME UP");
-					if (GameController.getScore_count() >= 0) {
+					if (GameController.getScore_count() >= 100) {
 						AudioLoader.CONGRAT.play();
 					} else {
 						AudioLoader.LOSE.play();
