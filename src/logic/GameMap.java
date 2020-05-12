@@ -257,7 +257,7 @@ public class GameMap {
 						if(t.cooks(p)) {
 							return true;
 						} else
-							AudioLoader.ERROR.stop();
+							AudioLoader.ERROR.play();
 							return false;
 					} catch (CookFailedException e) {
 						AudioLoader.ERROR.play();
