@@ -91,9 +91,10 @@ public class OrderManager {
 				menuremoved = removeOrder(indexmatch);
 				GameController.setSuccessDish(GameController.getSuccessDish() + 1);
 				OrderBox.sendOrder(menuremoved);
-//				AudioLoader.SUCCESS_SEND.play();
+				AudioLoader.SUCCESS_SEND.play();
 			} catch (RemoveOrderFailedException e) {
 				// TODO Auto-generated catch block
+				AudioLoader.ERROR.play();
 				e.printStackTrace();
 				return false;
 			}
