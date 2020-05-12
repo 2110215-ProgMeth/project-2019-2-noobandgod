@@ -94,23 +94,15 @@ public class GameScreen {
 					gametime--;
 					this.stop();
 				}
-				if (gametime == 30) {
+				if (gametime == 20) {
 					GameController.setAlmostTimeUpChecked(GameController.isAlmostTimeUpChecked() + 1);
 					if (GameController.isAlmostTimeUpChecked() == 1) {
-						almostTimeUp.start();
+						AudioLoader.Almost_Time_Up.play();
 					}
 				}
 
 			}
 		};
-
-		almostTimeUp = new AnimationTimer() {
-			public void handle(long now) {
-				if (!AudioLoader.Almost_Time_Up.isPlaying())
-					AudioLoader.Almost_Time_Up.play();
-			}
-		};
-
 		rightBox.getChildren().addAll(timeCanvas, SimulationManager.getShopPane());
 		// ---------------------------------------------------
 		root.getChildren().addAll(leftBox, rightBox);
@@ -140,8 +132,6 @@ public class GameScreen {
 					System.out.println(AudioLoader.Game_Screen.isPlaying());
 					System.out.println(AudioLoader.Almost_Time_Up.isPlaying());
 					AudioLoader.Game_Screen.stop();
-					almostTimeUp.stop();
-					AudioLoader.Almost_Time_Up.stop();
 					System.out.println(AudioLoader.Game_Screen.isPlaying());
 					System.out.println(AudioLoader.Almost_Time_Up.isPlaying());
 					this.stop();
