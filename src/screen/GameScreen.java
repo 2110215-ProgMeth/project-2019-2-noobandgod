@@ -129,14 +129,11 @@ public class GameScreen {
 					} else {
 						AudioLoader.LOSE.play();
 					}
-					System.out.println(AudioLoader.Game_Screen.isPlaying());
-					System.out.println(AudioLoader.Almost_Time_Up.isPlaying());
 					AudioLoader.Game_Screen.stop();
-					System.out.println(AudioLoader.Game_Screen.isPlaying());
-					System.out.println(AudioLoader.Almost_Time_Up.isPlaying());
 					this.stop();
+					
 				}
-				if (!AudioLoader.Game_Screen.isPlaying()) {
+				if (!AudioLoader.Game_Screen.isPlaying() && gametime > 0) {
 					AudioLoader.Game_Screen.play();
 				}
 
