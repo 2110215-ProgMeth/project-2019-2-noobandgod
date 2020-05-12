@@ -32,6 +32,7 @@ public class EndScreen {
 	}
 
 	public void draw(GraphicsContext gc) {
+		GameController.setScoreCount(199);
 		gc.setFill(Color.RED);
 		gc.setStroke(Color.BLUE);
 		gc.setLineWidth(2);
@@ -44,17 +45,20 @@ public class EndScreen {
 		} else {
 			gc.drawImage(RenderableHolder.endscreen_bg_good_Image,0, 0);
 			if (score >= 0 && score < 100) {
-				gc.fillText("Bad!!", 400, 250);
-				gc.strokeText("Bad!!", 400, 250);
-			} else if (100 <= score && score < 200) {
+				gc.drawImage(RenderableHolder.star_Image, 450, 50 , 100 ,100);
 				gc.fillText("Good!!", 350, 250);
 				gc.strokeText("Good!!", 350, 250);
-			} else if (200 <= score && score < 300) {
+			} else if (100 <= score && score < 200) {
+				gc.drawImage(RenderableHolder.star_Image, 375, 50 , 100 ,100);
+				gc.drawImage(RenderableHolder.star_Image, 525, 50 , 100 ,100);
 				gc.fillText("Very Good!!", 250, 250);
 				gc.strokeText("Very Good!!", 250, 250);
-			} else if (score >= 300) {
-				gc.fillText("Excellent!!!", 250, 250);
-				gc.strokeText("Excellent!!!", 250, 250);
+			} else if (score >= 200) {
+				gc.drawImage(RenderableHolder.star_Image, 325, 50 , 100 ,100);
+				gc.drawImage(RenderableHolder.star_Image, 450, 50 , 100 ,100);
+				gc.drawImage(RenderableHolder.star_Image, 575, 50 , 100 ,100);
+				gc.fillText("Excellent!!!", 275, 250);
+				gc.strokeText("Excellent!!!", 275, 250);
 			}
 		}
 		gc.setFont(new Font(75));
