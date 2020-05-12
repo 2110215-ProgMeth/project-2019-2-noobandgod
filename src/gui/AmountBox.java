@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import logic.GameController;
+import sharedObject.AudioLoader;
 
 public class AmountBox extends HBox {
 	private int amount;
@@ -38,6 +39,7 @@ public class AmountBox extends HBox {
 		addButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+				AudioLoader.BUTTON_CLICK.play();
 				addAmount(1);
 			}
 		});
@@ -47,6 +49,7 @@ public class AmountBox extends HBox {
 		removeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+//				AudioLoader.BUTTON_CLICK.play();
 				addAmount(-1);
 			}
 		});
@@ -63,6 +66,7 @@ public class AmountBox extends HBox {
 			SimulationManager.getShopPane().calculateTotalPrice();
 		} else {
 			System.out.println("amount can't be lower than zero!");
+			
 		}
 		
 	}

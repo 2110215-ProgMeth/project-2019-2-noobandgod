@@ -4,6 +4,7 @@ package screen;
 import java.io.File;
 import java.net.URL;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -35,10 +36,12 @@ public class StartScreen{
 		private Canvas canvas;
 		private GraphicsContext gc;
 		public static StackPane root;
-		public static StackPane getRoot() {
-			return root;
-		}
+		
 		private ButtonStartScreen menu;
+		
+		private AnimationTimer  startScreenSong;
+		
+		private int timer = 0;// time delay to show the menu
 		
 	public StartScreen(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -53,19 +56,28 @@ public class StartScreen{
 	public void draw(GraphicsContext gc) {
 		root = new StackPane();
 		root.setPrefSize(1000, 800);
-		root.getChildren().addAll(canvas,menu);
-		
+		root.getChildren().addAll(canvas);
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
 		AudioLoader.Start_Screen.play();
-		//AudioLoader.Start_Screen.setVolume(0.01);
+		startScreenSong = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
+				if(!AudioLoader.Start_Screen.isPlaying()) 
+					AudioLoader.Start_Screen.play();
+				if (timer == 50) {
+					root.getChildren().addAll(menu);
+				}timer++;
+			}
+		};
+		startScreenSong.start();
 
 
 	}
 	public void setBackground() {
-		gc.drawImage(background, 0, 0,900,800);
+		gc.drawImage(background, 0, 0,1000,800);
 		gc.setFill(Color.BLACK);
 		draw(gc);
 		
@@ -88,6 +100,7 @@ public class StartScreen{
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
+				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}
@@ -100,11 +113,15 @@ public class StartScreen{
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
+				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}
 			});
 		menu.setupExitButton();
 		setBackground();
+	}
+	public static StackPane getRoot() {
+		return root;
 	}
 }

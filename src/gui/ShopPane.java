@@ -70,13 +70,12 @@ public class ShopPane extends StackPane {
 			@Override
 			public void handle(ActionEvent arg0) {
 				if (GameController.getCoin_count() - totalpay >= 0) {
-//					AudioLoader.BUTTON_CLICK.play();
+					AudioLoader.BUTTON_CLICK.play();
 					GameController.addCoinCount(-totalpay); //pay money
 					addIngredientFromBuying();
-					resetShop();
-					
+					resetShop();				
 				} else {
-//					AudioLoader.ERRORR.play();
+					AudioLoader.ERRORR.play();
 					System.out.println("Your money is not enough");
 				}
 				

@@ -131,12 +131,10 @@ public class OrderManager {
 
 	public static void updateOrderNumber() {
 		for (int order = GameController.getOrderManager().getOrders().size() - 1; order >= 0; order--)
-			// ArrayList<Menu> menu_clone = new ArrayList<>();
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {// when menu is timeup
 				GameController.getOrderManager().getOrders().remove(order);
 				GameController.setFailedDish(GameController.getFailedDish() + 1);
 				GameController.addScoreCount(-5);
-//				AudioLoader.ERRORR.play();
 			} 
 		SimulationManager.getOrderPane().update();
 	}

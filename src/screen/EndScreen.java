@@ -1,5 +1,6 @@
 package screen;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,7 +27,9 @@ public class EndScreen{
 	private static Image veryGood = new Image(ClassLoader.getSystemResource("picture/VeryGood.jpg").toString());
 	
 	private static Image  excellent = new Image(ClassLoader.getSystemResource("picture/Excellent.jpg").toString());
+	
 	private static ButtonsEndScreen menu;
+	private AnimationTimer endScreenSong;
 	
 	public EndScreen(Stage primaryStage,GraphicsContext gc) {
 		this.primaryStage = primaryStage;
@@ -63,6 +66,15 @@ public class EndScreen{
 			menu = new ButtonsEndScreen();
 			StartScreen.getRoot().getChildren().add(menu);
 			AudioLoader.End_Screen.play();
+			endScreenSong = new AnimationTimer() {
+				@Override
+				public void handle(long now) {
+					if(!AudioLoader.End_Screen.isPlaying()) 
+						AudioLoader.End_Screen.play();
+				}
+			};
+			endScreenSong.start();
+
 			setupButton();
 		}
 	
@@ -74,6 +86,7 @@ public class EndScreen{
 			public void handle(ActionEvent event) {
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.End_Screen.stop();
+				endScreenSong.stop();
 				StartScreen start = new StartScreen(primaryStage);
 				}
 			});

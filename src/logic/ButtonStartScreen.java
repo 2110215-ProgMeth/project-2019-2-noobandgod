@@ -77,13 +77,14 @@ public class ButtonStartScreen extends VBox {
 			public void handle(MouseEvent arg0) {
 				playButton.setBackground(
 						new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-				//playButton.setEffect(new DropShadow());
+				playButton.setEffect(new DropShadow());
 			}
 		});
 		playButton.setOnMouseExited(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
 				playButton.setBackground(
 						new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				playButton.setEffect(null);
 			}
 		});
 		quitButton.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -91,12 +92,14 @@ public class ButtonStartScreen extends VBox {
 			public void handle(MouseEvent arg0) {
 				quitButton.setBackground(
 						new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				quitButton.setEffect(new DropShadow());
 			}
 		});
 		quitButton.setOnMouseExited(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
 				quitButton.setBackground(
 						new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				quitButton.setEffect(null);
 			}
 		});
 	}
@@ -109,12 +112,14 @@ public class ButtonStartScreen extends VBox {
 			public void handle(MouseEvent arg0) {
 				p1Button.setBackground(
 						new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				p1Button.setEffect(new DropShadow());
 			}
 		});
 		p1Button.setOnMouseExited(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
 				p1Button.setBackground(
 						new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				p1Button.setEffect(null);
 			}
 		});
 
@@ -124,12 +129,14 @@ public class ButtonStartScreen extends VBox {
 			public void handle(MouseEvent arg0) {
 				p2Button.setBackground(
 						new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				p2Button.setEffect(new DropShadow());
 			}
 		});
 		p2Button.setOnMouseExited(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
 				p2Button.setBackground(
 						new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+				p2Button.setEffect(null);
 			}
 		});
 		this.getChildren().addAll(p1Button,p2Button,quitButton);

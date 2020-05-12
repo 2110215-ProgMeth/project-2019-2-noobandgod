@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -48,15 +49,19 @@ public class ButtonsEndScreen extends HBox{
 	public void setUpButton() {
 			restartButton.setOnMouseEntered(e ->{
 				restartButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+				restartButton.setEffect(new DropShadow());
 			});
 			restartButton.setOnMouseExited(e ->{
 				restartButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+				restartButton.setEffect(null);
 			});
 			quitButton.setOnMouseEntered(e ->{
 				quitButton.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
+				quitButton.setEffect(new DropShadow());
 			});
 			quitButton.setOnMouseExited(e ->{
 				quitButton.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+				quitButton.setEffect(null);
 			});
 		}
 	}

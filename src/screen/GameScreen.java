@@ -50,7 +50,7 @@ public class GameScreen {
 		draw_origin_x = 48;
 		draw_origin_y = 24;
 		pixel = 64;
-//		AudioLoader.Game_Screen.play();
+		AudioLoader.Game_Screen.play();
 		HBox root = new HBox(4);
 		root.setPadding(new Insets(4));
 		
@@ -91,8 +91,11 @@ public class GameScreen {
 					GameController.setIsTimeUp(true);
 					gametime--;
 					this.stop();
-				}if (gametime <= 20) {
-					GameController.setAlmostTimeUP(true);
+				}
+				boolean timeChecked = false;
+				if (gametime == 20 && !timeChecked ) {
+					AudioLoader.Almost_Time_Up.play();
+					timeChecked = true;
 				}
 			}
 		};
@@ -119,26 +122,15 @@ public class GameScreen {
 				
 				if(GameController.is_timeup) {
 					System.out.println("TIME UP");
-
-					
-					
-//					AudioLoader.Game_Screen.stop();
-//					AudioLoader.Almost_Time_Up.stop();
-//					if (GameController.getScore_count() >= 0) {
-//						AudioLoader.CONGRAT.play();
-//					}else {
-//						AudioLoader.LOSE.play();
-//					}
-					
-					
-
+	
+					AudioLoader.Game_Screen.stop();
+					AudioLoader.Almost_Time_Up.stop();
+					if (GameController.getScore_count() >= 0) {
+						AudioLoader.CONGRAT.play();
+					}else {
+						AudioLoader.LOSE.play();
+					}
 					this.stop();
-					
-					
-//				}if (GameController.almostTimeUP) {
-//					AudioLoader.Almost_Time_Up.play();
-
-					
 				}
 				
 				//RenderableHolder.show();
