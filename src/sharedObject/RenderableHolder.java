@@ -24,6 +24,8 @@ public class RenderableHolder {
 	public static Image endscreen_bg_good_Image;
 	public static Image endscreen_bg_bad_Image;
 	
+	public static Image star_Image;
+	
 	//---------------[GameScreen]-------------------------------
 	
 	//Floor
@@ -190,6 +192,8 @@ public class RenderableHolder {
 		
 		endscreen_bg_bad_Image = new Image(ClassLoader.getSystemResource(p+"endscreen_bg_bad.png").toString());
 		endscreen_bg_good_Image = new Image(ClassLoader.getSystemResource(p+"endscreen_bg_good.png").toString());
+		
+		star_Image = new Image(ClassLoader.getSystemResource(p+"star.png").toString());
 		
 		//---------------[GameScreen]-------------------------------
 		//Floor
