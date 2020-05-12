@@ -105,13 +105,13 @@ public class StartScreen{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				GameScreen gameScreen = new GameScreen(primaryStage,2);
-				GameController.getCurrentGameMap().printMap();
+				//GameScreen gameScreen = new GameScreen(primaryStage,2);
+				//GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
-				//root.getChildren().removeAll(menu);
-				//EndScreen endscreen = new EndScreen(primaryStage,gc);
+				root.getChildren().removeAll(menu);
+				EndScreen endscreen = new EndScreen(primaryStage,gc);
 				}
 			});
 		menu.setupExitButton();
