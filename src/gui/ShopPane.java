@@ -75,7 +75,7 @@ public class ShopPane extends StackPane {
 					addIngredientFromBuying();
 					resetShop();				
 				} else {
-					AudioLoader.ERRORR.play();
+					AudioLoader.ERROR.play();
 					System.out.println("Your money is not enough");
 				}
 				

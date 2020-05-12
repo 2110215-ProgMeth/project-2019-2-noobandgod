@@ -21,6 +21,7 @@ import entity.base.Entity;
 import entity.base.Interactable;
 import exception.CookFailedException;
 import exception.SendFoodFailedException;
+import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
 
@@ -240,8 +241,10 @@ public class GameMap {
 					if(t.interacts(p)) {
 						return true;
 					} else
+						AudioLoader.ERROR.play();
 						return false;
 				} catch (SendFoodFailedException e) {
+					AudioLoader.ERROR.play();
 					e.printStackTrace();
 					return false;
 				}
@@ -254,13 +257,14 @@ public class GameMap {
 						if(t.cooks(p)) {
 							return true;
 						} else
+							AudioLoader.ERROR.stop();
 							return false;
 					} catch (CookFailedException e) {
+						AudioLoader.ERROR.play();
 						e.printStackTrace();
 						return false;
 					}
 				} else {
-					System.out.println("THIS IS NOT EQUIPMENT");
 					return false;
 				}
 			}

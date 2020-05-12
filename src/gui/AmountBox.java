@@ -49,7 +49,7 @@ public class AmountBox extends HBox {
 		removeButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-//				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.BUTTON_CLICK.play();
 				addAmount(-1);
 			}
 		});

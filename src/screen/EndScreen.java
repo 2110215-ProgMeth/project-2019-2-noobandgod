@@ -84,7 +84,7 @@ public class EndScreen{
 			@Override
 			public void handle(ActionEvent event) {
 				AudioLoader.BUTTON_CLICK.play();
-
+				AudioLoader.End_Screen.stop();
 				endScreenSong.stop();
 				StartScreen start = new StartScreen(primaryStage);
 				}

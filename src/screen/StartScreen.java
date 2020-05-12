@@ -98,6 +98,7 @@ public class StartScreen{
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);
@@ -110,6 +111,7 @@ public class StartScreen{
 //				GameScreen gameScreen = new GameScreen(primaryStage);
 //				GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
+				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
 				root.getChildren().removeAll(menu);
 				EndScreen endscreen = new EndScreen(primaryStage,gc);

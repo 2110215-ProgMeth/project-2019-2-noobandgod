@@ -97,7 +97,6 @@ public class GameScreen {
 				}if (gametime == 30) {
 					GameController.setAlmostTimeUpChecked(GameController.isAlmostTimeUpChecked()+1);
 				}
-				
 				if (GameController.isAlmostTimeUpChecked() == 1 ) {
 					almostTimeUp = new AnimationTimer() {
 						@Override
@@ -140,6 +139,7 @@ public class GameScreen {
 					}
 					AudioLoader.Game_Screen.stop();
 					almostTimeUp.stop();
+					AudioLoader.Almost_Time_Up.stop();
 					this.stop();
 				}
 				if (!AudioLoader.Game_Screen.isPlaying()) {
