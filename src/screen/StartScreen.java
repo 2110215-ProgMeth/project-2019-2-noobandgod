@@ -8,6 +8,7 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -106,8 +107,8 @@ public class StartScreen{
 			
 			@Override
 			public void handle(ActionEvent event) {
-				GameScreen gameScreen = new GameScreen(primaryStage);
-				GameController.getCurrentGameMap().printMap();
+				//GameScreen gameScreen = new GameScreen(primaryStage);
+				//GameController.getCurrentGameMap().printMap();
 				AudioLoader.BUTTON_CLICK.play();
 				AudioLoader.Start_Screen.stop();
 				startScreenSong.stop();
