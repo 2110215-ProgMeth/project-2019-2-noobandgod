@@ -102,7 +102,7 @@ public class Player extends Entity implements Updatable,Interactable {
 					getEntityHeld().setY(targety);
 				}
 
-				System.out.println("Player " + getPlayerNumber() + " has moved to (" + getX() + "," + getY() + ")!");
+				//System.out.println("Player " + getPlayerNumber() + " has moved to (" + getX() + "," + getY() + ")!");
 				return true;
 			} else {
 				return false;
@@ -291,16 +291,16 @@ public class Player extends Entity implements Updatable,Interactable {
 				if (InputUtility.getKeypressed().contains((KeyCode.SHIFT))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0),
 							targetx, targety, 0)) {
-						System.out.println("Interact completed!");
+						//System.out.println("Interact completed!");
 					} else {
-						System.out.println("Interact failed!");
+						//System.out.println("Interact failed!");
 					}
 				} else if (InputUtility.getKeypressed().contains((KeyCode.CONTROL))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(0),
 							targetx, targety, 1)) {
 						
 					} else {
-						System.out.println("Cook failed!");
+						//System.out.println("Cook failed!");
 					}
 				}
 			}
@@ -345,16 +345,16 @@ public class Player extends Entity implements Updatable,Interactable {
 				if (InputUtility.getKeypressed().contains((KeyCode.SEMICOLON))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(1),
 							targetx, targety, 0)) {
-						System.out.println("Interact completed!");
+						//System.out.println("Interact completed!");
 					} else {
-						System.out.println("Interact failed!");
+						//System.out.println("Interact failed!");
 					}
 				} else if (InputUtility.getKeypressed().contains((KeyCode.QUOTE))) {
 					if (GameController.getCurrentGameMap().interactWithBlockTarget(GameController.getPlayers(1),
 							targetx, targety, 1)) {
 						
 					} else {
-						System.out.println("Cook failed!");
+						//System.out.println("Cook failed!");
 					}
 				}
 			}
