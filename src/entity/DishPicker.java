@@ -12,9 +12,7 @@ public class DishPicker extends Block implements Interactable{
     
     public boolean interacts(Player p) throws InteractFailedException{
         if (!p.isHolding()) {
-        	//System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	p.setEntityHeld(new Dish());
-            p.setHolding(true);
             return true;
         } else {
             throw new InteractFailedException("ERROR");
@@ -25,10 +23,17 @@ public class DishPicker extends Block implements Interactable{
         return Sprites.DishPicker;
     }
 
+    public String toString() {
+    	String result = "DISHPICKER";
+    	result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+    	return result;
+    }
+
     @Override
     public int getZ() {
-        return getY();
+        return getY()*3;
     }
+    
     @Override
     public void draw(GraphicsContext gc) {
         int pixel = GameScreen.pixel;
@@ -40,18 +45,11 @@ public class DishPicker extends Block implements Interactable{
         } else {
         	gc.drawImage(RenderableHolder.dishpicker_infront_Image, x, y);
         }
-        
     }
+    
     @Override
     public boolean isVisible() {
         return true;
     }
-    
-    public String toString() {
-    	String result = "DISHPICKER";
-    	result += "\nLocated at ("+this.getX()+","+this.getY()+")";
-    	return result;
-    }
-
-
+   
 }

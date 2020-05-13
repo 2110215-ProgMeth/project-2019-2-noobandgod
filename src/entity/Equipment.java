@@ -9,10 +9,8 @@ import javafx.scene.paint.Color;
 import screen.GameScreen;
 
 public abstract class Equipment extends Block implements Interactable,Cookable{
-	//maybe we will add the interface updatable
 	protected boolean isWorking;
 	
-	//not used yet
 	public void drawProgessBar(GraphicsContext gc, int maxTime) {
 		final long startNanoTime = System.nanoTime();
 		

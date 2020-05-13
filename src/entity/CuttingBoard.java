@@ -99,12 +99,6 @@ public class CuttingBoard extends Equipment implements Interactable,Cookable{
 //		return false;
 	}
 	
-	public Ingredient getOnCuttingBoardExists() {
-		return (Ingredient) OnCuttingBoardExists;
-	}
-	public void setOnCuttingBoardExists(Entity onCuttingBoardExists) {
-		OnCuttingBoardExists = (Ingredient) onCuttingBoardExists;
-	}
 	public char getSymbol() {
 		return Sprites.CuttingBoard;
 	}
@@ -178,13 +172,19 @@ public class CuttingBoard extends Equipment implements Interactable,Cookable{
 	public boolean isVisible() {
 		return true;
 	}
-	
 
 	public boolean isOnCuttingBoard() {
 		return OnCuttingBoard;
 	}
 	public void setOnCuttingBoard(boolean onCuttingBoard) {
 		OnCuttingBoard = onCuttingBoard;
+	}
+	
+	public Ingredient getOnCuttingBoardExists() {
+		return (Ingredient) OnCuttingBoardExists;
+	}
+	public void setOnCuttingBoardExists(Entity onCuttingBoardExists) {
+		OnCuttingBoardExists = (Ingredient) onCuttingBoardExists;
 	}
 	
 	

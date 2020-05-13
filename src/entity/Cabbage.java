@@ -5,7 +5,8 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Cabbage extends Ingredient{
-	private static int price = 10;
+	private static final int price = 10;
+	
 	public Cabbage() {
 		setState(0);
 		setPlaced(false);
@@ -14,6 +15,7 @@ public class Cabbage extends Ingredient{
 	public static int getPrice() {
 		return price;
 	}
+	
 	public String toString() {
 		String result = "CABBAGE";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
@@ -21,9 +23,11 @@ public class Cabbage extends Ingredient{
 		result += "\nstate: "+this.getState();
 		return result;
 	}
+	
 	public int getZ() {
 		return getY()*3+2;
 	}
+	
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
 		int x = GameScreen.draw_origin_x+this.getX()*pixel;
@@ -39,10 +43,9 @@ public class Cabbage extends Ingredient{
 		}
 		
 	}
+	
 	@Override
 	public boolean isVisible() {
 		return !isDestroyed();
 	}
-	
-	
 }

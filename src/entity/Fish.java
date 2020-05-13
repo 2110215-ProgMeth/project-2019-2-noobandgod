@@ -5,12 +5,13 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Fish extends Ingredient{
-	private static int price = 30;
+	private static final int price = 30;
 	
 	public Fish() {
 		setState(0);
 		setPlaced(false);
 	}
+	
 	public static int getPrice() {
 		return price;
 	}
@@ -21,7 +22,7 @@ public class Fish extends Ingredient{
 	}
 
 	public int getZ() {
-		return getY() * 3 + 2;
+		return getY()*3+2;
 	}
 
 	public void draw(GraphicsContext gc) {

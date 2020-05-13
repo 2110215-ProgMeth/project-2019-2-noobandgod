@@ -46,6 +46,28 @@ public class Dish extends Entity {
 		}
 	}
 	
+	public boolean check(Ingredient i) {
+		if (i.getState() < 1) {
+			//System.out.println("You can't place raw ingredient on a dish!");
+			return false;
+		}
+		if (i instanceof Fish) {//check fish which is different from other types
+			if (((Fish) i).getState()==2 && getOnDishExists().size()==0) {
+				return true;
+			}else if (((Fish) i).getState()==2 && getOnDishExists().size()>=1) {
+				return false;
+			}
+		}
+		for (Ingredient ingredient: getOnDishExists()) {//check if this ingredient's type is in the dish.If it is,return false;
+			if((i instanceof Tomato && ingredient instanceof Tomato) || 
+				(i instanceof Cabbage && ingredient instanceof Cabbage) ||
+				(i instanceof Fish && ingredient instanceof Fish)) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public String toString() {
 		String result = "DISH";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
@@ -53,10 +75,6 @@ public class Dish extends Entity {
 		return result;
 	}
 	
-	
-	public ArrayList<Ingredient> getOnDishExists() {
-		return this.onDishExists;
-	}
 	
 	@Override
 	public int getZ() {
@@ -121,7 +139,7 @@ public class Dish extends Entity {
 	public boolean isVisible() {
 		return !isDestroyed();
 	}
-
+	
 	public boolean isPlaced() {
 		return isPlaced;
 	}
@@ -129,26 +147,9 @@ public class Dish extends Entity {
 	public void setPlaced(boolean isPlaced) {
 		this.isPlaced = isPlaced;
 	}
-	public boolean check(Ingredient i) {
-		if (i.getState() < 1) {
-			//System.out.println("You can't place raw ingredient on a dish!");
-			return false;
-		}
-		if (i instanceof Fish) {//check fish which is different from other types
-			if (((Fish) i).getState()==2 && getOnDishExists().size()==0) {
-				return true;
-			}else if (((Fish) i).getState()==2 && getOnDishExists().size()>=1) {
-				return false;
-			}
-		}
-		for (Ingredient ingredient: getOnDishExists()) {//check if this ingredient's type is in the dish.If it is,return false;
-			if((i instanceof Tomato && ingredient instanceof Tomato) || 
-				(i instanceof Cabbage && ingredient instanceof Cabbage) ||
-				(i instanceof Fish && ingredient instanceof Fish)) {
-				return false;
-			}
-		}
-		return true;
+	
+	public ArrayList<Ingredient> getOnDishExists() {
+		return this.onDishExists;
 	}
 
 }

@@ -22,9 +22,11 @@ public class FishStorage extends IngredientStorage{
 		}
 		throw new InteractFailedException("ERROR");
 	}
+	
 	public char getSymbol() {
 		return Sprites.FishStorage;
 	}
+	
 	public String toString() {
 		String result = "FISHTORAGE";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
@@ -37,6 +39,7 @@ public class FishStorage extends IngredientStorage{
 	public int getZ() {
 		return getY()*3;
 	}
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
