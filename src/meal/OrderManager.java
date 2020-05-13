@@ -21,7 +21,7 @@ public class OrderManager {
 		if (orders.size() + 1 <= GameController.MAX_ORDER) {
 			orders.add(m);
 
-			System.out.println("Menu has already added");
+			//System.out.println("Menu has already added");
 			return true;
 		} else {
 			return false;
@@ -37,7 +37,7 @@ public class OrderManager {
 			Menu removedMenu = orders.get(index);
 			orders.remove(index);
 
-			System.out.println("Menu: " + removedMenu.getName() + " has been removed");
+			//System.out.println("Menu: " + removedMenu.getName() + " has been removed");
 			return removedMenu;
 		}
 	}
@@ -123,7 +123,7 @@ public class OrderManager {
 		for (Menu m : getOrders()) {
 			a.add(m.getTimeLeft());
 		}
-		System.out.println(a);
+		//System.out.println(a);
 	}
 
 	public static void updateOrderNumber() {

@@ -21,7 +21,6 @@ public abstract class Menu {
 		setSend(false);
 		setTimeMax(timeMax);
 		setTimeLeft(timeMax);
-		//setTimeLeft((int)(timeMax*0.67));
 	}
 	
 	public boolean isAllIngredients(Entity e) {
@@ -36,10 +35,10 @@ public abstract class Menu {
 		}
 		
 		if(ondish.size() > numberingredients) {
-			System.out.println("Too many ingredients on the dish!");
+			//System.out.println("Too many ingredients on the dish!");
 			return false;
 		} else if (ondish.size() < numberingredients) {
-			System.out.println("Not enough ingredients");
+			//System.out.println("Not enough ingredients");
 			return false;
 		} else {
 			
@@ -57,7 +56,7 @@ public abstract class Menu {
 				return false;
 			}	
 		}
-		System.out.println("Ingrdrients Matched");
+		//System.out.println("Ingrdrients Matched");
 		return true;	
 			
 		}
