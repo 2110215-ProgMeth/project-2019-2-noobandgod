@@ -111,13 +111,11 @@ public class GameScreen {
 				RenderableHolder.getInstance().update();
 				paintGameScreenComponent();
 				InputUtility.removeKeyPressed();
-				// ===========================================
 				SimulationManager.updatePane();
-				// GameController.getOrderManager().printTimeLeftOfEachMenu();
 				System.gc();
-
+				// ===========================================
+				
 				if (GameController.is_timeup) {
-					System.out.println("TIME UP");
 					if (GameController.getScore_count() >= 100) {
 						AudioLoader.CONGRAT.play();
 					} else {
@@ -127,14 +125,11 @@ public class GameScreen {
 					this.stop();
 					root.getChildren().clear();
 					EndScreen end = new EndScreen(primaryStage);
-					
 				}
+				
 				if (!AudioLoader.Game_Screen.isPlaying() && gametime > 0) {
 					AudioLoader.Game_Screen.play();
 				}
-
-				// RenderableHolder.show();
-
 			}
 		};
 
