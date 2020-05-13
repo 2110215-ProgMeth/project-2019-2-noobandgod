@@ -1,6 +1,5 @@
 package entity.base;
 
-import javafx.scene.image.Image;
 
 public abstract class Block extends Entity{
 	protected boolean isAnyBlockDownward = false;

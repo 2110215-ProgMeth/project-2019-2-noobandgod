@@ -2,7 +2,6 @@ package entity;
 
 import entity.base.Block;
 import entity.base.Cookable;
-import entity.base.Entity;
 import entity.base.Interactable;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;

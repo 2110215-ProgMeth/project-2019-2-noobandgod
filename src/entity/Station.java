@@ -1,16 +1,13 @@
 package entity;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 import entity.base.Block;
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import logic.GameController;
 import logic.Sprites;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
@@ -36,7 +33,7 @@ public class Station extends Block implements Interactable{
 	}
 
 
-	public boolean interacts(Player e){
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) { //if player's hand is available to pick something
 			if (isOnStation()) {
 				Entity ontableEntity_clone = this.removedEntityOnStation();
@@ -85,8 +82,7 @@ public class Station extends Block implements Interactable{
 						((Ingredient) entity_clone).setPlaced(true);
 						return true;
 					} else {
-						System.out.println("You cannot place cooked ingredient on dirty table!");
-						return false;
+						throw new InteractFailedException("ERROR");
 					}
 				
 				} else if (getOnStationExists() instanceof Dish) {//It has a dish on station already so it doesn't have to setPlace
@@ -99,7 +95,7 @@ public class Station extends Block implements Interactable{
 				}	
 			}
 			
-		}return false;
+		}throw new InteractFailedException("ERROR");
 	}
 	
 	public Entity removedEntityOnStation() {

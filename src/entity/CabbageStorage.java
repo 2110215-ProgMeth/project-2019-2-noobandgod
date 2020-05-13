@@ -1,5 +1,6 @@
 package entity;
 
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
@@ -8,10 +9,9 @@ import sharedObject.RenderableHolder;
 
 public class CabbageStorage extends IngredientStorage {
 	
-	public boolean interacts(Player p) {
+	public boolean interacts(Player p) throws InteractFailedException{
 		if (!isAvailable) {
-			System.out.println("CABBAGE is out of stock!");
-			return false;
+			throw new InteractFailedException("CABBAGE is out of stock!");
 		}	
 		if (!p.isHolding()) {
 			p.setEntityHeld(new Cabbage());
@@ -21,7 +21,7 @@ public class CabbageStorage extends IngredientStorage {
 			return true;
 		} else {
 			//System.out.println("Please place down the carried item before picking up a new caabbage");
-			return false;
+			throw new InteractFailedException("ERROR");
 		}
 	}
 	

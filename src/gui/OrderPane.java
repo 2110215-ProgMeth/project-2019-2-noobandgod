@@ -1,13 +1,10 @@
 package gui;
 
-import java.util.ArrayList;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import logic.GameController;
 import meal.Menu;
-import meal.OrderManager;
 
 public class OrderPane extends HBox {
 	public OrderPane() {

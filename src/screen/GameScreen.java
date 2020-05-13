@@ -1,7 +1,6 @@
 package screen;
 
 import application.CSVParser;
-import gui.OrderPane;
 import gui.SimulationManager;
 import input.InputUtility;
 import javafx.animation.AnimationTimer;
@@ -10,7 +9,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -23,12 +21,10 @@ import meal.OrderManager;
 import sharedObject.AudioLoader;
 import sharedObject.IRenderable;
 import sharedObject.RenderableHolder;
-import logic.Direction;
 
 public class GameScreen {
 	private Stage primaryStage;
 	private Canvas gameCanvas;
-	private AnimationTimer almostTimeUp;
 
 	public static GraphicsContext gamegc;
 	public static GraphicsContext timegc;

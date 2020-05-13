@@ -1,26 +1,23 @@
 package entity;
 
 import entity.base.Block;
-import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import logic.Sprites;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class DishPicker extends Block implements Interactable{
     
-    public boolean interacts(Player p) {//hrows InteractFailedException{
+    public boolean interacts(Player p) throws InteractFailedException{
         if (!p.isHolding()) {
         	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	p.setEntityHeld(new Dish());
             p.setHolding(true);
             return true;
         } else {
-        	//System.out.println("You can't take more dish, because you hands aren't available!");
-        	return false;
-            //throw new InteractFailedException("Please place donw the carried item before picking up a new dish");
+            throw new InteractFailedException("ERROR");
         }
     }
 

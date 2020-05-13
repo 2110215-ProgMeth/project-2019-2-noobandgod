@@ -1,7 +1,6 @@
 package logic;
 
 import entity.base.Block;
-import entity.base.Entity;
 
 public class Cell {
 	private Block block;

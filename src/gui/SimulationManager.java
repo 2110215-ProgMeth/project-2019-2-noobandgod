@@ -1,7 +1,6 @@
 package gui;
 
 import logic.GameController;
-import meal.Menu;
 
 public class SimulationManager {
 	private static ShopPane shopPane;

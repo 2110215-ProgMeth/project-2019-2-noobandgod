@@ -1,8 +1,8 @@
 package entity.base;
 
 import entity.Player;
-import exception.SendFoodFailedException;
+import exception.InteractFailedException;
 
 public interface Interactable {
-	public abstract boolean interacts(Player e) throws  SendFoodFailedException;
+	public abstract boolean interacts(Player e) throws InteractFailedException;
 }

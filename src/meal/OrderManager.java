@@ -2,14 +2,10 @@ package meal;
 
 import java.util.ArrayList;
 
-import entity.Dish;
 import entity.Player;
 import exception.RemoveOrderFailedException;
 import gui.OrderBox;
-import gui.OrderPane;
 import gui.SimulationManager;
-import javafx.animation.AnimationTimer;
-import javafx.scene.paint.Color;
 import logic.GameController;
 import screen.GameScreen;
 import sharedObject.AudioLoader;

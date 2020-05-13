@@ -2,7 +2,7 @@ package entity;
 
 import entity.base.Block;
 import entity.base.Interactable;
-import exception.SendFoodFailedException;
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
@@ -12,12 +12,12 @@ import sharedObject.RenderableHolder;
 public class FoodCounter extends Block implements Interactable{
 
 	@Override
-	public boolean interacts(Player e) throws SendFoodFailedException{
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (e.isHolding()) {
 			if(e.getEntityHeld() instanceof Dish) {
 				return GameController.getOrderManager().sendOrder(e);
-			}throw new SendFoodFailedException("The carried menu isn't is in the list");
-		}throw new  SendFoodFailedException("There is nothing to be delivered");
+			}throw new InteractFailedException("The carried menu isn't is in the list");
+		}throw new  InteractFailedException("There is nothing to be delivered");
 	}
 	@Override
 	public char getSymbol() {

@@ -1,21 +1,13 @@
 package gui;
 
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import logic.GameController;
 import meal.Menu;
 import meal.OrderManager;
 import screen.GameScreen;
-import sharedObject.RenderableHolder;
 
 public class OrderBox extends Canvas {
 	private GraphicsContext ordergc;

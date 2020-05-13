@@ -1,6 +1,5 @@
 package entity;
 
-import entity.base.Entity;
 import javafx.scene.canvas.GraphicsContext;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;

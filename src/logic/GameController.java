@@ -3,11 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import entity.Player;
-import gui.SimulationManager;
-import meal.FriedFish;
-import meal.Menu;
 import meal.OrderManager;
-import meal.Salad;
 import sharedObject.RenderableHolder;
 
 public class GameController {

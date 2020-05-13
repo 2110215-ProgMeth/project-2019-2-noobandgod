@@ -1,9 +1,9 @@
 package entity;
 
+import entity.base.Cookable;
 import entity.base.Entity;
 import entity.base.Interactable;
-import exception.CookFailedException;
-
+import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
@@ -12,7 +12,7 @@ import screen.GameScreen;
 import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
-public class CuttingBoard extends Equipment implements Interactable{
+public class CuttingBoard extends Equipment implements Interactable,Cookable{
 	private Ingredient OnCuttingBoardExists ;
 	private boolean OnCuttingBoard;
 	
@@ -29,7 +29,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 		OnCuttingBoard = onCuttingBoard;
 	}
 	
-	public boolean interacts(Player e){//dont forget to setplace
+	public boolean interacts(Player e) throws  InteractFailedException{//dont forget to setplace
 		if (!e.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				Ingredient entity_clone = this.removedEntityOnCuttingBoard();
@@ -61,7 +61,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 					return true;
 				}
 			}
-		}return false;
+		}throw new InteractFailedException("ERROR");
 	}
 	public Ingredient removedEntityOnCuttingBoard() {
 		setOnCuttingBoard(false);
@@ -69,19 +69,16 @@ public class CuttingBoard extends Equipment implements Interactable{
 		
 		getOnCuttingBoardExists().setDestroyed(true);
 		
-		Entity oncuttingBoardEntity = getOnCuttingBoardExists();
-		oncuttingBoardEntity = null;
-		
 		setOnCuttingBoardExists(null);
 		return removedEntity;
 	}
 	
-	public boolean cooks(Player p) throws CookFailedException{// throws CookFailedException{
+	public boolean cooks(Player p) throws InteractFailedException{
 		if ((!p.isHolding() && !isOnCuttingBoard()) || (!isOnCuttingBoard())){
-			return false;
+			throw new InteractFailedException("ERROR");
 		}
 		if (OnCuttingBoardExists.getState() >= 1) {
-			return false;
+			throw new InteractFailedException("ERROR");
 		}
 		if (OnCuttingBoard && !isWorking) {
 			AudioLoader.Cutting.play();
@@ -104,10 +101,9 @@ public class CuttingBoard extends Equipment implements Interactable{
 			}
 			}.start();
 			return true;
-		}
+		}throw new InteractFailedException("ERROR");
 //		System.out.println("There is nothing to be cooked");
 //		return false;
-		throw new CookFailedException("There is nothing to be cooked");//throw an exception that there is nothing to be cooked
 	}
 	
 	public Ingredient getOnCuttingBoardExists() {

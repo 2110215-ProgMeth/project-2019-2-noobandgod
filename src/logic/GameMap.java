@@ -1,16 +1,12 @@
 package logic;
 
-import application.CSVParser;
 import entity.Bin;
 import entity.CabbageStorage;
 import entity.CuttingBoard;
-import entity.Dish;
 import entity.DishPicker;
-import entity.Equipment;
 import entity.FishStorage;
 import entity.FoodCounter;
 import entity.FryingPan;
-import entity.Ingredient;
 import entity.Obstacle;
 import entity.Player;
 import entity.Station;
@@ -19,8 +15,7 @@ import entity.base.Block;
 import entity.base.Cookable;
 import entity.base.Entity;
 import entity.base.Interactable;
-import exception.CookFailedException;
-import exception.SendFoodFailedException;
+import exception.InteractFailedException;
 import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
@@ -213,9 +208,9 @@ public class GameMap {
 					} else {
 						return false;
 					}
-				} catch ( SendFoodFailedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} catch ( InteractFailedException e) {
+
+					e.playSound();
 				}
 			} else if (p.getPlayerNumber() == 1) {
 				Interactable player = (Interactable) GameController.getPlayers(0);
@@ -225,9 +220,9 @@ public class GameMap {
 					} else {
 						return false;
 					}
-				} catch (SendFoodFailedException e) {
+				} catch (InteractFailedException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e.playSound();
 				}	
 			}
 		}
@@ -243,9 +238,8 @@ public class GameMap {
 					} else
 						AudioLoader.ERROR.play();
 						return false;
-				} catch (SendFoodFailedException e) {
-					AudioLoader.ERROR.play();
-					e.printStackTrace();
+				} catch (InteractFailedException e) {
+					e.playSound();
 					return false;
 				}
 			} 
@@ -259,9 +253,8 @@ public class GameMap {
 						} else
 							AudioLoader.ERROR.play();
 							return false;
-					} catch (CookFailedException e) {
-						AudioLoader.ERROR.play();
-						e.printStackTrace();
+					} catch (InteractFailedException e) {
+						e.playSound();
 						return false;
 					}
 				} else {

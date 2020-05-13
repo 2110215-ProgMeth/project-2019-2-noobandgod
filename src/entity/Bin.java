@@ -4,15 +4,15 @@ import entity.base.Block;
 
 import entity.base.Entity;
 import entity.base.Interactable;
+import exception.InteractFailedException;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import logic.Sprites;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Bin extends Block implements Interactable{			
 	
-	public boolean interacts(Player e){
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (e.isHolding()) {
 			//if player holding something, remove holding entity (throws it into bin)
 			Entity entity = e.removeEntityHeld();
@@ -24,7 +24,7 @@ public class Bin extends Block implements Interactable{
 			
 		}else{
 			//System.out.println("YOU ARE NOT HOLDING ANYTHING");
-			return false;
+			throw new InteractFailedException("ERROR");
 		}
 	}
 	public char getSymbol() {

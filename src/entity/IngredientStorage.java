@@ -1,7 +1,6 @@
 package entity;
 
 import entity.base.Block;
-import entity.base.Entity;
 import entity.base.Interactable;
 import entity.base.Updatable;
 

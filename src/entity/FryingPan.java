@@ -2,7 +2,7 @@ package entity;
 
 import entity.base.Entity;
 import entity.base.Interactable;
-import exception.CookFailedException;
+import exception.InteractFailedException;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
@@ -28,7 +28,7 @@ public class FryingPan extends Equipment implements Interactable{
 		OnFryingPan = b;
 		
 	}
-	public boolean interacts(Player e) {//throws InteractFailedException{
+	public boolean interacts(Player e) throws InteractFailedException{
 		if (!e.isHolding()) {//holding nothing
 			if (getOnFryingPanExists() instanceof Ingredient) {//food on frying pan
 				Ingredient ingredient_clone = this.removedEntityOnFryingPan();
@@ -65,9 +65,8 @@ public class FryingPan extends Equipment implements Interactable{
 					}
 				}
 			}
-		}System.out.println("There is something wrong");
-		return false;
-		//throw new InteractFailedException("There is something wrong");
+		}
+		throw new InteractFailedException("ERROR");
 	}
 	public Ingredient removedEntityOnFryingPan() {
 		setOnFryingPan(false);
@@ -75,19 +74,16 @@ public class FryingPan extends Equipment implements Interactable{
 		
 		getOnFryingPanExists().setDestroyed(true);
 		
-		Entity onfryingpanEntity = getOnFryingPanExists();
-		onfryingpanEntity = null;
 		
 		setOnFryingPanExists(null);
 		return removedEntity;
 	}
-	public boolean cooks(Player p) throws CookFailedException{ //throws CookFailedException{
+	public boolean cooks(Player p) throws InteractFailedException{
 		if (!OnFryingPan){
 			return false;
 		}
 		if (OnFryingPanExists.getState() >= 1) {
-			System.out.println("This ingredient has already been cooked");
-			return false;
+			throw new InteractFailedException("ERROR");
 		}
 		if (OnFryingPan && !isWorking) {
 			AudioLoader.frying.play();
