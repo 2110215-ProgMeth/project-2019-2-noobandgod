@@ -16,11 +16,8 @@ public class CabbageStorage extends IngredientStorage {
 		if (!p.isHolding()) {
 			p.setEntityHeld(new Cabbage());
 			GameController.addCabbage_AMOUNT(-1);
-			p.setHolding(true);
-			//System.out.println("Player "+p.getPlayerNumber()+" has pick Cabbage at "+this.getCoordinate());
 			return true;
 		} else {
-			//System.out.println("Please place down the carried item before picking up a new caabbage");
 			throw new InteractFailedException("ERROR");
 		}
 	}

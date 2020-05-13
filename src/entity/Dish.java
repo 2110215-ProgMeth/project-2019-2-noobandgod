@@ -142,18 +142,10 @@ public class Dish extends Entity {
 			}
 		}
 		for (Ingredient ingredient: getOnDishExists()) {//check if this ingredient's type is in the dish.If it is,return false;
-			if (ingredient instanceof Cabbage) {
-				if (i instanceof Cabbage) {
-					return false;
-				}return true;  
-			}else if (ingredient instanceof Fish) {
-				if (i instanceof Fish) {
-					return false;
-				}return true;  
-			}else {//tomato
-				if (i instanceof Tomato) {
-					return false;
-				}return true;  
+			if((i instanceof Tomato && ingredient instanceof Tomato) || 
+				(i instanceof Cabbage && ingredient instanceof Cabbage) ||
+				(i instanceof Fish && ingredient instanceof Fish)) {
+				return false;
 			}
 		}
 		return true;

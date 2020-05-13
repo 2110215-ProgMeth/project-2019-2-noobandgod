@@ -22,37 +22,30 @@ public class CuttingBoard extends Equipment implements Interactable,Cookable{
 		setWorking(false);
 	}
 	
-	public boolean isOnCuttingBoard() {
-		return OnCuttingBoard;
-	}
-	public void setOnCuttingBoard(boolean onCuttingBoard) {
-		OnCuttingBoard = onCuttingBoard;
-	}
-	
-	public boolean interacts(Player e) throws  InteractFailedException{//dont forget to setplace
-		if (!e.isHolding()) {// empty hand
+	public boolean interacts(Player p) throws  InteractFailedException{//dont forget to setplace
+		if (!p.isHolding()) {// empty hand
 			if (getOnCuttingBoardExists() instanceof Ingredient) {
 				Ingredient entity_clone = this.removedEntityOnCuttingBoard();
-				e.setEntityHeld(entity_clone);
-				e.setHolding(true);
+				p.setEntityHeld(entity_clone);
+				p.setHolding(true);
 				((Ingredient) entity_clone).setPlaced(false);
 				return true;
 			}
 		}else {//holding something
-			if (e.getEntityHeld() instanceof Dish) {//holding dish
+			if (p.getEntityHeld() instanceof Dish) {//holding dish
 				if (isOnCuttingBoard()) {
-					Dish dish = (Dish) e.getEntityHeld();
+					Dish dish = (Dish) p.getEntityHeld();
 					if (dish.check((Ingredient) getOnCuttingBoardExists())){
 						Ingredient entity_clone = this.removedEntityOnCuttingBoard();
 						dish.adds(entity_clone);
-						e.setEntityHeld(dish);
+						p.setEntityHeld(dish);
 						((Dish) dish).setPlaced(false);
 						return true;
 					}
 				}
 			}else {//holding ingredient
 				if (!isOnCuttingBoard()) {	
-					Entity entity_clone = e.removeEntityHeld();
+					Entity entity_clone = p.removeEntityHeld();
 					entity_clone.setX(this.getX()); entity_clone.setY(this.getY());
 					RenderableHolder.getInstance().add(entity_clone);
 					setOnCuttingBoardExists(entity_clone);
@@ -181,11 +174,18 @@ public class CuttingBoard extends Equipment implements Interactable,Cookable{
 		}
 	}
 		
-
-
 	@Override
 	public boolean isVisible() {
 		return true;
 	}
+	
+
+	public boolean isOnCuttingBoard() {
+		return OnCuttingBoard;
+	}
+	public void setOnCuttingBoard(boolean onCuttingBoard) {
+		OnCuttingBoard = onCuttingBoard;
+	}
+	
 	
 }

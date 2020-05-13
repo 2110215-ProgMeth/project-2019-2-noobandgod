@@ -12,10 +12,10 @@ import sharedObject.RenderableHolder;
 
 public class Bin extends Block implements Interactable{			
 	
-	public boolean interacts(Player e) throws InteractFailedException{
-		if (e.isHolding()) {
+	public boolean interacts(Player p) throws InteractFailedException{
+		if (p.isHolding()) {
 			//if player holding something, remove holding entity (throws it into bin)
-			Entity entity = e.removeEntityHeld();
+			Entity entity = p.removeEntityHeld();
 			
 //			if(entity instanceof Dish) {
 //				System.out.println(((Dish) entity).toString()+" @("+entity.getX()+","+entity.getY()+") has been thrown off!");
