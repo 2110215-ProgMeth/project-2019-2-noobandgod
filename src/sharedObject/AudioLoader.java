@@ -9,7 +9,11 @@ public class AudioLoader {
 	public static AudioClip ERROR = new AudioClip(ClassLoader.getSystemResource("sound/error.mp3").toString());
 	public static AudioClip CONGRAT = new AudioClip(ClassLoader.getSystemResource("sound/congratulation.mp3").toString());
 	public static AudioClip SUCCESS_SEND = new AudioClip(ClassLoader.getSystemResource("sound/SuccessSend.mp3").toString());
+	public static AudioClip Cutting = new AudioClip(ClassLoader.getSystemResource("sound/cutting.mp3").toString());
+	public static AudioClip frying = new AudioClip(ClassLoader.getSystemResource("sound/frying.mp3").toString());
+	
 	public static AudioClip Start_Screen = new AudioClip(ClassLoader.getSystemResource("sound/StartScreen.mp3").toString());
 	public static AudioClip Game_Screen = new AudioClip(ClassLoader.getSystemResource("sound/GameScreen.mp3").toString());
 	public static AudioClip End_Screen = new AudioClip(ClassLoader.getSystemResource("sound/EndScreen.mp3").toString());
+	public static AudioClip End_Screen2 = new AudioClip(ClassLoader.getSystemResource("sound/EndScreen2.mp3").toString());
 }

@@ -28,8 +28,6 @@ import screen.GameScreen;
 import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 public class StartScreen{
-		private String image_path = ClassLoader.getSystemResource("picture/Background.png").toString();
-		private Image background = new Image(image_path);		
 		private Stage primaryStage;
 		private Canvas canvas;
 		private GraphicsContext gc;
@@ -60,7 +58,6 @@ public class StartScreen{
 		primaryStage.setTitle("Umm!! Aroiii");
 		primaryStage.setResizable(false);
 		startScreenSong = new AnimationTimer() {
-			@Override
 			public void handle(long now) {
 				if(!AudioLoader.Start_Screen.isPlaying()) 
 					AudioLoader.Start_Screen.play();

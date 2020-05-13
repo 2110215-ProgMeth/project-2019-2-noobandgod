@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
 public class CuttingBoard extends Equipment implements Interactable{
@@ -83,6 +84,7 @@ public class CuttingBoard extends Equipment implements Interactable{
 			return false;
 		}
 		if (OnCuttingBoard && !isWorking) {
+			AudioLoader.Cutting.play();
 			setWorking(true);
 			drawProgessBar(GameScreen.gamegc, GameController.CUTTINGBOARD_COOLDOWN);
 			final long startNanoTime = System.nanoTime();

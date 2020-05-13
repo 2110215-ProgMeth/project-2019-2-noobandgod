@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import logic.GameController;
 import logic.Sprites;
 import screen.GameScreen;
+import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
 public class FryingPan extends Equipment implements Interactable{
@@ -89,6 +90,7 @@ public class FryingPan extends Equipment implements Interactable{
 			return false;
 		}
 		if (OnFryingPan && !isWorking) {
+			AudioLoader.frying.play();
 			setWorking(true);
 			drawProgessBar(GameScreen.gamegc, GameController.FRYINGPAN_COOLDOWN);
 			final long startNanoTime = System.nanoTime();

@@ -120,14 +120,25 @@ public class EndScreen {
 		
 		menu = new ButtonsEndScreen();
 		root.getChildren().add(menu);
-		endScreenSong = new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-				if (!AudioLoader.End_Screen.isPlaying())
-					AudioLoader.End_Screen.play();
-			}
-		};
-		endScreenSong.start();
+		
+		if (GameController.getScore_count() <= 100) {
+			endScreenSong = new AnimationTimer() {
+				public void handle(long now) {
+					if (!AudioLoader.End_Screen.isPlaying()) {
+						AudioLoader.End_Screen.play();
+					}
+				}
+			};endScreenSong.start();
+		}else {
+			endScreenSong = new AnimationTimer() {
+				@Override
+				public void handle(long now) {
+					if (!AudioLoader.End_Screen2.isPlaying())
+						AudioLoader.End_Screen2.play();
+				}
+			};
+			endScreenSong.start();
+		}
 
 		setupButton();
 	}
