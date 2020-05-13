@@ -176,17 +176,17 @@ public class GameMap {
 	}
 	
 	public boolean isInteractPossible(Player p,int targetx, int targety) {
-		System.out.println("You are interacting @("+targetx+","+targety+")");
+		//System.out.println("You are interacting @("+targetx+","+targety+")");
 		
 		if (targetx < 0 || targetx > width-1 || targety < 0 || targety > height-1) {
 			//out of bound -> return false
-			System.out.println("Out of bound interacting");
+			//System.out.println("Out of bound interacting");
 			return false;
 		} 
 		
 		if (cellmap[targety][targetx].isBlockEmpty()) {
 			//if no block -> no interact
-			System.out.println("There is no block you wished to interact");
+			//System.out.println("There is no block you wished to interact");
 			return false;
 		}
 		

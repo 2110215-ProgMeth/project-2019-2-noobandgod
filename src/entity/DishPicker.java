@@ -12,7 +12,7 @@ public class DishPicker extends Block implements Interactable{
     
     public boolean interacts(Player p) throws InteractFailedException{
         if (!p.isHolding()) {
-        	System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
+        	//System.out.println("Player "+p.getPlayerNumber()+" has taken the dish at DishPicker at ("+this.getX()+","+this.getY()+")");
         	p.setEntityHeld(new Dish());
             p.setHolding(true);
             return true;
