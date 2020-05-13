@@ -66,13 +66,13 @@ public class GameController {
 		//orderManager.addOrder(menu4);
 		//orderManager.addOrder(menu5);
 		
-		System.out.println(orderManager.getOrders());
+		//System.out.println(orderManager.getOrders());
 	}
 	
 	public static void InitializeMap(String[][] map) {
-		System.out.println("Initializing Map...");
+		//System.out.println("Initializing Map...");
 		gameMap = new GameMap(map);
-		System.out.println("Successfully Initializing Map!");
+		//System.out.println("Successfully Initializing Map!");
 	}
 	
 	public static void InitializeIngredient() {

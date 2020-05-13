@@ -131,7 +131,7 @@ public class Dish extends Entity {
 	}
 	public boolean check(Ingredient i) {
 		if (i.getState() < 1) {
-			System.out.println("You can't place raw ingredient on a dish!");
+			//System.out.println("You can't place raw ingredient on a dish!");
 			return false;
 		}
 		if (i instanceof Fish) {//check fish which is different from other types

@@ -17,9 +17,9 @@ public class Bin extends Block implements Interactable{
 			//if player holding something, remove holding entity (throws it into bin)
 			Entity entity = e.removeEntityHeld();
 			
-			if(entity instanceof Dish) {
-				System.out.println(((Dish) entity).toString()+" @("+entity.getX()+","+entity.getY()+") has been thrown off!");
-			}
+//			if(entity instanceof Dish) {
+//				System.out.println(((Dish) entity).toString()+" @("+entity.getX()+","+entity.getY()+") has been thrown off!");
+//			}
 			return true; 
 			
 		}else{

@@ -94,7 +94,7 @@ public class CuttingBoard extends Equipment implements Interactable,Cookable{
 				} else {
 					p.setFreeze(false);
 					OnCuttingBoardExists.setState(1);
-					System.out.println("Cook completed!");
+					//System.out.println("Cook completed!");
 					setWorking(false);
 					stop();
 				}

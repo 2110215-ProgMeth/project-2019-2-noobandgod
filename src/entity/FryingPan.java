@@ -99,7 +99,7 @@ public class FryingPan extends Equipment implements Interactable{
 				} else {
 					p.setFreeze(false);
 					OnFryingPanExists.setState(2);
-					System.out.println("Cook completed!");
+					//System.out.println("Cook completed!");
 					setWorking(false);
 					stop();
 				}
