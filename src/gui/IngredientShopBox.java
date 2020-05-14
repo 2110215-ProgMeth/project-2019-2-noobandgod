@@ -41,7 +41,7 @@ public class IngredientShopBox extends StackPane{
 		mainBox.setPrefWidth(117);
 		mainBox.setPrefHeight(125);
 		mainBox.setAlignment(Pos.CENTER);
-		//mainBox.setPadding(new Insets(5,0,0,0));
+	
 		//-------------------------------------------------
 		//Ingredient Name
 		Label nameLabel = new Label(ingredientName);
@@ -82,9 +82,6 @@ public class IngredientShopBox extends StackPane{
 		
 		mainBox.getChildren().addAll(nameLabel,ingredientPic,priceLabel,amountBox);
 		this.getChildren().add(mainBox);
-		
-		
-		
 	}
 
 	public IngredientItem getIngredientItem() {

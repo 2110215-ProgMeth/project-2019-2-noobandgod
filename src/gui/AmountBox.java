@@ -1,6 +1,5 @@
 package gui;
 
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -20,15 +19,23 @@ public class AmountBox extends HBox {
 		super();
 		this.setPrefHeight(32);
 		this.setPrefWidth(128);
+		this.setAlignment(Pos.CENTER);
 		
-		
-		Label amountLabel = new Label("X ");
-		amountLabel.setFont(new Font(16));
+		Label xLabel = new Label("X ");
+		xLabel.setFont(new Font(16));
 		
 		this.amount = 0;
 		this.amountBuy = new Label("0  ");
 		amountBuy.setFont(new Font(16));
-		//---------------------------------------------------------------------
+	
+		initializeAddButton();
+		initializeRemoveButton();
+		
+		this.getChildren().addAll(xLabel,amountBuy,addButton,removeButton);	
+
+	}
+	
+	public void initializeAddButton() {
 		this.addButton = new Button("+");
 		addButton.setPrefWidth(16);
 		
@@ -39,7 +46,9 @@ public class AmountBox extends HBox {
 				addAmount(1);
 			}
 		});
-		//---------------------------------------------------------------------
+	}
+	
+	public void initializeRemoveButton() {
 		this.removeButton = new Button("-");
 		removeButton.setPrefWidth(16);
 		removeButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -49,9 +58,16 @@ public class AmountBox extends HBox {
 				addAmount(-1);
 			}
 		});
-		//---------------------------------------------------------------------
-		this.getChildren().addAll(amountLabel,amountBuy,addButton,removeButton);	
-		this.setAlignment(Pos.CENTER);
+	}
+	
+	public void update() {
+		if(amount == 0) {
+			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
+			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold;");
+		} else {
+			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
+			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
+		}
 	}
 	
 	public void addAmount(int n) {
@@ -76,15 +92,6 @@ public class AmountBox extends HBox {
 		this.amountBuy.setText("0  ");
 	}
 	
-	public void update() {
-		if(amount == 0) {
-			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
-			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold;");
-		} else {
-			addButton.setStyle("-fx-font-size: 14px; -fx-background-color: limegreen; -fx-text-fill: white; -fx-font-weight: bold;");
-			removeButton.setStyle("-fx-font-size: 14px; -fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;");
-		}
-	}
 	
 	
 	

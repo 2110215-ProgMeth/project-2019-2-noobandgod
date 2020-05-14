@@ -54,8 +54,7 @@ public class OrderManager {
 			try {
 				removeOrder(intarray.get(i));
 			} catch (RemoveOrderFailedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printErrorMessage();
 			}
 		}
 	}
