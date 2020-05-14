@@ -12,32 +12,20 @@ import logic.Sprites;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-
 public class Station extends Block implements Interactable{
-
 	private Entity OnStationExists;
 	private boolean OnStation;
+	
 	public Station() {
 		setOnStationExists(null);
 		setOnStation(false);
 	}
 	
-	
-	public boolean isOnStation() {
-		return OnStation;
-	}
-
-
-	public void setOnStation(boolean isOnStation) {
-		OnStation = isOnStation;
-	}
-
-
-	public boolean interacts(Player e) throws InteractFailedException{
-		if (!e.isHolding()) { //if player's hand is available to pick something
+	public boolean interacts(Player p) throws InteractFailedException{
+		if (!p.isHolding()) { //if player's hand is available to pick something
 			if (isOnStation()) {
 				Entity ontableEntity_clone = this.removedEntityOnStation();
-				e.setEntityHeld(ontableEntity_clone);
+				p.setEntityHeld(ontableEntity_clone);
 				//set the entity in our hand (isPlaced = false)
 				if (ontableEntity_clone instanceof Dish) {
 					((Dish) ontableEntity_clone).setPlaced(false);
@@ -48,20 +36,20 @@ public class Station extends Block implements Interactable{
 			}
 		}else {
 			//if on player's hand is DISH
-			if (e.getEntityHeld() instanceof Dish) {
-				Dish dish = (Dish) e.getEntityHeld();
+			if (p.getEntityHeld() instanceof Dish) {
+				Dish dish = (Dish) p.getEntityHeld();
 				if (getOnStationExists() instanceof Ingredient) {
 					if(dish.check((Ingredient) getOnStationExists())) {
 						Entity ontableEntity_clone = this.removedEntityOnStation();
 						dish.adds((Ingredient) ontableEntity_clone);
-						e.setEntityHeld(dish);
+						p.setEntityHeld(dish);
 						dish.setPlaced(false);//dish on hand and ingredient on station.I think the ingredient has added to the dish so the setPlae must be used in type of dish
 						return true;
 					}
 			    }else if (!isOnStation()) {	  
 			    	//if the station is available -> PLACE THE DISH
 			    	dish.setPlaced(true); 
-			    	Dish dish1 = (Dish) e.removeEntityHeld();
+			    	Dish dish1 = (Dish) p.removeEntityHeld();
 			    	dish1.setX(this.getX()); 
 			    	dish1.setY(this.getY());
 			    	RenderableHolder.getInstance().add(dish1);
@@ -72,8 +60,8 @@ public class Station extends Block implements Interactable{
 			    }
 			}else {// player's hand is Ingredient
 				if (!isOnStation()) {//empty station
-					if (((Ingredient) e.getEntityHeld()).getState() == 0) {
-						Entity entity_clone = e.removeEntityHeld();
+					if (((Ingredient) p.getEntityHeld()).getState() == 0) {
+						Entity entity_clone = p.removeEntityHeld();
 						entity_clone.setX(this.getX());
 						entity_clone.setY(this.getY());
 						RenderableHolder.getInstance().add(entity_clone);
@@ -87,8 +75,8 @@ public class Station extends Block implements Interactable{
 				
 				} else if (getOnStationExists() instanceof Dish) {//It has a dish on station already so it doesn't have to setPlace
 					Dish dish1 = (Dish) getOnStationExists();
-					if (dish1.check((Ingredient) e.getEntityHeld())) {
-						dish1.gathers(e);
+					if (dish1.check((Ingredient) p.getEntityHeld())) {
+						dish1.gathers(p);
 						setOnStationExists(dish1);
 						return true;
 					}
@@ -111,17 +99,6 @@ public class Station extends Block implements Interactable{
 		return removedEntity;
 	}
 	
-
-	public Entity getOnStationExists() {
-		return OnStationExists;
-	}
-	public void setOnStationExists(Entity onStationExists) {
-		OnStationExists = onStationExists;
-	}
-	public char getSymbol() {
-		return Sprites.Station;
-	}
-	
 	public String toString() {
 		String result = "STATION";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
@@ -129,6 +106,10 @@ public class Station extends Block implements Interactable{
 		return result;
 	}
 
+	public char getSymbol() {
+		return Sprites.Station;
+	}
+	
 	@Override
 	public int getZ() {
 		return getY()*3;
@@ -259,12 +240,24 @@ public class Station extends Block implements Interactable{
 		}
 	}
 
-
-
 	@Override
 	public boolean isVisible() {
 		return true;
 	}
+	
+	public boolean isOnStation() {
+		return OnStation;
+	}
 
+	public void setOnStation(boolean isOnStation) {
+		OnStation = isOnStation;
+	}
+	
+	public Entity getOnStationExists() {
+		return OnStationExists;
+	}
+	public void setOnStationExists(Entity onStationExists) {
+		OnStationExists = onStationExists;
+	}
 	
 }

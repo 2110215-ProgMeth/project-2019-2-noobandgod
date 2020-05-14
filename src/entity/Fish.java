@@ -5,17 +5,13 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Fish extends Ingredient{
-	private static final int price = 30;
+	public static final int price = 30;
 	
 	public Fish() {
 		setState(0);
 		setPlaced(false);
 	}
 	
-	public static int getPrice() {
-		return price;
-	}
-
 	public String toString() {
 		String result = "FISH";
 		return result;

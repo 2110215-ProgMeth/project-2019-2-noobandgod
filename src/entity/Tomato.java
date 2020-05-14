@@ -5,16 +5,13 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Tomato extends Ingredient{
-	private static final int price = 20;
+	public static final int price = 20;
 	
 	public Tomato() {
 		setState(0);
 		setPlaced(false);
 	}
 	
-	public static int getPrice() {
-		return price;
-	}
 	public String toString() {
 		String result = "TOMATO";
 		return result;

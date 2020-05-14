@@ -11,9 +11,9 @@ public class IngredientItem {
 	
 	public IngredientItem(String ingredientName) throws InvalidIngredientNameException{
 		switch(ingredientName) {
-		case "Tomato" :		price = Tomato.getPrice();	break;
-		case "Cabbage" : 	price = Cabbage.getPrice(); break;
-		case "Fish" : 		price = Fish.getPrice();	break;
+		case "Tomato" :		price = Tomato.price;	break;
+		case "Cabbage" : 	price = Cabbage.price;  break;
+		case "Fish" : 		price = Fish.price;		break;
 		default: 
 			throw new InvalidIngredientNameException("ERROR: There is no ingredientName "+ingredientName+" in this game");
 		}

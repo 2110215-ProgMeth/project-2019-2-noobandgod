@@ -28,7 +28,5 @@ public class Obstacle extends Block{
 	@Override
 	public boolean isVisible() {
 		return true;
-	}
-	
-	
+	}	
 }

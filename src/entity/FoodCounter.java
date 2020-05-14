@@ -12,17 +12,16 @@ import sharedObject.RenderableHolder;
 public class FoodCounter extends Block implements Interactable{
 
 	@Override
-	public boolean interacts(Player e) throws InteractFailedException{
-		if (e.isHolding()) {
-			if(e.getEntityHeld() instanceof Dish) {
-				return GameController.getOrderManager().sendOrder(e);
-			}throw new InteractFailedException("The carried menu isn't is in the list");
+	public boolean interacts(Player p) throws InteractFailedException{
+		if (p.isHolding()) {
+			if(p.getEntityHeld() instanceof Dish) {
+				return GameController.getOrderManager().sendOrder(p);
+			}throw new InteractFailedException("The carried menu isn't in the list");
 		}throw new  InteractFailedException("There is nothing to be delivered");
 	}
 	
 	@Override
 	public char getSymbol() {
-		// TODO Auto-generated method stub
 		return Sprites.FoodCounter;
 	}
 	

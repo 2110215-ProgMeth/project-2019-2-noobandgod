@@ -3,6 +3,7 @@ package entity;
 import entity.base.Entity;
 import entity.base.Interactable;
 import entity.base.Updatable;
+import exception.InteractFailedException;
 import input.InputUtility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.WritableImage;
@@ -12,18 +13,18 @@ import logic.GameController;
 import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
-public class Player extends Entity implements Updatable,Interactable {
+public class Player extends Entity implements Interactable,Updatable {
 	private boolean isHolding;
 	private Entity entityHeld;
+	
 	private int PlayerNumber;
 
 	private int timeStandStill;
 	private boolean isStill;
-
+	private boolean isFreeze;
+	
 	private Direction faceDirection;
 	private Direction lastwalkDirection;
-
-	private boolean isFreeze;
 
 	public Player(int playerNumber, int x, int y) {
 		setX(x);
@@ -37,7 +38,8 @@ public class Player extends Entity implements Updatable,Interactable {
 		setStill(true);
 		setFreeze(false);
 	}
-	public boolean interacts(Player p) {
+	
+	public boolean interacts(Player p) throws InteractFailedException {
 		if(!p.isHolding() && this.isHolding()) {  
 			Entity entity_clone = this.removeEntityHeld();
 			p.setEntityHeld(entity_clone);
@@ -46,8 +48,10 @@ public class Player extends Entity implements Updatable,Interactable {
 			Entity entity_clone = p.removeEntityHeld();
 			this.setEntityHeld(entity_clone);
 			return true;
-		}return false;
+		}
+		throw new InteractFailedException("ERROR");
 	}
+	
 	public Entity removeEntityHeld() {
 		setHolding(false);
 		Entity removedEntity = (Entity) getEntityHeld().clone();
@@ -135,6 +139,14 @@ public class Player extends Entity implements Updatable,Interactable {
 			break;
 		}
 		return new Integer[] { targetx, targety };
+	}
+	
+	public String toString() {
+		String result = "PLAYER NO: " + getPlayerNumber();
+		result += "\nHolding someting? " + isHolding();
+		result += "\nis still? " + isStill();
+		result += "\nStanding at: (" + getX() + "," + getY() + ")";
+		return result;
 	}
 
 	@Override
@@ -360,44 +372,62 @@ public class Player extends Entity implements Updatable,Interactable {
 			}
 		}
 		
-		
-		//======================================================================================
-		
 	}
-	public String toString() {
-		String result = "PLAYER NO: " + getPlayerNumber();
-		result += "\nHolding someting? " + isHolding();
-		result += "\nis still? " + isStill();
-		result += "\nStanding at: (" + getX() + "," + getY() + ")";
-		return result;
+	
+	public void addTimeStandStill() {
+		this.timeStandStill += 1;
 	}
-
-	public void setHolding(boolean isHolding) {
-		this.isHolding = isHolding;
-	}
-
-	public void setFaceDirection(Direction faceDirection) {
-		this.faceDirection = faceDirection;
-	}
-
-	public void setPlayerNumber(int playerNumber) {
-		this.PlayerNumber = playerNumber;
-	}
-
+	
 	public boolean isHolding() {
 		return isHolding;
 	}
-
+	
+	public void setHolding(boolean isHolding) {
+		this.isHolding = isHolding;
+	}
+	
 	public Entity getEntityHeld() {
 		return entityHeld;
 	}
+	
+	public int getPlayerNumber() {
+		return PlayerNumber;
+	}
+	
+	public void setPlayerNumber(int playerNumber) {
+		this.PlayerNumber = playerNumber;
+	}
+	
+	public int getTimeStandStill() {
+		return timeStandStill;
+	}
 
+	public void setTimeStandStill(int timeStandStill) {
+		this.timeStandStill = timeStandStill;
+	}
+	
+	public boolean isStill() {
+		return isStill;
+	}
+
+	public void setStill(boolean isStill) {
+		this.isStill = isStill;
+	}
+	
+	public boolean isFreeze() {
+		return isFreeze;
+	}
+
+	public void setFreeze(boolean isFreeze) {
+		this.isFreeze = isFreeze;
+	}
+	
 	public Direction getFaceDirection() {
 		return faceDirection;
 	}
 
-	public int getPlayerNumber() {
-		return PlayerNumber;
+	public void setFaceDirection(Direction faceDirection) {
+		this.faceDirection = faceDirection;
 	}
 
 	public Direction getLastwalkDirection() {
@@ -407,33 +437,4 @@ public class Player extends Entity implements Updatable,Interactable {
 	public void setLastwalkDirection(Direction lastwalkDirection) {
 		this.lastwalkDirection = lastwalkDirection;
 	}
-
-	public int getTimeStandStill() {
-		return timeStandStill;
-	}
-
-	public void setTimeStandStill(int timeStandStill) {
-		this.timeStandStill = timeStandStill;
-	}
-
-	public void addTimeStandStill() {
-		this.timeStandStill += 1;
-	}
-
-	public boolean isStill() {
-		return isStill;
-	}
-
-	public void setStill(boolean isStill) {
-		this.isStill = isStill;
-	}
-
-	public boolean isFreeze() {
-		return isFreeze;
-	}
-
-	public void setFreeze(boolean isFreeze) {
-		this.isFreeze = isFreeze;
-	}
-
 }

@@ -5,17 +5,13 @@ import screen.GameScreen;
 import sharedObject.RenderableHolder;
 
 public class Cabbage extends Ingredient{
-	private static final int price = 10;
+	public static final int price = 10;
 	
 	public Cabbage() {
 		setState(0);
 		setPlaced(false);
 	}
 
-	public static int getPrice() {
-		return price;
-	}
-	
 	public String toString() {
 		String result = "CABBAGE";
 		result += "\nLocated at ("+this.getX()+","+this.getY()+")";

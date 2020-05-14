@@ -1,5 +1,6 @@
 package entity;
 
+import entity.base.Cookable;
 import entity.base.Entity;
 import entity.base.Interactable;
 import exception.InteractFailedException;
@@ -11,7 +12,7 @@ import screen.GameScreen;
 import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
-public class FryingPan extends Equipment implements Interactable{
+public class FryingPan extends Equipment implements Interactable, Cookable{
 	private Ingredient OnFryingPanExists;
 	private boolean OnFryingPan;
 	
@@ -21,42 +22,34 @@ public class FryingPan extends Equipment implements Interactable{
 		setWorking(false);
 	}
 	
-	public boolean isOnFryingPan() {
-		return OnFryingPan;
-	}
-	private void setOnFryingPan(boolean b) {
-		OnFryingPan = b;
-		
-	}
-	public boolean interacts(Player e) throws InteractFailedException{
-		if (!e.isHolding()) {//holding nothing
+	public boolean interacts(Player p) throws InteractFailedException{
+		if (!p.isHolding()) {//holding nothing
 			if (getOnFryingPanExists() instanceof Ingredient) {//food on frying pan
 				Ingredient ingredient_clone = this.removedEntityOnFryingPan();
-				e.setEntityHeld(ingredient_clone);
-				e.setHolding(true);
+				p.setEntityHeld(ingredient_clone);
+				p.setHolding(true);
 				ingredient_clone.setPlaced(false);
 				return true;
 			}
 		}else {//holding something
-			if (e.getEntityHeld() instanceof Dish) {//holding a dish
+			if (p.getEntityHeld() instanceof Dish) {//holding a dish
 				if (isOnFryingPan()) {//ingredient on frying pan
-					Dish dish = (Dish) e.getEntityHeld();
+					Dish dish = (Dish) p.getEntityHeld();
 					if (dish.check((Ingredient) getOnFryingPanExists())){
 						Ingredient ingredient_clone = this.removedEntityOnFryingPan();
 						dish.adds(ingredient_clone);
-						e.setEntityHeld(dish);
+						p.setEntityHeld(dish);
 						dish.setPlaced(false);
 						return true;
 					}
 			    }
 			}else {//holding fish
 				if (!isOnFryingPan()) {//nothing on the frying pan
-					if (e.getEntityHeld() instanceof Fish) {
-						if(((Fish) e.getEntityHeld()).getState() == 1) {
-							System.out.println("NO SASHIMI ON PAN");
+					if (p.getEntityHeld() instanceof Fish) {
+						if(((Fish) p.getEntityHeld()).getState() == 1) {
 							return false;
 						} else {
-							Fish entity_clone = (Fish) e.removeEntityHeld();
+							Fish entity_clone = (Fish) p.removeEntityHeld();
 							setOnFryingPanExists(entity_clone);
 							setOnFryingPan(true);
 							entity_clone.setPlaced(true);
@@ -68,6 +61,7 @@ public class FryingPan extends Equipment implements Interactable{
 		}
 		throw new InteractFailedException("ERROR");
 	}
+	
 	public Ingredient removedEntityOnFryingPan() {
 		setOnFryingPan(false);
 		Ingredient removedEntity = (Ingredient) getOnFryingPanExists().clone();
@@ -78,6 +72,7 @@ public class FryingPan extends Equipment implements Interactable{
 		setOnFryingPanExists(null);
 		return removedEntity;
 	}
+	
 	public boolean cooks(Player p) throws InteractFailedException{
 		if (!OnFryingPan){
 			return false;
@@ -106,24 +101,16 @@ public class FryingPan extends Equipment implements Interactable{
 			}
 			}.start();
 			return true;
-		}System.out.println("There is nothing to be cooked");
-		return false;
-		//throw new CookFailedException("There is nothing to be cooked");//throw an exception that nothing to be cooked
+		}
+		throw new InteractFailedException("ERROR");
 	}
-	public Ingredient getOnFryingPanExists() {
-		return OnFryingPanExists;
-	}
-
-	public void setOnFryingPanExists(Entity onFryingPanExists) {
-		OnFryingPanExists =(Ingredient) onFryingPanExists;
-	}
+	
 	public char getSymbol() {
 		return Sprites.FryingPan;
 	}
 
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
 		return getY()*3;
 	}
 
@@ -160,6 +147,21 @@ public class FryingPan extends Equipment implements Interactable{
 	@Override
 	public boolean isVisible() {
 		return true;
+	}
+	
+	public boolean isOnFryingPan() {
+		return OnFryingPan;
+	}
+	private void setOnFryingPan(boolean b) {
+		OnFryingPan = b;	
+	}
+	
+	public Ingredient getOnFryingPanExists() {
+		return OnFryingPanExists;
+	}
+
+	public void setOnFryingPanExists(Entity onFryingPanExists) {
+		OnFryingPanExists =(Ingredient) onFryingPanExists;
 	}
 	
 }
