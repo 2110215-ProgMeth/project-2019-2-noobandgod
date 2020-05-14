@@ -12,11 +12,6 @@ public class Tomato extends Ingredient{
 		setPlaced(false);
 	}
 	
-	public String toString() {
-		String result = "TOMATO";
-		return result;
-	}
-
 	public int getZ() {
 		return getY() * 3 + 2;
 	}

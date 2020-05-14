@@ -27,14 +27,6 @@ public class FishStorage extends IngredientStorage{
 		return Sprites.FishStorage;
 	}
 	
-	public String toString() {
-		String result = "FISHTORAGE";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
-		result += "\nStock: "+getAmount();
-		result += "\nisAvailable: "+isAvailable;
-		return result;
-	}
-	
 	@Override
 	public int getZ() {
 		return getY()*3;

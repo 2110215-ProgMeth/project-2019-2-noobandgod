@@ -20,15 +20,9 @@ public class TomatoStorage extends IngredientStorage{
 			return true;
 		}throw new InteractFailedException("ERROR");
 	}
+	
 	public char getSymbol() {
 		return Sprites.TomatoStorage;
-	}
-	public String toString() {
-		String result = "TOMATOSTORAGE";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
-		result += "\nStock: "+getAmount();
-		result += "\nisAvailable: "+isAvailable;
-		return result;
 	}
 	
 	@Override

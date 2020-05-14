@@ -1,6 +1,5 @@
 package gui;
 
-import exception.InvalidIngredientNameException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -49,11 +48,8 @@ public class IngredientShopBox extends StackPane{
 		nameLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
 		nameLabel.setTextFill(Color.BLACK);
 		
-		try {
-			this.ingredientItem = new IngredientItem(ingredientName);
-		} catch (InvalidIngredientNameException e) {
-			e.printStackTrace();
-		}
+		this.ingredientItem = new IngredientItem(ingredientName);
+		
 		//-------------------------------------------------
 		//Ingredient Picture
 		Pane ingredientPic = new StackPane();

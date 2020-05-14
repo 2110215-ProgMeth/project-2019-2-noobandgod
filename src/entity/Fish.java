@@ -12,11 +12,6 @@ public class Fish extends Ingredient{
 		setPlaced(false);
 	}
 	
-	public String toString() {
-		String result = "FISH";
-		return result;
-	}
-
 	public int getZ() {
 		return getY()*3+2;
 	}

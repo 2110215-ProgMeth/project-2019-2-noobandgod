@@ -4,5 +4,5 @@ import entity.Player;
 import exception.InteractFailedException;
 
 public interface Interactable {
-	public abstract boolean interacts(Player e) throws InteractFailedException;
+	public abstract boolean interacts(Player p) throws InteractFailedException;
 }

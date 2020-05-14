@@ -11,14 +11,6 @@ public class Cabbage extends Ingredient{
 		setState(0);
 		setPlaced(false);
 	}
-
-	public String toString() {
-		String result = "CABBAGE";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
-		result += "\nisPlacedonTable? " + this.isPlaced;
-		result += "\nstate: "+this.getState();
-		return result;
-	}
 	
 	public int getZ() {
 		return getY()*3+2;

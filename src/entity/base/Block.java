@@ -1,6 +1,5 @@
 package entity.base;
 
-
 public abstract class Block extends Entity{
 	protected boolean isAnyBlockDownward = false;
 	
@@ -13,7 +12,4 @@ public abstract class Block extends Entity{
 	public void setAnyBlockDownward(boolean isAnyBlockDownward) {
 		this.isAnyBlockDownward = isAnyBlockDownward;
 	}
-
-	
-	
 }

@@ -3,11 +3,23 @@ package entity.base;
 import sharedObject.IRenderable;
 
 public abstract class Entity implements IRenderable,Cloneable {
-	private int x;
-	private int y;
-	
-	private boolean isDestroyed;
+	protected int x;
+	protected int y;
+	protected boolean isDestroyed;
 
+	@Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new InternalError("can't clone");
+		}
+	}
+	
+	public String getCoordinate() {
+		return "("+this.getX()+","+this.getY()+")";
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -26,18 +38,4 @@ public abstract class Entity implements IRenderable,Cloneable {
 	public void setDestroyed(boolean isDestroyed) {
 		this.isDestroyed = isDestroyed;
 	}
-	
-	@Override
-	public Object clone() {
-		try {
-			return super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new InternalError("can't clone");
-		}
-	}
-	
-	public String getCoordinate() {
-		return "("+this.getX()+","+this.getY()+")";
-	}
-	
 }
