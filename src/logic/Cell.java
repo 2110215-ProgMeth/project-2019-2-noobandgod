@@ -20,31 +20,6 @@ public class Cell {
 		return false;
 	}
 	
-	public boolean isBlockEmpty() {
-		return isBlockEmpty;
-	}
-
-	public void setBlockEmpty(boolean isBlockEmpty) {
-		this.isBlockEmpty = isBlockEmpty;
-	}
-
-
-
-	public Block getBlock() {
-		return block;
-	}
-
-
-	
-	public char getSymbol() {
-		if(isBlockEmpty) {
-			return 'O';
-		} else {
-			return block.getSymbol();
-		}
-	}
-	
-	
 	public String toString() {
 		String resultString;
 		if(isBlockEmpty) {
@@ -58,6 +33,24 @@ public class Cell {
 		resultString += "\n________________________";
 		return resultString;
 	}
-
 	
+	public char getSymbol() {
+		if(isBlockEmpty) {
+			return 'O';
+		} else {
+			return block.getSymbol();
+		}
+	}
+	
+	public void setBlockEmpty(boolean isBlockEmpty) {
+		this.isBlockEmpty = isBlockEmpty;
+	}
+	
+	public boolean isBlockEmpty() {
+		return isBlockEmpty;
+	}
+
+	public Block getBlock() {
+		return block;
+	}	
 }
