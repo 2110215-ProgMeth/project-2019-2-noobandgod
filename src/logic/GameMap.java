@@ -135,11 +135,6 @@ public class GameMap {
 		return bool;
 	}
 	
-	
-	public Entity getBlock(int x,int y) {
-		return cellmap[y][x].getBlock();
-	}
-	
 	public boolean isMovePossible(Player p,int targetx, int targety) {
 		//System.out.println("target x: "+targetx+" ,target y: "+targety);
 		
@@ -315,6 +310,10 @@ public class GameMap {
 		}
 	}
 	
+	public Cell[][] getCellmap() {
+		return cellmap;
+	}
+	
 	public int getWidth() {
 		return width;
 	}
@@ -330,11 +329,6 @@ public class GameMap {
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	
-	public Cell[][] getCellmap() {
-		return cellmap;
-	}
-	
 }
 
 

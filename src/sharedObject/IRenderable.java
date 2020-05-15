@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public interface IRenderable {
 	
-	public int getZ();
-	public void draw(GraphicsContext gc);
-	public boolean isVisible();
+	public abstract int getZ();
+	public abstract void draw(GraphicsContext gc);
+	public abstract boolean isVisible();
 }

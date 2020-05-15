@@ -62,6 +62,14 @@ public abstract class Menu {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		String a;
+		a = "Menu Name: "+this.name+"\n";
+		a += "Price: "+this.price+"\n";
+		return a;
+	}
+	
 	public boolean isSend() {
 		return isSend;
 	}
@@ -121,14 +129,4 @@ public abstract class Menu {
 	public Image getMenuImage() {
 		return menuImage;
 	}
-
-	@Override
-	public String toString() {
-		String a;
-		a = "Menu Name: "+this.name+"\n";
-		a += "Price: "+this.price+"\n";
-		return a;
-	}
-	
-	
 }
