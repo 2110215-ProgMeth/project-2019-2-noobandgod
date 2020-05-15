@@ -15,11 +15,6 @@ public class InputUtility {
 				keypressed.remove(keyCode);
 			}
 		}
-		//System.out.println(keypressed);
-	}
-
-	public static ArrayList<KeyCode> getKeypressed() {
-		return keypressed;
 	}
 	
 	public static void removeKeyPressed() {
@@ -28,10 +23,7 @@ public class InputUtility {
 		}
 	}
 	
-	public static void removeSpecificKeyCode(KeyCode keyCode) {
-		if (keypressed.contains(keyCode)) {
-			keypressed.remove(keyCode);
-		} 
+	public static ArrayList<KeyCode> getKeypressed() {
+		return keypressed;
 	}
-	
 }

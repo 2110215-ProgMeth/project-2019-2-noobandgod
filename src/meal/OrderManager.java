@@ -99,6 +99,7 @@ public class OrderManager {
 			return true;
 		} else {
 			//in case wrong dish was sent!
+			p.removeEntityHeld();
 			GameController.addScoreCount(-5);
 			return false;
 		}

@@ -1,5 +1,6 @@
 package gui;
 
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +21,7 @@ import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
 
 public class ShopPane extends StackPane {
-	private ObservableList<IngredientShopBox> ingredientShopBoxs = FXCollections.observableArrayList();
+	private ArrayList<IngredientShopBox> ingredientShopBoxs;
 	private Label totalpriceLabel;
 	private int totalpay;
 	private Button buyButton;
@@ -30,7 +31,7 @@ public class ShopPane extends StackPane {
 	
 	public ShopPane(String[] ingredientName) {
 		this.setPrefHeight(height); this.setPrefWidth(width);
-		
+		this.ingredientShopBoxs = new ArrayList<IngredientShopBox>();
 		//-------------------------------------------------
 		//Background
 		Canvas bg = new Canvas(width,height);
@@ -57,10 +58,19 @@ public class ShopPane extends StackPane {
 		totalpriceLabel.setTextFill(Color.WHITE);
 		totalpriceLabel.setFont(new Font(20));
 		//-------------------------------------------------
+		initializeBuyButton();
+		
+		
+		mainBox.setAlignment(Pos.CENTER);
+		mainBox.getChildren().addAll(totalpriceLabel,buyButton);
+		
+		this.getChildren().add(mainBox);
+	}
+	
+	public void initializeBuyButton() {
 		this.buyButton = new Button("Buy");
 		buyButton.setPrefWidth(96);
 		buyButton.setPrefHeight(30);
-		
 		
 		buyButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -72,18 +82,9 @@ public class ShopPane extends StackPane {
 					resetShop();				
 				} else {
 					AudioLoader.ERROR.play();
-					System.out.println("Your money is not enough");
 				}
-				
-				
 			}
 		});
-		
-		
-		mainBox.setAlignment(Pos.CENTER);
-		mainBox.getChildren().addAll(totalpriceLabel,buyButton);
-		
-		this.getChildren().add(mainBox);
 	}
 	
 	public void calculateTotalPrice() {
@@ -119,11 +120,6 @@ public class ShopPane extends StackPane {
 				break;
 			}
 		}	
-				
-	}
-	
-	public void setTotalpay(int totalpay) {
-		this.totalpay = totalpay;
 	}
 	
 	public void update() {
@@ -143,7 +139,10 @@ public class ShopPane extends StackPane {
 		for (IngredientShopBox a: ingredientShopBoxs) {
 			a.getAmountBox().update();
 		}
-		
+	}
+	
+	public void setTotalpay(int totalpay) {
+		this.totalpay = totalpay;
 	}
 	
 	

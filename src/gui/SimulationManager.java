@@ -12,6 +12,11 @@ public class SimulationManager {
 		dataPane = new DataPane();
 		orderPane = new OrderPane();
 	}
+	
+	public static void updatePane() {
+		shopPane.update();
+		dataPane.update();
+	}
 
 	public static OrderPane getOrderPane() {
 		return orderPane;
@@ -23,11 +28,5 @@ public class SimulationManager {
 
 	public static DataPane getDataPane() {
 		return dataPane;
-	}
-	
-	public static void updatePane() {
-		shopPane.update();
-		dataPane.update();
-	}
-	
+	}	
 }

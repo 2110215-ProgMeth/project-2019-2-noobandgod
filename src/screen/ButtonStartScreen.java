@@ -1,4 +1,4 @@
-package logic;
+package screen;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

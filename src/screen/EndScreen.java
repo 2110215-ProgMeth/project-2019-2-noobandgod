@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import logic.ButtonsEndScreen;
 import logic.GameController;
 import sharedObject.AudioLoader;
 import sharedObject.RenderableHolder;
