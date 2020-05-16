@@ -136,7 +136,7 @@ public class EndScreen {
 	}
 
 	public void setupButton() {
-		menu.setupExitButton();
+		menu.setUpExitButton();
 	}
 	
 	public void drawLine(GraphicsContext gc) {

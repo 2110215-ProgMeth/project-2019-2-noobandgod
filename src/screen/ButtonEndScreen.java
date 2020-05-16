@@ -31,7 +31,7 @@ public class ButtonEndScreen extends HBox{
 		setUpButton();
 		getChildren().addAll(quitButton);
 	}
-	public void setupExitButton() {
+	public void setUpExitButton() {
 		quitButton.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override

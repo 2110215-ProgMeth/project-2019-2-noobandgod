@@ -90,7 +90,7 @@ public class StartScreen{
 				startScreenSong.stop();
 				}
 			});
-		menu.setupExitButton();
+		menu.setUpExitButton();
 		setBackground();
 	}
 	public static StackPane getRoot() {

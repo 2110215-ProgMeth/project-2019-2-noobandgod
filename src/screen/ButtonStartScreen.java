@@ -60,7 +60,7 @@ public class ButtonStartScreen extends VBox {
 		getChildren().addAll(playButton, quitButton);
 	}
 
-	public void setupExitButton() {
+	public void setUpExitButton() {
 		quitButton.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
