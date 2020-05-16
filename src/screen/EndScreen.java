@@ -17,7 +17,7 @@ public class EndScreen {
 	private Stage primaryStage;
 	private Canvas canvas;
 	private GraphicsContext gc;
-	private static ButtonsEndScreen menu;
+	private static ButtonEndScreen menu;
 	private AnimationTimer endScreenSong;
 	public static StackPane root;
 	private static final Font mainfont = Font.loadFont(ClassLoader.getSystemResourceAsStream("font/supermarket.ttf"), 100);
@@ -110,7 +110,7 @@ public class EndScreen {
 		drawLine(gc);
 		drawScoreandBonus(gc, s, bonus);
 		
-		menu = new ButtonsEndScreen();
+		menu = new ButtonEndScreen();
 		root.getChildren().add(menu);
 		
 		if (GameController.getScore_count() <= 100) {
