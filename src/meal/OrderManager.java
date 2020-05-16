@@ -106,10 +106,6 @@ public class OrderManager {
 
 	}
 
-	public ArrayList<Menu> getOrders() {
-		return orders;
-	}
-
 	public static int typemenu() {
 		int max = 9;
 		int min = 1;
@@ -123,7 +119,7 @@ public class OrderManager {
 		for (Menu m : getOrders()) {
 			a.add(m.getTimeLeft());
 		}
-		//System.out.println(a);
+		System.out.println(a);
 	}
 
 	public static void updateOrderNumber() {
@@ -160,5 +156,9 @@ public class OrderManager {
 				SimulationManager.getOrderPane().update();
 			}
 		}
+	}
+	
+	public ArrayList<Menu> getOrders() {
+		return orders;
 	}
 }

@@ -150,7 +150,6 @@ public class RenderableHolder {
 	}
 	
 	public void update() {
-		
 		Collections.sort(entities, comparator);
 		for (int i = entities.size() - 1; i >= 0; i--) {
 			if (entities.get(i) instanceof Updatable) {
@@ -162,26 +161,6 @@ public class RenderableHolder {
 				entities.remove(i1);
 			}
 		}
-	}
-	
-	public static RenderableHolder getInstance() {
-		return instance;
-	}
-
-	public ArrayList<IRenderable> getEntities() {
-		return entities;
-	}
-	
-	public static void show() {
-		ArrayList<IRenderable> entities2 = RenderableHolder.getInstance().getEntities();
-		for (IRenderable entity: entities2) {
-			if (entity instanceof Dish || entity instanceof Cabbage) {
-				System.out.println(entity.toString()+"  (Z = "+entity.getZ()+")");
-				System.out.println("-------------------------------");
-			}
-			
-		}
-		System.out.println("===================================");
 	}
 	
 	public static void loadResource() {
@@ -297,5 +276,11 @@ public class RenderableHolder {
 		crate_fish_Image = new Image(ClassLoader.getSystemResource(p+"crate_fish.png").toString());
 	}
 	
-	
+	public static RenderableHolder getInstance() {
+		return instance;
+	}
+
+	public ArrayList<IRenderable> getEntities() {
+		return entities;
+	}
 }
