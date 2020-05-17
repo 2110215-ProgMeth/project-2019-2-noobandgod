@@ -127,7 +127,7 @@ public class ShopPane extends StackPane {
 		if (totalpay == 0) {
 			totalpriceLabel.setTextFill(Color.WHITE);
 			buyButton.setStyle("-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold;");
-		} else if (money <= totalpay) {
+		} else if (money < totalpay) {
 			totalpriceLabel.setTextFill(Color.PINK);
 			buyButton.setStyle("-fx-background-color: grey; -fx-text-fill: black; -fx-font-weight: bold;");
 			

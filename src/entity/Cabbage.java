@@ -13,27 +13,25 @@ public class Cabbage extends Ingredient{
 	}
 	
 	public int getZ() {
-		return getY()*3+2;
+		return y*3+2;
 	}
 	
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = GameScreen.draw_origin_y+y*pixel;
 		
 		if(!isPlaced) {
 			if(getState() == 0) {
-				gc.drawImage(RenderableHolder.cabbage_Image, x, y-46,64,40);
+				gc.drawImage(RenderableHolder.cabbage_Image, X, Y-46,64,40);
 			}else if (getState() ==1) {//cabbage state1
-				gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y-40,64,40);
-				
+				gc.drawImage(RenderableHolder.cabbage_sliced_Image, X, Y-40,64,40);
 			}
 		}
-		
 	}
 	
 	@Override
 	public boolean isVisible() {
-		return !isDestroyed();
+		return !isDestroyed;
 	}
 }

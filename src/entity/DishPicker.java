@@ -25,25 +25,25 @@ public class DishPicker extends Block implements Interactable{
 
     public String toString() {
     	String result = "DISHPICKER";
-    	result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+    	result += "\nLocated at ("+x+","+y+")";
     	return result;
     }
 
     @Override
     public int getZ() {
-        return getY()*3;
+        return y*3;
     }
     
     @Override
     public void draw(GraphicsContext gc) {
         int pixel = GameScreen.pixel;
-        int x = GameScreen.draw_origin_x+this.getX()*pixel;
-        int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+        int X = GameScreen.draw_origin_x+x*pixel;
+        int Y = (GameScreen.draw_origin_y-6)+y*pixel;
 
         if(isAnyBlockDownward) {
-        	gc.drawImage(RenderableHolder.dishpicker_between_Image, x, y);
+        	gc.drawImage(RenderableHolder.dishpicker_between_Image, X, Y);
         } else {
-        	gc.drawImage(RenderableHolder.dishpicker_infront_Image, x, y);
+        	gc.drawImage(RenderableHolder.dishpicker_infront_Image, X, Y);
         }
     }
     

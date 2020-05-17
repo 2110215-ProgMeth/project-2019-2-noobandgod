@@ -13,16 +13,16 @@ public class Obstacle extends Block{
 
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = GameScreen.draw_origin_y+y*pixel;
 		
-		gc.drawImage(RenderableHolder.obstacle_Image, x, y-6);
+		gc.drawImage(RenderableHolder.obstacle_Image, X, Y-6);
 	}
 
 	@Override

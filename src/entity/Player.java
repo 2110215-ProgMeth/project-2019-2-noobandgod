@@ -77,8 +77,8 @@ public class Player extends Entity implements Interactable,Updatable {
 	public boolean move(Direction dir) {
 		if (!isFreeze) {
 			setFaceDirection(dir);
-			int targetx = this.getX();
-			int targety = this.getY();
+			int targetx = x;
+			int targety = y;
 
 			switch (dir) {
 			case LEFT:
@@ -105,7 +105,6 @@ public class Player extends Entity implements Interactable,Updatable {
 					getEntityHeld().setX(targetx);
 					getEntityHeld().setY(targety);
 				}
-
 				//System.out.println("Player " + getPlayerNumber() + " has moved to (" + getX() + "," + getY() + ")!");
 				return true;
 			} else {
@@ -119,8 +118,8 @@ public class Player extends Entity implements Interactable,Updatable {
 	public Integer[] getWhereInteract() {
 		Direction dir = getFaceDirection();
 
-		int targetx = this.getX();
-		int targety = this.getY();
+		int targetx = x;
+		int targety = y;
 
 		switch (dir) {
 		case LEFT:
@@ -145,20 +144,20 @@ public class Player extends Entity implements Interactable,Updatable {
 		String result = "PLAYER NO: " + getPlayerNumber();
 		result += "\nHolding someting? " + isHolding();
 		result += "\nis still? " + isStill();
-		result += "\nStanding at: (" + getX() + "," + getY() + ")";
+		result += "\nStanding at: (" + x + "," + y + ")";
 		return result;
 	}
 
 	@Override
 	public int getZ() {
-		return getY() * 3 + 1;
+		return y * 3 + 1;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x + this.getX() * pixel;
-		int y = (GameScreen.draw_origin_y - 20) + this.getY() * pixel;
+		int X = GameScreen.draw_origin_x + this.getX() * pixel;
+		int Y = (GameScreen.draw_origin_y - 20) + this.getY() * pixel;
 
 		int player_width = 64;
 		int player_height = 80;
@@ -166,7 +165,7 @@ public class Player extends Entity implements Interactable,Updatable {
 		WritableImage player_Image;
 		
 		
-		if(this.getPlayerNumber() == 0) {
+		if(getPlayerNumber() == 0) {
 			if (!isStill) {
 				switch (faceDirection) {
 				case LEFT:
@@ -185,7 +184,7 @@ public class Player extends Entity implements Interactable,Updatable {
 					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,0,player_width,player_height);
 					break;
 				}
-				gc.drawImage(player_Image, x, y, 64, 80);
+				gc.drawImage(player_Image, X, Y, 64, 80);
 				
 			} else {
 				switch (lastwalkDirection) {
@@ -204,9 +203,9 @@ public class Player extends Entity implements Interactable,Updatable {
 				default:
 					player_Image = new WritableImage(RenderableHolder.player0_sprite_Image.getPixelReader(),0,0,player_width,player_height);
 				}
-				gc.drawImage(player_Image, x, y, 64, 80);
+				gc.drawImage(player_Image, X, Y, 64, 80);
 			}
-		} else if (this.getPlayerNumber() == 1) {
+		} else if (getPlayerNumber() == 1) {
 			if (!isStill) {
 				switch (faceDirection) {
 				case LEFT:
@@ -225,7 +224,7 @@ public class Player extends Entity implements Interactable,Updatable {
 					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,0,player_width,player_height);
 					break;
 				}
-				gc.drawImage(player_Image, x, y, 64, 80);
+				gc.drawImage(player_Image, X, Y, 64, 80);
 			} else {
 				switch (lastwalkDirection) {
 				case LEFT:
@@ -243,7 +242,7 @@ public class Player extends Entity implements Interactable,Updatable {
 				default:
 					player_Image = new WritableImage(RenderableHolder.player1_sprite_Image.getPixelReader(),0,0,player_width,player_height);
 				}
-				gc.drawImage(player_Image, x, y, 64, 80);
+				gc.drawImage(player_Image, X, Y, 64, 80);
 			}
 		}
 	}

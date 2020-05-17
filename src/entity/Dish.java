@@ -70,7 +70,7 @@ public class Dish extends Entity {
 	
 	public String toString() {
 		String result = "DISH";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nLocated at ("+x+","+y+")";
 		result += "\nisPlacedonTable? " + this.isPlaced;
 		return result;
 	}
@@ -78,34 +78,34 @@ public class Dish extends Entity {
 	
 	@Override
 	public int getZ() {
-		return getY()*3+2;
+		return y*3+2;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+this.getX()*pixel;
+		int Y = GameScreen.draw_origin_y+this.getY()*pixel;
 		
 		if(!isPlaced) {
 			if(onDishExists.size() == 0) {
-				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
+				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, X, Y-30);
 			}
 
 			if (onDishExists.size() == 1) {// dish with one ingredient
-				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
+				gc.drawImage(RenderableHolder.dish_onhead_empty_Image, X, Y-30);
 				
 				if ((onDishExists.get(0) instanceof Tomato)) { //dish with sliced tomato
-					gc.drawImage(RenderableHolder.tomato_sliced_Image, x+12, y-42, 40, 32);
+					gc.drawImage(RenderableHolder.tomato_sliced_Image, X+12, Y-42, 40, 32);
 			
 				}else if ((onDishExists.get(0) instanceof Cabbage)) { //dish with sliced cabbage
-					gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y-30);
+					gc.drawImage(RenderableHolder.cabbage_sliced_Image, X, Y-30);
 					
 				}else if((onDishExists.get(0) instanceof Fish)) {//dish with fish
 					if (((Fish) onDishExists.get(0)).getState() == 1){//fish state1
-						gc.drawImage(RenderableHolder.fish_sliced_Image, x+11, y-38, 42, 28);
+						gc.drawImage(RenderableHolder.fish_sliced_Image, X+11, Y-38, 42, 28);
 						
 					} else  if (((Fish) onDishExists.get(0)).getState() == 2){//fish state2
-						gc.drawImage(RenderableHolder.fish_fried_Image, x+11, y-35, 45, 30);
+						gc.drawImage(RenderableHolder.fish_fried_Image, X+11, Y-35, 45, 30);
 					}
 				}
 			} else if (onDishExists.size() == 2) {
@@ -115,29 +115,29 @@ public class Dish extends Entity {
 					}Collections.sort(ondish);
 					if (ondish.get(0).equals("Cabbage")) {
 						if (ondish.get(1).equals("Fish")) {//cabbage and fish both state 1
-							gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
-							gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y-30);
-							gc.drawImage(RenderableHolder.fish_sliced_Image, x+15, y-35, 32, 20);
+							gc.drawImage(RenderableHolder.dish_onhead_empty_Image, X, Y-30);
+							gc.drawImage(RenderableHolder.cabbage_sliced_Image, X, Y-30);
+							gc.drawImage(RenderableHolder.fish_sliced_Image, X+15, Y-35, 32, 20);
 							
 						} else if(ondish.get(1).equals("Tomato")) {//cabbage add tomato = simplesalad
-							gc.drawImage(RenderableHolder.dish_onhead_simplesalad_Image, x, y-35);
+							gc.drawImage(RenderableHolder.dish_onhead_simplesalad_Image, X, Y-35);
 						}
 						
 						} else { //Tomato and fish sliced
-							gc.drawImage(RenderableHolder.dish_onhead_empty_Image, x, y-30);
-							gc.drawImage(RenderableHolder.tomato_sliced_Image, x+2, y-37, 32, 20);
-							gc.drawImage(RenderableHolder.fish_sliced_Image, x+22, y-30, 32, 20);
+							gc.drawImage(RenderableHolder.dish_onhead_empty_Image, X, Y-30);
+							gc.drawImage(RenderableHolder.tomato_sliced_Image, X+2, Y-37, 32, 20);
+							gc.drawImage(RenderableHolder.fish_sliced_Image, X+22, Y-30, 32, 20);
 						}
 					
 			} else if (onDishExists.size() == 3){ //sashimi salad
-				gc.drawImage(RenderableHolder.dish_onhead_sashimisalad_Image, x, y-35);
+				gc.drawImage(RenderableHolder.dish_onhead_sashimisalad_Image, X, Y-35);
 			}
 		}
 		
 	}
 	@Override
 	public boolean isVisible() {
-		return !isDestroyed();
+		return !isDestroyed;
 	}
 	
 	public boolean isPlaced() {

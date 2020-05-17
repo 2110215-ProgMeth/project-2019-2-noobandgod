@@ -28,18 +28,18 @@ public class CabbageStorage extends IngredientStorage {
 	
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = (GameScreen.draw_origin_y-6)+y*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.cabbagestorage_infront_Image, x, y);
+			gc.drawImage(RenderableHolder.cabbagestorage_infront_Image, X, Y);
 		} else {
-			gc.drawImage(RenderableHolder.cabbagestorage_between_Image, x, y);
+			gc.drawImage(RenderableHolder.cabbagestorage_between_Image, X, Y);
 		}
 		
 	}

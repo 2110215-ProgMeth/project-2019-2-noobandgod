@@ -13,28 +13,27 @@ public class Fish extends Ingredient{
 	}
 	
 	public int getZ() {
-		return getY()*3+2;
+		return y*3+2;
 	}
 
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x + this.getX() * pixel;
-		int y = GameScreen.draw_origin_y + this.getY() * pixel;
+		int X = GameScreen.draw_origin_x + x * pixel;
+		int Y = GameScreen.draw_origin_y + y * pixel;
 
 		if(!isPlaced) {
 			if (getState() == 0) {
-				gc.drawImage(RenderableHolder.fish_Image, x, y-34);
+				gc.drawImage(RenderableHolder.fish_Image, X, Y-34);
 			}else if (getState() == 1) {
-				gc.drawImage(RenderableHolder.fish_sliced_Image, x+15, y-35,32,30);
+				gc.drawImage(RenderableHolder.fish_sliced_Image, X+15, Y-35,32,30);
 			} else if (getState() == 2) {
-				gc.drawImage(RenderableHolder.fish_fried_Image, x+8, y-37);
+				gc.drawImage(RenderableHolder.fish_fried_Image, X+8, Y-37);
 			}
 		}
-
 	}
 
 	@Override
 	public boolean isVisible() {
-		return !isDestroyed();
+		return !isDestroyed;
 	}
 }

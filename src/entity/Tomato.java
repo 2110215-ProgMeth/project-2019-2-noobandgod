@@ -13,19 +13,19 @@ public class Tomato extends Ingredient{
 	}
 	
 	public int getZ() {
-		return getY() * 3 + 2;
+		return y * 3 + 2;
 	}
 
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x + this.getX() * pixel;
-		int y = GameScreen.draw_origin_y + this.getY() * pixel;
+		int X = GameScreen.draw_origin_x + x * pixel;
+		int Y = GameScreen.draw_origin_y + y * pixel;
 
 		if(!isPlaced) {
 			if (getState() == 0) {
-				gc.drawImage(RenderableHolder.tomato_Image, x, y-50);
+				gc.drawImage(RenderableHolder.tomato_Image, X, Y-50);
 			}else if (getState() == 1) {
-				gc.drawImage(RenderableHolder.tomato_sliced_Image, x+10, y-40);
+				gc.drawImage(RenderableHolder.tomato_sliced_Image, X+10, Y-40);
 			}
 		}
 
@@ -33,6 +33,6 @@ public class Tomato extends Ingredient{
 
 	@Override
 	public boolean isVisible() {
-		return !isDestroyed();
+		return !isDestroyed;
 	}
 }

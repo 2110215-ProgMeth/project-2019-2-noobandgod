@@ -29,19 +29,19 @@ public class FishStorage extends IngredientStorage{
 	
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
 	
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = (GameScreen.draw_origin_y-6)+y*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.fishstorage_infront_Image, x, y);
+			gc.drawImage(RenderableHolder.fishstorage_infront_Image, X, Y);
 		} else {
-			gc.drawImage(RenderableHolder.fishstorage_between_Image, x, y-6);
+			gc.drawImage(RenderableHolder.fishstorage_between_Image, X, Y-6);
 		}
 		
 	}

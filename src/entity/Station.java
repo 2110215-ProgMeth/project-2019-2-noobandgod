@@ -101,7 +101,7 @@ public class Station extends Block implements Interactable{
 	
 	public String toString() {
 		String result = "STATION";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nLocated at ("+x+","+y+")";
 		result += "\nisAnyBlockDownward: "+isAnyBlockDownward;
 		return result;
 	}
@@ -112,55 +112,53 @@ public class Station extends Block implements Interactable{
 	
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
-		
-		//System.out.println("Drawing Station at ("+getX()+","+getY()+")");
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = GameScreen.draw_origin_y+y*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.station_infront_Image, x, y-6);
+			gc.drawImage(RenderableHolder.station_infront_Image, X, Y-6);
 		} else {
-			gc.drawImage(RenderableHolder.station_between_Image, x, y-6);
+			gc.drawImage(RenderableHolder.station_between_Image, X, Y-6);
 		}
 		
 		if(OnStation) {
 			if (OnStationExists instanceof Dish) {//with dish
 				if (((Dish) OnStationExists).getOnDishExists().size() == 0) { //empty dish
 					if(!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y-4);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y-4);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y);
 					}
 				}
 				
 				if (((Dish) OnStationExists).getOnDishExists().size() == 1) {// dish with one ingredient
 					if(!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y-4);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y-4);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+						gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y);
 					}
 					
 					if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Tomato) {//dish with sliced tomato
-						gc.drawImage(RenderableHolder.tomato_sliced_Image, x+10, y-2);
+						gc.drawImage(RenderableHolder.tomato_sliced_Image, X+10, Y-2);
 							
 					}else if (((Dish) OnStationExists).getOnDishExists().get(0) instanceof Cabbage) {//dish with cabbage
-						gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+5);
+						gc.drawImage(RenderableHolder.cabbage_sliced_Image, X, Y+5);
 					
 					}else if(((Dish) OnStationExists).getOnDishExists().get(0) instanceof Fish) {//dish with fish
 						if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState() == 1){//fish state1
-							gc.drawImage(RenderableHolder.fish_sliced_Image, x+12, y+3, 42, 28);
+							gc.drawImage(RenderableHolder.fish_sliced_Image, X+12, Y+3, 42, 28);
 							
 						}else if (((Fish) ((Dish) OnStationExists).getOnDishExists().get(0)).getState() == 2){//fish state2
 							if(isAnyBlockDownward) {
-								gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+3, 45, 35);
+								gc.drawImage(RenderableHolder.fish_fried_Image, X+10, Y+3, 45, 35);
 							} else {
-								gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+1, 45, 35);
+								gc.drawImage(RenderableHolder.fish_fried_Image, X+10, Y+1, 45, 35);
 							}
 							
 						}
@@ -173,38 +171,38 @@ public class Station extends Block implements Interactable{
 						if (ondish.get(0).equals("Cabbage")) {
 							if (ondish.get(1).equals("Fish")) {//cabbage and fish both state 1
 								if(!isAnyBlockDownward) {
-									gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y-4);
+									gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y-4);
 								} else {
-									gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
+									gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y);
 								}
-								gc.drawImage(RenderableHolder.cabbage_sliced_Image, x, y+5, 64, 31);
-								gc.drawImage(RenderableHolder.fish_sliced_Image, x+15, y+2, 34, 20);
+								gc.drawImage(RenderableHolder.cabbage_sliced_Image, X, Y+5, 64, 31);
+								gc.drawImage(RenderableHolder.fish_sliced_Image, X+15, Y+2, 34, 20);
 								
 							}else if(ondish.get(1).equals("Tomato")) {//cabbage add tomato (sliced) = simple salad
 								if(isAnyBlockDownward) {
-									gc.drawImage(RenderableHolder.dish_ontable_simplesalad_Image, x, y-3);
+									gc.drawImage(RenderableHolder.dish_ontable_simplesalad_Image, X, Y-3);
 								} else {
-									gc.drawImage(RenderableHolder.dish_ontable_simplesalad_Image, x, y-8, 64, 50);
+									gc.drawImage(RenderableHolder.dish_ontable_simplesalad_Image, X, Y-8, 64, 50);
 								}
 								
 							}
 						}else { //Tomato and fish sliced
 							if(!isAnyBlockDownward) {
-								gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y-4);
-								gc.drawImage(RenderableHolder.tomato_sliced_Image, x+5, y, 32, 20);
-								gc.drawImage(RenderableHolder.fish_sliced_Image, x+24, y+10, 32, 20);
+								gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y-4);
+								gc.drawImage(RenderableHolder.tomato_sliced_Image, X+5, Y, 32, 20);
+								gc.drawImage(RenderableHolder.fish_sliced_Image, X+24, Y+10, 32, 20);
 							} else {
-								gc.drawImage(RenderableHolder.dish_ontable_empty_Image, x, y);
-								gc.drawImage(RenderableHolder.tomato_sliced_Image, x+5, y+3, 32, 20);
-								gc.drawImage(RenderableHolder.fish_sliced_Image, x+24, y+13, 32, 20);
+								gc.drawImage(RenderableHolder.dish_ontable_empty_Image, X, Y);
+								gc.drawImage(RenderableHolder.tomato_sliced_Image, X+5, Y+3, 32, 20);
+								gc.drawImage(RenderableHolder.fish_sliced_Image, X+24, Y+13, 32, 20);
 							}
 							
 						}
 				}else if (((Dish) OnStationExists).getOnDishExists().size() == 3){//sashimi salad
 					if(isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.dish_ontable_sashimisalad_Image, x, y-3);
+						gc.drawImage(RenderableHolder.dish_ontable_sashimisalad_Image, X, Y-3);
 					} else {
-						gc.drawImage(RenderableHolder.dish_ontable_sashimisalad_Image, x, y-8, 64, 50);
+						gc.drawImage(RenderableHolder.dish_ontable_sashimisalad_Image, X, Y-8, 64, 50);
 					}
 				}
 				
@@ -213,27 +211,27 @@ public class Station extends Block implements Interactable{
 			}else if (OnStationExists instanceof Tomato) {//tomato pure
 				if (((Tomato) OnStationExists).getState() == 0){//tomato state 0
 					if (!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.tomato_Image, x, y-3);
+						gc.drawImage(RenderableHolder.tomato_Image, X, Y-3);
 					} else {
-						gc.drawImage(RenderableHolder.tomato_Image, x, y-1,64,48);
+						gc.drawImage(RenderableHolder.tomato_Image, X, Y-1,64,48);
 					}
 				}
 				
 			}else if (OnStationExists instanceof Cabbage) {//cabbage pure
 				if (((Cabbage) OnStationExists).getState()==0){//cabbage state 0
 					if (!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.cabbage_Image, x, y-1);
+						gc.drawImage(RenderableHolder.cabbage_Image, X, Y-1);
 					} else {
-						gc.drawImage(RenderableHolder.cabbage_Image, x, y+2,64,48);
+						gc.drawImage(RenderableHolder.cabbage_Image, X, Y+2,64,48);
 					}
 				}
 				
 			}else if(OnStationExists instanceof Fish) {//pure fish
 				if (((Fish) OnStationExists).getState()==0){//fish state 0
 					if (!isAnyBlockDownward) {
-						gc.drawImage(RenderableHolder.fish_Image, x, y+5);
+						gc.drawImage(RenderableHolder.fish_Image, X, Y+5);
 					} else {
-						gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+						gc.drawImage(RenderableHolder.fish_Image, X, Y+10);
 					}
 				}
 			}

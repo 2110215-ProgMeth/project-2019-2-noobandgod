@@ -15,8 +15,8 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 		final long startNanoTime = System.nanoTime();
 		
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel-14;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = GameScreen.draw_origin_y+y*pixel-14;
 		
 		double maxwidth = 64;
 		double maxheight = 10;
@@ -28,20 +28,20 @@ public abstract class Equipment extends Block implements Interactable,Cookable{
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0);
 				width = (t/maxTime)*maxwidth;
 				
-				gc.clearRect(x, y, maxwidth, maxheight);
+				gc.clearRect(X, Y, maxwidth, maxheight);
 				
 				gc.setStroke(Color.GREEN);
 				gc.setLineWidth(1);
 				
 				gc.setFill(Color.WHITE);
-				gc.fillRect(x, y, maxwidth , maxheight);
-				gc.strokeRect(x, y, maxwidth, maxheight);
+				gc.fillRect(X, Y, maxwidth , maxheight);
+				gc.strokeRect(X, Y, maxwidth, maxheight);
 				
 				gc.setFill(Color.LIMEGREEN);
-				gc.fillRect(x, y, width, maxheight);
+				gc.fillRect(X, Y, width, maxheight);
 				
 				if (width >= maxwidth) {
-					gc.clearRect(x, y, maxwidth+0.1, maxheight);
+					gc.clearRect(X, Y, maxwidth+0.1, maxheight);
 					this.stop();
 				}
 			}

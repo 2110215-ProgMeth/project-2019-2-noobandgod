@@ -68,7 +68,6 @@ public class FryingPan extends Equipment implements Interactable, Cookable{
 		
 		getOnFryingPanExists().setDestroyed(true);
 		
-		
 		setOnFryingPanExists(null);
 		return removedEntity;
 	}
@@ -111,33 +110,33 @@ public class FryingPan extends Equipment implements Interactable, Cookable{
 
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
 
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = GameScreen.draw_origin_y+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = GameScreen.draw_origin_y+y*pixel;
 		
 		if(!isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.fryingpan_infront_Image, x, y-6,64,70);
+			gc.drawImage(RenderableHolder.fryingpan_infront_Image, X, Y-6,64,70);
 		} else {
-			gc.drawImage(RenderableHolder.fryingpan_between_Image, x, y-6);
+			gc.drawImage(RenderableHolder.fryingpan_between_Image, X, Y-6);
 		} 
 		
 		if (OnFryingPanExists instanceof Fish) {
 			if (((Fish) OnFryingPanExists).getState() == 0) { //raw fish
 				if(!isAnyBlockDownward) {
-					gc.drawImage(RenderableHolder.fish_Image, x, y);
+					gc.drawImage(RenderableHolder.fish_Image, X, Y);
 				} else {
-					gc.drawImage(RenderableHolder.fish_Image, x, y+10);
+					gc.drawImage(RenderableHolder.fish_Image, X, Y+10);
 				}
 			} else if (((Fish) OnFryingPanExists).getState() == 2){
 				if(!isAnyBlockDownward) {
-					gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+7, 40, 28);
+					gc.drawImage(RenderableHolder.fish_fried_Image, X+10, Y+7, 40, 28);
 				} else {
-					gc.drawImage(RenderableHolder.fish_fried_Image, x+10, y+10, 45, 32);
+					gc.drawImage(RenderableHolder.fish_fried_Image, X+10, Y+10, 45, 32);
 				}
 			}
 		}

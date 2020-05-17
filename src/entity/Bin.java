@@ -16,37 +16,35 @@ public class Bin extends Block implements Interactable{
 		if (p.isHolding()) {
 			//if player holding something, remove holding entity (throws it into bin)
 			Entity entity = p.removeEntityHeld();
-			
-//			if(entity instanceof Dish) {
-//				System.out.println(((Dish) entity).toString()+" @("+entity.getX()+","+entity.getY()+") has been thrown off!");
-//			}
 			return true; 
-			
 		}else{
-			//System.out.println("YOU ARE NOT HOLDING ANYTHING");
 			throw new InteractFailedException("ERROR");
 		}
 	}
+	
 	public char getSymbol() {
 		return Sprites.Bin;
 	}
+	
 	@Override
 	public int getZ() {
-		return getY()*3;
+		return y*3;
 	}
+	
 	@Override
 	public void draw(GraphicsContext gc) {
 		int pixel = GameScreen.pixel;
-		int x = GameScreen.draw_origin_x+this.getX()*pixel;
-		int y = (GameScreen.draw_origin_y-6)+this.getY()*pixel;
+		int X = GameScreen.draw_origin_x+x*pixel;
+		int Y = (GameScreen.draw_origin_y-6)+y*pixel;
 		
 		if(isAnyBlockDownward) {
-			gc.drawImage(RenderableHolder.bin_between_Image, x, y);
+			gc.drawImage(RenderableHolder.bin_between_Image, X, Y);
 		} else {
-			gc.drawImage(RenderableHolder.bin_infront_Image, x, y);
+			gc.drawImage(RenderableHolder.bin_infront_Image, X, Y);
 		}
 		
 	}
+	
 	@Override
 	public boolean isVisible() {
 		return true;
@@ -54,7 +52,7 @@ public class Bin extends Block implements Interactable{
 	
 	public String toString() {
 		String result = "BIN";
-		result += "\nLocated at ("+this.getX()+","+this.getY()+")";
+		result += "\nLocated at ("+x+","+y+")";
 		return result;
 	}
 }
