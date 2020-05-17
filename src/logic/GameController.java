@@ -26,7 +26,7 @@ public class GameController {
 	public static final String[] INGREDIENTS 
 		= new String[] {"Tomato","Cabbage","Fish"};
 	
-	public static final int MAX_TIME = 210;
+	public static int MAX_TIME;
 	public static final int MAX_ORDER = 5;
 	
 	private static OrderManager orderManager;
@@ -66,7 +66,7 @@ public class GameController {
 	
 	public static void InitializePlayer(int numberOfPlayers) {
 		if (numberOfPlayers == 1) {
-			timeToAddMenu = 20;
+			timeToAddMenu = 20; MAX_TIME = 210;
 			
 			players = new ArrayList<Player>();
 			Player player0 = new Player(0,1,1);
@@ -74,7 +74,7 @@ public class GameController {
 			players.add(player0);
 			RenderableHolder.getInstance().add(player0);
 		} else if (numberOfPlayers == 2) {
-			timeToAddMenu = 16;
+			timeToAddMenu = 16; MAX_TIME = 180;
 			
 			players = new ArrayList<Player>();
 			Player player0 = new Player(0,1,1);

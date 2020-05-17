@@ -125,7 +125,8 @@ public class OrderManager {
 	public static void updateOrderNumber() {
 		for (int order = GameController.getOrderManager().getOrders().size() - 1; order >= 0; order--)
 			if (GameController.getOrderManager().getOrders().get(order).getTimeLeft() == 0) {// when menu is timeup
-				GameController.getOrderManager().getOrders().remove(order);
+				Menu menu = GameController.getOrderManager().getOrders().remove(order);
+				menu = null;
 				GameController.setFailedDish(GameController.getFailedDish() + 1);
 				GameController.addScoreCount(-5);
 			} 
