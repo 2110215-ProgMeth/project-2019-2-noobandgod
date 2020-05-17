@@ -151,7 +151,7 @@ public class FryingPan extends Equipment implements Interactable, Cookable{
 	public boolean isOnFryingPan() {
 		return OnFryingPan;
 	}
-	private void setOnFryingPan(boolean b) {
+	public void setOnFryingPan(boolean b) {
 		OnFryingPan = b;	
 	}
 	
